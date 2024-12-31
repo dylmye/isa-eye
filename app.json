@@ -1,26 +1,54 @@
 {
   "expo": {
-    "name": "isa-eye",
+    "name": "ISA Eye",
+    "description": "Keep track of your ISA allowance across accounts and years.",
+    "githubUrl": "https://github.com/dylmye/isa-eye",
     "slug": "isa-eye",
+    "owner": "dylmye",
+    "scheme": "isaeye",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "icon": "./assets/images/icon.png",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dylmye.isa"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dylmye.isa"
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "output": "single",
+      "favicon": "./assets/images/favicon.png",
+      "lang": "en-GB",
+      "display": "minimal-ui",
+      "orientation": "portrait",
+      "preferRelatedApplications": true
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "updates": {
+      "enabled": false
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4fe52bdb-5d55-4d18-aeae-9faaa517ec69"
+      }
     },
     "plugins": [
       "expo-router",
@@ -33,9 +61,6 @@
           "backgroundColor": "#ffffff"
         }
       ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
+    ]
   }
 }
