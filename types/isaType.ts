@@ -1,3 +1,4 @@
+/** A marketed ISA product. */
 export default interface IsaType<CodeType = string> {
   /** Friendly name. */
   name: string;

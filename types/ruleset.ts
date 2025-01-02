@@ -1,3 +1,4 @@
+/** A representation of the rules for ISAs in a given tax year. */
 export default interface Ruleset<CodeType = string> {
   /** Season for ruleset, e.g. 2024/2025 for April 2024-2025 ISA ruleset. Must be unique. */
   name: string;

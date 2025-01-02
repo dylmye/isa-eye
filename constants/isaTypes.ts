@@ -14,6 +14,7 @@ export const ISA_TYPES = [
   "MINI",
 ] as const;
 
+/** Unique identifiers for every ISA product ever available. Use `ISA_TYPES` for an array of all values. */
 export type IsaTypeCodes = (typeof ISA_TYPES)[number];
 
 export const isaTypes: Readonly<IsaType<IsaTypeCodes>>[] = [
