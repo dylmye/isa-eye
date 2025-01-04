@@ -1,5 +1,6 @@
 import {
   ColorValue,
+  DimensionValue,
   Platform,
   PlatformColor,
   StyleSheet,
@@ -22,15 +23,15 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     minHeight: 64,
-    backgroundColor: Platform.select({
-      ios: PlatformColor("secondarySystemBackground"),
-      android: PlatformColor("@android:color/system_accent1_900"),
-      default: "rgba(255, 255, 255, 0.15)" as ColorValue,
-    }),
+    ...Platform.select({
+        ios: { backgroundColor: PlatformColor("secondarySystemBackground") },
+        android: { backgroundColor: PlatformColor("@android:color/system_accent1_900") },
+        web: { backgroundColor: "rgba(255, 255, 255, 0.15)", maxWidth: "50rem" as DimensionValue },
+      }),
     padding: 16,
-    marginVertical: 8,
     marginHorizontal: 8,
     borderRadius: 8,
+    width: '100%',
   },
   title: {
     fontSize: 21,
