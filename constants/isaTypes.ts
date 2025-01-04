@@ -75,13 +75,6 @@ export const isaTypes: Readonly<IsaType<IsaTypeCodes>>[] = [
       "A Stocks & Shares ISA held in a child's name. Money cannot be withdrawn until they turn 18, or in if diagnosed with a terminal illness.",
   },
   {
-    code: "BRITISH",
-    name: "British ISA",
-    introducedWithRuleset: "2025/2026",
-    shortDescription: "Support British business",
-    longDescription: "More details coming soon",
-  },
-  {
     code: "HELP_TO_BUY",
     name: "Help To Buy ISA",
     introducedWithRuleset: "2015/2016",
