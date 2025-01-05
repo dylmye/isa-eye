@@ -1,11 +1,6 @@
-import {
-  View,
-  StyleSheet,
-  PlatformColor,
-  Platform,
-  ColorValue,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import ThemedText from "./ThemedText";
+import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 
 const OverviewBar = () => (
   <View style={styles.container}>
@@ -30,14 +25,21 @@ const OverviewBar = () => (
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-    backgroundColor: Platform.select({
-      ios: PlatformColor("secondarySystemBackground"),
-      android: PlatformColor("@android:color/system_accent1_900"),
-      default: "rgba(255, 255, 255, 0.15)" as ColorValue,
-    }),
+    backgroundColor: getCrossPlatformColour(
+      "secondarySystemBackground",
+      "@android:color/system_accent1_900",
+      "rgba(255, 255, 255, 0.15)"
+    ),
     paddingVertical: 16,
     marginBottom: 16,
-    boxShadow: "0px -1px 15px 15px rgba(64, 64, 64, 0.31)",
+    shadowColor: "#404040",
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.31,
+    shadowRadius: 3,
+    elevation: 5,
   },
   text: {
     textAlign: "center",
