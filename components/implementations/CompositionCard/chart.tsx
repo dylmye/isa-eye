@@ -20,7 +20,7 @@ const CompositionChart = () => (
     labelKey="label"
     valueKey="value"
   >
-    <Pie.Chart size={32} innerRadius={"60%"} startAngle={90} />
+    <Pie.Chart size={150} innerRadius={"60%"} startAngle={90} />
   </PolarChart>
 );
 
