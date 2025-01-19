@@ -1,40 +1,22 @@
-import {
-  DimensionValue,
-  Platform,
-  StyleSheet,
-  View,
-} from "react-native";
+import { StyleSheet } from "react-native";
 import ThemedText from "./ThemedText";
 import { PropsWithChildren } from "react";
-import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
+import CardBase from "./CardBase";
 
 interface CardProps {
   title: string;
 }
 
 const Card = ({ title, children }: PropsWithChildren<CardProps>) => (
-  <View style={styles.container}>
+  <CardBase>
     <ThemedText style={styles.title} numberOfLines={1} dynamicTypeRamp="title2">
       {title}
     </ThemedText>
     <ThemedText>{children}</ThemedText>
-  </View>
+  </CardBase>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    minHeight: 64,
-    backgroundColor: getCrossPlatformColour(
-      "secondarySystemBackground",
-      "@android:color/system_accent1_900",
-      "rgba(255, 255, 255, 0.15)"
-    ),
-    ...(Platform.OS === "web" && { maxWidth: "50rem" as DimensionValue }),
-    padding: 16,
-    borderRadius: 8,
-    width: "100%",
-  },
   title: {
     fontSize: 21,
     fontWeight: "bold",

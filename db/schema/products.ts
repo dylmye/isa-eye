@@ -5,6 +5,8 @@ const productsTable: Record<string, CellSchema> = {
   endTaxYear: { type: 'string' },
   providerName: { type: 'string' },
   friendlyName: { type: 'string' },
+  colourHex: { type: 'string' },
+  isaType: { type: 'string' },
 } as const
 
 export default productsTable;
