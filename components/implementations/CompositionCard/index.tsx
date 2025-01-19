@@ -24,6 +24,12 @@ const CompositionCard = () => (
           />
           <ThemedText numberOfLines={1}>ISA B</ThemedText>
         </View>
+        <View style={styles.keyIndicator}>
+          <View
+            style={[styles.keyIndicatorIcon, { backgroundColor: "#fe89df" }]}
+          />
+          <ThemedText numberOfLines={1}>ISA Rae</ThemedText>
+        </View>
       </View>
     </View>
   </Card>

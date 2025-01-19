@@ -2,14 +2,19 @@ import { Pie, PolarChart } from "victory-native";
 
 const exampleData = [
   {
-    value: 50,
+    value: 33,
     colour: "#000000",
     label: "ISA A",
   },
   {
-    value: 50,
+    value: 33,
     colour: "#ffffff",
     label: "ISA B",
+  },
+  {
+    value: 33,
+    colour: "#fe89df",
+    label: "ISA Rae",
   },
 ];
 

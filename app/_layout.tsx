@@ -18,12 +18,12 @@ import migrations from "@/drizzle/migrations";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
-const expo = openDatabaseSync("isa-eye.db", { enableChangeListener: true });
+const expo = openDatabaseSync("db/isa-eye.db", { enableChangeListener: true });
 const db = drizzle(expo);
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
-  useDrizzleStudio(db);
+  useDrizzleStudio(expo);
   const { success, error } = useMigrations(db, migrations);
 
   useEffect(() => {

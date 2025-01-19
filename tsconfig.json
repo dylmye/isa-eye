@@ -7,7 +7,9 @@
         "./*"
       ]
     },
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
   },
   "include": [
     "**/*.ts",
