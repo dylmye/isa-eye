@@ -1,10 +1,11 @@
+import ChartTooltip from "@/components/ChartTooltip";
 import {
-  listFontFamilies,
   matchFont,
   useFont,
 } from "@shopify/react-native-skia";
 import { Platform } from "react-native";
-import { CartesianChart, Line } from "victory-native";
+import { CartesianChart, Line, useChartPressState } from "victory-native";
+import React from "react";
 
 const exampleData = [
   {
@@ -57,13 +58,21 @@ const monthLabels = [
 ];
 
 const HistoryChart = () => {
-  const systemFont = listFontFamilies();
-  const font = matchFont({
-    fontFamily: Platform.select({ ios: 'Helvetica', default: 'sans-serif' }),
-    fontSize: 9,
-    fontStyle: "normal",
-    fontWeight: "bold",
-  });
+  const font = ["ios", "android"].includes(Platform.OS)
+    ? matchFont({
+        fontFamily: Platform.select({
+          ios: "Helvetica",
+          default: "sans-serif",
+        }),
+        fontSize: 9,
+        fontStyle: "normal",
+        fontWeight: "bold",
+      })
+    : useFont("sans-serif", 9);
+
+  const { state: chartPressState, isActive: chartIsPressed } =
+    useChartPressState({ x: 0, y: { cumulativeContributions: 0 } });
+
   return (
     <CartesianChart
       data={exampleData}
@@ -77,14 +86,24 @@ const HistoryChart = () => {
         labelColor: "white",
         labelOffset: 0,
       }}
+      yAxis={[{ font, lineWidth: 0 }]}
+      chartPressState={chartPressState}
     >
       {({ points }) => (
-        <Line
-          points={points.cumulativeContributions}
-          color="white"
-          strokeWidth={3}
-          connectMissingData
-        />
+        <>
+          <Line
+            points={points.cumulativeContributions}
+            color="white"
+            strokeWidth={3}
+            connectMissingData
+          />
+          {chartIsPressed ? (
+            <ChartTooltip
+              x={chartPressState.x.position}
+              y={chartPressState.y.cumulativeContributions.position}
+            />
+          ) : null}
+        </>
       )}
     </CartesianChart>
   );

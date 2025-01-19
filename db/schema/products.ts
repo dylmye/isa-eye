@@ -1,9 +1,10 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { CellSchema } from "tinybase";
 
-export const productsTable = sqliteTable("products", {
-  id: int().primaryKey({ autoIncrement: true }),
-  startTaxYear: text().notNull(),
-  endTaxYear: text(),
-  providerName: text().notNull(),
-  friendlyName: text().notNull(),
-});
+const productsTable: Record<string, CellSchema> = {
+  startTaxYear: { type: 'string' },
+  endTaxYear: { type: 'string' },
+  providerName: { type: 'string' },
+  friendlyName: { type: 'string' },
+} as const
+
+export default productsTable;

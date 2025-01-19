@@ -5,7 +5,7 @@ import Card from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
 
 const HistoryCard = () => (
-  <Card title="Composition">
+  <Card title="History">
     <View style={styles.contentContainer}>
       <HistoryChartInner />
     </View>
