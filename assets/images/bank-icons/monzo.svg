@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 373.79998 364.60001"
+   xml:space="preserve"
+   width="373.79999"
+   height="364.60001"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   style="background-color:#112231"><defs
+   id="defs13" />&#10;<style
+   type="text/css"
+   id="style1">&#10;	.st0{fill:#F9383D;}&#10;	.st1{fill:#FFFFFF;}&#10;	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}&#10;</style>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;<g
+   id="g1"
+   transform="matrix(4.18792,0,0,4.18792,-471.49338,-1142.9909)"><path
+     d="m 185.425,328.10341 c 0,0.7 -0.3,1.4 -0.8,1.9 l -11.7,11.5 a 1,1 0 0 1 -1.8,-0.7 v -26.1 l 14.1,-14 h 0.2 z"
+     fill="#ff4f40"
+     id="path1-8" /><path
+     d="m 129.025,328.10341 c 0,0.7 0.3,1.4 0.8,1.9 l 11.7,11.5 a 1,1 0 0 0 1.8,-0.7 v -26.1 l -14.1,-14 h -0.2 z"
+     fill="#0088a6"
+     id="path2" /><path
+     d="m 143.325,325.00341 -14.3,-13.9 v -10.3 l 14.2,14.4 v 9.8 z"
+     fill="url(#b)"
+     style="mix-blend-mode:multiply"
+     id="path3" /><path
+     d="m 171.125,324.60341 14.3,-14 v -9.8 l -14.3,14.4 z"
+     fill="url(#c)"
+     style="mix-blend-mode:multiply"
+     id="path4" /><path
+     d="m 185.225,300.30341 -9,-9 a 1,1 0 0 0 -0.7,-0.3 1,1 0 0 0 -0.8,0.3 l -17.3,17.4 -0.2,0.1 v 20 l 0.6,-0.3 13.5,-13.5 14,-13.8 v -0.9 z"
+     fill="#bbf42e"
+     id="path5" /><path
+     d="m 157.025,308.70341 -17.4,-17.4 a 1,1 0 0 0 -1.1,-0.2 1,1 0 0 0 -0.3,0.2 l -9,9 c -0.3,0.3 -0.3,0.6 0,0.9 l 13.9,13.8 13.5,13.5 c 0.1,0.2 0.4,0.3 0.6,0.3 v -20 z"
+     fill="#48d3b2"
+     id="path6" /></g></svg>

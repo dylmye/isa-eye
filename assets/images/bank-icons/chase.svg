@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 373.79998 364.60001"
+   xml:space="preserve"
+   width="373.79999"
+   height="364.60001"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   style="background-color:#126bc5"><defs
+   id="defs13" />&#10;<style
+   type="text/css"
+   id="style1">&#10;	.st0{fill:#F9383D;}&#10;	.st1{fill:#FFFFFF;}&#10;	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}&#10;</style>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;<g
+   id="g4"
+   transform="matrix(9.0034084,0,0,9.0034084,-858.39572,74.259102)">&#10;		<path
+   class="st0"
+   d="m 112.7,0.1 c -0.5,0 -0.8,0.4 -0.8,0.8 v 5.9 h 15.6 l -7.1,-6.7 z"
+   id="path1-1"
+   style="fill:#ffffff" />&#10;		<path
+   class="st0"
+   d="m 128,8.6 c 0,-0.5 -0.4,-0.8 -0.8,-0.8 h -5.9 v 15.6 l 6.7,-7.1 z"
+   id="path2"
+   style="fill:#ffffff" />&#10;		<path
+   class="st0"
+   d="m 119.5,23.9 c 0.5,0 0.8,-0.4 0.8,-0.8 v -5.9 h -15.6 l 7.1,6.7 z"
+   id="path3"
+   style="fill:#ffffff" />&#10;		<path
+   class="st0"
+   d="m 104.2,15.4 c 0,0.5 0.4,0.8 0.8,0.8 h 5.9 V 0.7 l -6.7,7.1 z"
+   id="path4"
+   style="fill:#ffffff" />&#10;	</g></svg>
