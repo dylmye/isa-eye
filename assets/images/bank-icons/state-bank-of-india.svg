@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 373.79998 364.60001"
+   xml:space="preserve"
+   width="373.79999"
+   height="364.60001"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   style="background-color:#2cb9f1"><defs
+   id="defs13"><clipPath
+     clipPathUnits="userSpaceOnUse"
+     id="clipPath319"><path
+       d="M 0,841.89 H 595.276 V 0 H 0 Z"
+       transform="translate(-46.997301,-807.52822)"
+       id="path319" /></clipPath></defs>&#10;<style
+   type="text/css"
+   id="style1">&#10;	.st0{fill:#F9383D;}&#10;	.st1{fill:#FFFFFF;}&#10;	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}&#10;</style>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;<path
+   id="path318"
+   d="m 0,0 c -7.535,0 -13.643,-6.102 -13.643,-13.631 0,-6.978 5.247,-12.731 12.016,-13.534 v 9.664 c -1.509,0.637 -2.571,2.131 -2.571,3.87 0,2.315 1.884,4.198 4.198,4.198 2.315,0 4.199,-1.883 4.199,-4.198 0,-1.739 -1.062,-3.233 -2.572,-3.87 v -9.664 c 6.769,0.803 12.017,6.556 12.017,13.534 C 13.644,-6.102 7.536,0 0,0"
+   fill="#ffffff"
+   style="stroke:none"
+   transform="matrix(7.884061,0,0,-7.884061,186.89605,75.214745)"
+   clip-path="url(#clipPath319)" /></svg>
