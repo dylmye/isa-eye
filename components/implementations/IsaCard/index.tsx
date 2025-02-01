@@ -1,21 +1,15 @@
 import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
 import { View } from "react-native";
-import { Image } from "expo-image";
+import BankLogoIcon from "../BankLogoIcon";
 
 const IsaCard = () => (
   <CardBase style={{ display: "flex", flexDirection: "row" }}>
     <View style={{ flex: 1, alignItems: "center", flexDirection: "row" }}>
-      <Image
-        source={require("@/assets/images/nationwide.svg")}
-        contentFit="fill"
-        style={{
-          width: 28,
-          height: 28,
-          borderRadius: 1000,
-          borderWidth: 2,
-          borderColor: "rgba(0, 0, 0, 0.04)",
-        }}
+      <BankLogoIcon
+        bankIcon={require("@/assets/images/bank-icons/nationwide.svg")}
+        size={38}
+        style={{ flex: 1 }}
       />
       <ThemedText
         type="defaultSemiBold"
