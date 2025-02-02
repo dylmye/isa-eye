@@ -32,6 +32,12 @@ const banks: Bank[] = [
     aliases: ['a&l', 'alliance + leicester', 'alliance', 'leicester', 'santander', 'girobank', 'alliance leicester'],
   },
   {
+    id: 'allica',
+    name: "Allica",
+    iconFile: require("@/assets/images/bank-icons/allica.svg"),
+    aliases: ['allica', 'allied irish'],
+  },
+  {
     id: 'allied-irish',
     name: "Allied Irish Bank",
     iconFile: require("@/assets/images/bank-icons/allied-irish.svg"),
@@ -42,6 +48,12 @@ const banks: Bank[] = [
     name: "Anglo Irish",
     iconFile: require("@/assets/images/bank-icons/anglo-irish.svg"),
     aliases: ['ibrc', 'anglo', 'irish nationwide', 'irish bank resolution', 'aib'],
+  },
+  {
+    id: 'arbuthnot-latham',
+    name: "Arbuthnot Latham",
+    iconFile: require("@/assets/images/bank-icons/arbuthnot-latham.svg"),
+    aliases: ['arbuthnot', 'aitken hume', 'hume'],
   },
   {
     id: 'atom',
@@ -61,8 +73,66 @@ const banks: Bank[] = [
     iconFile: require("@/assets/images/bank-icons/axa.svg"),
     aliases: ['acksa', 'a x a'],
   },
+  {
+    id: 'bank-of-ireland-uk',
+    name: "Bank of Ireland",
+    iconFile: require("@/assets/images/bank-icons/bank-of-ireland-uk.svg"),
+    aliases: ['boi', 'banc na héireann', 'bnh', 'bristol and west', 'bristol & west', 'post office'],
+  },
+  {
+    id: 'bank-of-scotland',
+    name: "Bank of Scotland",
+    iconFile: require("@/assets/images/bank-icons/bank-of-scotland.svg"),
+    aliases: ['bos', 'banca na h-alba', 'alba', 'lloyds', 'hbos'],
+  },
+  {
+    id: 'barclays',
+    name: "Barclays",
+    iconFile: require("@/assets/images/bank-icons/barclays.svg"),
+    aliases: ['barclay', 'barklays', 'barclay\'s', 'woolwich', 'ing direct', 'tesco'],
+  },
+  {
+    id: 'birmingham-midshires',
+    name: "Birmingham Midshires",
+    iconFile: require("@/assets/images/bank-icons/birmingham-midshires.svg"),
+    aliases: ['bm', 'brum', 'b mid'],
+  },
+  {
+    id: 'birmingham',
+    name: "Birmingham",
+    iconFile: require("@/assets/images/bank-icons/birmingham.svg"),
+    aliases: ['brum'],
+  },
+  {
+    id: 'blme',
+    name: "BLME",
+    iconFile: require("@/assets/images/bank-icons/blme.svg"),
+    aliases: ['bank of london & the middle east', 'boubyan', 'nomo'],
+  },
+  {
+    id: 'bny-mellon',
+    name: "BNY Mellon",
+    iconFile: require("@/assets/images/bank-icons/bny-mellon.svg"),
+    aliases: ['bny', 'bnym'],
+  },
+  {
+    id: 'bradford-and-bingley',
+    name: "Bradford & Bingley",
+    iconFile: require("@/assets/images/bank-icons/bradford-and-bingley.svg"),
+    aliases: ['b&m', 'bnm'],
+  },
+  {
+    id: 'brewin-dolphin',
+    name: "Brewin Dolphin",
+    iconFile: require("@/assets/images/bank-icons/brewin-dolphin.svg"),
+    aliases: ['rbc', 'bd'],
+  },
+  {
+    id: 'brown-shipley',
+    name: "Brown Shipley",
+    iconFile: require("@/assets/images/bank-icons/brown-shipley.svg"),
+    aliases: ['bs'],
+  },
 ];
-
-export const bankNames: (keyof typeof banks)[] = Object.keys(banks) as (keyof typeof banks)[];
 
 export default banks;
