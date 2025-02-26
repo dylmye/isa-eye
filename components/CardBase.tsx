@@ -17,19 +17,6 @@ interface CardBaseProps {
 const CardBase = ({ children, style }: PropsWithChildren<CardBaseProps>) => {
   const colourScheme = useColorScheme();
 
-  const backgroundColor =
-    colourScheme === "dark"
-      ? getCrossPlatformColour(
-          "secondarySystemBackground",
-          "@android:color/system_accent1_900",
-          "rgba(255, 255, 255, 0.15)"
-        )
-      : getCrossPlatformColour(
-          "secondarySystemBackground",
-          "@android:color/system_accent1_900",
-          "rgb(206, 206, 206)"
-        );
-
   const schemeStyles =
     colourScheme === "light"
       ? {
@@ -62,7 +49,6 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     minHeight: 64,
-    ...(Platform.OS === "web" && { maxWidth: "50rem" as DimensionValue }),
     padding: 16,
     borderRadius: 8,
     width: "100%",
