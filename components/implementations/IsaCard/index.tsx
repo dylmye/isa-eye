@@ -1,13 +1,24 @@
 import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import BankLogoIcon from "../BankLogoIcon";
+import Bank from "@/types/bank";
+import Account from "@/types/account";
+import getAccountName from "@/utils/getAccountName";
 
-const IsaCard = () => (
-  <CardBase style={{ display: "flex", flexDirection: "row" }}>
+export interface IsaCardProps {
+  /** Account is closed or non-interactable
+   * @default false
+   */
+  disabled?: boolean;
+  account: Account;
+}
+
+const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
+  <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
     <View style={{ flex: 1, alignItems: "center", flexDirection: "row" }}>
       <BankLogoIcon
-        bankIcon={require("@/assets/images/bank-icons/nationwide.svg")}
+        bankIcon={account.bank.iconFile}
         size={38}
         style={{ flex: 1 }}
       />
@@ -17,7 +28,7 @@ const IsaCard = () => (
         style={{ fontSize: 24, marginHorizontal: 8 }}
         numberOfLines={1}
       >
-        Nationwide Lifetime ISA
+        {getAccountName(account)}
       </ThemedText>
     </View>
     <View style={{ alignItems: "flex-end" }}>
@@ -28,5 +39,15 @@ const IsaCard = () => (
     </View>
   </CardBase>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  containerDisabled: {
+
+  }
+})
 
 export default IsaCard;
