@@ -1,14 +1,19 @@
 import { View, StyleSheet } from "react-native";
 import ThemedText from "./ThemedText";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
+import Ruleset from "@/types/ruleset";
 
-const OverviewBar = () => (
+interface OverviewBarProps {
+  ruleset: Ruleset;
+}
+
+const OverviewBar = ({ ruleset }: OverviewBarProps) => (
   <View style={styles.container}>
     <ThemedText aria-hidden style={[styles.text, styles.dateSubtitle]}>
-      2024/2025
+      {ruleset.name}
     </ThemedText>
     <ThemedText
-      aria-label="Your remaining ISA allowance for the 2024/2025 tax year."
+      aria-label={`Your remaining ISA allowance for the ${ruleset.name} tax year.`}
       style={styles.text}
       type="title"
       adjustsFontSizeToFit
@@ -31,7 +36,6 @@ const styles = StyleSheet.create({
       "rgba(255, 255, 255, 0.15)"
     ),
     paddingVertical: 16,
-    marginBottom: 16,
     shadowColor: "#404040",
     shadowOffset: {
       width: 1,

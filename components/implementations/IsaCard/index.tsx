@@ -20,19 +20,19 @@ const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
       <BankLogoIcon
         bankIcon={account.bank.iconFile}
         size={38}
-        style={{ flex: 1 }}
+        style={styles.icon}
       />
       <ThemedText
         type="defaultSemiBold"
         adjustsFontSizeToFit
-        style={{ fontSize: 24, marginHorizontal: 8 }}
+        style={styles.nameText}
         numberOfLines={1}
       >
         {getAccountName(account)}
       </ThemedText>
     </View>
     <View style={{ alignItems: "flex-end" }}>
-      <ThemedText type="defaultSemiBold" style={{ fontSize: 24 }}>
+      <ThemedText type="defaultSemiBold" style={styles.valueText}>
         £2,400
       </ThemedText>
       <ThemedText>remaining</ThemedText>
@@ -45,9 +45,19 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
   },
-  containerDisabled: {
-
-  }
-})
+  containerDisabled: {},
+  icon: {
+    flex: 1,
+  },
+  nameText: {
+    fontSize: 24,
+    lineHeight: 32,
+    marginHorizontal: 8,
+    textOverflow: "ellipsis",
+  },
+  valueText: {
+    fontSize: 24,
+  },
+});
 
 export default IsaCard;

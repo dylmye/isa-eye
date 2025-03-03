@@ -16,19 +16,21 @@ const CompositionCard = () => (
           <View
             style={[styles.keyIndicatorIcon, { backgroundColor: "black" }]}
           />
-          <ThemedText numberOfLines={1}>ISA A</ThemedText>
+          <ThemedText numberOfLines={1}>Abbey National Cash ISA</ThemedText>
         </View>
         <View style={styles.keyIndicator}>
           <View
             style={[styles.keyIndicatorIcon, { backgroundColor: "white" }]}
           />
-          <ThemedText numberOfLines={1}>ISA B</ThemedText>
+          <ThemedText numberOfLines={1}>Aegon Stocks & Shares ISA</ThemedText>
         </View>
         <View style={styles.keyIndicator}>
           <View
             style={[styles.keyIndicatorIcon, { backgroundColor: "#fe89df" }]}
           />
-          <ThemedText numberOfLines={1}>ISA Rae</ThemedText>
+          <ThemedText numberOfLines={1}>
+            Al Rayan Bank Innovative Finance ISA
+          </ThemedText>
         </View>
       </View>
     </View>
