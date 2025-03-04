@@ -6,6 +6,7 @@ import {
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
 import "react-native-reanimated";
 
@@ -26,7 +27,9 @@ const RootLayout = () => {
   return (
     <TinybaseProvider store={store}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack screenOptions={{ headerShown: false }} />
+        <ActionSheetProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+        </ActionSheetProvider>
         <StatusBar style="auto" />
       </ThemeProvider>
     </TinybaseProvider>
