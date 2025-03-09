@@ -1,11 +1,11 @@
 import { Platform, StyleSheet, View } from "react-native";
-import ThemedText from "./ThemedText";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
 import React from "react";
 import { router } from "expo-router";
+import { useAddButtonDisambi } from "@/hooks/useAddButtonDisambi";
 
 const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   iconStyle: {
@@ -54,21 +54,25 @@ interface MobileFooterProps {
   nextRuleset?: string;
 }
 
-const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => (
-  <View style={styles.container}>
-    <BackButton
-      disabled={!previousRuleset}
-      onPress={() =>
-        !!previousRuleset && router.push(`/overview/${previousRuleset}`)
-      }
-    />
-    <AddButton size={32} onPress={console.log} />
-    <ForwardButton
-      disabled={!nextRuleset}
-      onPress={() => !!nextRuleset && router.push(`/overview/${nextRuleset}`)}
-    />
-  </View>
-);
+const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => {
+  const onPressAdd = useAddButtonDisambi();
+
+  return (
+    <View style={styles.container}>
+      <BackButton
+        disabled={!previousRuleset}
+        onPress={() =>
+          !!previousRuleset && router.push(`/overview/${previousRuleset}`)
+        }
+      />
+      <AddButton size={32} onPress={onPressAdd} />
+      <ForwardButton
+        disabled={!nextRuleset}
+        onPress={() => !!nextRuleset && router.push(`/overview/${nextRuleset}`)}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -76,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgba(39, 39, 39, 1)"
+      "rgb(39, 39, 39)"
     ),
     shadowColor: "#404040",
     shadowOffset: {
