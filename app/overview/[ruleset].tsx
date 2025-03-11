@@ -13,6 +13,7 @@ import { rules } from "@/constants/rules";
 import { useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
+import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
@@ -36,18 +37,19 @@ const OverviewForRuleset = () => {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <PageColumn>
           <Cards>
+            {!isMediumScreen && <DesktopActionTiles />}
             <CompositionCard />
             <HistoryCard />
           </Cards>
           <AccountCards />
         </PageColumn>
       </ScrollView>
-      {/* {isMediumScreen && ( */}
-      <MobileFooter
-        previousRuleset={navbarProps?.previousRulesetName}
-        nextRuleset={navbarProps?.nextRulesetName}
-      />
-      {/* )} */}
+      {isMediumScreen && (
+        <MobileFooter
+          previousRuleset={navbarProps?.previousRulesetName}
+          nextRuleset={navbarProps?.nextRulesetName}
+        />
+      )}
     </SafeAreaView>
   );
 };

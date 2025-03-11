@@ -5,7 +5,7 @@ import PageColumn from "@/components/PageColumn";
 import ThemedText from "@/components/ThemedText";
 
 const AddTransaction = () => (
-  <SafeAreaView style={{ flex: 1 }}>
+  <SafeAreaView style={{ flex: 1, backgroundColor: "#00000040" }}>
     <ScrollView contentInsetAdjustmentBehavior="automatic">
       <PageColumn>
         <ThemedText>Add Transaction Page</ThemedText>

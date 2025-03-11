@@ -26,6 +26,8 @@ export default interface Ruleset<CodeType = string> {
     /** Any other details. */
     notes?: string;
   }[];
+  startDate: string;
+  endDate: string;
   /** Any other details. */
   notes?: string;
 }

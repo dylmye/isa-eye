@@ -5,6 +5,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2024/2025",
     overallAllowance: 20000,
+    startDate: "2024-04-06",
+    endDate: "2025-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -27,6 +29,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2023/2024",
     overallAllowance: 20000,
+    startDate: "2023-04-06",
+    endDate: "2024-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -49,6 +53,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2022/2023",
     overallAllowance: 20000,
+    startDate: "2022-04-06",
+    endDate: "2023-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -71,6 +77,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2021/2022",
     overallAllowance: 20000,
+    startDate: "2021-04-06",
+    endDate: "2022-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -93,6 +101,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2020/2021",
     overallAllowance: 20000,
+    startDate: "2020-04-06",
+    endDate: "2021-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -115,6 +125,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2019/2020",
     overallAllowance: 20000,
+    startDate: "2019-04-06",
+    endDate: "2020-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -137,6 +149,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2018/2019",
     overallAllowance: 20000,
+    startDate: "2018-04-06",
+    endDate: "2019-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
@@ -159,6 +173,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
   {
     name: "2017/2018",
     overallAllowance: 20000,
+    startDate: "2017-04-06",
+    endDate: "2018-04-05",
     individualAllowances: [
       {
         code: "HELP_TO_BUY",
