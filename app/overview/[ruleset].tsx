@@ -11,13 +11,22 @@ import MobileFooter from "@/components/MobileFooter";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
 import { rules } from "@/constants/rules";
 import { useLocalSearchParams } from "expo-router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
+import AddTransactionModal from "@/components/implementations/AddTransactionModal";
+import ModalVisibilityState from "@/types/modalVisibilityState";
+import AddAccountModal from "@/components/implementations/AddAccountModal";
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
   const searchParams = useLocalSearchParams<{ ruleset?: string }>();
+  const [modalVisiblity, updateModalVisibility] =
+    useState<ModalVisibilityState>({
+      addTransaction: false,
+      addAccount: false,
+      bulkUpload: false,
+    });
 
   const currentRulesetFormattedName = useMemo(
     () => searchParams?.ruleset?.replace("-", "/"),
@@ -37,7 +46,13 @@ const OverviewForRuleset = () => {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <PageColumn>
           <Cards>
-            {!isMediumScreen && <DesktopActionTiles />}
+            {!isMediumScreen && (
+              <DesktopActionTiles
+                onPress={(key) =>
+                  updateModalVisibility({ ...modalVisiblity, [key]: true })
+                }
+              />
+            )}
             <CompositionCard />
             <HistoryCard />
           </Cards>
@@ -50,6 +65,18 @@ const OverviewForRuleset = () => {
           nextRuleset={navbarProps?.nextRulesetName}
         />
       )}
+      <AddTransactionModal
+        isVisible={modalVisiblity?.addTransaction}
+        onDismiss={() =>
+          updateModalVisibility({ ...modalVisiblity, addTransaction: false })
+        }
+      />
+      <AddAccountModal
+        isVisible={modalVisiblity?.addAccount}
+        onDismiss={() =>
+          updateModalVisibility({ ...modalVisiblity, addAccount: false })
+        }
+      />
     </SafeAreaView>
   );
 };

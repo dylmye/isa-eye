@@ -1,10 +1,15 @@
 import ActionTile from "@/components/ActionTile";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import ModalVisibilityState from "@/types/modalVisibilityState";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
-const DesktopActionTiles = () => {
+interface DesktopActionTilesProps {
+  onPress: (key: keyof ModalVisibilityState) => void;
+}
+
+const DesktopActionTiles = ({ onPress }: DesktopActionTilesProps) => {
   const textColor = useThemeColor({}, "text");
 
   const sharedIconProps = {
@@ -16,17 +21,17 @@ const DesktopActionTiles = () => {
     <View style={styles.container}>
       <ActionTile
         title="Add Transaction"
-        onPress={() => router.push("/add/transaction")}
+        onPress={() => onPress("addTransaction")}
         icon={<MaterialCommunityIcons {...sharedIconProps} name="cash-plus" />}
       />
       <ActionTile
         title="Add Account"
-        onPress={() => router.push("/add/account")}
+        onPress={() => onPress("addAccount")}
         icon={<MaterialCommunityIcons {...sharedIconProps} name="bank-plus" />}
       />
       <ActionTile
         title="Bulk Import"
-        onPress={() => console.log("3")}
+        onPress={() => onPress("bulkUpload")}
         icon={
           <MaterialCommunityIcons {...sharedIconProps} name="database-import" />
         }
