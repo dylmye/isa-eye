@@ -2,7 +2,6 @@ import ActionTile from "@/components/ActionTile";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import ModalVisibilityState from "@/types/modalVisibilityState";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
 interface DesktopActionTilesProps {
