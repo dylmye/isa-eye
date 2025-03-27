@@ -16,6 +16,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
+    "@rn-primitives/radio-group": "^1.1.0",
     "@shopify/react-native-skia": "1.5.0",
     "expo": "~52.0.36",
     "expo-blur": "~14.0.3",

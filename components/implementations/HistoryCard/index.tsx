@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import HistoryChartInner from "./inner";
 import Card from "@/components/Card";
-import ThemedText from "@/components/ThemedText";
 
 const HistoryCard = () => (
   <Card title="History">
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 16,
-    overflow: 'visible',
+    overflow: "visible",
     padding: 8,
   },
 });

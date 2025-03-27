@@ -6,7 +6,6 @@ import {
   type Store,
 } from "tinybase/with-schemas";
 import { createExpoSqlitePersister } from "tinybase/persisters/persister-expo-sqlite/with-schemas";
-import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
 
 import {
   tableSchema,
@@ -15,9 +14,9 @@ import {
   tableIndexes,
   tableRelationships,
 } from "@/db/schema";
+import hooks from "@/hooks/database";
 
-const { useCreateStore, useCreatePersister } =
-  TinybaseUiReact as TinybaseUiReact.WithSchemas<Schemas>;
+const { useCreateStore, useCreatePersister } = hooks;
 
 export const useSetupDatabase = (): Store<Schemas> => {
   const store = useCreateStore(() =>

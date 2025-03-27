@@ -1,16 +1,13 @@
-import AddModal, { AddModalProps } from "@/components/AddModal";
-import ThemedText from "@/components/ThemedText";
+import { AddModalProps } from "@/components/AddModal";
+import hooks from "@/hooks/database";
+import AddAccountModalUI, { AddAccountData } from "./ui";
 
-const AddAccountModal = (props: AddModalProps) => (
-  <AddModal {...props}>
-    <AddModal.Header text="Add account" onDismiss={props.onDismiss} />
-    <ThemedText>Bank</ThemedText>
-    <ThemedText>Account name (optional)</ThemedText>
-    <ThemedText>Opened in TY</ThemedText>
-    <ThemedText>Balance type</ThemedText>
-    <ThemedText>Starting balance</ThemedText>
-    <ThemedText>Submit</ThemedText>
-  </AddModal>
-);
+const AddAccountModal = (props: AddModalProps) => {
+  const onSubmitForm = hooks.useAddRowCallback(
+    "contributions",
+    (data: AddAccountData) => ({})
+  );
+  return <AddAccountModalUI onSubmitForm={onSubmitForm} {...props} />;
+};
 
 export default AddAccountModal;
