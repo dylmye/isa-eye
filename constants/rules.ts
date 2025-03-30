@@ -1,7 +1,21 @@
 import Ruleset from "@/types/ruleset";
 import { IsaTypeCodes } from "./isaTypes";
+import { DropdownOptions } from "@/types/dropdown";
 
-export const rules: Ruleset<IsaTypeCodes>[] = [
+export const RULE_NAMES = [
+  "2024/2025",
+  "2023/2024",
+  "2022/2023",
+  "2021/2022",
+  "2020/2021",
+  "2019/2020",
+  "2018/2019",
+  "2017/2018"
+] as const;
+
+export type RuleNames = (typeof RULE_NAMES)[number];
+
+export const rules: Ruleset<RuleNames, IsaTypeCodes>[] = [
   {
     name: "2024/2025",
     overallAllowance: 20000,
@@ -194,3 +208,8 @@ export const rules: Ruleset<IsaTypeCodes>[] = [
     ],
   },
 ];
+
+export const rulesDropdown: DropdownOptions<RuleNames> = rules.map(x => ({
+  label: x.name,
+  value: x.name,
+}))

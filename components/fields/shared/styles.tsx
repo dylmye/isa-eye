@@ -47,15 +47,25 @@ const styles = StyleSheet.create({
   submit: {
     marginTop: 12,
   },
-  validationMessage: {
+  messageShared: {
     padding: 6,
+    borderRadius: 4,
+    marginBottom: 8,
+    maxWidth: 600,
+  },
+  messageTextShared: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    lineHeight: 18,
+  },
+  validationMessage: {
     backgroundColor: getCrossPlatformColour(
       "systemRed",
       "system_error_200",
       "rgb(255, 151, 151)"
     ),
-    borderRadius: 4,
-    marginBottom: 8,
   },
   validationMessageText: {
     color: getCrossPlatformColour(
@@ -63,22 +73,13 @@ const styles = StyleSheet.create({
       "system_error_900",
       "rgb(223, 0, 0)"
     ),
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    lineHeight: 18,
   },
   infoMessage: {
-    padding: 6,
     backgroundColor: getCrossPlatformColour(
       "systemBlue",
       "system_neutral2_200",
       "rgb(151, 222, 255)"
     ),
-    borderRadius: 4,
-    marginBottom: 8,
-    maxWidth: 600,
   },
   infoMessageText: {
     color: getCrossPlatformColour(
@@ -86,16 +87,16 @@ const styles = StyleSheet.create({
       "system_neutral2_900",
       "rgb(0, 97, 223)"
     ),
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    lineHeight: 18,
   },
   dateField: {
     padding: 4,
     /** @TODO This should be on web only, it doesn't get TextInput reset styling from RNWeb */
     fontFamily,
+  },
+  radioGroup: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 6,
   },
   selectedRadioOption: {
     backgroundColor: getCrossPlatformColour(
@@ -106,6 +107,50 @@ const styles = StyleSheet.create({
   },
   selectedRadioOptionText: {
     fontWeight: "600",
+  },
+  checkbox: {
+    height: 16,
+    width: 16,
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 6,
+    borderRadius: 3,
+  },
+  checkboxWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: 4,
+  },
+  autocompleteInput: {
+    zIndex: 0,
+  },
+  autocompleteResultsFlatlist: {
+    backgroundColor: getCrossPlatformColour(
+      "secondarySystemBackground",
+      "@android:color/system_accent1_900",
+      "rgb(39, 39, 39)"
+    ),
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+    zIndex: 1000,
+    maxHeight: 320,
+  },
+  autocompleteResult: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 6,
+    paddingVertical: 4,
+    alignItems: "center",
+  },
+  autocompleteResultImage: {
+    width: 16,
+    height: 16,
+    borderRadius: "100%",
+  },
+  autocompleteResultText: {
+    lineHeight: 16,
   },
 });
 

@@ -1,7 +1,7 @@
 /** A representation of the rules for ISAs in a given tax year. */
-export default interface Ruleset<CodeType = string> {
+export default interface Ruleset<RuleNames = string, CodeType = string> {
   /** Season for ruleset, e.g. 2024/2025 for April 2024-2025 ISA ruleset. Must be unique. */
-  name: string;
+  name: RuleNames;
   /** The allowance afforded to each taxpayer across all ISAs. In 2024/2025 this was £20,000. */
   overallAllowance: number;
   /** Any allowances for individual ISA types, if applicable. */

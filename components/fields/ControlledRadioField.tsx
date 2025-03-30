@@ -48,7 +48,11 @@ const ControlledRadioField = <
                 required={required}
               />
             )}
-            <RadioGroupPrimitive.Root value={value} onValueChange={onChange}>
+            <RadioGroupPrimitive.Root
+              value={value}
+              onValueChange={onChange}
+              style={styles.radioGroup}
+            >
               {options.map((o) => {
                 const isSelected = value === o.value;
                 return (

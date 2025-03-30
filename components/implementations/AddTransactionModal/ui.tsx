@@ -35,15 +35,19 @@ const AddTransactionModalUI = ({
     formState: { errors },
   } = useForm<AddTransactionData>();
 
-  const onSubmit = (data: AddTransactionData) => {
-    onSubmitForm(data);
+  const onDismiss = () => {
     reset();
     props.onDismiss?.();
   };
 
+  const onSubmit = (data: AddTransactionData) => {
+    onSubmitForm(data);
+    onDismiss();
+  };
+
   return (
     <AddModal {...props}>
-      <AddModal.Header text="Add transaction" onDismiss={props.onDismiss} />
+      <AddModal.Header text="Add transaction" onDismiss={onDismiss} />
       <FormUI>
         {/* @TODO This will need to become an autocomplete / dropdown */}
         <ControlledTextField<AddTransactionData, "accountName">

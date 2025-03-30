@@ -1,3 +1,4 @@
+import { DropdownOptions } from "@/types/dropdown";
 import IsaType from "@/types/isaType";
 
 export const ISA_TYPES = [
@@ -17,7 +18,7 @@ export const ISA_TYPES = [
 /** Unique identifiers for every ISA product ever available. Use `ISA_TYPES` for an array of all values. */
 export type IsaTypeCodes = (typeof ISA_TYPES)[number];
 
-export const isaTypes: Readonly<IsaType<IsaTypeCodes>>[] = [
+export const isaTypes: IsaType<IsaTypeCodes>[] = [
   {
     code: "CASH",
     name: "Cash ISA",
@@ -102,3 +103,8 @@ export const isaTypes: Readonly<IsaType<IsaTypeCodes>>[] = [
       "Mini cash ISAs allow tax-free interest earning on balances. Mini stocks and shares ISAs are similar to Maxi ISAs with a lower limit. Mini insurance ISAs offer a lower-risk investment in a life insurance contract.",
   },
 ];
+
+export const isaTypesDropdown: DropdownOptions<IsaTypeCodes> = isaTypes.map(x => ({
+  label: x.name,
+  value: x.code,
+}))

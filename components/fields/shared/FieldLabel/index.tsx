@@ -16,7 +16,7 @@ const FieldLabel = ({ label, fieldName, required }: FieldLabelProps) => {
       style={styles.labelText}
     >
       {label}
-      {required && " *"}
+      {required ? " *" : " (optional)"}
     </ThemedText>
   );
 

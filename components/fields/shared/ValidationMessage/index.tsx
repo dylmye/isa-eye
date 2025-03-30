@@ -8,8 +8,10 @@ interface ValidationMessageProps {
 }
 
 const ValidationMessage = ({ message }: ValidationMessageProps) => (
-  <View style={styles.validationMessage}>
-    <ThemedText style={styles.validationMessageText}>
+  <View style={[styles.validationMessage, styles.messageShared]}>
+    <ThemedText
+      style={[styles.validationMessageText, styles.messageTextShared]}
+    >
       <MaterialCommunityIcons name="alert-octagram" color="inherit" size={18} />
       {message}
     </ThemedText>
