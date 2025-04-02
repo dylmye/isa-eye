@@ -1,6 +1,9 @@
-import { CellSchema } from "tinybase";
-
-const productsTable: Record<string, CellSchema> = {
+/**
+ * Products
+ *
+ * An ISA account.
+ */
+const productsTable = {
   startTaxYear: { type: 'string' },
   endTaxYear: { type: 'string' },
   providerName: { type: 'string' },

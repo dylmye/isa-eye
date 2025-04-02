@@ -1,9 +1,12 @@
+// THIS IS FOR NATIVE ONLY. SEE uSD.web FOR WEB
 import { openDatabaseSync } from "expo-sqlite";
 import {
   createStore,
   createIndexes,
   createRelationships,
+  createQueries,
   type Store,
+  type Queries,
 } from "tinybase/with-schemas";
 import { createExpoSqlitePersister } from "tinybase/persisters/persister-expo-sqlite/with-schemas";
 
@@ -15,19 +18,34 @@ import {
   tableRelationships,
 } from "@/db/schema";
 import hooks from "@/hooks/database";
+import queryDefs from "@/db/queries";
 
-const { useCreateStore, useCreatePersister } = hooks;
+const { useCreateStore, useCreatePersister, useCreateQueries } = hooks;
 
-export const useSetupDatabase = (): Store<Schemas> => {
+export const useSetupDatabase = (): {
+  store: Store<Schemas>;
+  queries: Queries<Schemas> | undefined;
+} => {
   const store = useCreateStore(() =>
     createStore().setTablesSchema(tableSchema).setValuesSchema(keyvalueSchema)
   );
+  const queries = useCreateQueries(store, (s) => {
+    const cq = createQueries(s);
+    Object.values(queryDefs).forEach((def) => {
+      def(cq);
+    });
+    return cq;
+  });
 
   try {
     useCreatePersister(
       store,
       (store) =>
-        createExpoSqlitePersister(store, openDatabaseSync("db/isa-eye.db")),
+        createExpoSqlitePersister(
+          store,
+          openDatabaseSync("db/isa-eye.db"),
+          "isa_eye_expo"
+        ),
       [],
       async (persister) => {
         await persister.load();
@@ -49,5 +67,8 @@ export const useSetupDatabase = (): Store<Schemas> => {
     );
   }
 
-  return store;
+  return {
+    store,
+    queries,
+  };
 };

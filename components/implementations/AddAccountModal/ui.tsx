@@ -144,6 +144,7 @@ const AddAccountModalUI = ({
           name="openingBalance"
           label="Starting Balance"
           required
+          note="This balance won't contribute to the allowance of the year this account was opened."
         />
         <SubmitButton onPress={handleSubmit(onSubmit)} />
       </FormUI>

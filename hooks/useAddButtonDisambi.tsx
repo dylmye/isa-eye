@@ -5,7 +5,10 @@ import { getCrossPlatformColour } from "./getCrossPlatformColour";
 import { useThemeColor } from "./useThemeColor";
 import { router } from "expo-router";
 
-export const useAddButtonDisambi = (): (() => void) => {
+export const useAddButtonDisambi = (
+  onAddTransactionPress: () => void,
+  onAddAccountPress: () => void
+): (() => void) => {
   const { showActionSheetWithOptions } = useActionSheet();
   const textColor = useThemeColor({}, "text");
 
@@ -17,12 +20,12 @@ export const useAddButtonDisambi = (): (() => void) => {
   const OPTIONS = [
     {
       label: "Add Transaction",
-      onPress: () => router.push("/add/transaction"),
+      onPress: () => onAddTransactionPress(),
       icon: <MaterialCommunityIcons name="cash-plus" {...sharedIconProps} />,
     },
     {
       label: "Add Account",
-      onPress: () => router.push("/add/account"),
+      onPress: () => onAddAccountPress(),
       icon: <MaterialCommunityIcons name="bank-plus" {...sharedIconProps} />,
     },
     {

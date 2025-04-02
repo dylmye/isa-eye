@@ -3,19 +3,21 @@ import React from "react";
 import IsaCard from "../IsaCard";
 import Cards from "@/components/Cards";
 import { StyleSheet, View } from "react-native";
-import banks from "@/constants/banks";
-import { isaTypes } from "@/constants/isaTypes";
-import { rules } from "@/constants/rules";
+import Account from "@/types/account";
 
-const AccountCards = () => (
+interface AccountCardsProps {
+  accounts: Pick<Account, "bank" | "isaType" | "friendlyName">[];
+}
+
+const AccountCards = ({ accounts }: AccountCardsProps) => (
   <View>
     <ThemedText style={styles.title} numberOfLines={1} dynamicTypeRamp="title2">
       Accounts
     </ThemedText>
     <Cards>
-      <IsaCard account={{ bank: banks[0], isaType: isaTypes[0], openedInTaxYear: rules[0].name }} />
-      <IsaCard account={{ bank: banks[1], isaType: isaTypes[1], openedInTaxYear: rules[0].name }} />
-      <IsaCard account={{ bank: banks[2], isaType: isaTypes[2], openedInTaxYear: rules[0].name }} />
+      {accounts.map((a) => (
+        <IsaCard account={a} />
+      ))}
     </Cards>
   </View>
 );

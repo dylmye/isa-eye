@@ -2,15 +2,17 @@ import { AddModalProps } from "@/components/AddModal";
 import hooks from "@/hooks/database";
 import AddAccountModalUI, { AddAccountData } from "./ui";
 import balanceTypes from "@/constants/balanceTypes";
+import banks from "@/constants/banks";
+import { isaTypes } from "@/constants/isaTypes";
 
 const AddAccountModal = (props: AddModalProps) => {
   const onSubmitForm = hooks.useAddRowCallback(
     "products",
     (data: AddAccountData) => ({
       startTaxYear: data.openedInTaxYear,
-      providerName: data.bankName,
+      providerName: banks.find((b) => b.name === data.bankName)!.id,
       friendlyName: data.accountName,
-      // isaType
+      isaType: isaTypes.find((i) => i.name === data.isaType)!.code,
       balanceType: balanceTypes[data.balanceType as keyof typeof balanceTypes],
       flexible: data.isFlexible,
       startingBalancePence: String(data.openingBalance * 100),

@@ -1,22 +1,22 @@
-import { TablesSchema, ValuesSchema } from "tinybase";
+import { ValueSchema } from "tinybase";
 import products from "./products";
 import contributions from "./contributions";
 
-export const tableSchema: TablesSchema = {
+export const tableSchema = {
   products,
   contributions,
 };
 
-export const keyvalueSchema: ValuesSchema = {
-  currentTaxYear: { type: 'string' }
+export const keyvalueSchema = {
+  currentTaxYear: { type: 'string' } as ValueSchema
 }
 
 export type Schemas = [typeof tableSchema, typeof keyvalueSchema];
 
-export const tableIndexes: string[][] = [
+export const tableIndexes = [
   ["byTaxYear", "contributions", "taxYear"],
-]
+] as const;
 
-export const tableRelationships: string[][] = [
+export const tableRelationships = [
   ["contributionProduct", "contributions", "products", "productId"],
-];
+] as const;

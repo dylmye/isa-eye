@@ -52,10 +52,20 @@ const AddButton = (props: Omit<IconButtonProps<"">, "name">) => (
 interface MobileFooterProps {
   previousRuleset?: string;
   nextRuleset?: string;
+  onAddTransactionPress: () => void;
+  onAddAccountPress: () => void;
 }
 
-const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => {
-  const onPressAdd = useAddButtonDisambi();
+const MobileFooter = ({
+  previousRuleset,
+  nextRuleset,
+  onAddTransactionPress,
+  onAddAccountPress,
+}: MobileFooterProps) => {
+  const onPressAdd = useAddButtonDisambi(
+    onAddTransactionPress,
+    onAddAccountPress
+  );
 
   return (
     <View style={styles.container}>

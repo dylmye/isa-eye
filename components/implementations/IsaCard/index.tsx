@@ -11,14 +11,21 @@ export interface IsaCardProps {
    * @default false
    */
   disabled?: boolean;
-  account: Account;
+  account: Pick<Account, "bank" | "friendlyName" | "isaType">;
 }
 
 // TODO: figure out why al rayan clips so early, aegon clips too late, history card: white y axis, comp card: key under pie on mobile. create action sheet for plus button on mobile. create modal for add template. confirm overview / footer shadows are working. Figure out if we can still do Expo go.
 
 const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
   <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
-    <View style={{ flex: 1, alignItems: "center", flexDirection: "row", overflow: "hidden" }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        flexDirection: "row",
+        overflow: "hidden",
+      }}
+    >
       <BankLogoIcon
         bankIcon={account.bank.iconFile}
         size={38}
