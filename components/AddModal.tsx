@@ -98,6 +98,8 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     maxWidth: "100%",
     minWidth: "50%",
+    maxHeight: "100%",
+    overflowY: "auto",
   },
   modalHeader: {
     display: "flex",

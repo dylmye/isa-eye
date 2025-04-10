@@ -9,8 +9,15 @@
  */
 const contributionsTable = {
   productId: { type: 'string' },
+  /** For simple */
   taxYear: { type: 'string' },
-  contributions: { type: 'number', default: 0 },
+  /** For ledger */
+  transactionDateUnix: { type: 'number' },
+  // usage of isa allowance. Store as a string to avoid JS floating point BS, convert to int when doing calculations
+  deductedFromAllowancePence: { type: 'string' },
+  // flexible isa only: return of isa allowance. Store as a string to avoid JS floating point BS, convert to int when doing calculations
+  addedToAllowancePence: { type: 'string' },
+  notes: { type: 'string' }
 } as const
 
 export default contributionsTable;

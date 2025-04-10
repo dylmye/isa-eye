@@ -5,8 +5,8 @@ import Cards from "@/components/Cards";
 import { StyleSheet, View } from "react-native";
 import Account from "@/types/account";
 
-interface AccountCardsProps {
-  accounts: Pick<Account, "bank" | "isaType" | "friendlyName">[];
+export interface AccountCardsProps {
+  accounts: Record<string, Pick<Account, "bank" | "isaType" | "friendlyName">>;
 }
 
 const AccountCards = ({ accounts }: AccountCardsProps) => (
@@ -15,8 +15,11 @@ const AccountCards = ({ accounts }: AccountCardsProps) => (
       Accounts
     </ThemedText>
     <Cards>
-      {accounts.map((a) => (
-        <IsaCard account={a} />
+      {!Object.keys(accounts ?? {}).length && (
+        <ThemedText>Add an account to get started!</ThemedText>
+      )}
+      {Object.entries(accounts).map(([id, a]) => (
+        <IsaCard account={a} key={`isa-acct-${id}`} />
       ))}
     </Cards>
   </View>

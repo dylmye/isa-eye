@@ -1,11 +1,13 @@
-import { Platform, StyleSheet, View } from "react-native";
-import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import { router } from "expo-router";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
+
+import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import { useAddButtonDisambi } from "@/hooks/useAddButtonDisambi";
+import NavBackButton from "./implementations/NavBackButton";
+import NavForwardButton from "./implementations/NavForwardButton";
 
 const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   iconStyle: {
@@ -14,36 +16,6 @@ const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   size: 24,
   backgroundColor: "transparent",
 };
-
-const BackButton = (props: Omit<IconButtonProps<"">, "name">) =>
-  Platform.OS === "ios" ? (
-    <MaterialIcons.Button
-      name="arrow-back-ios"
-      {...commonIconProps}
-      {...props}
-    />
-  ) : (
-    <MaterialCommunityIcons.Button
-      name="chevron-left"
-      {...commonIconProps}
-      {...props}
-    />
-  );
-
-const ForwardButton = (props: Omit<IconButtonProps<"">, "name">) =>
-  Platform.OS === "ios" ? (
-    <MaterialIcons.Button
-      name="arrow-forward-ios"
-      {...commonIconProps}
-      {...props}
-    />
-  ) : (
-    <MaterialCommunityIcons.Button
-      name="chevron-right"
-      {...commonIconProps}
-      {...props}
-    />
-  );
 
 const AddButton = (props: Omit<IconButtonProps<"">, "name">) => (
   <MaterialCommunityIcons.Button name="plus" {...commonIconProps} {...props} />
@@ -69,17 +41,21 @@ const MobileFooter = ({
 
   return (
     <View style={styles.container}>
-      <BackButton
+      <NavBackButton
         disabled={!previousRuleset}
         onPress={() =>
           !!previousRuleset && router.push(`/overview/${previousRuleset}`)
         }
       />
       <AddButton size={32} onPress={onPressAdd} />
-      <ForwardButton
-        disabled={!nextRuleset}
-        onPress={() => !!nextRuleset && router.push(`/overview/${nextRuleset}`)}
-      />
+      {!!nextRuleset ? (
+        <NavForwardButton
+          disabled={!nextRuleset}
+          onPress={() => router.push(`/overview/${nextRuleset}`)}
+        />
+      ) : (
+        <View style={{ width: 45 }} />
+      )}
     </View>
   );
 };

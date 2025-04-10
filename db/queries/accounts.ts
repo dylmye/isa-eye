@@ -25,3 +25,15 @@ export const allAccountsWithOpenCloseYears = (queries: Queries<Schemas>) =>
       select("endTaxYear");
     }
   );
+
+export const allAccountsWithIsaType = (queries: Queries<Schemas>) =>
+  queries.setQueryDefinition(
+    "allAccountsWithIsaType",
+    "products",
+    ({ select }) => {
+      select("friendlyName");
+      select("providerName");
+      select("isaType");
+      select("balanceType");
+    }
+  );

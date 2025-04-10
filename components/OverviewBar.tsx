@@ -1,35 +1,67 @@
 import { View, StyleSheet } from "react-native";
+
 import ThemedText from "./ThemedText";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import Ruleset from "@/types/ruleset";
+import NavBackButton from "./implementations/NavBackButton";
+import NavForwardButton from "./implementations/NavForwardButton";
+import { router } from "expo-router";
 
 interface OverviewBarProps {
   ruleset: Ruleset;
+  showNavButtons: boolean;
+  previousRuleset?: string;
+  nextRuleset?: string;
 }
 
-const OverviewBar = ({ ruleset }: OverviewBarProps) => (
+const OverviewBar = ({
+  ruleset,
+  showNavButtons,
+  previousRuleset,
+  nextRuleset,
+}: OverviewBarProps) => (
   <View style={styles.container}>
-    <ThemedText aria-hidden style={[styles.text, styles.dateSubtitle]}>
-      {ruleset.name}
-    </ThemedText>
-    <ThemedText
-      aria-label={`Your remaining ISA allowance for the ${ruleset.name} tax year.`}
-      style={styles.text}
-      type="title"
-      adjustsFontSizeToFit
-      dynamicTypeRamp="largeTitle"
-    >
-      £20,000
-    </ThemedText>
-    <ThemedText aria-hidden style={styles.text}>
-      remaining
-    </ThemedText>
+    {showNavButtons && (
+      <NavBackButton
+        disabled={!previousRuleset}
+        onPress={() =>
+          !!previousRuleset && router.push(`/overview/${previousRuleset}`)
+        }
+      />
+    )}
+    <View>
+      <ThemedText aria-hidden style={[styles.text, styles.dateSubtitle]}>
+        {ruleset.name}
+      </ThemedText>
+      <ThemedText
+        aria-label={`Your remaining ISA allowance for the ${ruleset.name} tax year.`}
+        style={styles.text}
+        type="title"
+        adjustsFontSizeToFit
+        dynamicTypeRamp="largeTitle"
+      >
+        £20,000
+      </ThemedText>
+      <ThemedText aria-hidden style={styles.text}>
+        remaining
+      </ThemedText>
+    </View>
+    {showNavButtons && (
+      <NavForwardButton
+        disabled={!nextRuleset}
+        onPress={() => !!nextRuleset && router.push(`/overview/${nextRuleset}`)}
+      />
+    )}
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
     display: "flex",
+    flexDirection: "row",
+    gap: 24,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",

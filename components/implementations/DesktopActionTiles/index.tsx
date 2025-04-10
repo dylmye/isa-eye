@@ -6,9 +6,13 @@ import { StyleSheet, View } from "react-native";
 
 interface DesktopActionTilesProps {
   onPress: (key: keyof ModalVisibilityState) => void;
+  hasAccounts: boolean;
 }
 
-const DesktopActionTiles = ({ onPress }: DesktopActionTilesProps) => {
+const DesktopActionTiles = ({
+  onPress,
+  hasAccounts,
+}: DesktopActionTilesProps) => {
   const textColor = useThemeColor({}, "text");
 
   const sharedIconProps = {
@@ -18,11 +22,15 @@ const DesktopActionTiles = ({ onPress }: DesktopActionTilesProps) => {
 
   return (
     <View style={styles.container}>
-      <ActionTile
-        title="Add Transaction"
-        onPress={() => onPress("addTransaction")}
-        icon={<MaterialCommunityIcons {...sharedIconProps} name="cash-plus" />}
-      />
+      {hasAccounts && (
+        <ActionTile
+          title="Add Transaction"
+          onPress={() => onPress("addTransaction")}
+          icon={
+            <MaterialCommunityIcons {...sharedIconProps} name="cash-plus" />
+          }
+        />
+      )}
       <ActionTile
         title="Add Account"
         onPress={() => onPress("addAccount")}

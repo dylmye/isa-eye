@@ -12,4 +12,4 @@ export interface RichDropdownValue<TValue extends unknown = string> extends Drop
 
 export type DropdownOptions<TValue extends unknown = string> = DropdownValue<TValue>[];
 
-export type RichDropdownValues<TValue extends unknown = string> = RichDropdownValue<TValue>[];
+export type RichDropdownOptions<TValue extends unknown = string> = RichDropdownValue<TValue>[];

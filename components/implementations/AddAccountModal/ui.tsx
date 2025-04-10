@@ -14,11 +14,8 @@ import balanceTypes from "@/constants/balanceTypes";
 import { banksDropdown, BankValues } from "@/constants/banks";
 import { IsaTypeCodes, isaTypesDropdown } from "@/constants/isaTypes";
 import { DropdownValue, RichDropdownValue } from "@/types/dropdown";
-import { Pressable } from "react-native";
-import ThemedText from "@/components/ThemedText";
-import { Image } from "expo-image";
-import styles from "@/components/fields/shared/styles";
 import { RuleNames, rulesDropdown } from "@/constants/rules";
+import RichDropdownOption from "@/components/fields/RichDropdownOption";
 
 interface AddAccountModalUIProps extends AddModalProps {
   onSubmitForm: (data: AddAccountData) => void;
@@ -26,7 +23,7 @@ interface AddAccountModalUIProps extends AddModalProps {
 
 export interface AddAccountData {
   bankName: BankValues;
-  accountName?: string;
+  accountName: string;
   openedInTaxYear: string;
   isaType: IsaTypeCodes;
   balanceType: keyof typeof balanceTypes;
@@ -70,14 +67,7 @@ const AddAccountModalUI = ({
           name="bankName"
           label="Bank"
           renderOption={(o, onPress) => (
-            <Pressable
-              onPress={onPress}
-              style={styles.autocompleteResult}
-              role="listitem"
-            >
-              <Image source={o.image} style={styles.autocompleteResultImage} />
-              <ThemedText>{o.label}</ThemedText>
-            </Pressable>
+            <RichDropdownOption option={o} onPress={onPress} />
           )}
           required
         />
@@ -86,6 +76,8 @@ const AddAccountModalUI = ({
           errors={errors}
           name="accountName"
           label="Nickname"
+          required
+          note="(Alpha: this field will be optional in the future. Must be unique.)"
         />
         <ControlledAutocompleteField<
           AddAccountData,

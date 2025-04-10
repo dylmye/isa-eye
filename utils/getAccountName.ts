@@ -1,6 +1,8 @@
 import Account from "@/types/account";
 
-const getAccountName = ({ friendlyName, bank, isaType }: Pick<Account, 'friendlyName' | 'bank' | 'isaType'>): string => {
+export interface GetAccountNameProps extends Pick<Account, 'friendlyName' | 'bank' | 'isaType'> { }
+
+const getAccountName = ({ friendlyName, bank, isaType }: GetAccountNameProps): string => {
   return friendlyName ?? `${bank.name} ${isaType?.name}`
 }
 

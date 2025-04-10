@@ -18,14 +18,7 @@ export interface IsaCardProps {
 
 const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
   <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        flexDirection: "row",
-        overflow: "hidden",
-      }}
-    >
+    <View style={styles.name}>
       <BankLogoIcon
         bankIcon={account.bank.iconFile}
         size={38}
@@ -40,12 +33,9 @@ const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
         {getAccountName(account)}
       </ThemedText>
     </View>
-    <View style={{ alignItems: "flex-end" }}>
-      <ThemedText type="defaultSemiBold" style={styles.valueText}>
-        £2,400
-      </ThemedText>
-      <ThemedText>remaining</ThemedText>
-    </View>
+    <ThemedText type="defaultSemiBold" style={styles.valueText}>
+      £X,XXX
+    </ThemedText>
   </CardBase>
 );
 
@@ -53,10 +43,17 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
+    // alignItems: "center",
   },
   containerDisabled: {},
   icon: {
     flex: 1,
+  },
+  name: {
+    flex: 1,
+    flexDirection: "row",
+    overflow: "hidden",
+    lineHeight: 38,
   },
   nameText: {
     fontSize: 24,
@@ -66,6 +63,7 @@ const styles = StyleSheet.create({
   },
   valueText: {
     fontSize: 24,
+    lineHeight: 38,
   },
 });
 
