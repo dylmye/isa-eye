@@ -1,3 +1,5 @@
+import type { CellSchema } from "tinybase";
+
 /**
  * Contributions
  *
@@ -18,6 +20,6 @@ const contributionsTable = {
   // flexible isa only: return of isa allowance. Store as a string to avoid JS floating point BS, convert to int when doing calculations
   addedToAllowancePence: { type: 'string' },
   notes: { type: 'string' }
-} as const
+}  satisfies Record<string, CellSchema>
 
 export default contributionsTable;

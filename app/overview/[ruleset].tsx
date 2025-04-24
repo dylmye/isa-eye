@@ -4,61 +4,20 @@ import { useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 
 import { RuleNames, rules } from "@/constants/rules";
-import { IsaTypeCodes, isaTypes } from "@/constants/isaTypes";
-import banks from "@/constants/banks";
 import Cards from "@/components/Cards";
 import CompositionCard from "@/components/implementations/CompositionCard";
 import HistoryCard from "@/components/implementations/HistoryCard";
 import OverviewBar from "@/components/OverviewBar";
-import AccountCards, {
-  AccountCardsProps,
-} from "@/components/implementations/AccountCards";
 import PageColumn from "@/components/PageColumn";
 import MobileFooter from "@/components/MobileFooter";
 import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
 import AddTransactionModal from "@/components/implementations/AddTransactionModal";
 import AddAccountModal from "@/components/implementations/AddAccountModal";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
-import hooks from "@/hooks/database";
+import hooks, { useGetAccounts } from "@/hooks/database";
 import ModalVisibilityState from "@/types/modalVisibilityState";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
-import { taxYearIsInRange } from "@/utils/taxYearIsInRange";
-
-const useAccountList = (currentTaxYear: RuleNames) => {
-  const accounts = hooks.useResultTable("allAccountsWithOpenCloseYears");
-  const ledgerBalances = hooks.useResultTable("ledgerBalancesByAccount");
-  const simpleBalances = hooks.useResultTable("simpleBalancesByAccount");
-
-  console.log(JSON.stringify(ledgerBalances), JSON.stringify(simpleBalances));
-
-  return useMemo<AccountCardsProps["accounts"]>(() => {
-    const accountsArr = Object.entries(accounts);
-
-    if (!accountsArr.length) return {};
-
-    const resultsArr: AccountCardsProps["accounts"] = {};
-
-    accountsArr
-      .filter(([_, a]) =>
-        taxYearIsInRange(
-          currentTaxYear,
-          a.startTaxYear as RuleNames,
-          a.endTaxYear as RuleNames
-        )
-      )
-      .forEach(([id, a]) => {
-        resultsArr[id] = {
-          isaType: isaTypes.find(
-            (i) => i.code === (a.isaType as IsaTypeCodes)
-          )!,
-          bank: banks.find((b) => b.id === a.providerName)!,
-          friendlyName: a.friendlyName as string,
-        };
-      });
-
-    return resultsArr;
-  }, [currentTaxYear, accounts]);
-};
+import AccountCards from "@/components/implementations/AccountCards";
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
@@ -87,7 +46,9 @@ const OverviewForRuleset = () => {
     currentRulesetFormattedName ?? rules[0].name
   );
 
-  const accounts = useAccountList(currentRulesetFormattedName);
+  const accountsQueryId = useGetAccounts({});
+
+  const accounts = hooks.useResultTable(accountsQueryId);
 
   const hasAccounts = useMemo(() => !!Object.keys(accounts).length, [accounts]);
 
@@ -117,7 +78,7 @@ const OverviewForRuleset = () => {
             {hasAccounts && <CompositionCard />}
             {hasAccounts && <HistoryCard />}
           </Cards>
-          <AccountCards accounts={accounts} />
+          {/* <AccountCards accounts={accounts} /> */}
         </PageColumn>
       </ScrollView>
       {isMediumScreen && (

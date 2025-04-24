@@ -14,7 +14,7 @@ export interface IsaCardProps {
   account: Pick<Account, "bank" | "friendlyName" | "isaType">;
 }
 
-// TODO: figure out why al rayan clips so early, aegon clips too late, history card: white y axis, comp card: key under pie on mobile. create action sheet for plus button on mobile. create modal for add template. confirm overview / footer shadows are working. Figure out if we can still do Expo go.
+// @TODO: figure out why al rayan clips so early, aegon clips too late (break-word?), history card: white y axis, comp card: key under pie on mobile. confirm overview / footer shadows are working. Figure out if we can still do Expo go. Add banks, isa types, rules to DB so we can join them in TinyBase properly.
 
 const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
   <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
-    // alignItems: "center",
   },
   containerDisabled: {},
   icon: {

@@ -1,19 +1,21 @@
+import type { CellSchema } from "tinybase";
+
 /**
  * Products
  *
- * An ISA account.
+ * An ISA account. It is opened with a provider within a TY, and aligns with requirements for its type.
  */
 const productsTable = {
   startTaxYear: { type: 'string' },
   endTaxYear: { type: 'string' },
-  providerName: { type: 'string' },
+  providerId: { type: 'string' },
   friendlyName: { type: 'string' },
-  isaType: { type: 'string' },
+  productTypeCode: { type: 'string' },
   // enum
   balanceType: { type: 'number' },
   flexible: { type: 'boolean' },
   // store as a string to avoid JS floating point BS, convert to int when doing calculations
   startingBalancePence: { type: 'string' }
-} as const
+} satisfies Record<string, CellSchema>
 
 export default productsTable;

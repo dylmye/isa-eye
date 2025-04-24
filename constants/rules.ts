@@ -38,7 +38,7 @@ export const rules: Ruleset<RuleNames, IsaTypeCodes>[] = [
         allowance: 9000,
       },
     ],
-    notes: 'Fractional share contracts were added to the products allowed within Stocks and Shares ISAs. There were no changes to allowances for ISAs and allowances for all ISA types were frozen until the 2030/2031 tax year. The announced "British ISA" was scrapped. It is now possible to open and pay into multiple of the same type of ISAs in the same year.',
+    notes: 'Fractional share contracts were added to the products allowed within Stocks and Shares ISAs. There were no changes to allowances for ISAs and allowances for all ISA types were frozen until the 2030/2031 tax year. The announced "British ISA" was scrapped. It is now permissible to open and pay into multiple of the same type of ISAs in the same year.',
   },
   {
     name: "2023/2024",
