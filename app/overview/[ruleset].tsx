@@ -17,7 +17,8 @@ import { useIsMediumScreen } from "@/hooks/responsiveQueries";
 import hooks, { useGetAccounts } from "@/hooks/database";
 import ModalVisibilityState from "@/types/modalVisibilityState";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
-import AccountCards from "@/components/implementations/AccountCards";
+import AccountCards, { AccountCardsProps } from "@/components/implementations/AccountCards";
+import ThemedText from "@/components/ThemedText";
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
@@ -48,7 +49,7 @@ const OverviewForRuleset = () => {
 
   const accountsQueryId = useGetAccounts({});
 
-  const accounts = hooks.useResultTable(accountsQueryId);
+  const accounts = hooks.useResultTable(accountsQueryId) as unknown as AccountCardsProps['accounts'];
 
   const hasAccounts = useMemo(() => !!Object.keys(accounts).length, [accounts]);
 
@@ -78,6 +79,7 @@ const OverviewForRuleset = () => {
             {hasAccounts && <CompositionCard />}
             {hasAccounts && <HistoryCard />}
           </Cards>
+          <ThemedText>banks: {console.log(accounts)}</ThemedText>
           {/* <AccountCards accounts={accounts} /> */}
         </PageColumn>
       </ScrollView>

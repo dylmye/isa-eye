@@ -1,6 +1,7 @@
 import { DropdownOptions } from "@/types/dropdown";
 import IsaType from "@/types/isaType";
 
+/** @deprecated use tinybase instead */
 export const ISA_TYPES = [
   "CASH",
   "STOCKS_AND_SHARES",
@@ -15,9 +16,10 @@ export const ISA_TYPES = [
   "MINI",
 ] as const;
 
-/** Unique identifiers for every ISA product ever available. Use `ISA_TYPES` for an array of all values. */
+/** @deprecated use tinybase instead */
 export type IsaTypeCodes = (typeof ISA_TYPES)[number];
 
+/** @deprecated use tinybase instead */
 export const isaTypes: IsaType<IsaTypeCodes>[] = [
   {
     code: "CASH",
@@ -47,7 +49,7 @@ export const isaTypes: IsaType<IsaTypeCodes>[] = [
     code: "LIFETIME_CASH",
     name: "Lifetime Cash ISA",
     introducedWithRuleset: "2017/2018",
-    shortDescription: "Save up for your first home and earn a government bonus",
+    shortDescription: "Get rewarded for saving for your first home (or retirement)",
     longDescription:
       "A Cash ISA with age and spend limitations, in exchange for a 25% bonus provided by the Government when withdrawing for the purchase of a first home, after turning 60 years old, when diagnosed with a terminal illness.",
   },
@@ -55,7 +57,7 @@ export const isaTypes: IsaType<IsaTypeCodes>[] = [
     code: "LIFETIME_STOCKS_AND_SHARES",
     name: "Lifetime Stocks & Shares ISA",
     introducedWithRuleset: "2017/2018",
-    shortDescription: "Invest for your first home and earn a government bonus",
+    shortDescription: "Get rewarded for saving for your first home (or retirement)",
     longDescription:
       "A Stocks & Shares ISA with age and spend limitations, in exchange for a 25% contribution bonus provided by the Government when withdrawing for the purchase of a first home, after turning 60 years old, or if diagnosed with a terminal illness.",
   },
@@ -104,6 +106,7 @@ export const isaTypes: IsaType<IsaTypeCodes>[] = [
   },
 ];
 
+/** @deprecated use tinybase instead */
 export const isaTypesDropdown: DropdownOptions<IsaTypeCodes> = isaTypes.map(x => ({
   label: x.name,
   value: x.code,

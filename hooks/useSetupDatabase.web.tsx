@@ -1,4 +1,6 @@
-// THIS IS FOR WEB ONLY. SEE uSD.tsx FOR WEB
+///////////////////////////////////////////////
+// THIS IS FOR NATIVE ONLY. SEE uSD FOR NATIVE
+///////////////////////////////////////////////
 import {
   createStore,
   createQueries,
@@ -18,6 +20,7 @@ import {
 } from "@/db/schema";
 import hooks from "@/hooks/database";
 import queryDefs from "@/db/queries";
+import seeders from "@/db/seeders";
 
 const { useCreateStore, useCreatePersister, useCreateQueries } = hooks;
 
@@ -54,6 +57,8 @@ export const useSetupDatabase = (): {
     tableRelationships.forEach((r) =>
       relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3])
     );
+
+    seeders.forEach(s => s(store));
   } catch (e) {
     console.error(
       "Error while attempting to create database and state persister",

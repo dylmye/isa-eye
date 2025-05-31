@@ -2,6 +2,7 @@ import Ruleset from "@/types/ruleset";
 import { IsaTypeCodes } from "./isaTypes";
 import { DropdownOptions } from "@/types/dropdown";
 
+/** @deprecated use tinybase instead */
 export const RULE_NAMES = [
   "2024/2025",
   "2023/2024",
@@ -13,8 +14,10 @@ export const RULE_NAMES = [
   "2017/2018"
 ] as const;
 
+/** @deprecated use tinybase instead */
 export type RuleNames = (typeof RULE_NAMES)[number];
 
+/** @deprecated use tinybase instead */
 export const rules: Ruleset<RuleNames, IsaTypeCodes>[] = [
   {
     name: "2024/2025",
@@ -209,6 +212,7 @@ export const rules: Ruleset<RuleNames, IsaTypeCodes>[] = [
   },
 ];
 
+/** @deprecated use tinybase instead */
 export const rulesDropdown: DropdownOptions<RuleNames> = rules.map(x => ({
   label: x.name,
   value: x.name,

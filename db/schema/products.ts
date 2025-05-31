@@ -11,8 +11,6 @@ const productsTable = {
   providerId: { type: 'string' },
   friendlyName: { type: 'string' },
   productTypeCode: { type: 'string' },
-  // enum
-  balanceType: { type: 'number' },
   flexible: { type: 'boolean' },
   // store as a string to avoid JS floating point BS, convert to int when doing calculations
   startingBalancePence: { type: 'string' }

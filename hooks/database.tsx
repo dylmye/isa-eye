@@ -5,7 +5,6 @@ import { Schemas } from "@/db/schema";
 import { taxYearIsInRange } from "@/utils/taxYearIsInRange";
 import { useMemo } from "react";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
-import type { ResultCellOrUndefined } from "tinybase/with-schemas";
 
 const hooks = TinybaseUiReact as TinybaseUiReact.WithSchemas<Schemas>;
 

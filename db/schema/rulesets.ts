@@ -8,7 +8,6 @@ import type { CellSchema } from "tinybase";
  * in force at the time of each tax year.
  */
 const rulesetsTable = {
-  taxYear: { type: 'string' },
   sharedAllowancePence: { type: 'string' },
   startDate: { type: 'string' },
   endDate: { type: 'string' },

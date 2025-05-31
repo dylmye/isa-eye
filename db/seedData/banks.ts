@@ -1,16 +1,18 @@
-import Bank from "@/types/bank";
-import { RichDropdownOptions } from "@/types/dropdown";
+interface BankSeedData {
+  /** Unique name in db friendly format. */
+  id: string;
+  /** Friendly name. */
+  name: string;
+  /** Icon for the bank. */
+  iconRelativeUrl: string;
+  /** Other names and spellings for the bank, including initials and merged companies. */
+  aliases: string[];
+}
 
-/** @deprecated use tinybase instead */
-export const BANK_VALUES = [
-  "abbey", "aegon", "al-rayan", "aldermore", "alliance-and-leicester", "allica", "allied-irish", "anglo-irish", "arbuthnot-latham", "atom", "aviva", "axa", "bank-of-ireland-uk", "bank-of-scotland", "barclays", "birmingham-midshires", "birmingham", "blme", "bny-mellon", "bradford-and-bingley", "brewin-dolphin", "brown-shipley", "cahoot", "castle-trust", "cater-allen", "charity", "charter-savings", "chase", "cheltenham-and-gloucester", "chip", "circa5000", "close-brothers", "cmc", "coop-bank", "coop-insurance-society", "coutts", "credit-suisse", "cynergy", "danske", "egg", "first-direct", "ford", "foresters-friendly", "freetrade", "habib-zurich", "halifax", "hampshire-trust", "handelsbanken", "hargreaves-lansdown", "healthy-investment", "hodge", "hoist", "hsbc", "icesave", "ing-direct", "intelligent-finance", "investec", "investengine", "jamaica-national", "kent-reliance", "kroo", "lhv", "lic-india", "lightyear", "lloyds-tsb", "lloyds", "london-victoria", "marcus", "marks-and-spencers", "mbna", "metlife", "metro", "moneybox", "moneyfarm", "monument", "monzo", "national-savings-and-investments", "nationwide", "natwest", "nfu-mutual", "northern-rock", "northern", "nutmeg", "oak-north", "octopus-investments", "one-family", "oxbury", "paragon", "phoenix-life", "plum", "post-office", "prosper", "punjab-national", "qib", "quilter", "raisin", "rbc-brewin-dolphin", "rbs", "rci", "royal-london", "saga", "sainsburys", "santander", "schroders", "scottish-friendly", "secure-trust", "shawbrook", "shepherds-friendly", "skandia", "societe-generale", "standard-life", "starling", "state-bank-of-india", "stratiphy", "strowz", "tesco", "trading-212", "transport-friendly", "triodos", "tsb", "united-national", "united-trust", "ulster", "vanguard", "vanquis", "vida", "virgin", "wealthify", "wealthtime", "xtb", "zenith", "zopa"
-] as const;
-
-/** @deprecated use tinybase instead */
-export type BankValues = (typeof BANK_VALUES)[number];
-
-/** @deprecated use tinybase instead */
-const banks: readonly Bank<BankValues>[] = [
+/**
+ * This data should not be read directly, instead use Tinybase as the source of truth.
+ */
+const banks: readonly BankSeedData[] = [
   {
     id: "abbey",
     name: "Abbey National",
@@ -842,12 +844,5 @@ const banks: readonly Bank<BankValues>[] = [
     aliases: [],
   },
 ] as const;
-
-/** @deprecated use tinybase instead */
-export const banksDropdown: RichDropdownOptions<BankValues> = banks.map(x => ({
-  label: x.name,
-  value: x.id,
-  aliases: x.aliases,
-}))
 
 export default banks;
