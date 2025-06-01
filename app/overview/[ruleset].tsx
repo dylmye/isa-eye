@@ -3,7 +3,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 
-import { RuleNames, rules } from "@/constants/rules";
 import Cards from "@/components/Cards";
 import CompositionCard from "@/components/implementations/CompositionCard";
 import HistoryCard from "@/components/implementations/HistoryCard";
@@ -14,11 +13,12 @@ import DesktopActionTiles from "@/components/implementations/DesktopActionTiles"
 import AddTransactionModal from "@/components/implementations/AddTransactionModal";
 import AddAccountModal from "@/components/implementations/AddAccountModal";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
-import hooks, { useGetAccounts } from "@/hooks/database";
+import hooks from "@/hooks/database";
 import ModalVisibilityState from "@/types/modalVisibilityState";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
-import AccountCards, { AccountCardsProps } from "@/components/implementations/AccountCards";
-import ThemedText from "@/components/ThemedText";
+import AccountCards from "@/components/implementations/AccountCards";
+
+const DEFAULT_RULESET_ID = '2024/2025'
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
@@ -30,8 +30,8 @@ const OverviewForRuleset = () => {
       bulkUpload: false,
     });
 
-  const currentRulesetFormattedName = useMemo<RuleNames>(
-    () => searchParams?.ruleset?.replace("-", "/") as RuleNames,
+  const currentRulesetFormattedName = useMemo(
+    () => searchParams?.ruleset?.replace("-", "/") ?? DEFAULT_RULESET_ID,
     [searchParams?.ruleset]
   );
   const updateCurrentRulesetForStore = hooks.useSetValueCallback(
@@ -40,18 +40,12 @@ const OverviewForRuleset = () => {
     []
   );
 
-  const currentRuleset =
-    rules.find((r) => r.name === currentRulesetFormattedName) ?? rules[0];
-
   const navbarProps = getOverviewNavbarProps(
-    currentRulesetFormattedName ?? rules[0].name
+    currentRulesetFormattedName
   );
 
-  const accountsQueryId = useGetAccounts({});
-
-  const accounts = hooks.useResultTable(accountsQueryId) as unknown as AccountCardsProps['accounts'];
-
-  const hasAccounts = useMemo(() => !!Object.keys(accounts).length, [accounts]);
+  // @TODO use a query count for active accounts for current year
+  const accounts = hooks.useRowCount("products");
 
   useEffect(() => {
     updateCurrentRulesetForStore(currentRulesetFormattedName);
@@ -60,7 +54,7 @@ const OverviewForRuleset = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <OverviewBar
-        ruleset={currentRuleset}
+        rulesetId={currentRulesetFormattedName}
         showNavButtons={!isMediumScreen}
         previousRuleset={navbarProps?.previousRulesetName}
         nextRuleset={navbarProps?.nextRulesetName}
@@ -73,14 +67,13 @@ const OverviewForRuleset = () => {
                 onPress={(key) =>
                   updateModalVisibility({ ...modalVisiblity, [key]: true })
                 }
-                hasAccounts={hasAccounts}
+                hasAccounts={!!accounts}
               />
             )}
-            {hasAccounts && <CompositionCard />}
-            {hasAccounts && <HistoryCard />}
+            {!!accounts && <CompositionCard />}
+            {!!accounts && <HistoryCard />}
           </Cards>
-          <ThemedText>banks: {console.log(accounts)}</ThemedText>
-          {/* <AccountCards accounts={accounts} /> */}
+          <AccountCards />
         </PageColumn>
       </ScrollView>
       {isMediumScreen && (

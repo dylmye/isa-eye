@@ -14,6 +14,12 @@ interface BankSeedData {
  */
 const banks: readonly BankSeedData[] = [
   {
+    id: "PLACEHOLDER",
+    name: "Other",
+    iconRelativeUrl: 'assets/images/bank-icons/placeholder.svg',
+    aliases: [],
+  },
+  {
     id: "abbey",
     name: "Abbey National",
     iconRelativeUrl: 'assets/images/bank-icons/abbey.svg',

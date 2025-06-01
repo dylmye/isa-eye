@@ -2,42 +2,44 @@ import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
 import { StyleSheet, View } from "react-native";
 import BankLogoIcon from "../BankLogoIcon";
-import Bank from "@/types/bank";
-import Account from "@/types/account";
 import getAccountName from "@/utils/getAccountName";
+import { Product } from "@/types/db";
+import hooks from "@/hooks/database";
 
 export interface IsaCardProps {
   /** Account is closed or non-interactable
    * @default false
    */
   disabled?: boolean;
-  account: Pick<Account, "bank" | "friendlyName" | "isaType">;
+  account: Pick<Product, "providerId" | "friendlyName" | "productTypeCode">;
 }
 
-// @TODO: figure out why al rayan clips so early, aegon clips too late (break-word?), history card: white y axis, comp card: key under pie on mobile. confirm overview / footer shadows are working. Figure out if we can still do Expo go. Add banks, isa types, rules to DB so we can join them in TinyBase properly.
-
-const IsaCard = ({ disabled = false, account }: IsaCardProps) => (
-  <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
-    <View style={styles.name}>
-      <BankLogoIcon
-        bankIcon={account.bank.iconFile}
-        size={38}
-        style={styles.icon}
-      />
-      <ThemedText
-        type="defaultSemiBold"
-        style={styles.nameText}
-        numberOfLines={1}
-        ellipsizeMode="tail"
-      >
-        {getAccountName(account)}
+const IsaCard = ({ disabled = false, account }: IsaCardProps) => {
+  const provider = hooks.useRow("providers", account.providerId ?? 'PLACEHOLDER');
+  const productType = hooks.useRow("productTypes", account.productTypeCode!);
+  return (
+    <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
+      <View style={styles.name}>
+        <BankLogoIcon
+          bankIcon={require(provider!.iconRelativeUrl!)}
+          size={38}
+          style={styles.icon}
+        />
+        <ThemedText
+          type="defaultSemiBold"
+          style={styles.nameText}
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        >
+          {getAccountName({ providerName: provider.name!, productTypeName: productType.name!, friendlyName: account.friendlyName })}
+        </ThemedText>
+      </View>
+      <ThemedText type="defaultSemiBold" style={styles.valueText}>
+        £X,XXX
       </ThemedText>
-    </View>
-    <ThemedText type="defaultSemiBold" style={styles.valueText}>
-      £X,XXX
-    </ThemedText>
-  </CardBase>
-);
+    </CardBase>
+  )
+};
 
 const styles = StyleSheet.create({
   container: {

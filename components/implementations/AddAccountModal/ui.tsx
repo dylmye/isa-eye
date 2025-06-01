@@ -11,21 +11,20 @@ import {
 import SubmitButton from "@/components/fields/SubmitButton";
 import FormUI from "@/components/fields/FormUI";
 import balanceTypes from "@/constants/balanceTypes";
-import { banksDropdown, BankValues } from "@/constants/banks";
-import { IsaTypeCodes, isaTypesDropdown } from "@/constants/isaTypes";
-import { DropdownValue, RichDropdownValue } from "@/types/dropdown";
-import { RuleNames, rulesDropdown } from "@/constants/rules";
-import RichDropdownOption from "@/components/fields/RichDropdownOption";
+import { DropdownValue } from "@/types/dropdown";
+import ProviderDropdownField from "../ProviderDropdownField";
+import RulesetDropdownField from "../RulesetDropdownField";
+import ProductTypeDropdownField from "../ProductTypeDropdownField";
 
 interface AddAccountModalUIProps extends AddModalProps {
   onSubmitForm: (data: AddAccountData) => void;
 }
 
 export interface AddAccountData {
-  bankName: BankValues;
+  providerId: string;
   accountName: string;
   openedInTaxYear: string;
-  isaType: IsaTypeCodes;
+  isaTypeCode: string;
   balanceType: keyof typeof balanceTypes;
   isFlexible: boolean;
   openingBalance: number;
@@ -56,19 +55,14 @@ const AddAccountModalUI = ({
     <AddModal {...props}>
       <AddModal.Header text="Add account" onDismiss={onDismiss} />
       <FormUI>
-        <ControlledAutocompleteField<
+        <ProviderDropdownField<
           AddAccountData,
-          "bankName",
-          RichDropdownValue<BankValues>
+          "providerId"
         >
           control={control}
           errors={errors}
-          allOptions={banksDropdown}
-          name="bankName"
+          name="providerId"
           label="Bank"
-          renderOption={(o, onPress) => (
-            <RichDropdownOption option={o} onPress={onPress} />
-          )}
           required
         />
         <ControlledTextField<AddAccountData, "accountName">
@@ -79,28 +73,24 @@ const AddAccountModalUI = ({
           required
           note="(Alpha: this field will be optional in the future. Must be unique.)"
         />
-        <ControlledAutocompleteField<
+        <RulesetDropdownField<
           AddAccountData,
-          "openedInTaxYear",
-          DropdownValue<RuleNames>
+          "openedInTaxYear"
         >
           control={control}
           errors={errors}
-          allOptions={rulesDropdown}
           name="openedInTaxYear"
           label="Year of opening"
           required
           note="The tax year runs from 6th April to 5th April, so an ISA opened on 2nd Feb 2024 would be in the 2023/2024 tax year."
         />
-        <ControlledAutocompleteField<
+        <ProductTypeDropdownField<
           AddAccountData,
-          "isaType",
-          DropdownValue<IsaTypeCodes>
+          "isaTypeCode"
         >
           control={control}
           errors={errors}
-          allOptions={isaTypesDropdown}
-          name="isaType"
+          name="isaTypeCode"
           label="Type of ISA"
           required
         />

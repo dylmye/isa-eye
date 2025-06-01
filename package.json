@@ -48,7 +48,7 @@
     "react-native-webview": "13.12.5",
     "react-responsive": "^10.0.1",
     "tinybase": "^5.4.6",
-    "victory-native": "^41.14.0"
+    "victory-native": "^41.17.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

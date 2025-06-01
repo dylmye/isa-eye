@@ -1,4 +1,3 @@
-import { rules } from "@/constants/rules";
 import { formatRulesetNameForNav } from "./formatRulesetNameForNav";
 
 interface UseOverviewNavProps {

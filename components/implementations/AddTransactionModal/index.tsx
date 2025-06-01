@@ -4,7 +4,6 @@ import AddTransactionModalUI, { AddTransactionData } from "./ui";
 import { useMemo } from "react";
 import { RichDropdownOptions } from "@/types/dropdown";
 import getAccountName, { GetAccountNameProps } from "@/utils/getAccountName";
-import banks from "@/constants/banks";
 
 const useAccountDropdownOptions = () => {
   const accounts = hooks.useResultTable("allAccounts");

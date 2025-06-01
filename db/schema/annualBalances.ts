@@ -1,4 +1,5 @@
 import type { CellSchema } from "tinybase";
+import type { Row } from "tinybase/with-schemas";
 
 /**
  * Annual Balances
@@ -11,10 +12,14 @@ import type { CellSchema } from "tinybase";
  */
 const annualBalancesTable = {
   productId: { type: 'string' },
-  taxYear: { type: 'string' },
+  rulesetId: { type: 'string' },
   lastUpdatedDateUnix: { type: 'number' },
   // usage of isa allowance. Store as a string to avoid JS floating point BS, convert to int when doing calculations
   deductedFromAllowancePence: { type: 'string' }
 } satisfies Record<string, CellSchema>
 
 export default annualBalancesTable;
+
+type Schema = { annualBalances: typeof annualBalancesTable }
+
+export type AnnualBalance = Row<Schema, 'annualBalances'>

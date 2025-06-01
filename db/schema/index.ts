@@ -1,19 +1,17 @@
 import { ValueSchema } from "tinybase";
 
-import { RULE_NAMES } from "@/constants/rules";
-import products from "./products";
-import annualBalances from "./annualBalances";
-import providers from "./providers";
-import providerAliases from "./providerAliases";
-import productTypes from "./productTypes";
-import rulesets from "./rulesets";
-import rulesetExceptions from "./rulesetExceptions";
-
-// to-do: add relationships, replace const uses with queries
+import annualBalances, { AnnualBalance } from "./annualBalances";
+import products, { Product } from "./products";
+import providers, { Provider } from "./providers";
+import providerAliases, { ProductAlias } from "./providerAliases";
+import productTypes, { ProductType } from "./productTypes";
+import rulesets, { Ruleset } from "./rulesets";
+import rulesetExceptions, { RulesetException } from "./rulesetExceptions";
+import rulesetsSeedData from "../seedData/rulesets";
 
 export const tableSchema = {
-  products,
   annualBalances,
+  products,
   providers,
   providerAliases,
   productTypes,
@@ -21,19 +19,30 @@ export const tableSchema = {
   rulesetExceptions,
 };
 
+export {
+  AnnualBalance,
+  Product,
+  Provider,
+  ProductAlias,
+  ProductType,
+  Ruleset,
+  RulesetException,
+}
+
 export const keyvalueSchema = {
   /** The tax year currently visible, to be used for nav and actions */
-  currentTaxYear: { type: 'string', default: RULE_NAMES[0] } as ValueSchema
+  currentTaxYear: { type: 'string', default: rulesetsSeedData[rulesetsSeedData.length - 1].name } as ValueSchema
 }
 
 export type Schemas = [typeof tableSchema, typeof keyvalueSchema];
 
 export const tableIndexes = [
-  ["byTaxYear", "annualBalances", "taxYear"],
+  ["byTaxYear", "annualBalances", "rulesetId"],
 ] as const;
 
 export const tableRelationships = [
   ["annnualBalanceProduct", "annualBalances", "products", () => "productId"],
+  ["annualBalanceRuleset", "annualBalances", "rulesets", () => "rulesetId"],
   ["providerAliasProvider", "providerAliases", "providers", () => "providerId"],
   ["productProvider", "products", "providers", () => "providerId"],
   ["productType", "products", "productTypes", () => "productTypeCode"],

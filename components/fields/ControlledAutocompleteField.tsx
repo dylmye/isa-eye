@@ -12,7 +12,7 @@ import Fuse from "fuse.js";
 import ThemedText from "../ThemedText";
 import { Pressable, TextInput } from "react-native";
 
-export interface ControlledTextFieldProps<
+export interface ControlledAutocompleteFieldProps<
   Form extends FieldValues = any,
   FieldName extends Path<Form> = any,
   Option extends DropdownValue = DropdownValue
@@ -35,7 +35,7 @@ const ControlledAutocompleteField = <
   allOptions,
   renderOption,
   ...props
-}: ControlledTextFieldProps<TForm, TFieldName, TOption>) => {
+}: ControlledAutocompleteFieldProps<TForm, TFieldName, TOption>) => {
   const [filteredOptions, updateFilteredOptions] = useState(allOptions);
   const [showResults, setResultsVisiblity] = useState(false);
   const textColor = useThemeColor({}, "text");

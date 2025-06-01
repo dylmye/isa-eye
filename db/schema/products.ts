@@ -1,4 +1,5 @@
 import type { CellSchema } from "tinybase";
+import type { Row } from "tinybase/with-schemas";
 
 /**
  * Products
@@ -17,3 +18,7 @@ const productsTable = {
 } satisfies Record<string, CellSchema>
 
 export default productsTable;
+
+type Schema = { products: typeof productsTable }
+
+export type Product = Row<Schema, 'products'>

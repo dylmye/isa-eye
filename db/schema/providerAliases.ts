@@ -1,4 +1,5 @@
 import type { CellSchema } from "tinybase";
+import type { Row } from "tinybase/with-schemas";
 
 /**
  * Provider Aliases
@@ -11,3 +12,7 @@ const providerAliasesTable = {
 } satisfies Record<string, CellSchema>
 
 export default providerAliasesTable;
+
+type Schema = { providerAliases: typeof providerAliasesTable }
+
+export type ProductAlias = Row<Schema, 'providerAliases'>

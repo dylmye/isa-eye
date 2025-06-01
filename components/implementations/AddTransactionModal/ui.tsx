@@ -18,7 +18,6 @@ import {
 } from "@/types/dropdown";
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
 import balanceTypes from "@/constants/balanceTypes";
-import { RuleNames, rulesDropdown } from "@/constants/rules";
 
 const useGetAccountBalanceType = (currentAccountName?: string) => {
   const accounts = hooks.useResultTable("allAccountsWithIsaType");

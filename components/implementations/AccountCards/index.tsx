@@ -3,27 +3,28 @@ import React from "react";
 import IsaCard from "../IsaCard";
 import Cards from "@/components/Cards";
 import { StyleSheet, View } from "react-native";
-import Account from "@/types/account";
+import hooks from "@/hooks/database";
 
-export interface AccountCardsProps {
-  accounts: Record<string, Pick<Account, "bank" | "isaType" | "friendlyName">>;
-}
-
-const AccountCards = ({ accounts }: AccountCardsProps) => (
+const AccountCards = () => {
+  const queries = hooks.useQueries();
+  const accounts = queries?.getResultTable("allProducts");
+  return (
   <View>
     <ThemedText style={styles.title} numberOfLines={1} dynamicTypeRamp="title2">
       Accounts
     </ThemedText>
     <Cards>
-      {!Object.keys(accounts ?? {}).length && (
+      <ThemedText>{JSON.stringify(accounts)}</ThemedText>
+      {/* {!Object.keys(accounts ?? {}).length && (
         <ThemedText>Add an account to get started!</ThemedText>
       )}
       {Object.entries(accounts).map(([id, a]) => (
         <IsaCard account={a} key={`isa-acct-${id}`} />
-      ))}
+      ))} */}
     </Cards>
   </View>
-);
+)
+};
 
 const styles = StyleSheet.create({
   titleWrapper: {

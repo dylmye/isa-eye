@@ -1,4 +1,5 @@
 import type { CellSchema } from "tinybase";
+import type { Row } from "tinybase/with-schemas";
 
 /**
  * Rulesets
@@ -15,3 +16,7 @@ const rulesetsTable = {
 } satisfies Record<string, CellSchema>
 
 export default rulesetsTable;
+
+type Schema = { rulesets: typeof rulesetsTable }
+
+export type Ruleset = Row<Schema, 'rulesets'>

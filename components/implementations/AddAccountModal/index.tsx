@@ -2,8 +2,6 @@ import { AddModalProps } from "@/components/AddModal";
 import hooks from "@/hooks/database";
 import AddAccountModalUI, { AddAccountData } from "./ui";
 import balanceTypes from "@/constants/balanceTypes";
-import banks from "@/constants/banks";
-import { isaTypes } from "@/constants/isaTypes";
 
 const AddAccountModal = (props: AddModalProps) => {
   const onSubmitForm = hooks.useAddRowCallback(

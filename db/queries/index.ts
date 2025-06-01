@@ -1,7 +1,5 @@
-import * as accounts from "./accounts";
-import * as contributions from "./contributions";
+import * as products from "./products";
 
 export default {
-  ...accounts,
-  ...contributions,
+  ...products,
 }

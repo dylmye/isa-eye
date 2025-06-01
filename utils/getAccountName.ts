@@ -1,9 +1,12 @@
-import Account from "@/types/account";
+import { Product } from "@/types/db";
 
-export interface GetAccountNameProps extends Pick<Account, 'friendlyName' | 'bank' | 'isaType'> { }
+export interface GetAccountNameProps extends Pick<Product, 'friendlyName'> {
+  providerName: string;
+  productTypeName: string;
+}
 
-const getAccountName = ({ friendlyName, bank, isaType }: GetAccountNameProps): string => {
-  return friendlyName ?? `${bank.name} ${isaType?.name}`
+const getAccountName = ({ friendlyName, providerName, productTypeName }: GetAccountNameProps): string => {
+  return friendlyName ?? `${providerName} ${productTypeName}`
 }
 
 export default getAccountName;

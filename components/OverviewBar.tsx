@@ -2,20 +2,19 @@ import { View, StyleSheet } from "react-native";
 
 import ThemedText from "./ThemedText";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import Ruleset from "@/types/ruleset";
 import NavBackButton from "./implementations/NavBackButton";
 import NavForwardButton from "./implementations/NavForwardButton";
 import { router } from "expo-router";
 
 interface OverviewBarProps {
-  ruleset: Ruleset;
+  rulesetId: string;
   showNavButtons: boolean;
   previousRuleset?: string;
   nextRuleset?: string;
 }
 
 const OverviewBar = ({
-  ruleset,
+  rulesetId,
   showNavButtons,
   previousRuleset,
   nextRuleset,
@@ -31,10 +30,10 @@ const OverviewBar = ({
     )}
     <View>
       <ThemedText aria-hidden style={[styles.text, styles.dateSubtitle]}>
-        {ruleset.name}
+        {rulesetId}
       </ThemedText>
       <ThemedText
-        aria-label={`Your remaining ISA allowance for the ${ruleset.name} tax year.`}
+        aria-label={`Your remaining ISA allowance for the ${rulesetId} tax year.`}
         style={styles.text}
         type="title"
         adjustsFontSizeToFit

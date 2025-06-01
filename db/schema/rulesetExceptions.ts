@@ -1,4 +1,5 @@
 import type { CellSchema } from "tinybase";
+import type { Row } from "tinybase/with-schemas";
 
 /**
  * Ruleset Exceptions
@@ -18,4 +19,6 @@ const rulesetExceptionsTable = {
 
 export default rulesetExceptionsTable;
 
-// @TODO ADD RELATIONS, ADD TO SEEDER
+type Schema = { rulesetExceptions: typeof rulesetExceptionsTable }
+
+export type RulesetException = Row<Schema, 'rulesetExceptions'>
