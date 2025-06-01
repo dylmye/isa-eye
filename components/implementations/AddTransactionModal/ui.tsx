@@ -1,59 +1,35 @@
 import { useForm } from "react-hook-form";
-import { useMemo } from "react";
 
 import AddModal, { AddModalProps } from "@/components/AddModal";
 import {
-  ControlledDateField,
-  ControlledTextareaField,
   ControlledCurrencyField,
   ControlledAutocompleteField,
 } from "@/components/fields";
 import SubmitButton from "@/components/fields/SubmitButton";
 import FormUI from "@/components/fields/FormUI";
-import hooks from "@/hooks/database";
 import {
-  DropdownValue,
-  RichDropdownOptions,
   RichDropdownValue,
 } from "@/types/dropdown";
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
-import balanceTypes from "@/constants/balanceTypes";
 
-const useGetAccountBalanceType = (currentAccountName?: string) => {
-  const accounts = hooks.useResultTable("allAccountsWithIsaType");
-
-  // @TODO: this won't work for accounts without friendlynames!! Any way to get cellId for selected option?
-  return useMemo<
-    (typeof balanceTypes)[keyof typeof balanceTypes] | undefined
-  >(() => {
-    const account = Object.values(accounts ?? []).find(
-      (a) => a.friendlyName === currentAccountName
-    );
-    return account
-      ? (account.balanceType as (typeof balanceTypes)[keyof typeof balanceTypes])
-      : undefined;
-  }, [currentAccountName]);
-};
+import RulesetDropdownField from "../RulesetDropdownField";
+import ProductDropdownField from "../ProductDropdownField";
 
 interface AddTransactionModalUIProps extends AddModalProps {
   onSubmitForm: (data: AddTransactionData) => void;
-  accountDropdownOptions: RichDropdownOptions;
 }
 
 export interface AddTransactionData {
   /** Account to add transaction to */
-  accountName: string;
+  productId: string;
   /** Depending on the account type, the amount on the ledger entry or the new balance for the account. */
   amount?: number;
-  /** For detailed txns, Date for the transaction */
-  transactionDate?: string;
-  transactionTaxYear?: string;
+  rulesetId?: string;
   notes?: string;
 }
 
 const AddTransactionModalUI = ({
   onSubmitForm,
-  accountDropdownOptions,
   ...props
 }: AddTransactionModalUIProps) => {
   const {
@@ -74,76 +50,39 @@ const AddTransactionModalUI = ({
     onDismiss();
   };
 
-  const currentAccountName = watch("accountName");
-  const balanceType = useGetAccountBalanceType(currentAccountName);
-  const isSimpleBalance = balanceType === balanceTypes.SIMPLE;
+  const currentAccountName = watch("productId");
 
   return (
     <AddModal {...props}>
-      <AddModal.Header
-        text={isSimpleBalance ? "Update balance" : "Add transaction"}
-        onDismiss={onDismiss}
-      />
+      <AddModal.Header text={"Update balance"} onDismiss={onDismiss} />
       <FormUI>
-        <ControlledAutocompleteField<
+        <ProductDropdownField<
           AddTransactionData,
-          "accountName",
-          RichDropdownValue
+          "productId"
         >
           control={control}
           errors={errors}
-          allOptions={accountDropdownOptions}
-          name="accountName"
-          label="Account name"
-          renderOption={(o, onPress) => (
-            <RichDropdownOption option={o} onPress={onPress} />
-          )}
+          name="productId"
+          label="Account"
           required
         />
         {currentAccountName && (
           <>
-            {isSimpleBalance ? (
-              <ControlledAutocompleteField<
-                AddTransactionData,
-                "transactionTaxYear",
-                DropdownValue<RuleNames>
-              >
-                control={control}
-                errors={errors}
-                allOptions={rulesDropdown}
-                name="transactionTaxYear"
-                label="Tax Year"
-                required
-              />
-            ) : (
-              <ControlledDateField<AddTransactionData, "transactionDate">
-                control={control}
-                errors={errors}
-                name="transactionDate"
-                label="Date"
-                required
-              />
-            )}
+            <RulesetDropdownField<AddTransactionData, "rulesetId">
+              control={control}
+              errors={errors}
+              name="rulesetId"
+              label="Tax Year"
+              required
+            />
             <ControlledCurrencyField<AddTransactionData, "amount">
               control={control}
               errors={errors}
               name="amount"
-              label="Amount"
+              label="Allowance used"
               required
-              note={
-                isSimpleBalance
-                  ? "Enter the current balance of this account for the tax year you select."
-                  : undefined
-              }
+              note={"Enter the sum of all contributions you've made this tax year so far. If your account is flexible, deduct any withdrawals (up to the total you've contributed.)"}
             />
-            {!isSimpleBalance && (
-              <ControlledTextareaField<AddTransactionData, "notes">
-                control={control}
-                errors={errors}
-                name="notes"
-                label="Notes"
-              />
-            )}
           </>
         )}
         <SubmitButton onPress={handleSubmit(onSubmit)} />
