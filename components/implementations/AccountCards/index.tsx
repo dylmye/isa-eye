@@ -14,7 +14,7 @@ const AccountCards = () => {
       Accounts
     </ThemedText>
     <Cards>
-      <ThemedText>{JSON.stringify(accounts)}</ThemedText>
+      <ThemedText>Accounts: {JSON.stringify(accounts, null, 2)}</ThemedText>
       {/* {!Object.keys(accounts ?? {}).length && (
         <ThemedText>Add an account to get started!</ThemedText>
       )}

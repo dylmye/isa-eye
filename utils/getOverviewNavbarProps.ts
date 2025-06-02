@@ -1,3 +1,4 @@
+import hooks from "@/hooks/database";
 import { formatRulesetNameForNav } from "./formatRulesetNameForNav";
 
 interface UseOverviewNavProps {
@@ -7,27 +8,31 @@ interface UseOverviewNavProps {
   nextRulesetName?: string;
 }
 
-export const getOverviewNavbarProps = (
-  currentRulesetName: string
-): UseOverviewNavProps => {
-  const lastIndex = rules.length - 1;
-  const currIndex = rules.findIndex((r) => r.name === currentRulesetName);
+export const getOverviewNavbarProps = (): UseOverviewNavProps => {
+  const currentRulesetName = hooks.useValue("currentTaxYear") as string;
+  const rulesets = hooks.useRowIds("rulesets") as string[];
+  const lastIndex = rulesets.length - 1;
+  const currIndex = rulesets.findIndex((r) => r === currentRulesetName);
 
   switch (currIndex) {
+    // borked
     case -1:
       return {};
+    // first (earliest) ruleset
     case 0:
       return {
-        previousRulesetName: formatRulesetNameForNav(rules[1].name),
+        nextRulesetName: formatRulesetNameForNav(rulesets[1]),
       };
+    // last (latest) ruleset
     case lastIndex:
       return {
-        nextRulesetName: formatRulesetNameForNav(rules[lastIndex - 1].name),
+        previousRulesetName: formatRulesetNameForNav(rulesets[lastIndex - 1]),
       };
+    // any others
     default:
       return {
-        previousRulesetName: formatRulesetNameForNav(rules[currIndex + 1].name),
-        nextRulesetName: formatRulesetNameForNav(rules[currIndex - 1].name),
+        previousRulesetName: formatRulesetNameForNav(rulesets[currIndex - 1]),
+        nextRulesetName: formatRulesetNameForNav(rulesets[currIndex + 1]),
       };
   }
 };

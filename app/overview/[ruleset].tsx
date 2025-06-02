@@ -40,9 +40,7 @@ const OverviewForRuleset = () => {
     []
   );
 
-  const navbarProps = getOverviewNavbarProps(
-    currentRulesetFormattedName
-  );
+  const navbarProps = getOverviewNavbarProps();
 
   // @TODO use a query count for active accounts for current year
   const accounts = hooks.useRowCount("products");
