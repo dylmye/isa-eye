@@ -22,7 +22,7 @@ const ProviderDropdownField = <
     }));
   }, [providers, aliases]);
   return (
-    <ControlledAutocompleteField allOptions={providerDropdownOptions} renderOption={(o, onPress) => (
+    <ControlledAutocompleteField allOptions={providerDropdownOptions} _DEBUG_IS_OPEN renderOption={(o, onPress) => (
       <RichDropdownOption option={o} onPress={onPress} />
     )} {...props} />
   )

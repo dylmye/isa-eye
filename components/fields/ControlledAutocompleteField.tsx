@@ -19,6 +19,7 @@ export interface ControlledAutocompleteFieldProps<
 > extends BaseField<Form, FieldName> {
   allOptions: Option[];
   renderOption?: (o: Option, onPress: () => void) => React.ReactElement;
+  _DEBUG_IS_OPEN?: boolean;
 }
 
 const ControlledAutocompleteField = <
@@ -34,10 +35,11 @@ const ControlledAutocompleteField = <
   note,
   allOptions,
   renderOption,
+  _DEBUG_IS_OPEN,
   ...props
 }: ControlledAutocompleteFieldProps<TForm, TFieldName, TOption>) => {
   const [filteredOptions, updateFilteredOptions] = useState(allOptions);
-  const [showResults, setResultsVisiblity] = useState(false);
+  const [showResults, setResultsVisiblity] = useState(_DEBUG_IS_OPEN ?? false);
   const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
