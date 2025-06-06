@@ -1,16 +1,16 @@
 import BaseField from "@/types/baseField";
 import { Controller, FieldValues, Path } from "react-hook-form";
+import Autocomplete from "react-native-autocomplete-input";
+import { Pressable, TextInput } from "react-native";
+import { useState } from "react";
+import Fuse from "fuse.js";
 import FieldLabel from "./shared/FieldLabel";
 import styles from "./shared/styles";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import Autocomplete from "react-native-autocomplete-input";
 import ValidationMessage from "./shared/ValidationMessage";
 import InfoMessage from "./shared/InfoMessage";
-import { useState } from "react";
 import { DropdownValue } from "@/types/dropdown";
-import Fuse from "fuse.js";
 import ThemedText from "../ThemedText";
-import { Pressable, TextInput } from "react-native";
 
 export interface ControlledAutocompleteFieldProps<
   Form extends FieldValues = any,
@@ -40,6 +40,7 @@ const ControlledAutocompleteField = <
 }: ControlledAutocompleteFieldProps<TForm, TFieldName, TOption>) => {
   const [filteredOptions, updateFilteredOptions] = useState(allOptions);
   const [showResults, setResultsVisiblity] = useState(_DEBUG_IS_OPEN ?? false);
+  const [textInputValue, setTextInputValue] = useState<string>(props.defaultValue ?? "");
   const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
@@ -53,9 +54,10 @@ const ControlledAutocompleteField = <
       <Controller
         {...props}
         render={({ field: { onChange, value, disabled } }) => {
-          const onPressItem = (label: string) => {
+          const onPressItem = (value: string, label: string) => {
             setResultsVisiblity(false);
-            onChange(label);
+            onChange(value);
+            setTextInputValue(label);
           };
           return (
             <>
@@ -77,7 +79,7 @@ const ControlledAutocompleteField = <
                   updateFilteredOptions(
                     fuse.search(newText).map((r) => r.item)
                   );
-                  return onChange(newText);
+                  return setTextInputValue(newText);
                 }}
                 onFocus={() => {
                   setResultsVisiblity(true);
@@ -87,7 +89,7 @@ const ControlledAutocompleteField = <
                   if (
                     "relatedTarget" in e &&
                     (e.relatedTarget as { role: string | null })?.role ===
-                      "listitem"
+                    "listitem"
                   )
                     return;
 
@@ -96,6 +98,7 @@ const ControlledAutocompleteField = <
                 renderTextInput={(props) => (
                   <TextInput
                     {...props}
+                    value={textInputValue}
                     style={{
                       ...styles.field,
                       color: textColor,
@@ -110,10 +113,10 @@ const ControlledAutocompleteField = <
                   keyboardShouldPersistTaps: "always",
                   keyExtractor: (item) => item.value,
                   renderItem: ({ item }) =>
-                    renderOption?.(item, () => onPressItem(item.label)) ?? (
+                    renderOption?.(item, () => onPressItem(item.value, item.label)) ?? (
                       <Pressable
                         onPress={() => {
-                          onPressItem(item.label);
+                          onPressItem(item.value, item.label);
                         }}
                         style={styles.autocompleteResult}
                         role="listitem"
@@ -134,7 +137,7 @@ const ControlledAutocompleteField = <
             message: "Select an option",
           },
           validate: (value) =>
-            allOptions.map((o) => o.label).includes(value) ||
+            allOptions.map((o) => o.value).includes(value) ||
             "Select a valid option",
         }}
         disabled={disabled}

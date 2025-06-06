@@ -14,6 +14,9 @@ export const allProducts = (queries: Queries<Schemas>) =>
       select("endTaxYear");
       select("flexible");
       select("startingBalancePence");
+      
+      join("providers", "providerId").as("provider");
+      join("productTypes", "productTypeCode").as("productType");
 
       select("providerId");
       select("providers", "name").as("providerName");
@@ -22,8 +25,15 @@ export const allProducts = (queries: Queries<Schemas>) =>
       select("productTypeCode");
       select("productTypes", "name").as("productTypeName");
 
-      join("providers", "providerId").as("provider");
-      join("productTypes", "productTypeCode").as("productType");
       // @TODO: how to get all annualBalance values with productId match?
     }
   );
+
+  export const productsOpenInCurrentTaxYear = (queries: Queries<Schemas>) =>
+    queries.setQueryDefinition(
+      "productsOpenInCurrentTaxYear",
+      "products",
+      ({ select, join }) => {
+        // all products where startTaxYear >= currentTax Year, endTaxYear null or >= currentTaxYear
+      }
+    )

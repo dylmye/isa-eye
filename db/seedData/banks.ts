@@ -342,7 +342,7 @@ const banks: readonly BankSeedData[] = [
   {
     id: "handelsbanken",
     name: "Handelsbanken",
-    iconRelativeUrl: 'https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/first-direct.svg',
+    iconRelativeUrl: 'https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/handelsbanken.svg',
     aliases: ["fd", "hsbc"],
   },
   {

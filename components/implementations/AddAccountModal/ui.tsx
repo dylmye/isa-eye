@@ -4,14 +4,10 @@ import AddModal, { AddModalProps } from "@/components/AddModal";
 import {
   ControlledTextField,
   ControlledCurrencyField,
-  ControlledRadioField,
   ControlledCheckboxField,
-  ControlledAutocompleteField,
 } from "@/components/fields";
 import SubmitButton from "@/components/fields/SubmitButton";
 import FormUI from "@/components/fields/FormUI";
-import balanceTypes from "@/constants/balanceTypes";
-import { DropdownValue } from "@/types/dropdown";
 import ProviderDropdownField from "../ProviderDropdownField";
 import RulesetDropdownField from "../RulesetDropdownField";
 import ProductTypeDropdownField from "../ProductTypeDropdownField";
@@ -25,7 +21,6 @@ export interface AddAccountData {
   accountName: string;
   openedInTaxYear: string;
   isaTypeCode: string;
-  balanceType: keyof typeof balanceTypes;
   isFlexible: boolean;
   openingBalance: number;
 }
@@ -70,8 +65,6 @@ const AddAccountModalUI = ({
           errors={errors}
           name="accountName"
           label="Nickname"
-          required
-          note="(Alpha: this field will be optional in the future. Must be unique.)"
         />
         <RulesetDropdownField<
           AddAccountData,
@@ -94,24 +87,6 @@ const AddAccountModalUI = ({
           label="Type of ISA"
           required
         />
-        <ControlledRadioField<AddAccountData, "balanceType">
-          control={control}
-          errors={errors}
-          name="balanceType"
-          label="Balance Type"
-          options={[
-            {
-              value: "SIMPLE",
-              label: "Simple",
-            },
-            {
-              value: "LEDGER",
-              label: "Detailed",
-            },
-          ]}
-          required
-          note="'Simple Balance' accounts maintain a single balance for every tax year, while 'Detailed Balance' accounts maintain a transaction history."
-        />
         <ControlledCheckboxField<AddAccountData, "isFlexible">
           control={control}
           errors={errors}
@@ -125,7 +100,6 @@ const AddAccountModalUI = ({
           errors={errors}
           name="openingBalance"
           label="Starting Balance"
-          required
           note="This balance won't contribute to the allowance of the year this account was opened."
         />
         <SubmitButton onPress={handleSubmit(onSubmit)} />
