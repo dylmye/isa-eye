@@ -6,7 +6,7 @@ import { ControlledAutocompleteFieldProps } from "@/components/fields/Controlled
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
 import type { RichDropdownOptions, RichDropdownValue } from "@/types/dropdown";
 import hooks from "@/hooks/database";
-import getAccountName from "@/utils/getAccountName";
+import getProductName from "@/utils/getProductName";
 
 const ProductDropdownField = <
   TForm extends FieldValues = any,
@@ -20,7 +20,7 @@ const ProductDropdownField = <
   const products = hooks.useResultTable("allProducts");
   const providerDropdownOptions: RichDropdownOptions = useMemo(() => {
     return Object.keys(products).map<RichDropdownValue>((id) => ({
-      label: getAccountName({
+      label: getProductName({
         friendlyName: products[id].friendlyName as string,
         providerName: products[id].providerName as string,
         productTypeName: products[id].productTypeName as string,

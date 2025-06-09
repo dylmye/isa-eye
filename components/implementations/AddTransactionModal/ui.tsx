@@ -1,16 +1,9 @@
 import { useForm } from "react-hook-form";
 
 import AddModal, { AddModalProps } from "@/components/AddModal";
-import {
-  ControlledCurrencyField,
-  ControlledAutocompleteField,
-} from "@/components/fields";
+import { ControlledCurrencyField } from "@/components/fields";
 import SubmitButton from "@/components/fields/SubmitButton";
 import FormUI from "@/components/fields/FormUI";
-import {
-  RichDropdownValue,
-} from "@/types/dropdown";
-import RichDropdownOption from "@/components/fields/RichDropdownOption";
 
 import RulesetDropdownField from "../RulesetDropdownField";
 import ProductDropdownField from "../ProductDropdownField";
@@ -20,9 +13,9 @@ interface AddTransactionModalUIProps extends AddModalProps {
 }
 
 export interface AddTransactionData {
-  /** Account to add transaction to */
+  /** Product to add transaction to */
   productId: string;
-  /** Depending on the account type, the amount on the ledger entry or the new balance for the account. */
+  /** The new balance for the product. */
   amount?: number;
   rulesetId?: string;
   notes?: string;
@@ -50,23 +43,20 @@ const AddTransactionModalUI = ({
     onDismiss();
   };
 
-  const currentAccountName = watch("productId");
+  const currentProductId = watch("productId");
 
   return (
     <AddModal {...props}>
       <AddModal.Header text={"Update balance"} onDismiss={onDismiss} />
       <FormUI>
-        <ProductDropdownField<
-          AddTransactionData,
-          "productId"
-        >
+        <ProductDropdownField<AddTransactionData, "productId">
           control={control}
           errors={errors}
           name="productId"
           label="Account"
           required
         />
-        {currentAccountName && (
+        {currentProductId && (
           <>
             <RulesetDropdownField<AddTransactionData, "rulesetId">
               control={control}
@@ -81,7 +71,9 @@ const AddTransactionModalUI = ({
               name="amount"
               label="Allowance used"
               required
-              note={"Enter the sum of all contributions you've made this tax year so far. If your account is flexible, deduct any withdrawals (up to the total you've contributed.)"}
+              note={
+                "Enter the sum of all contributions you've made this tax year so far. If your account is flexible, deduct any withdrawals (up to the total you've contributed.)"
+              }
             />
           </>
         )}

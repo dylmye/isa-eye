@@ -25,18 +25,18 @@ interface MobileFooterProps {
   previousRuleset?: string;
   nextRuleset?: string;
   onAddTransactionPress: () => void;
-  onAddAccountPress: () => void;
+  onAddProductPress: () => void;
 }
 
 const MobileFooter = ({
   previousRuleset,
   nextRuleset,
   onAddTransactionPress,
-  onAddAccountPress,
+  onAddProductPress,
 }: MobileFooterProps) => {
   const onPressAdd = useAddButtonDisambi(
     onAddTransactionPress,
-    onAddAccountPress
+    onAddProductPress
   );
 
   return (

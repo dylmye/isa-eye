@@ -5,18 +5,17 @@ import { useEffect, useMemo, useState } from "react";
 
 import Cards from "@/components/Cards";
 import CompositionCard from "@/components/implementations/CompositionCard";
-import HistoryCard from "@/components/implementations/HistoryCard";
 import OverviewBar from "@/components/OverviewBar";
 import PageColumn from "@/components/PageColumn";
 import MobileFooter from "@/components/MobileFooter";
 import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
 import AddTransactionModal from "@/components/implementations/AddTransactionModal";
-import AddAccountModal from "@/components/implementations/AddAccountModal";
+import AddProductModal from "@/components/implementations/AddProductModal";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
 import hooks from "@/hooks/database";
 import ModalVisibilityState from "@/types/modalVisibilityState";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
-import AccountCards from "@/components/implementations/AccountCards";
+import ProductCards from "@/components/implementations/ProductCards";
 
 const DEFAULT_RULESET_ID = '2024/2025'
 
@@ -26,7 +25,7 @@ const OverviewForRuleset = () => {
   const [modalVisiblity, updateModalVisibility] =
     useState<ModalVisibilityState>({
       addTransaction: false,
-      addAccount: false,
+      addProduct: false,
       bulkUpload: false,
     });
 
@@ -42,8 +41,8 @@ const OverviewForRuleset = () => {
 
   const navbarProps = getOverviewNavbarProps();
 
-  // @TODO use a query count for active accounts for current year
-  const accounts = hooks.useRowCount("products");
+  // @TODO use a query count for active products for current year
+  const products = hooks.useRowCount("products");
 
   useEffect(() => {
     updateCurrentRulesetForStore(currentRulesetFormattedName);
@@ -65,21 +64,20 @@ const OverviewForRuleset = () => {
                 onPress={(key) =>
                   updateModalVisibility({ ...modalVisiblity, [key]: true })
                 }
-                hasAccounts={!!accounts}
+                hasProducts={!!products}
               />
             )}
-            {!!accounts && <CompositionCard />}
-            {!!accounts && <HistoryCard />}
+            {!!products && <CompositionCard />}
           </Cards>
-          <AccountCards />
+          <ProductCards />
         </PageColumn>
       </ScrollView>
       {isMediumScreen && (
         <MobileFooter
           previousRuleset={navbarProps?.previousRulesetName}
           nextRuleset={navbarProps?.nextRulesetName}
-          onAddAccountPress={() =>
-            updateModalVisibility({ ...modalVisiblity, addAccount: true })
+          onAddProductPress={() =>
+            updateModalVisibility({ ...modalVisiblity, addProduct: true })
           }
           onAddTransactionPress={() =>
             updateModalVisibility({ ...modalVisiblity, addTransaction: true })
@@ -92,10 +90,10 @@ const OverviewForRuleset = () => {
           updateModalVisibility({ ...modalVisiblity, addTransaction: false })
         }
       />
-      <AddAccountModal
-        isVisible={modalVisiblity?.addAccount}
+      <AddProductModal
+        isVisible={modalVisiblity?.addProduct}
         onDismiss={() =>
-          updateModalVisibility({ ...modalVisiblity, addAccount: false })
+          updateModalVisibility({ ...modalVisiblity, addProduct: false })
         }
       />
     </SafeAreaView>

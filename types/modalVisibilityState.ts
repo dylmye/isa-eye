@@ -1,5 +1,5 @@
 export default interface ModalVisibilityState {
   addTransaction: boolean;
-  addAccount: boolean;
+  addProduct: boolean;
   bulkUpload: boolean;
 }

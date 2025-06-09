@@ -2,26 +2,25 @@ import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
 import { StyleSheet, View } from "react-native";
 import BankLogoIcon from "../BankLogoIcon";
-import getAccountName from "@/utils/getAccountName";
+import getProductName from "@/utils/getProductName";
 import { Product } from "@/types/db";
 import hooks from "@/hooks/database";
+import { AllProductsRow } from "@/db/queries/products";
 
 export interface IsaCardProps {
-  /** Account is closed or non-interactable
+  /** Product is closed or non-interactable
    * @default false
    */
   disabled?: boolean;
-  account: Pick<Product, "providerId" | "friendlyName" | "productTypeCode">;
+  product: AllProductsRow;
 }
 
-const IsaCard = ({ disabled = false, account }: IsaCardProps) => {
-  const provider = hooks.useRow("providers", account.providerId ?? 'PLACEHOLDER');
-  const productType = hooks.useRow("productTypes", account.productTypeCode!);
+const IsaCard = ({ disabled = false, product }: IsaCardProps) => {
   return (
     <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
       <View style={styles.name}>
         <BankLogoIcon
-          bankIcon={require(provider!.iconRelativeUrl!)}
+          bankIcon={{ uri: product.providerIconRelativeUrl }}
           size={38}
           style={styles.icon}
         />
@@ -31,7 +30,7 @@ const IsaCard = ({ disabled = false, account }: IsaCardProps) => {
           numberOfLines={1}
           ellipsizeMode="tail"
         >
-          {getAccountName({ providerName: provider.name!, productTypeName: productType.name!, friendlyName: account.friendlyName })}
+          {getProductName(product)}
         </ThemedText>
       </View>
       <ThemedText type="defaultSemiBold" style={styles.valueText}>
