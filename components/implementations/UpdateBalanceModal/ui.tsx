@@ -8,37 +8,36 @@ import FormUI from "@/components/fields/FormUI";
 import RulesetDropdownField from "../RulesetDropdownField";
 import ProductDropdownField from "../ProductDropdownField";
 
-interface AddTransactionModalUIProps extends AddModalProps {
-  onSubmitForm: (data: AddTransactionData) => void;
+interface UpdateBalanceModalUIProps extends AddModalProps {
+  onSubmitForm: (data: UpdateBalanceData) => void;
 }
 
-export interface AddTransactionData {
-  /** Product to add transaction to */
+export interface UpdateBalanceData {
+  /** Product to update balance of */
   productId: string;
+  rulesetId?: string;
   /** The new balance for the product. */
   amount?: number;
-  rulesetId?: string;
-  notes?: string;
 }
 
-const AddTransactionModalUI = ({
+const UpdateBalanceModalUI = ({
   onSubmitForm,
   ...props
-}: AddTransactionModalUIProps) => {
+}: UpdateBalanceModalUIProps) => {
   const {
     control,
     handleSubmit,
     reset,
     formState: { errors },
     watch,
-  } = useForm<AddTransactionData>();
+  } = useForm<UpdateBalanceData>();
 
   const onDismiss = () => {
     reset();
     props.onDismiss?.();
   };
 
-  const onSubmit = (data: AddTransactionData) => {
+  const onSubmit = (data: UpdateBalanceData) => {
     onSubmitForm(data);
     onDismiss();
   };
@@ -49,7 +48,7 @@ const AddTransactionModalUI = ({
     <AddModal {...props}>
       <AddModal.Header text={"Update balance"} onDismiss={onDismiss} />
       <FormUI>
-        <ProductDropdownField<AddTransactionData, "productId">
+        <ProductDropdownField<UpdateBalanceData, "productId">
           control={control}
           errors={errors}
           name="productId"
@@ -58,14 +57,14 @@ const AddTransactionModalUI = ({
         />
         {currentProductId && (
           <>
-            <RulesetDropdownField<AddTransactionData, "rulesetId">
+            <RulesetDropdownField<UpdateBalanceData, "rulesetId">
               control={control}
               errors={errors}
               name="rulesetId"
               label="Tax Year"
               required
             />
-            <ControlledCurrencyField<AddTransactionData, "amount">
+            <ControlledCurrencyField<UpdateBalanceData, "amount">
               control={control}
               errors={errors}
               name="amount"
@@ -83,4 +82,4 @@ const AddTransactionModalUI = ({
   );
 };
 
-export default AddTransactionModalUI;
+export default UpdateBalanceModalUI;

@@ -1,12 +1,12 @@
 import { AddModalProps } from "@/components/AddModal";
 import hooks from "@/hooks/database";
-import AddTransactionModalUI, { AddTransactionData } from "./ui";
+import UpdateBalanceModalUI, { UpdateBalanceData } from "./ui";
 import { AnnualBalance } from "@/types/db";
 
-const AddTransactionModal = (props: AddModalProps) => {
+const UpdateBalanceModal = (props: AddModalProps) => {
   const onSubmitForm = hooks.useAddRowCallback(
     "annualBalances",
-    (data: AddTransactionData) => ({
+    (data: UpdateBalanceData) => ({
       productId: data.productId,
       rulesetId: data.rulesetId,
       lastUpdatedDateUnix: Date.now(),
@@ -15,11 +15,11 @@ const AddTransactionModal = (props: AddModalProps) => {
   );
 
   return (
-    <AddTransactionModalUI
+    <UpdateBalanceModalUI
       onSubmitForm={onSubmitForm}
       {...props}
     />
   );
 };
 
-export default AddTransactionModal;
+export default UpdateBalanceModal;

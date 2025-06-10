@@ -24,8 +24,8 @@ const DesktopActionTiles = ({
     <View style={styles.container}>
       {hasProducts && (
         <ActionTile
-          title="Add Transaction"
-          onPress={() => onPress("addTransaction")}
+          title="Update Balance"
+          onPress={() => onPress("updateBalance")}
           icon={
             <MaterialCommunityIcons {...sharedIconProps} name="cash-plus" />
           }

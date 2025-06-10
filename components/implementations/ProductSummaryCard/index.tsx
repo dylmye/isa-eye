@@ -3,19 +3,34 @@ import ThemedText from "@/components/ThemedText";
 import { StyleSheet, View } from "react-native";
 import BankLogoIcon from "../BankLogoIcon";
 import getProductName from "@/utils/getProductName";
-import { Product } from "@/types/db";
-import hooks from "@/hooks/database";
 import { AllProductsRow } from "@/db/queries/products";
+import hooks from "@/hooks/database";
+import { useMemo } from "react";
 
-export interface IsaCardProps {
+export interface ProductSummaryCardProps {
   /** Product is closed or non-interactable
    * @default false
    */
   disabled?: boolean;
   product: AllProductsRow;
+  productId: string;
 }
 
-const IsaCard = ({ disabled = false, product }: IsaCardProps) => {
+const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSummaryCardProps) => {
+  const currentRuleset = hooks.useValue("currentTaxYear");
+  const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
+
+  console.log({ productBalanceRow });
+
+  const formattedProductBalance = useMemo(() => {
+    return new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+      maximumFractionDigits: 2,
+      trailingZeroDisplay: "stripIfInteger",
+    }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0'))
+  }, [productBalanceRow.lastUpdatedDateUnix]);
+
   return (
     <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
       <View style={styles.name}>
@@ -34,7 +49,7 @@ const IsaCard = ({ disabled = false, product }: IsaCardProps) => {
         </ThemedText>
       </View>
       <ThemedText type="defaultSemiBold" style={styles.valueText}>
-        £X,XXX
+        {formattedProductBalance}
       </ThemedText>
     </CardBase>
   )
@@ -67,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default IsaCard;
+export default ProductSummaryCard;

@@ -9,7 +9,7 @@ import OverviewBar from "@/components/OverviewBar";
 import PageColumn from "@/components/PageColumn";
 import MobileFooter from "@/components/MobileFooter";
 import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
-import AddTransactionModal from "@/components/implementations/AddTransactionModal";
+import UpdateBalanceModal from "@/components/implementations/UpdateBalanceModal";
 import AddProductModal from "@/components/implementations/AddProductModal";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
 import hooks from "@/hooks/database";
@@ -24,8 +24,8 @@ const OverviewForRuleset = () => {
   const searchParams = useLocalSearchParams<{ ruleset?: string }>();
   const [modalVisiblity, updateModalVisibility] =
     useState<ModalVisibilityState>({
-      addTransaction: false,
       addProduct: false,
+      updateBalance: false,
       bulkUpload: false,
     });
 
@@ -79,15 +79,15 @@ const OverviewForRuleset = () => {
           onAddProductPress={() =>
             updateModalVisibility({ ...modalVisiblity, addProduct: true })
           }
-          onAddTransactionPress={() =>
-            updateModalVisibility({ ...modalVisiblity, addTransaction: true })
+          onUpdateBalancePress={() =>
+            updateModalVisibility({ ...modalVisiblity, updateBalance: true })
           }
         />
       )}
-      <AddTransactionModal
-        isVisible={modalVisiblity?.addTransaction}
+      <UpdateBalanceModal
+        isVisible={modalVisiblity?.updateBalance}
         onDismiss={() =>
-          updateModalVisibility({ ...modalVisiblity, addTransaction: false })
+          updateModalVisibility({ ...modalVisiblity, updateBalance: false })
         }
       />
       <AddProductModal

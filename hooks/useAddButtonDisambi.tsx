@@ -6,7 +6,7 @@ import { useThemeColor } from "./useThemeColor";
 import { router } from "expo-router";
 
 export const useAddButtonDisambi = (
-  onAddTransactionPress: () => void,
+  onUpdateBalancePress: () => void,
   onAddProductPress: () => void
 ): (() => void) => {
   const { showActionSheetWithOptions } = useActionSheet();
@@ -19,8 +19,8 @@ export const useAddButtonDisambi = (
 
   const OPTIONS = [
     {
-      label: "Add Transaction",
-      onPress: () => onAddTransactionPress(),
+      label: "Update Balance",
+      onPress: () => onUpdateBalancePress(),
       icon: <MaterialCommunityIcons name="cash-plus" {...sharedIconProps} />,
     },
     {
