@@ -9,6 +9,7 @@ import {
   createQueries,
   type Store,
   type Queries,
+  type Indexes,
 } from "tinybase/with-schemas";
 import { createExpoSqlitePersister } from "tinybase/persisters/persister-expo-sqlite/with-schemas";
 
@@ -28,6 +29,7 @@ const { useCreateStore, useCreatePersister, useCreateQueries } = hooks;
 export const useSetupDatabase = (): {
   store: Store<Schemas>;
   queries: Queries<Schemas> | undefined;
+  indexes: Indexes<Schemas>;
 } => {
   const store = useCreateStore(() =>
     createStore().setTablesSchema(tableSchema).setValuesSchema(keyvalueSchema)
@@ -39,6 +41,8 @@ export const useSetupDatabase = (): {
     });
     return cq;
   });
+
+  const indexes = createIndexes(store);
 
   try {
     useCreatePersister(
@@ -55,16 +59,13 @@ export const useSetupDatabase = (): {
         await persister.startAutoSave();
       }
     );
-
-    const indexes = createIndexes(store);
     tableIndexes.forEach((i) => indexes.setIndexDefinition(i[0], i[1], i[2]));
 
     const relationships = createRelationships(store);
     tableRelationships.forEach((r) =>
       relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3])
     );
-
-    console.warn("STARTING SEED")
+    
     seeders.forEach(s => s(store));
   } catch (e) {
     console.error(
@@ -76,5 +77,6 @@ export const useSetupDatabase = (): {
   return {
     store,
     queries,
+    indexes,
   };
 };

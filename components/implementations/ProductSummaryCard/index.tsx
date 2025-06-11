@@ -20,7 +20,7 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
   const currentRuleset = hooks.useValue("currentTaxYear");
   const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
 
-  console.log({ productBalanceRow });
+  console.log(JSON.stringify({ productBalanceRow, currentRuleset }));
 
   const formattedProductBalance = useMemo(() => {
     return new Intl.NumberFormat("en-GB", {
@@ -28,7 +28,7 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
       currency: "GBP",
       maximumFractionDigits: 2,
       trailingZeroDisplay: "stripIfInteger",
-    }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0'))
+    }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0') / 100)
   }, [productBalanceRow.lastUpdatedDateUnix]);
 
   return (

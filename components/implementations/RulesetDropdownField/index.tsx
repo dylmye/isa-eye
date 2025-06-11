@@ -13,7 +13,7 @@ const RulesetDropdownField = <
 >(props: Omit<ControlledAutocompleteFieldProps<TForm, TFieldName, DropdownValue>, 'allOptions' | 'renderOption'>) => {
   const rulesets = hooks.useTable("rulesets");
   const rulesetDropdownOptions: DropdownOptions = useMemo(() => {
-    return Object.keys(rulesets).map<DropdownValue>(id => ({
+    return Object.keys(rulesets).reverse().map<DropdownValue>(id => ({
       label: id,
       value: id,
     }));

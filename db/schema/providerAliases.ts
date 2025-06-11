@@ -5,6 +5,8 @@ import type { Row } from "tinybase/with-schemas";
  * Provider Aliases
  *
  * Other names for providers, for search benefits.
+ * 
+ * ID format: string
  */
 const providerAliasesTable = {
   alias: { type: 'string' },

@@ -9,6 +9,8 @@ import type { Row } from "tinybase/with-schemas";
  * or is set as a goal.
  * 
  * Balance is limited by the rules of the product type.
+ * 
+ * ID format: {productId}-{rulesetId}
  */
 const annualBalancesTable = {
   productId: { type: 'string' },

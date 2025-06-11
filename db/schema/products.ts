@@ -5,6 +5,8 @@ import type { Row } from "tinybase/with-schemas";
  * Products
  *
  * An ISA account. It is opened with a provider within a TY, and aligns with requirements for its type.
+ * 
+ * ID format: integer
  */
 const productsTable = {
   startTaxYear: { type: 'string' },

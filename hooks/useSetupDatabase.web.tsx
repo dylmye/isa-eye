@@ -8,6 +8,7 @@ import {
   type Queries,
   createRelationships,
   createIndexes,
+  type Indexes,
 } from "tinybase/with-schemas";
 import { createIndexedDbPersister } from "tinybase/persisters/persister-indexed-db/with-schemas";
 
@@ -27,6 +28,7 @@ const { useCreateStore, useCreatePersister, useCreateQueries } = hooks;
 export const useSetupDatabase = (): {
   store: Store<Schemas>;
   queries: Queries<Schemas> | undefined;
+  indexes: Indexes<Schemas>;
 } => {
   const store = useCreateStore(() =>
     createStore().setTablesSchema(tableSchema).setValuesSchema(keyvalueSchema)
@@ -39,6 +41,8 @@ export const useSetupDatabase = (): {
     return cq;
   });
 
+  const indexes = createIndexes(store);
+
   try {
     useCreatePersister(
       store,
@@ -50,7 +54,6 @@ export const useSetupDatabase = (): {
       }
     );
 
-    const indexes = createIndexes(store);
     tableIndexes.forEach((i) => indexes.setIndexDefinition(i[0], i[1], i[2]));
 
     const relationships = createRelationships(store);
@@ -69,5 +72,6 @@ export const useSetupDatabase = (): {
   return {
     store,
     queries,
+    indexes,
   };
 };

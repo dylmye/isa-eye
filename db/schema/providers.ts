@@ -6,6 +6,8 @@ import type { Row } from "tinybase/with-schemas";
  *
  * Companies that market ISA products - banks, e-money institutions,
  * building societies, investment companies, etc.
+ * 
+ * ID format: string
  */
 const providersTable = {
   name: { type: 'string' },

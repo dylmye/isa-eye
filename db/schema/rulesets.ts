@@ -7,6 +7,8 @@ import type { Row } from "tinybase/with-schemas";
  * Allowances for ISAs as defined by the
  * Individual Savings Account Regulations 1998
  * in force at the time of each tax year.
+ * 
+ * ID format: string
  */
 const rulesetsTable = {
   sharedAllowancePence: { type: 'string' },

@@ -8,6 +8,8 @@ import type { Row } from "tinybase/with-schemas";
  * given tax year. Any products that don't
  * have an exception contribute to the shared
  * allowance.
+ * 
+ * ID format: integer
  */
 const rulesetExceptionsTable = {
   productId: { type: 'string' },

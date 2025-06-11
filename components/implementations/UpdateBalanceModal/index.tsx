@@ -4,8 +4,9 @@ import UpdateBalanceModalUI, { UpdateBalanceData } from "./ui";
 import { AnnualBalance } from "@/types/db";
 
 const UpdateBalanceModal = (props: AddModalProps) => {
-  const onSubmitForm = hooks.useAddRowCallback(
+  const onSubmitForm = hooks.useSetRowCallback(
     "annualBalances",
+    (data) => `${data.productId}-${data.rulesetId}`,
     (data: UpdateBalanceData) => ({
       productId: data.productId,
       rulesetId: data.rulesetId,

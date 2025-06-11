@@ -22,10 +22,10 @@ SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
-  const { store, queries } = useSetupDatabase();
+  const { store, queries, indexes } = useSetupDatabase();
 
   return (
-    <TinybaseProvider store={store} queries={queries}>
+    <TinybaseProvider store={store} queries={queries} indexes={indexes}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <ActionSheetProvider>
           <Stack screenOptions={{ headerShown: false }} />

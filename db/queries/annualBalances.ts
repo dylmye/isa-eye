@@ -1,26 +1,21 @@
-import { Queries } from "tinybase/with-schemas";
-import { Schemas } from "../schema";
-import rulesets from "../seedData/rulesets";
+import { Queries, ResultRow } from "tinybase/with-schemas";
+import { AnnualBalance, Schemas } from "../schema";
 
-/**
- * All annual balances for the current year.
- */
-export const currentYearBalances = (queries: Queries<Schemas>) =>
+export const remainingBalanceByYear = (queries: Queries<Schemas>) =>
   queries.setQueryDefinition(
-    "currentYearBalances",
+    "remainingBalanceByYear",
     "annualBalances",
-    ({ select, join, where }) => {
-      const currentTaxYear = queries.getStore().getValue("currentTaxYear") as string;
-
-      select("lastUpdatedDateUnix");
-      select("deductedFromAllowancePence");
-
-      select("productId");
+    ({ select, group }) => {
       select("rulesetId");
-
-      join("products", "productId").as("product");
-      join("rulesets", "rulesetId").as("ruleset");
-
-      where("rulesetId", currentTaxYear);
+      select("deductedFromAllowancePence");
+      group("deductedFromAllowancePence", (cells) => {
+        const calculatedValue = cells.reduce<number>((acc, curr) => acc - (Number.parseFloat(curr as string) / 100), 20_000);
+        // We don't show negative balance
+        return Math.max(calculatedValue, 0);
+      }).as("remainingBalance");
     }
   );
+
+export interface RemainingBalanceByYearRow extends ResultRow, Required<Pick<AnnualBalance, 'rulesetId' | 'deductedFromAllowancePence'>> {
+  remainingBalance: number;
+}

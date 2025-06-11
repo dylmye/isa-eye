@@ -1,15 +1,14 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+
 import ThemedText from "@/components/ThemedText";
 import Cards from "@/components/Cards";
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
-import hooks from "@/hooks/database";
-import { AllProductsRow } from "@/db/queries/products";
+import { useCurrentYearProducts } from "@/db/hooks";
 
 const ProductCards = () => {
-  const queries = hooks.useQueries();
-  const products = queries?.getResultTable("allProducts");
-  const hasProducts = !!queries?.getResultRowCount("allProducts");
+  const currentYearProducts = useCurrentYearProducts();
+  const hasProducts = !!currentYearProducts.length;
   return (
     <View>
       <ThemedText style={styles.title} numberOfLines={1} dynamicTypeRamp="title2">
@@ -19,8 +18,8 @@ const ProductCards = () => {
         {!hasProducts && (
           <ThemedText>Add an account to get started!</ThemedText>
         )}
-        {Object.entries(products ?? {}).map(([id, product]) => (
-          <ProductSummaryCard key={`isa-acct-${id}`} product={product as AllProductsRow} productId={id} />
+        {(currentYearProducts ?? []).map(([id, product]) => (
+          <ProductSummaryCard key={`isa-acct-${id}`} product={product} productId={id} />
         ))}
       </Cards>
     </View>

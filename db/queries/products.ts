@@ -30,11 +30,3 @@ export interface AllProductsRow extends ResultRow, Required<Pick<Product, 'frien
   productTypeName: string;
 }
 
-export const productsOpenInCurrentTaxYear = (queries: Queries<Schemas>) =>
-  queries.setQueryDefinition(
-    "productsOpenInCurrentTaxYear",
-    "products",
-    ({ select, join }) => {
-      // all products where startTaxYear >= currentTax Year, endTaxYear null or >= currentTaxYear
-    }
-  );

@@ -16,6 +16,7 @@ import hooks from "@/hooks/database";
 import ModalVisibilityState from "@/types/modalVisibilityState";
 import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 import ProductCards from "@/components/implementations/ProductCards";
+import { useCurrentYearProducts } from "@/db/hooks";
 
 const DEFAULT_RULESET_ID = '2024/2025'
 
@@ -41,8 +42,8 @@ const OverviewForRuleset = () => {
 
   const navbarProps = getOverviewNavbarProps();
 
-  // @TODO use a query count for active products for current year
-  const products = hooks.useRowCount("products");
+  const currentYearProducts = useCurrentYearProducts();
+  const hasProducts = !!currentYearProducts.length;
 
   useEffect(() => {
     updateCurrentRulesetForStore(currentRulesetFormattedName);
@@ -64,10 +65,10 @@ const OverviewForRuleset = () => {
                 onPress={(key) =>
                   updateModalVisibility({ ...modalVisiblity, [key]: true })
                 }
-                hasProducts={!!products}
+                hasProducts={!!hasProducts}
               />
             )}
-            {!!products && <CompositionCard />}
+            {!!hasProducts && <CompositionCard />}
           </Cards>
           <ProductCards />
         </PageColumn>
