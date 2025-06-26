@@ -1,6 +1,28 @@
 import { Queries, ResultRow } from "tinybase/with-schemas";
 import { AnnualBalance, Schemas } from "../schema";
 
+export const allContributions = (queries: Queries<Schemas>) =>
+  queries.setQueryDefinition(
+    "allContributions",
+    "annualBalances",
+    ({ select, join }) => {
+      select("rulesetId");
+      select("productId");
+      select("deductedFromAllowancePence");
+
+      join("products", "productId");
+      select("products", "friendlyName").as("productFriendlyName");
+      select("products", "colour").as("productColour");
+      // select("products", "providerName").as("productProviderName");
+      // select("products", "productTypeName").as("productProductTypeName");
+    }
+  );
+
+export interface AllContributionsRow extends ResultRow, Required<Pick<AnnualBalance, 'rulesetId' | 'productId' | 'deductedFromAllowancePence'>> {
+  productFriendlyName: string;
+  productColour: string;
+}
+
 export const remainingBalanceByYear = (queries: Queries<Schemas>) =>
   queries.setQueryDefinition(
     "remainingBalanceByYear",

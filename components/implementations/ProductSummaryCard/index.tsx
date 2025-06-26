@@ -20,8 +20,6 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
   const currentRuleset = hooks.useValue("currentTaxYear");
   const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
 
-  console.log(JSON.stringify({ productBalanceRow, currentRuleset }));
-
   const formattedProductBalance = useMemo(() => {
     return new Intl.NumberFormat("en-GB", {
       style: "currency",

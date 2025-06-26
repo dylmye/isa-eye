@@ -5,21 +5,23 @@ import ThemedText from "@/components/ThemedText";
 import Cards from "@/components/Cards";
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
 import { useCurrentYearProducts } from "@/db/hooks";
+import hooks from "@/hooks/database";
 
 const ProductCards = () => {
   const currentYearProducts = useCurrentYearProducts();
-  const hasProducts = !!currentYearProducts.length;
+  const hasProductsInCurrentYear = !!currentYearProducts.length;
+  const productsAnyYearCount = hooks.useRowCount("products");
   return (
     <View>
       <ThemedText style={styles.title} numberOfLines={1} dynamicTypeRamp="title2">
         Accounts
       </ThemedText>
       <Cards>
-        {!hasProducts && (
-          <ThemedText>Add an account to get started!</ThemedText>
+        {!hasProductsInCurrentYear && (
+          <ThemedText>{productsAnyYearCount ? "None of your accounts have a balance in this year. Update your balance to get started." : "Add an account to get started!"}</ThemedText>
         )}
         {(currentYearProducts ?? []).map(([id, product]) => (
-          <ProductSummaryCard key={`isa-acct-${id}`} product={product} productId={id} />
+          <ProductSummaryCard key={`summary-product-${id}`} product={product} productId={id} />
         ))}
       </Cards>
     </View>

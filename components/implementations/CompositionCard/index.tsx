@@ -3,39 +3,36 @@ import { StyleSheet, View } from "react-native";
 import CompositionChartInner from "./inner";
 import Card from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
+import { useCurrentYearBalances } from "@/db/hooks";
 
-const CompositionCard = () => (
-  <Card title="Composition">
-    <View style={styles.contentContainer}>
-      <View style={styles.section}>
-        <CompositionChartInner />
-      </View>
-      <View style={styles.section}>
-        <ThemedText style={styles.keyTitle}>Key</ThemedText>
-        <View style={styles.keyIndicator}>
-          <View
-            style={[styles.keyIndicatorIcon, { backgroundColor: "black" }]}
-          />
-          <ThemedText numberOfLines={1}>Abbey National Cash ISA</ThemedText>
+const CompositionCard = () => {
+  const balances = useCurrentYearBalances();
+
+  if (!balances?.length) {
+    return <></>;
+  }
+
+  return (
+    <Card title="Composition">
+      <View style={styles.contentContainer}>
+        <View style={styles.section}>
+          <CompositionChartInner />
         </View>
-        <View style={styles.keyIndicator}>
-          <View
-            style={[styles.keyIndicatorIcon, { backgroundColor: "white" }]}
-          />
-          <ThemedText numberOfLines={1}>Aegon Stocks & Shares ISA</ThemedText>
-        </View>
-        <View style={styles.keyIndicator}>
-          <View
-            style={[styles.keyIndicatorIcon, { backgroundColor: "#fe89df" }]}
-          />
-          <ThemedText numberOfLines={1}>
-            Al Rayan Bank Innovative Finance ISA
-          </ThemedText>
+        <View style={styles.section}>
+          <ThemedText style={styles.keyTitle}>Key</ThemedText>
+          {balances.map(b => (
+            <View style={styles.keyIndicator} key={`product-key-row-${b.productId}`}>
+              <View
+                style={[styles.keyIndicatorIcon, { backgroundColor: b.productColour ?? "white" }]}
+              />
+              <ThemedText numberOfLines={1}>{b.productFriendlyName ?? "UNKNOWN NAME - USE `getProductName`"}</ThemedText>
+            </View>
+          ))}
         </View>
       </View>
-    </View>
-  </Card>
-);
+    </Card>
+  )
+};
 
 const styles = StyleSheet.create({
   contentContainer: {

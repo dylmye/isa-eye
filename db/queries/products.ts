@@ -19,7 +19,6 @@ export const allProducts = (queries: Queries<Schemas>) =>
     select("productTypeCode");
     select("productTypes", "name").as("productTypeName");
 
-    // @TODO: how to get all annualBalance values with productId match?
     join("providers", "providerId");
     join("productTypes", "productTypeCode");
   });
