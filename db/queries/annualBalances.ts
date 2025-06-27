@@ -13,14 +13,20 @@ export const allContributions = (queries: Queries<Schemas>) =>
       join("products", "productId");
       select("products", "friendlyName").as("productFriendlyName");
       select("products", "colour").as("productColour");
-      // select("products", "providerName").as("productProviderName");
-      // select("products", "productTypeName").as("productProductTypeName");
+
+      join("providers", "products", "providerId");
+      select("providers", "name").as("productProviderName");
+
+      join("productTypes", "products", "productTypeCode");
+      select("productTypes", "name").as("productProductTypeName");
     }
   );
 
 export interface AllContributionsRow extends ResultRow, Required<Pick<AnnualBalance, 'rulesetId' | 'productId' | 'deductedFromAllowancePence'>> {
   productFriendlyName: string;
   productColour: string;
+  productProviderName: string;
+  productProductTypeName: string;
 }
 
 export const remainingBalanceByYear = (queries: Queries<Schemas>) =>

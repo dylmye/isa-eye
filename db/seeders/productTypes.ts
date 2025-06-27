@@ -6,9 +6,7 @@ const seedProductTypes = (store: Store<Schemas>) => {
   const existingProductTypes = store.getTable('productTypes');
   const existingProductTypeCodes = Object.keys(existingProductTypes);
 
-  for (const typeIndex in seedData) {
-    const currentSeedData = seedData[typeIndex];
-
+  for (const currentSeedData of seedData) {
     // @TODO add a date check value to update aliases etc
     if (!existingProductTypeCodes.includes(currentSeedData.code)) {
       const { code, ...safeData } = currentSeedData;

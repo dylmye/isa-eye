@@ -6,9 +6,7 @@ const seedProviders = (store: Store<Schemas>) => {
   const existingProviders = store.getTable('providers');
   const existingPartnerIds = Object.keys(existingProviders);
 
-  for (const bankIndex in seedData) {
-    const currentSeedData = seedData[bankIndex];
-
+  for (const currentSeedData of seedData) {
     // @TODO add a date check value to update aliases etc
     if (!existingPartnerIds.includes(currentSeedData.id)) {
       store.setRow('providers', currentSeedData.id, {

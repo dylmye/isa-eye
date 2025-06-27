@@ -6,9 +6,7 @@ const seedRulesets = (store: Store<Schemas>) => {
   const existingRulesets = store.getTable('rulesets');
   const existingRulesetIds = Object.keys(existingRulesets);
 
-  for (const rulesetIndex in seedData) {
-    const currentSeedData = seedData[rulesetIndex];
-
+  for (const currentSeedData of seedData) {
     // @TODO add a date check value
     if (!existingRulesetIds.includes(currentSeedData.name)) {
       store.setRow('rulesets', currentSeedData.name, {

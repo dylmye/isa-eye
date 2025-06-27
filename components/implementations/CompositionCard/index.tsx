@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import CompositionChartInner from "./inner";
 import Card from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
 import { useCurrentYearBalances } from "@/db/hooks";
+import getProductName from "@/utils/getProductName";
 
 const CompositionCard = () => {
   const balances = useCurrentYearBalances();
+
+  const chartProducts = useMemo(() => {
+    return balances.map(b => ({
+      id: b.productId,
+      value: b.percentage,
+      label: getProductName({ friendlyName: b.productFriendlyName, providerName: b.productProviderName, productTypeName: b.productProductTypeName }),
+      colour: b.productColour ?? "white"
+    }))
+  }, [balances])
 
   if (!balances?.length) {
     return <></>;
@@ -16,16 +26,16 @@ const CompositionCard = () => {
     <Card title="Composition">
       <View style={styles.contentContainer}>
         <View style={styles.section}>
-          <CompositionChartInner />
+          <CompositionChartInner products={chartProducts} />
         </View>
         <View style={styles.section}>
           <ThemedText style={styles.keyTitle}>Key</ThemedText>
-          {balances.map(b => (
-            <View style={styles.keyIndicator} key={`product-key-row-${b.productId}`}>
+          {chartProducts.map(p => (
+            <View style={styles.keyIndicator} key={`product-key-row-${p.id}`}>
               <View
-                style={[styles.keyIndicatorIcon, { backgroundColor: b.productColour ?? "white" }]}
+                style={[styles.keyIndicatorIcon, { backgroundColor: p.colour }]}
               />
-              <ThemedText numberOfLines={1}>{b.productFriendlyName ?? "UNKNOWN NAME - USE `getProductName`"}</ThemedText>
+              <ThemedText numberOfLines={1}>{p.label}</ThemedText>
             </View>
           ))}
         </View>
