@@ -1,6 +1,6 @@
 import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
-import { StyleSheet, View } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import BankLogoIcon from "../BankLogoIcon";
 import getProductName from "@/utils/getProductName";
 import { AllProductsRow } from "@/db/queries/products";
@@ -20,17 +20,25 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
   const currentRuleset = hooks.useValue("currentTaxYear");
   const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
 
+  const calculatedBalancePence = useMemo<number>(() => {
+    const balanceRowBalance = Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0');
+    const initialAdd = (product.startTaxYear === currentRuleset && product?.startingBalancePence && Number.isInteger(product.startingBalancePence)) ? Number.parseFloat(product.startingBalancePence) : 0;
+    return balanceRowBalance + initialAdd;
+  }, [productBalanceRow.lastUpdatedDateUnix, product.startTaxYear, currentRuleset])
+
   const formattedProductBalance = useMemo(() => {
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
       maximumFractionDigits: 2,
       trailingZeroDisplay: "stripIfInteger",
-    }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0') / 100)
-  }, [productBalanceRow.lastUpdatedDateUnix]);
+    }).format(calculatedBalancePence / 100)
+  }, [productBalanceRow.lastUpdatedDateUnix, currentRuleset]);
+
+  const productColourBackgroundWeb = useMemo(() => `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`, [product.providerColour])
 
   return (
-    <CardBase style={[styles.container, disabled && styles.containerDisabled]}>
+    <CardBase style={[styles.container, disabled && styles.containerDisabled]} highlightColourWeb={productColourBackgroundWeb}>
       <View style={styles.name}>
         <BankLogoIcon
           bankIcon={{ uri: product.providerIconRelativeUrl }}

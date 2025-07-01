@@ -1,8 +1,8 @@
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useMemo } from "react";
 import {
-  DimensionValue,
+  ColorValue,
   Platform,
   StyleProp,
   StyleSheet,
@@ -12,28 +12,35 @@ import {
 
 interface CardBaseProps {
   style?: StyleProp<ViewStyle>;
+  highlightColourWeb?: string;
 }
 
-const CardBase = ({ children, style }: PropsWithChildren<CardBaseProps>) => {
+const CardBase = ({ children, style, highlightColourWeb }: PropsWithChildren<CardBaseProps>) => {
   const colourScheme = useColorScheme();
+
+  const isWeb = Platform.OS === 'web';
+
+  const baseBackgroundColour = useMemo<ColorValue>(() => {
+    return colourScheme === "light" ? getCrossPlatformColour(
+      "secondarySystemBackground",
+      "@android:color/system_accent1_900",
+      "rgb(206, 206, 206)"
+    ) : getCrossPlatformColour(
+      "secondarySystemBackground",
+      "@android:color/system_accent1_900",
+      "rgba(255, 255, 255, 0.15)"
+    );
+  }, [colourScheme])
 
   const schemeStyles =
     colourScheme === "light"
       ? {
-          borderColor: 'rgba(0, 0, 0, 0.04)',
-          borderWidth: 2,
-          backgroundColor: getCrossPlatformColour(
-            "secondarySystemBackground",
-            "@android:color/system_accent1_900",
-            "rgb(206, 206, 206)"
-          ),
-        }
+        borderColor: 'rgba(0, 0, 0, 0.04)',
+        borderWidth: 2,
+        background: highlightColourWeb && isWeb ? `${baseBackgroundColour.toString()} ${highlightColourWeb}` : baseBackgroundColour,
+      }
       : {
-        backgroundColor: getCrossPlatformColour(
-          "secondarySystemBackground",
-          "@android:color/system_accent1_900",
-          "rgba(255, 255, 255, 0.15)"
-        )
+        background: highlightColourWeb && isWeb ? `${baseBackgroundColour.toString()} ${highlightColourWeb}` : baseBackgroundColour,
       };
 
   return (

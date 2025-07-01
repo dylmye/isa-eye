@@ -12,6 +12,7 @@ const seedProviders = (store: Store<Schemas>) => {
       store.setRow('providers', currentSeedData.id, {
         name: currentSeedData.name,
         iconRelativeUrl: currentSeedData.iconRelativeUrl,
+        colour: currentSeedData.colour,
       })
 
       for (const aliasIndex in currentSeedData.aliases) {

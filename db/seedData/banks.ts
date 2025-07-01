@@ -644,7 +644,7 @@ const banks: readonly BankSeedData[] = [
     id: "oak-north",
     name: "Oak North",
     iconRelativeUrl: 'https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/oak-north.svg',
-    aliases: ["on"],
+    aliases: ["on", "oaknorth"],
     colour: "#2adaa5",
   },
   {
@@ -847,7 +847,7 @@ const banks: readonly BankSeedData[] = [
     id: "state-bank-of-india",
     name: "SBI",
     iconRelativeUrl: 'https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/state-bank-of-india.svg',
-    aliases: ["standard bank of india"],
+    aliases: ["state bank of india"],
     colour: "#2cb9f1",
   },
   {
@@ -903,7 +903,7 @@ const banks: readonly BankSeedData[] = [
     id: "united-national",
     name: "United National",
     iconRelativeUrl: 'https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/united-national.svg',
-    aliases: ["un"],
+    aliases: ["un", "ubl"],
     colour: "#0083ca",
   },
   {

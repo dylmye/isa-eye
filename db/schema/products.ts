@@ -9,7 +9,6 @@ import type { Row } from "tinybase/with-schemas";
  * ID format: integer
  */
 const productsTable = {
-  colour: { type: 'string' },
   startTaxYear: { type: 'string' },
   endTaxYear: { type: 'string' },
   providerId: { type: 'string' },

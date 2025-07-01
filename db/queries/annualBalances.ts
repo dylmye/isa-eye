@@ -12,10 +12,12 @@ export const allContributions = (queries: Queries<Schemas>) =>
 
       join("products", "productId");
       select("products", "friendlyName").as("productFriendlyName");
-      select("products", "colour").as("productColour");
+      select("products", "startTaxYear").as("productStartTaxYear");
+      select("products", "startingBalancePence").as("productInitialBalancePence");
 
       join("providers", "products", "providerId");
       select("providers", "name").as("productProviderName");
+      select("providers", "colour").as("productProviderColour");
 
       join("productTypes", "products", "productTypeCode");
       select("productTypes", "name").as("productProductTypeName");
@@ -24,7 +26,9 @@ export const allContributions = (queries: Queries<Schemas>) =>
 
 export interface AllContributionsRow extends ResultRow, Required<Pick<AnnualBalance, 'rulesetId' | 'productId' | 'deductedFromAllowancePence'>> {
   productFriendlyName: string;
-  productColour: string;
+  productStartTaxYear: string;
+  productInitialBalancePence: string;
+  productProviderColour: string;
   productProviderName: string;
   productProductTypeName: string;
 }

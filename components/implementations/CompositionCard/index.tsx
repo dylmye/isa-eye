@@ -14,7 +14,7 @@ const CompositionCard = () => {
       id: b.productId,
       value: b.percentage,
       label: getProductName({ friendlyName: b.productFriendlyName, providerName: b.productProviderName, productTypeName: b.productProductTypeName }),
-      colour: b.productColour ?? "white"
+      colour: b.productProviderColour ?? "white"
     }))
   }, [balances])
 

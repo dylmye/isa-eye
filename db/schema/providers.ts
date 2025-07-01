@@ -12,6 +12,7 @@ import type { Row } from "tinybase/with-schemas";
 const providersTable = {
   name: { type: 'string' },
   iconRelativeUrl: { type: 'string' },
+  colour: { type: 'string', default: '#ffffff' },
 } satisfies Record<string, CellSchema>
 
 export default providersTable;

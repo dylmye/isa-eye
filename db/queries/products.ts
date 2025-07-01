@@ -15,6 +15,7 @@ export const allProducts = (queries: Queries<Schemas>) =>
     select("providerId");
     select("providers", "name").as("providerName");
     select("providers", "iconRelativeUrl").as("providerIconRelativeUrl");
+    select("providers", "colour").as("providerColour");
 
     select("productTypeCode");
     select("productTypes", "name").as("productTypeName");
@@ -26,6 +27,7 @@ export const allProducts = (queries: Queries<Schemas>) =>
 export interface AllProductsRow extends ResultRow, Required<Pick<Product, 'friendlyName' | 'startTaxYear' | 'endTaxYear' | 'flexible' | 'startingBalancePence'>> {
   providerName: string;
   providerIconRelativeUrl: string;
+  providerColour: string;
   productTypeName: string;
 }
 
