@@ -20,20 +20,15 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
   const currentRuleset = hooks.useValue("currentTaxYear");
   const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
 
-  const calculatedBalancePence = useMemo<number>(() => {
-    const balanceRowBalance = Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0');
-    const initialAdd = (product.startTaxYear === currentRuleset && product?.startingBalancePence && Number.isInteger(product.startingBalancePence)) ? Number.parseFloat(product.startingBalancePence) : 0;
-    return balanceRowBalance + initialAdd;
-  }, [productBalanceRow.lastUpdatedDateUnix, product.startTaxYear, currentRuleset])
-
   const formattedProductBalance = useMemo(() => {
+    console.log(product?.startingBalancePence);
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
       maximumFractionDigits: 2,
       trailingZeroDisplay: "stripIfInteger",
-    }).format(calculatedBalancePence / 100)
-  }, [productBalanceRow.lastUpdatedDateUnix, currentRuleset]);
+    }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0') / 100)
+  }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
   const productColourBackgroundWeb = useMemo(() => `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`, [product.providerColour])
 
@@ -55,7 +50,7 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
         </ThemedText>
       </View>
       <ThemedText type="defaultSemiBold" style={styles.valueText}>
-        {formattedProductBalance}
+        <abbr title={`You've used ${formattedProductBalance} of your allowance with this account.`}>{formattedProductBalance}</abbr>
       </ThemedText>
     </CardBase>
   )

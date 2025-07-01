@@ -95,13 +95,6 @@ const AddProductModalUI = ({
           defaultValue={false}
           note="Check with your bank whether this ISA is flexible."
         />
-        <ControlledCurrencyField<AddProductData, "openingBalance">
-          control={control}
-          errors={errors}
-          name="openingBalance"
-          label="Starting Balance"
-          note="This balance won't contribute to the allowance of the year this account was opened."
-        />
         <SubmitButton onPress={handleSubmit(onSubmit)} />
       </FormUI>
     </AddModal>

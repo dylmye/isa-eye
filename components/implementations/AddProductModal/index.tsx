@@ -12,7 +12,6 @@ const AddProductModal = (props: AddModalProps) => {
       friendlyName: data.productName,
       productTypeCode: data.isaTypeCode,
       flexible: data.isFlexible,
-      startingBalancePence: String(data.openingBalance * 100),
     } satisfies Product)
   );
   return <AddProductModalUI onSubmitForm={onSubmitForm} {...props} />;
