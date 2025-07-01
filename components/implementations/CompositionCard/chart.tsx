@@ -2,7 +2,6 @@ import { Pie, PolarChart } from "victory-native";
 import CompositionChartProps from "./interface";
 
 const CompositionChart = ({ products }: CompositionChartProps) => {
-  console.log(products)
   return (
   <PolarChart
     data={products ?? []}

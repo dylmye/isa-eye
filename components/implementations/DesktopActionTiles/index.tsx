@@ -39,6 +39,7 @@ const DesktopActionTiles = ({
       <ActionTile
         title="Bulk Import"
         onPress={() => onPress("bulkUpload")}
+        disabled
         icon={
           <MaterialCommunityIcons {...sharedIconProps} name="database-import" />
         }

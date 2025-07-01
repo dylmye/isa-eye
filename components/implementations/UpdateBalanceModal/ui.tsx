@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 import AddModal, { AddModalProps } from "@/components/AddModal";
 import { ControlledCurrencyField } from "@/components/fields";
 import SubmitButton from "@/components/fields/SubmitButton";
 import FormUI from "@/components/fields/FormUI";
+import hooks from "@/hooks/database";
 
 import RulesetDropdownField from "../RulesetDropdownField";
 import ProductDropdownField from "../ProductDropdownField";
@@ -15,7 +17,7 @@ interface UpdateBalanceModalUIProps extends AddModalProps {
 export interface UpdateBalanceData {
   /** Product to update balance of */
   productId: string;
-  rulesetId?: string;
+  rulesetId: string;
   /** The new balance for the product. */
   amount?: number;
 }
@@ -24,12 +26,14 @@ const UpdateBalanceModalUI = ({
   onSubmitForm,
   ...props
 }: UpdateBalanceModalUIProps) => {
+  const currentRulesetId = hooks.useValue("currentTaxYear");
   const {
     control,
     handleSubmit,
     reset,
     formState: { errors },
     watch,
+    setValue,
   } = useForm<UpdateBalanceData>();
 
   const onDismiss = () => {
@@ -42,11 +46,20 @@ const UpdateBalanceModalUI = ({
     onDismiss();
   };
 
-  const currentProductId = watch("productId");
+  const selectedProductId = watch("productId");
+  const selectedRulesetId = watch("rulesetId");
+  const selectedProductIsFlexible = hooks.useCell("products", selectedProductId, "flexible") as boolean | undefined;
+  const selectedExistingBalance = hooks.useRow("annualBalances", `${selectedProductId}-${selectedRulesetId}`);
+
+  useEffect(() => {
+    if (selectedExistingBalance?.deductedFromAllowancePence) {
+      setValue("amount", Number.parseFloat(selectedExistingBalance.deductedFromAllowancePence) / 100);
+    }
+  }, [selectedExistingBalance, selectedRulesetId])
 
   return (
     <AddModal {...props}>
-      <AddModal.Header text={"Update balance"} onDismiss={onDismiss} />
+      <AddModal.Header text={"Update contribution balance"} onDismiss={onDismiss} />
       <FormUI>
         <ProductDropdownField<UpdateBalanceData, "productId">
           control={control}
@@ -55,11 +68,12 @@ const UpdateBalanceModalUI = ({
           label="Account"
           required
         />
-        {currentProductId && (
+        {selectedProductId && (
           <>
             <RulesetDropdownField<UpdateBalanceData, "rulesetId">
               control={control}
               errors={errors}
+              defaultValue={currentRulesetId as string}
               name="rulesetId"
               label="Tax Year"
               required
@@ -70,8 +84,10 @@ const UpdateBalanceModalUI = ({
               name="amount"
               label="Allowance used"
               required
-              note={
-                "Enter the sum of all contributions you've made this tax year so far. If your account is flexible, deduct any withdrawals (up to the total you've contributed.)"
+              note={selectedProductIsFlexible ? `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
+If you've withdrawn more than the amount you've contributed this tax year, enter £0 and don't edit previous year contributions.
+Don't include transfers and interest/gains earned.` :
+                "Enter the sum of all contributions you've made during this tax year. Don't subtract withdrawals. Don't include transfers and interest/gains earned."
               }
             />
           </>

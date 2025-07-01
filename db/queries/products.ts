@@ -10,7 +10,6 @@ export const allProducts = (queries: Queries<Schemas>) =>
     select("startTaxYear");
     select("endTaxYear");
     select("flexible");
-    select("startingBalancePence");
 
     select("providerId");
     select("providers", "name").as("providerName");
@@ -24,7 +23,7 @@ export const allProducts = (queries: Queries<Schemas>) =>
     join("productTypes", "productTypeCode");
   });
 
-export interface AllProductsRow extends ResultRow, Required<Pick<Product, 'friendlyName' | 'startTaxYear' | 'endTaxYear' | 'flexible' | 'startingBalancePence'>> {
+export interface AllProductsRow extends ResultRow, Required<Pick<Product, 'friendlyName' | 'startTaxYear' | 'endTaxYear' | 'flexible'>> {
   providerName: string;
   providerIconRelativeUrl: string;
   providerColour: string;

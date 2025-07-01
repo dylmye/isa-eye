@@ -1,14 +1,14 @@
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { Pressable, StyleSheet, useColorScheme, View } from "react-native";
+import { Pressable, PressableProps, StyleSheet, useColorScheme, View } from "react-native";
 import ThemedText from "./ThemedText";
 
-interface ActionTileProps {
+interface ActionTileProps extends PressableProps {
   title: string;
   icon: React.ReactNode;
   onPress: () => void;
 }
 
-const ActionTile = ({ title, icon, onPress }: ActionTileProps) => {
+const ActionTile = ({ title, icon, onPress, ...props }: ActionTileProps) => {
   const colourScheme = useColorScheme();
 
   const schemeStyles =
@@ -31,7 +31,7 @@ const ActionTile = ({ title, icon, onPress }: ActionTileProps) => {
         };
 
   return (
-    <Pressable style={[styles.container, schemeStyles]} onPress={onPress}>
+    <Pressable {...props} style={[styles.container, schemeStyles]} onPress={onPress}>
       {icon}
       <ThemedText>{title}</ThemedText>
     </Pressable>

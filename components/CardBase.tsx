@@ -7,15 +7,16 @@ import {
   StyleProp,
   StyleSheet,
   View,
+  ViewProps,
   ViewStyle,
 } from "react-native";
 
-interface CardBaseProps {
+interface CardBaseProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   highlightColourWeb?: string;
 }
 
-const CardBase = ({ children, style, highlightColourWeb }: PropsWithChildren<CardBaseProps>) => {
+const CardBase = ({ children, style, highlightColourWeb, ...props }: PropsWithChildren<CardBaseProps>) => {
   const colourScheme = useColorScheme();
 
   const isWeb = Platform.OS === 'web';
@@ -45,6 +46,7 @@ const CardBase = ({ children, style, highlightColourWeb }: PropsWithChildren<Car
 
   return (
     <View
+      {...props}
       style={[styles.container, schemeStyles, style]}
     >
       {children}

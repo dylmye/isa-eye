@@ -1,9 +1,9 @@
 import { useActionSheet } from "@expo/react-native-action-sheet";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { StyleSheet } from "react-native";
+
 import { getCrossPlatformColour } from "./getCrossPlatformColour";
 import { useThemeColor } from "./useThemeColor";
-import { router } from "expo-router";
 
 export const useAddButtonDisambi = (
   onUpdateBalancePress: () => void,
@@ -28,13 +28,13 @@ export const useAddButtonDisambi = (
       onPress: () => onAddProductPress(),
       icon: <MaterialCommunityIcons name="bank-plus" {...sharedIconProps} />,
     },
-    {
-      label: "Bulk Import",
-      onPress: () => console.log("3"),
-      icon: (
-        <MaterialCommunityIcons name="database-import" {...sharedIconProps} />
-      ),
-    },
+    // {
+    //   label: "Bulk Import",
+    //   onPress: () => console.log("3"),
+    //   icon: (
+    //     <MaterialCommunityIcons name="database-import" {...sharedIconProps} />
+    //   ),
+    // },
   ];
 
   return () => {

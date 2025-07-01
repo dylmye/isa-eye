@@ -21,7 +21,6 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
   const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
 
   const formattedProductBalance = useMemo(() => {
-    console.log(product?.startingBalancePence);
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
@@ -30,10 +29,12 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
     }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0') / 100)
   }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
+  const formattedAccountName = getProductName(product)
+
   const productColourBackgroundWeb = useMemo(() => `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`, [product.providerColour])
 
   return (
-    <CardBase style={[styles.container, disabled && styles.containerDisabled]} highlightColourWeb={productColourBackgroundWeb}>
+    <CardBase style={[styles.container, disabled && styles.containerDisabled]} highlightColourWeb={productColourBackgroundWeb} accessibilityLabel={`Your ${formattedAccountName} account has used ${formattedProductBalance} of your ${currentRuleset} ISA allowance.`} accessibilityRole="list">
       <View style={styles.name}>
         <BankLogoIcon
           bankIcon={{ uri: product.providerIconRelativeUrl }}
@@ -46,11 +47,11 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
           numberOfLines={1}
           ellipsizeMode="tail"
         >
-          {getProductName(product)}
+          {formattedAccountName}
         </ThemedText>
       </View>
       <ThemedText type="defaultSemiBold" style={styles.valueText}>
-        <abbr title={`You've used ${formattedProductBalance} of your allowance with this account.`}>{formattedProductBalance}</abbr>
+        {formattedProductBalance}
       </ThemedText>
     </CardBase>
   )

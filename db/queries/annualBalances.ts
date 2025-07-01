@@ -13,7 +13,6 @@ export const allContributions = (queries: Queries<Schemas>) =>
       join("products", "productId");
       select("products", "friendlyName").as("productFriendlyName");
       select("products", "startTaxYear").as("productStartTaxYear");
-      select("products", "startingBalancePence").as("productInitialBalancePence");
 
       join("providers", "products", "providerId");
       select("providers", "name").as("productProviderName");
