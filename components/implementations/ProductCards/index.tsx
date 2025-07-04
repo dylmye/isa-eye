@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import ThemedText from "@/components/ThemedText";
@@ -6,8 +6,10 @@ import Cards from "@/components/Cards";
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
 import { useCurrentYearProducts } from "@/db/hooks";
 import hooks from "@/hooks/database";
+import EditProductModal from "../EditProductModal";
 
 const ProductCards = () => {
+  const [selectedProductId, setSelectedProductId] = useState<string | null>();
   const currentYearProducts = useCurrentYearProducts();
   const hasProductsInCurrentYear = !!currentYearProducts.length;
   const productsAnyYearCount = hooks.useRowCount("products");
@@ -21,9 +23,10 @@ const ProductCards = () => {
           <ThemedText>{productsAnyYearCount ? "None of your accounts have a balance in this year. Update your balance to get started." : "Add an account to get started!"}</ThemedText>
         )}
         {(currentYearProducts ?? []).map(([id, product]) => (
-          <ProductSummaryCard key={`summary-product-${id}`} product={product} productId={id} />
+          <ProductSummaryCard key={`summary-product-${id}`} product={product} productId={id} onPress={() => setSelectedProductId(id)} />
         ))}
       </Cards>
+      <EditProductModal isVisible={!!selectedProductId} onDismiss={() => setSelectedProductId(null)} existingId={selectedProductId} />
     </View>
   )
 };

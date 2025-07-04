@@ -28,6 +28,7 @@ const AddModalHeader = ({ text, onDismiss }: AddModalHeaderProps) => (
 export interface AddModalProps {
   isVisible: boolean;
   onDismiss?: () => void;
+  existingId?: string | null;
 }
 
 const AddModal = ({

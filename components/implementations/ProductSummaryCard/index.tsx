@@ -1,11 +1,12 @@
+import { useMemo } from "react";
+import { StyleSheet, View } from "react-native";
+
+import BankLogoIcon from "../BankLogoIcon";
 import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
-import BankLogoIcon from "../BankLogoIcon";
 import getProductName from "@/utils/getProductName";
 import { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
-import { useMemo } from "react";
 
 export interface ProductSummaryCardProps {
   /** Product is closed or non-interactable
@@ -14,9 +15,10 @@ export interface ProductSummaryCardProps {
   disabled?: boolean;
   product: AllProductsRow;
   productId: string;
+  onPress?: () => void;
 }
 
-const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSummaryCardProps) => {
+const ProductSummaryCard = ({ disabled = false, product, productId, onPress = () => {} }: ProductSummaryCardProps) => {
   const currentRuleset = hooks.useValue("currentTaxYear");
   const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
 
@@ -34,7 +36,7 @@ const ProductSummaryCard = ({ disabled = false, product, productId }: ProductSum
   const productColourBackgroundWeb = useMemo(() => `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`, [product.providerColour])
 
   return (
-    <CardBase style={[styles.container, disabled && styles.containerDisabled]} highlightColourWeb={productColourBackgroundWeb} accessibilityLabel={`Your ${formattedAccountName} account has used ${formattedProductBalance} of your ${currentRuleset} ISA allowance.`} accessibilityRole="list">
+    <CardBase style={[styles.container, disabled && styles.containerDisabled]} highlightColourWeb={productColourBackgroundWeb} accessibilityLabel={`Your ${formattedAccountName} account has used ${formattedProductBalance} of your ${currentRuleset} ISA allowance.`} accessibilityRole="list" onPress={onPress}>
       <View style={styles.name}>
         <BankLogoIcon
           bankIcon={{ uri: product.providerIconRelativeUrl }}

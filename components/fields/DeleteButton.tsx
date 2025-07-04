@@ -1,16 +1,16 @@
 import { Button, View } from "react-native";
 import styles from "./shared/styles";
 
-interface SubmitButtonProps {
+interface DeleteButtonProps {
   onPress: () => void;
 }
 
 /** @TODO change color of button on web */
 
-const SubmitButton = ({ onPress }: SubmitButtonProps) => (
+const DeleteButton = ({ onPress }: DeleteButtonProps) => (
   <View style={styles.actionButton}>
-    <Button title="Submit" onPress={onPress} />
+    <Button title="Delete" onPress={onPress} />
   </View>
 );
 
-export default SubmitButton;
+export default DeleteButton;

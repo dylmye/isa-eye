@@ -4,6 +4,7 @@ import { PropsWithChildren, useMemo } from "react";
 import {
   ColorValue,
   Platform,
+  Pressable,
   StyleProp,
   StyleSheet,
   View,
@@ -14,9 +15,10 @@ import {
 interface CardBaseProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
   highlightColourWeb?: string;
+  onPress?: () => void;
 }
 
-const CardBase = ({ children, style, highlightColourWeb, ...props }: PropsWithChildren<CardBaseProps>) => {
+const CardBase = ({ children, style, highlightColourWeb, onPress, ...props }: PropsWithChildren<CardBaseProps>) => {
   const colourScheme = useColorScheme();
 
   const isWeb = Platform.OS === 'web';
@@ -43,6 +45,12 @@ const CardBase = ({ children, style, highlightColourWeb, ...props }: PropsWithCh
       : {
         background: highlightColourWeb && isWeb ? `${baseBackgroundColour.toString()} ${highlightColourWeb}` : baseBackgroundColour,
       };
+
+  if (onPress) {
+    return (
+      <Pressable onPress={onPress} {...props} style={[styles.container, schemeStyles, style]}>{children}</Pressable>
+    )
+  }
 
   return (
     <View

@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import AddModal, { AddModalProps } from "@/components/AddModal";
 import {
   ControlledTextField,
-  ControlledCurrencyField,
   ControlledCheckboxField,
 } from "@/components/fields";
 import SubmitButton from "@/components/fields/SubmitButton";
@@ -22,7 +21,6 @@ export interface AddProductData {
   openedInTaxYear: string;
   isaTypeCode: string;
   isFlexible: boolean;
-  openingBalance: number;
 }
 
 const AddProductModalUI = ({

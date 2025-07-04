@@ -44,8 +44,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     paddingVertical: 6,
   },
-  submit: {
+  actionButton: {
     marginTop: 12,
+    flex: 1,
   },
   messageShared: {
     padding: 6,

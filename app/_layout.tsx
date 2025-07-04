@@ -8,6 +8,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
+import { PortalHost } from '@rn-primitives/portal';
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
@@ -31,6 +32,7 @@ const RootLayout = () => {
           <Stack screenOptions={{ headerShown: false }} />
         </ActionSheetProvider>
         <StatusBar style="auto" />
+        <PortalHost />
       </ThemeProvider>
     </TinybaseProvider>
   );

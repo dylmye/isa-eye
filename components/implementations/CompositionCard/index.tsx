@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   },
   section: {
     flex: 1,
+    minWidth: 200,
   },
   keyTitle: {
     fontWeight: "bold",
