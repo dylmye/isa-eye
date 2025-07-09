@@ -9,7 +9,7 @@ interface DeleteButtonProps {
 
 const DeleteButton = ({ onPress }: DeleteButtonProps) => (
   <View style={styles.actionButton}>
-    <Button title="Delete" onPress={onPress} />
+    <Button title="Delete" onPress={onPress} color="red" />
   </View>
 );
 

@@ -13,6 +13,7 @@ import hooks from "@/hooks/database";
 
 interface EditProductModalUIProps extends AddModalProps {
   onSubmitForm: (data: EditProductData) => void;
+  onPressDelete: () => void;
 }
 
 export interface EditProductData {
@@ -22,6 +23,7 @@ export interface EditProductData {
 
 const EditProductModalUI = ({
   onSubmitForm,
+  onPressDelete,
   existingId,
   ...props
 }: EditProductModalUIProps) => {
@@ -42,6 +44,11 @@ const EditProductModalUI = ({
 
   const onSubmit = (data: EditProductData) => {
     onSubmitForm(data);
+    onDismiss();
+  };
+
+  const onDelete = () => {
+    onPressDelete();
     onDismiss();
   };
 
@@ -66,7 +73,7 @@ const EditProductModalUI = ({
             note="Check with your bank whether this ISA is flexible."
           />
           <View style={{ display: "flex", flexDirection: "row", gap: 12 }}>
-            <DeleteButton onPress={() => {}} />
+            <DeleteButton onPress={onDelete} />
             <SubmitButton onPress={handleSubmit(onSubmit)} />
           </View>
         </FormUI>

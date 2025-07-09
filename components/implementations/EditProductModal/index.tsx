@@ -13,7 +13,28 @@ const EditProductModal = (props: AddModalProps) => {
         flexible: data.isFlexible,
       }) satisfies Product,
   );
-  return <EditProductModalUI onSubmitForm={onSubmitForm} {...props} />;
+  const onPressDelete = hooks.useDelRowCallback(
+    "products",
+    props.existingId as string,
+    undefined,
+    (store) => {
+      const rowIdsToDelete: string[] = [];
+      store.forEachRow("annualBalances", (rowId, _forEachCell) => {
+        // @TODO: a better way to do this
+        if (rowId.startsWith(props.existingId as string)) {
+          rowIdsToDelete.push(rowId);
+        }
+      });
+      rowIdsToDelete.forEach((rId) => store.delRow("annualBalances", rId));
+    },
+  );
+  return (
+    <EditProductModalUI
+      onSubmitForm={onSubmitForm}
+      onPressDelete={onPressDelete}
+      {...props}
+    />
+  );
 };
 
 export default EditProductModal;
