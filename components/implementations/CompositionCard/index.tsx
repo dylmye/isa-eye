@@ -1,26 +1,30 @@
 import React, { useMemo } from "react";
-import { StyleSheet, View, useWindowDimensions } from "react-native";
-import CompositionChartInner from "./inner";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import Card from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
 import { useCurrentYearBalances } from "@/db/hooks";
 import getProductName from "@/utils/getProductName";
+import CompositionChartInner from "./inner";
 
 const CompositionCard = () => {
   const balances = useCurrentYearBalances();
   const { width } = useWindowDimensions();
 
   const chartProducts = useMemo(() => {
-    return balances.map(b => ({
+    return balances.map((b) => ({
       id: b.productId,
       value: b.percentage,
-      label: getProductName({ friendlyName: b.productFriendlyName, providerName: b.productProviderName, productTypeName: b.productProductTypeName }),
-      colour: b.productProviderColour ?? "white"
-    }))
-  }, [balances])
+      label: getProductName({
+        friendlyName: b.productFriendlyName,
+        providerName: b.productProviderName,
+        productTypeName: b.productProductTypeName,
+      }),
+      colour: b.productProviderColour ?? "white",
+    }));
+  }, [balances]);
 
   if (!balances?.length) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -29,20 +33,25 @@ const CompositionCard = () => {
         <View style={styles.section}>
           <CompositionChartInner products={chartProducts} />
         </View>
-        {width > 450 && (<View style={styles.section}>
-          <ThemedText style={styles.keyTitle}>Key</ThemedText>
-          {chartProducts.map(p => (
-            <View style={styles.keyIndicator} key={`product-key-row-${p.id}`}>
-              <View
-                style={[styles.keyIndicatorIcon, { backgroundColor: p.colour }]}
-              />
-              <ThemedText numberOfLines={1}>{p.label}</ThemedText>
-            </View>
-          ))}
-        </View>)}
+        {width > 450 && (
+          <View style={styles.section}>
+            <ThemedText style={styles.keyTitle}>Key</ThemedText>
+            {chartProducts.map((p) => (
+              <View style={styles.keyIndicator} key={`product-key-row-${p.id}`}>
+                <View
+                  style={[
+                    styles.keyIndicatorIcon,
+                    { backgroundColor: p.colour },
+                  ]}
+                />
+                <ThemedText numberOfLines={1}>{p.label}</ThemedText>
+              </View>
+            ))}
+          </View>
+        )}
       </View>
     </Card>
-  )
+  );
 };
 
 const styles = StyleSheet.create({

@@ -1,18 +1,18 @@
-import { Store } from "tinybase/with-schemas";
-import { Schemas } from "../schema";
+import type { Store } from "tinybase/with-schemas";
+import type { Schemas } from "../schema";
 import { default as seedData } from "../seedData/isaTypes";
 
 const seedProductTypes = (store: Store<Schemas>) => {
-  const existingProductTypes = store.getTable('productTypes');
+  const existingProductTypes = store.getTable("productTypes");
   const existingProductTypeCodes = Object.keys(existingProductTypes);
 
   for (const currentSeedData of seedData) {
+    const { code, ...safeData } = currentSeedData;
     // @TODO add a date check value to update aliases etc
-    if (!existingProductTypeCodes.includes(currentSeedData.code)) {
-      const { code, ...safeData } = currentSeedData;
-      store.setRow('productTypes', currentSeedData.code, safeData)
+    if (!existingProductTypeCodes.includes(code)) {
+      store.setRow("productTypes", code, safeData);
     }
   }
-}
+};
 
 export default seedProductTypes;

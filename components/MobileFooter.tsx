@@ -1,8 +1,8 @@
-import { StyleSheet, View } from "react-native";
-import React from "react";
-import { router } from "expo-router";
+import type { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
+import { router } from "expo-router";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import { useAddButtonDisambi } from "@/hooks/useAddButtonDisambi";
@@ -36,7 +36,7 @@ const MobileFooter = ({
 }: MobileFooterProps) => {
   const onPressAdd = useAddButtonDisambi(
     onUpdateBalancePress,
-    onAddProductPress
+    onAddProductPress,
   );
 
   return (
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgb(39, 39, 39)"
+      "rgb(39, 39, 39)",
     ),
     shadowColor: "#404040",
     shadowOffset: {

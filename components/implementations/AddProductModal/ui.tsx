@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 
-import AddModal, { AddModalProps } from "@/components/AddModal";
+import AddModal, { type AddModalProps } from "@/components/AddModal";
 import {
-  ControlledTextField,
   ControlledCheckboxField,
+  ControlledTextField,
 } from "@/components/fields";
-import SubmitButton from "@/components/fields/SubmitButton";
 import FormUI from "@/components/fields/FormUI";
+import SubmitButton from "@/components/fields/SubmitButton";
+import ProductTypeDropdownField from "../ProductTypeDropdownField";
 import ProviderDropdownField from "../ProviderDropdownField";
 import RulesetDropdownField from "../RulesetDropdownField";
-import ProductTypeDropdownField from "../ProductTypeDropdownField";
 
 interface AddProductModalUIProps extends AddModalProps {
   onSubmitForm: (data: AddProductData) => void;
@@ -48,10 +48,7 @@ const AddProductModalUI = ({
     <AddModal {...props}>
       <AddModal.Header text="Add account" onDismiss={onDismiss} />
       <FormUI>
-        <ProviderDropdownField<
-          AddProductData,
-          "providerId"
-        >
+        <ProviderDropdownField<AddProductData, "providerId">
           control={control}
           errors={errors}
           name="providerId"
@@ -64,10 +61,7 @@ const AddProductModalUI = ({
           name="productName"
           label="Nickname"
         />
-        <RulesetDropdownField<
-          AddProductData,
-          "openedInTaxYear"
-        >
+        <RulesetDropdownField<AddProductData, "openedInTaxYear">
           control={control}
           errors={errors}
           name="openedInTaxYear"
@@ -75,10 +69,7 @@ const AddProductModalUI = ({
           required
           note="The tax year runs from 6th April to 5th April, so an ISA opened on 2nd Feb 2024 would be in the 2023/2024 tax year."
         />
-        <ProductTypeDropdownField<
-          AddProductData,
-          "isaTypeCode"
-        >
+        <ProductTypeDropdownField<AddProductData, "isaTypeCode">
           control={control}
           errors={errors}
           name="isaTypeCode"

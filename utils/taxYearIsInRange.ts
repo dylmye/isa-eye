@@ -2,12 +2,18 @@
  * Determine if the target taxyear is in range of the start and end.
  * @returns true if `target` is in/after the start TY and in/before the end TY
  */
-export const taxYearIsInRange = (target: string, startRange: string, endRange?: string): boolean => {
-  const startYear: number = Number(startRange.split("/")[0])
-  const endYear: number | null = endRange ? Number(endRange.split("/")[1]) : null;
+export const taxYearIsInRange = (
+  target: string,
+  startRange: string,
+  endRange?: string,
+): boolean => {
+  const startYear: number = Number(startRange.split("/")[0]);
+  const endYear: number | null = endRange
+    ? Number(endRange.split("/")[1])
+    : null;
   const targetYear: number = Number(target.split("/")[0]);
 
   if (startYear > targetYear) return false;
   if (endYear !== null && targetYear > endYear) return false;
   return true;
-}
+};

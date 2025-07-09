@@ -1,12 +1,12 @@
-import BaseField from "@/types/baseField";
-import { Controller, FieldValues, Path } from "react-hook-form";
-import { TextInputProps, View, TextInput } from "react-native";
-import FieldLabel from "./shared/FieldLabel";
-import styles from "./shared/styles";
+import { Controller, type FieldValues, type Path } from "react-hook-form";
+import { TextInput, type TextInputProps, View } from "react-native";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import type BaseField from "@/types/baseField";
 import ThemedText from "../ThemedText";
-import ValidationMessage from "./shared/ValidationMessage";
+import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
+import styles from "./shared/styles";
+import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledTextFieldProps<
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
@@ -76,7 +76,7 @@ const ControlledTextField = <
                 aria-labelledby={label && `${props.name}-label`}
                 nativeID={props.name}
                 aria-invalid={!!currFieldErrs}
-                aria-errormessage={currFieldErrs && currFieldErrs?.message}
+                aria-errormessage={currFieldErrs?.message}
               />
               {suffix && (
                 <View style={styles.fieldSuffix}>

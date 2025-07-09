@@ -1,8 +1,8 @@
-import BaseField from "@/types/baseField";
-import { Controller, FieldValues, Path } from "react-hook-form";
+import { Controller, type FieldValues, type Path } from "react-hook-form";
+import { useThemeColor } from "@/hooks/useThemeColor";
+import type BaseField from "@/types/baseField";
 import FieldLabel from "./shared/FieldLabel";
 import styles from "./shared/styles";
-import { useThemeColor } from "@/hooks/useThemeColor";
 
 /**
  * @TODO this field probably isn't working on mobile/native platforms, probably replace it on native

@@ -1,17 +1,17 @@
 import { Pie, PolarChart } from "victory-native";
-import CompositionChartProps from "./interface";
+import type CompositionChartProps from "./interface";
 
 const CompositionChart = ({ products }: CompositionChartProps) => {
   return (
-  <PolarChart
-    data={products ?? []}
-    colorKey="colour"
-    labelKey="label"
-    valueKey="value"
-  >
-    <Pie.Chart size={150} innerRadius={"60%"} startAngle={90} />
-  </PolarChart>
-)
+    <PolarChart
+      data={products ?? []}
+      colorKey="colour"
+      labelKey="label"
+      valueKey="value"
+    >
+      <Pie.Chart size={150} innerRadius={"60%"} startAngle={90} />
+    </PolarChart>
+  );
 };
 
 export default CompositionChart;

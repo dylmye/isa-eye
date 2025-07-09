@@ -1,6 +1,6 @@
-import { FieldValues, Path } from "react-hook-form";
+import type { FieldValues, Path } from "react-hook-form";
 import ControlledTextField, {
-  ControlledTextFieldProps,
+  type ControlledTextFieldProps,
 } from "./ControlledTextField";
 
 const ControlledCurrencyField = <

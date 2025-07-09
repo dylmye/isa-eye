@@ -1,24 +1,24 @@
-import { ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
+import { ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Cards from "@/components/Cards";
+import AddProductModal from "@/components/implementations/AddProductModal";
 import CompositionCard from "@/components/implementations/CompositionCard";
+import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
+import ProductCards from "@/components/implementations/ProductCards";
+import UpdateBalanceModal from "@/components/implementations/UpdateBalanceModal";
+import MobileFooter from "@/components/MobileFooter";
 import OverviewBar from "@/components/OverviewBar";
 import PageColumn from "@/components/PageColumn";
-import MobileFooter from "@/components/MobileFooter";
-import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
-import UpdateBalanceModal from "@/components/implementations/UpdateBalanceModal";
-import AddProductModal from "@/components/implementations/AddProductModal";
-import { useIsMediumScreen } from "@/hooks/responsiveQueries";
-import hooks from "@/hooks/database";
-import ModalVisibilityState from "@/types/modalVisibilityState";
-import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
-import ProductCards from "@/components/implementations/ProductCards";
 import { useCurrentYearProducts } from "@/db/hooks";
+import hooks from "@/hooks/database";
+import { useIsMediumScreen } from "@/hooks/responsiveQueries";
+import type ModalVisibilityState from "@/types/modalVisibilityState";
+import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 
-const DEFAULT_RULESET_ID = '2024/2025'
+const DEFAULT_RULESET_ID = "2024/2025";
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
@@ -32,12 +32,12 @@ const OverviewForRuleset = () => {
 
   const currentRulesetFormattedName = useMemo(
     () => searchParams?.ruleset?.replace("-", "/") ?? DEFAULT_RULESET_ID,
-    [searchParams?.ruleset]
+    [searchParams?.ruleset],
   );
   const updateCurrentRulesetForStore = hooks.useSetValueCallback(
     "currentTaxYear",
     (newYear: string) => newYear,
-    []
+    [],
   );
 
   const navbarProps = getOverviewNavbarProps();

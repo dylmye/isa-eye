@@ -42,7 +42,8 @@ export const isaTypes: readonly IsaTypeSeedData[] = [
     code: "LIFETIME",
     name: "Lifetime ISA",
     introducedWithRuleset: "2017/2018",
-    shortDescription: "Get rewarded for saving for your first home (or retirement)",
+    shortDescription:
+      "Get rewarded for saving for your first home (or retirement)",
     longDescription:
       "A Cash or Stocks & Shares ISA with age and spend limitations, in exchange for a 25% bonus provided by the Government when withdrawing for the purchase of a first home, after turning 60 years old, when diagnosed with a terminal illness.",
   },

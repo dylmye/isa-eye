@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react";
-import { DimensionValue, Platform, StyleSheet, View } from "react-native";
+import type { PropsWithChildren } from "react";
+import { type DimensionValue, Platform, StyleSheet, View } from "react-native";
 
 const PageColumn = ({ children }: PropsWithChildren<unknown>) => (
   <View style={styles.container}>{children}</View>

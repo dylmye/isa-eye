@@ -1,16 +1,16 @@
-import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { PropsWithChildren, useMemo } from "react";
+import { type PropsWithChildren, useMemo } from "react";
 import {
-  ColorValue,
+  type ColorValue,
   Platform,
   Pressable,
-  StyleProp,
+  type StyleProp,
   StyleSheet,
   View,
-  ViewProps,
-  ViewStyle,
+  type ViewProps,
+  type ViewStyle,
 } from "react-native";
+import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 interface CardBaseProps extends ViewProps {
   style?: StyleProp<ViewStyle>;
@@ -18,45 +18,62 @@ interface CardBaseProps extends ViewProps {
   onPress?: () => void;
 }
 
-const CardBase = ({ children, style, highlightColourWeb, onPress, ...props }: PropsWithChildren<CardBaseProps>) => {
+const CardBase = ({
+  children,
+  style,
+  highlightColourWeb,
+  onPress,
+  ...props
+}: PropsWithChildren<CardBaseProps>) => {
   const colourScheme = useColorScheme();
 
-  const isWeb = Platform.OS === 'web';
+  const isWeb = Platform.OS === "web";
 
   const baseBackgroundColour = useMemo<ColorValue>(() => {
-    return colourScheme === "light" ? getCrossPlatformColour(
-      "secondarySystemBackground",
-      "@android:color/system_accent1_900",
-      "rgb(206, 206, 206)"
-    ) : getCrossPlatformColour(
-      "secondarySystemBackground",
-      "@android:color/system_accent1_900",
-      "rgba(255, 255, 255, 0.15)"
-    );
-  }, [colourScheme])
+    return colourScheme === "light"
+      ? getCrossPlatformColour(
+          "secondarySystemBackground",
+          "@android:color/system_accent1_900",
+          "rgb(206, 206, 206)",
+        )
+      : getCrossPlatformColour(
+          "secondarySystemBackground",
+          "@android:color/system_accent1_900",
+          "rgba(255, 255, 255, 0.15)",
+        );
+  }, [colourScheme]);
 
   const schemeStyles =
     colourScheme === "light"
       ? {
-        borderColor: 'rgba(0, 0, 0, 0.04)',
-        borderWidth: 2,
-        background: highlightColourWeb && isWeb ? `${baseBackgroundColour.toString()} ${highlightColourWeb}` : baseBackgroundColour,
-      }
+          borderColor: "rgba(0, 0, 0, 0.04)",
+          borderWidth: 2,
+          background:
+            highlightColourWeb && isWeb
+              ? `${baseBackgroundColour.toString()} ${highlightColourWeb}`
+              : baseBackgroundColour,
+        }
       : {
-        background: highlightColourWeb && isWeb ? `${baseBackgroundColour.toString()} ${highlightColourWeb}` : baseBackgroundColour,
-      };
+          background:
+            highlightColourWeb && isWeb
+              ? `${baseBackgroundColour.toString()} ${highlightColourWeb}`
+              : baseBackgroundColour,
+        };
 
   if (onPress) {
     return (
-      <Pressable onPress={onPress} {...props} style={[styles.container, schemeStyles, style]}>{children}</Pressable>
-    )
+      <Pressable
+        onPress={onPress}
+        {...props}
+        style={[styles.container, schemeStyles, style]}
+      >
+        {children}
+      </Pressable>
+    );
   }
 
   return (
-    <View
-      {...props}
-      style={[styles.container, schemeStyles, style]}
-    >
+    <View {...props} style={[styles.container, schemeStyles, style]}>
       {children}
     </View>
   );

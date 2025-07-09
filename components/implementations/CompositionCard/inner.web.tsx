@@ -1,8 +1,8 @@
-import ThemedText from "@/components/ThemedText";
 import { WithSkiaWeb } from "@shopify/react-native-skia/lib/module/web";
 import { version } from "canvaskit-wasm/package.json";
-import { ComponentType, memo } from "react";
-import CompositionChartProps from "./interface";
+import { memo } from "react";
+import ThemedText from "@/components/ThemedText";
+import type CompositionChartProps from "./interface";
 
 // On web, we need to load all Skia components (including victory-native-xl components)
 const CompositionCardInner = (props: CompositionChartProps) => {
@@ -16,7 +16,7 @@ const CompositionCardInner = (props: CompositionChartProps) => {
       componentProps={props}
       fallback={<ThemedText>Loading...</ThemedText>}
     />
-  )
+  );
 };
 
 export default memo(CompositionCardInner);

@@ -1,5 +1,5 @@
 import { Circle } from "@shopify/react-native-skia";
-import { SharedValue } from "react-native-reanimated";
+import type { SharedValue } from "react-native-reanimated";
 
 interface ChartTooltipProps {
   x: SharedValue<number>;

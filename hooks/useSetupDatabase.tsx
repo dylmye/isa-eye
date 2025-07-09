@@ -2,27 +2,26 @@
 // THIS IS FOR NATIVE ONLY. SEE uSD.web FOR WEB
 ///////////////////////////////////////////////
 import { openDatabaseSync } from "expo-sqlite";
-import {
-  createStore,
-  createIndexes,
-  createRelationships,
-  createQueries,
-  type Store,
-  type Queries,
-  type Indexes,
-} from "tinybase/with-schemas";
 import { createExpoSqlitePersister } from "tinybase/persisters/persister-expo-sqlite/with-schemas";
-
 import {
-  tableSchema,
+  createIndexes,
+  createQueries,
+  createRelationships,
+  createStore,
+  type Indexes,
+  type Queries,
+  type Store,
+} from "tinybase/with-schemas";
+import queryDefs from "@/db/queries";
+import {
   keyvalueSchema,
   type Schemas,
   tableIndexes,
   tableRelationships,
+  tableSchema,
 } from "@/db/schema";
-import hooks from "@/hooks/database";
-import queryDefs from "@/db/queries";
 import seeders from "@/db/seeders";
+import hooks from "@/hooks/database";
 
 const { useCreateStore, useCreatePersister, useCreateQueries } = hooks;
 
@@ -32,7 +31,7 @@ export const useSetupDatabase = (): {
   indexes: Indexes<Schemas>;
 } => {
   const store = useCreateStore(() =>
-    createStore().setTablesSchema(tableSchema).setValuesSchema(keyvalueSchema)
+    createStore().setTablesSchema(tableSchema).setValuesSchema(keyvalueSchema),
   );
   const queries = useCreateQueries(store, (s) => {
     const cq = createQueries(s);
@@ -45,32 +44,33 @@ export const useSetupDatabase = (): {
   const indexes = createIndexes(store);
 
   try {
+    // biome-ignore lint/correctness/useHookAtTopLevel: no better way to error catch this
     useCreatePersister(
       store,
       (store) =>
         createExpoSqlitePersister(
           store,
           openDatabaseSync("db/isa-eye.db"),
-          "isa_eye_expo"
+          "isa_eye_expo",
         ),
       [],
       async (persister) => {
         await persister.load();
         await persister.startAutoSave();
-      }
+      },
     );
     tableIndexes.forEach((i) => indexes.setIndexDefinition(i[0], i[1], i[2]));
 
     const relationships = createRelationships(store);
     tableRelationships.forEach((r) =>
-      relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3])
+      relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3]),
     );
-    
-    seeders.forEach(s => s(store));
+
+    seeders.forEach((s) => s(store));
   } catch (e) {
     console.error(
       "Error while attempting to create database and state persister",
-      e
+      e,
     );
   }
 

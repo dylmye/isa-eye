@@ -6,7 +6,7 @@ const config = getDefaultConfig(__dirname);
 
 config.resolver.sourceExts.push(
   /** Prevents canvaskit-wasm dependency errors */
-  "wasm"
+  "wasm",
 );
 
 module.exports = config;

@@ -1,5 +1,4 @@
-import { PropsWithChildren } from "react";
-import { View } from "react-native";
+import type { PropsWithChildren } from "react";
 import styles from "./shared/styles";
 
 const FormUI = ({ children }: PropsWithChildren) => (

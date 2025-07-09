@@ -1,8 +1,8 @@
-import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { PropsWithChildren } from "react";
-import { Modal, StyleSheet, useColorScheme, View } from "react-native";
-import ThemedText from "./ThemedText";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import type { PropsWithChildren } from "react";
+import { Modal, StyleSheet, useColorScheme, View } from "react-native";
+import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
+import ThemedText from "./ThemedText";
 
 export interface AddModalHeaderProps {
   text?: string;
@@ -46,14 +46,14 @@ const AddModal = ({
           backgroundColor: getCrossPlatformColour(
             "secondarySystemBackground",
             "@android:color/system_accent1_900",
-            "rgb(206, 206, 206)"
+            "rgb(206, 206, 206)",
           ),
         }
       : {
           backgroundColor: getCrossPlatformColour(
             "secondarySystemBackground",
             "@android:color/system_accent1_900",
-            "rgb(39, 39, 39)"
+            "rgb(39, 39, 39)",
           ),
         };
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgba(39, 39, 39, 0.65)"
+      "rgba(39, 39, 39, 0.65)",
     ),
     flex: 1,
     justifyContent: "center",

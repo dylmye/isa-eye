@@ -1,13 +1,12 @@
-import { ValueSchema } from "tinybase";
-
+import type { ValueSchema } from "tinybase";
+import rulesetsSeedData from "../seedData/rulesets";
 import annualBalances, { AnnualBalance } from "./annualBalances";
 import products, { Product } from "./products";
-import providers, { Provider } from "./providers";
-import providerAliases, { ProductAlias } from "./providerAliases";
 import productTypes, { ProductType } from "./productTypes";
-import rulesets, { Ruleset } from "./rulesets";
+import providerAliases, { ProductAlias } from "./providerAliases";
+import providers, { Provider } from "./providers";
 import rulesetExceptions, { RulesetException } from "./rulesetExceptions";
-import rulesetsSeedData from "../seedData/rulesets";
+import rulesets, { Ruleset } from "./rulesets";
 
 export const tableSchema = {
   annualBalances,
@@ -27,12 +26,15 @@ export {
   ProductType,
   Ruleset,
   RulesetException,
-}
+};
 
 export const keyvalueSchema = {
   /** The tax year currently visible, to be used for nav and actions */
-  currentTaxYear: { type: 'string', default: rulesetsSeedData[rulesetsSeedData.length - 1].name } as ValueSchema
-}
+  currentTaxYear: {
+    type: "string",
+    default: rulesetsSeedData[rulesetsSeedData.length - 1].name,
+  } as ValueSchema,
+};
 
 export type Schemas = [typeof tableSchema, typeof keyvalueSchema];
 
@@ -46,6 +48,16 @@ export const tableRelationships = [
   ["providerAliasProvider", "providerAliases", "providers", () => "providerId"],
   ["productProvider", "products", "providers", () => "providerId"],
   ["productType", "products", "productTypes", () => "productTypeCode"],
-  ["rulesetExceptionProduct", "rulesetExceptions", "products", () => "productId"],
-  ["rulesetExceptionRuleset", "rulesetExceptions", "rulesets", () => "rulesetId"]
+  [
+    "rulesetExceptionProduct",
+    "rulesetExceptions",
+    "products",
+    () => "productId",
+  ],
+  [
+    "rulesetExceptionRuleset",
+    "rulesetExceptions",
+    "rulesets",
+    () => "rulesetId",
+  ],
 ] as const;

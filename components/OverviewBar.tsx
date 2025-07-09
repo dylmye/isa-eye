@@ -1,13 +1,12 @@
-import { View, StyleSheet } from "react-native";
-
-import ThemedText from "./ThemedText";
+import { router } from "expo-router";
+import { useMemo } from "react";
+import { StyleSheet, View } from "react-native";
+import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
+import hooks from "@/hooks/database";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import NavBackButton from "./implementations/NavBackButton";
 import NavForwardButton from "./implementations/NavForwardButton";
-import { router } from "expo-router";
-import hooks from "@/hooks/database";
-import { useMemo } from "react";
-import { type RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
+import ThemedText from "./ThemedText";
 
 interface OverviewBarProps {
   rulesetId: string;
@@ -23,16 +22,20 @@ const OverviewBar = ({
   nextRuleset,
 }: OverviewBarProps) => {
   const queries = hooks.useQueries();
-  const remainingBalanceRow = queries?.getResultTable("remainingBalanceByYear") as Record<string, RemainingBalanceByYearRow>;
+  const remainingBalanceRow = queries?.getResultTable(
+    "remainingBalanceByYear",
+  ) as Record<string, RemainingBalanceByYearRow>;
 
   const formattedRemainingBalance = useMemo(() => {
-    const currentRow = Object.values(remainingBalanceRow ?? {}).find(r => r.rulesetId === rulesetId);
+    const currentRow = Object.values(remainingBalanceRow ?? {}).find(
+      (r) => r.rulesetId === rulesetId,
+    );
     return new Intl.NumberFormat("en-GB", {
       style: "currency",
       currency: "GBP",
       maximumFractionDigits: 2,
-      trailingZeroDisplay: "stripIfInteger"
-    }).format(currentRow?.remainingBalance ?? 20_000)
+      trailingZeroDisplay: "stripIfInteger",
+    }).format(currentRow?.remainingBalance ?? 20_000);
   }, [remainingBalanceRow, rulesetId]);
 
   return (
@@ -69,7 +72,7 @@ const OverviewBar = ({
         />
       )}
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgba(255, 255, 255, 0.15)"
+      "rgba(255, 255, 255, 0.15)",
     ),
     paddingVertical: 16,
     shadowColor: "#404040",

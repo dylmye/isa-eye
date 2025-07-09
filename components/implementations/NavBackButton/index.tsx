@@ -1,4 +1,4 @@
-import { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
+import type { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Platform } from "react-native";

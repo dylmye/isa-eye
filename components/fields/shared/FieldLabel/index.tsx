@@ -1,5 +1,5 @@
-import ThemedText from "@/components/ThemedText";
 import { Platform } from "react-native";
+import ThemedText from "@/components/ThemedText";
 import styles from "../styles";
 
 interface FieldLabelProps {

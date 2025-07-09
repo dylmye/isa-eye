@@ -1,5 +1,10 @@
-import { Image, ImageStyle } from "expo-image";
-import { ImageSourcePropType, StyleProp, StyleSheet, View } from "react-native";
+import { Image, type ImageStyle } from "expo-image";
+import {
+  type ImageSourcePropType,
+  type StyleProp,
+  StyleSheet,
+  View,
+} from "react-native";
 
 interface BankLogoIconProps {
   bankIcon: ImageSourcePropType;

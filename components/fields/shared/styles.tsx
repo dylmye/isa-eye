@@ -1,13 +1,13 @@
+import { StyleSheet } from "react-native";
 import { fontFamily } from "@/constants/fontFamily";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   field: {
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgba(255, 255, 255, 0.15)"
+      "rgba(255, 255, 255, 0.15)",
     ) as string,
     borderRadius: 4,
     paddingVertical: 4,
@@ -65,28 +65,28 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "systemRed",
       "system_error_200",
-      "rgb(255, 151, 151)"
+      "rgb(255, 151, 151)",
     ),
   },
   validationMessageText: {
     color: getCrossPlatformColour(
       "systemRed",
       "system_error_900",
-      "rgb(223, 0, 0)"
+      "rgb(223, 0, 0)",
     ),
   },
   infoMessage: {
     backgroundColor: getCrossPlatformColour(
       "systemBlue",
       "system_neutral2_200",
-      "rgb(151, 222, 255)"
+      "rgb(151, 222, 255)",
     ),
   },
   infoMessageText: {
     color: getCrossPlatformColour(
       "systemBlue",
       "system_neutral2_900",
-      "rgb(0, 97, 223)"
+      "rgb(0, 97, 223)",
     ),
   },
   dateField: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgba(255, 255, 255, 0.25)"
+      "rgba(255, 255, 255, 0.25)",
     ) as string,
   },
   selectedRadioOptionText: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgb(39, 39, 39)"
+      "rgb(39, 39, 39)",
     ),
     paddingHorizontal: 4,
     paddingVertical: 2,

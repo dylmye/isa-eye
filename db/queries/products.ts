@@ -1,5 +1,5 @@
-import { Queries, ResultRow } from "tinybase/with-schemas";
-import { Product, Schemas } from "../schema";
+import type { Queries, ResultRow } from "tinybase/with-schemas";
+import type { Product, Schemas } from "../schema";
 
 /**
  * All products ever opened with all data joins.
@@ -23,10 +23,13 @@ export const allProducts = (queries: Queries<Schemas>) =>
     join("productTypes", "productTypeCode");
   });
 
-export interface AllProductsRow extends ResultRow, Required<Pick<Product, 'friendlyName' | 'startTaxYear' | 'endTaxYear' | 'flexible'>> {
+export interface AllProductsRow
+  extends ResultRow,
+    Required<
+      Pick<Product, "friendlyName" | "startTaxYear" | "endTaxYear" | "flexible">
+    > {
   providerName: string;
   providerIconRelativeUrl: string;
   providerColour: string;
   productTypeName: string;
 }
-

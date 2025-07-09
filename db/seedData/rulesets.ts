@@ -31,7 +31,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -55,7 +56,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -68,7 +70,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         includedInOverall: false,
       },
     ],
-    notes: "The Junior ISA allowance was increased by £132/year (£11/month) in line with inflation.",
+    notes:
+      "The Junior ISA allowance was increased by £132/year (£11/month) in line with inflation.",
   },
   {
     name: "2019/2020",
@@ -80,7 +83,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -93,7 +97,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         includedInOverall: false,
       },
     ],
-    notes: "The Junior ISA allowance was increased by £108/year (£9/month) in line with inflation.",
+    notes:
+      "The Junior ISA allowance was increased by £108/year (£9/month) in line with inflation.",
   },
   {
     name: "2020/2021",
@@ -105,7 +110,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -118,7 +124,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         includedInOverall: false,
       },
     ],
-    notes: "The Junior ISA allowance was increased by £4,632/year (£386/month). The LISA withdrawal charge was reduced from 25% to 20% for withdrawals made between 6th March 2020 and 5th April 2021.",
+    notes:
+      "The Junior ISA allowance was increased by £4,632/year (£386/month). The LISA withdrawal charge was reduced from 25% to 20% for withdrawals made between 6th March 2020 and 5th April 2021.",
   },
   {
     name: "2021/2022",
@@ -130,7 +137,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -155,7 +163,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -180,7 +189,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -205,7 +215,8 @@ export const rulesets: readonly RulesetSeedData[] = [
         code: "HELP_TO_BUY",
         allowancePence: 2400,
         includedInOverall: true,
-        notes: "Contribute up to £200 a month, and up to £1,200 in the first month.",
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
@@ -218,9 +229,10 @@ export const rulesets: readonly RulesetSeedData[] = [
         includedInOverall: false,
       },
     ],
-    notes: 'Fractional share contracts were added to the products allowed within Stocks and Shares ISAs. There were no changes to allowances for ISAs and allowances for all ISA types were frozen until the 2030/2031 tax year. The announced "British ISA" was scrapped. It is now permissible to open and pay into multiple of the same type of ISAs in the same year.',
+    notes:
+      'Fractional share contracts were added to the products allowed within Stocks and Shares ISAs. There were no changes to allowances for ISAs and allowances for all ISA types were frozen until the 2030/2031 tax year. The announced "British ISA" was scrapped. It is now permissible to open and pay into multiple of the same type of ISAs in the same year.',
   },
   // 2025/2026?
-]
+];
 
 export default rulesets;

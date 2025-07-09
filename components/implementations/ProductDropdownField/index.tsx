@@ -1,21 +1,23 @@
 import { useMemo } from "react";
-import { FieldValues, Path } from "react-hook-form";
+import type { FieldValues, Path } from "react-hook-form";
 
 import { ControlledAutocompleteField } from "@/components/fields";
-import { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
+import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
-import type { RichDropdownOptions, RichDropdownValue } from "@/types/dropdown";
 import hooks from "@/hooks/database";
+import type { RichDropdownOptions, RichDropdownValue } from "@/types/dropdown";
 import getProductName from "@/utils/getProductName";
 
 const ProductDropdownField = <
-  TForm extends FieldValues = any,
-  TFieldName extends Path<TForm> = any
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
+  TFieldName extends Path<TForm> = any,
 >(
   props: Omit<
     ControlledAutocompleteFieldProps<TForm, TFieldName, RichDropdownValue>,
     "allOptions" | "renderOption"
-  >
+  >,
 ) => {
   const products = hooks.useResultTable("allProducts");
   const providerDropdownOptions: RichDropdownOptions = useMemo(() => {

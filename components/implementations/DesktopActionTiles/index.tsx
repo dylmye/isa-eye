@@ -1,8 +1,8 @@
-import ActionTile from "@/components/ActionTile";
-import { useThemeColor } from "@/hooks/useThemeColor";
-import ModalVisibilityState from "@/types/modalVisibilityState";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { StyleSheet, View } from "react-native";
+import ActionTile from "@/components/ActionTile";
+import { useThemeColor } from "@/hooks/useThemeColor";
+import type ModalVisibilityState from "@/types/modalVisibilityState";
 
 interface DesktopActionTilesProps {
   onPress: (key: keyof ModalVisibilityState) => void;

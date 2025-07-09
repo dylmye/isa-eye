@@ -7,7 +7,7 @@ import { useThemeColor } from "./useThemeColor";
 
 export const useAddButtonDisambi = (
   onUpdateBalancePress: () => void,
-  onAddProductPress: () => void
+  onAddProductPress: () => void,
 ): (() => void) => {
   const { showActionSheetWithOptions } = useActionSheet();
   const textColor = useThemeColor({}, "text");
@@ -46,7 +46,7 @@ export const useAddButtonDisambi = (
         containerStyle: { ...styles.shared, ...styles.darkContainer },
         tintColor: textColor,
       },
-      (selectedIndex) => OPTIONS[selectedIndex ?? 0].onPress()
+      (selectedIndex) => OPTIONS[selectedIndex ?? 0].onPress(),
     );
   };
 };
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: getCrossPlatformColour(
       "secondarySystemBackground",
       "@android:color/system_accent1_900",
-      "rgb(39, 39, 39)"
+      "rgb(39, 39, 39)",
     ),
   },
 });

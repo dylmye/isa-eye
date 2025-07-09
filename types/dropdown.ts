@@ -1,15 +1,16 @@
-import { ImageSourcePropType } from "react-native";
+import type { ImageSourcePropType } from "react-native";
 
-export interface DropdownValue<TValue extends unknown = string> {
+export interface DropdownValue<TValue = string> {
   label: string;
   value: TValue;
 }
 
-export interface RichDropdownValue<TValue extends unknown = string> extends DropdownValue<TValue> {
+export interface RichDropdownValue<TValue = string>
+  extends DropdownValue<TValue> {
   image?: ImageSourcePropType;
   aliases?: string[];
 }
 
-export type DropdownOptions<TValue extends unknown = string> = DropdownValue<TValue>[];
+export type DropdownOptions<TValue = string> = DropdownValue<TValue>[];
 
-export type RichDropdownOptions<TValue extends unknown = string> = RichDropdownValue<TValue>[];
+export type RichDropdownOptions<TValue = string> = RichDropdownValue<TValue>[];

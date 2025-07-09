@@ -1,5 +1,10 @@
+import {
+  Pressable,
+  type PressableProps,
+  StyleSheet,
+  useColorScheme,
+} from "react-native";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { Pressable, PressableProps, StyleSheet, useColorScheme } from "react-native";
 import ThemedText from "./ThemedText";
 
 interface ActionTileProps extends PressableProps {
@@ -19,19 +24,23 @@ const ActionTile = ({ title, icon, onPress, ...props }: ActionTileProps) => {
           backgroundColor: getCrossPlatformColour(
             "secondarySystemBackground",
             "@android:color/system_accent1_900",
-            "rgb(206, 206, 206)"
+            "rgb(206, 206, 206)",
           ),
         }
       : {
           backgroundColor: getCrossPlatformColour(
             "secondarySystemBackground",
             "@android:color/system_accent1_900",
-            "rgba(255, 255, 255, 0.15)"
+            "rgba(255, 255, 255, 0.15)",
           ),
         };
 
   return (
-    <Pressable {...props} style={[styles.container, schemeStyles]} onPress={onPress}>
+    <Pressable
+      {...props}
+      style={[styles.container, schemeStyles]}
+      onPress={onPress}
+    >
       {icon}
       <ThemedText>{title}</ThemedText>
     </Pressable>

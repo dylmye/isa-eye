@@ -1,7 +1,7 @@
-import ThemedText from "@/components/ThemedText";
-import { View } from "react-native";
-import styles from "../styles";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { View } from "react-native";
+import ThemedText from "@/components/ThemedText";
+import styles from "../styles";
 
 interface InfoMessageProps {
   message: string;

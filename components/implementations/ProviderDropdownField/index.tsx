@@ -1,34 +1,51 @@
 import { useMemo } from "react";
-import { FieldValues, Path } from "react-hook-form";
+import type { FieldValues, Path } from "react-hook-form";
 
 import { ControlledAutocompleteField } from "@/components/fields";
-import { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
+import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
-import type { RichDropdownOptions, RichDropdownValue } from "@/types/dropdown";
 import hooks from "@/hooks/database";
+import type { RichDropdownOptions, RichDropdownValue } from "@/types/dropdown";
 
 const ProviderDropdownField = <
-  TForm extends FieldValues = any,
-  TFieldName extends Path<TForm> = any
->(props: Omit<ControlledAutocompleteFieldProps<TForm, TFieldName, RichDropdownValue>, 'allOptions' | 'renderOption'>) => {
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
+  TFieldName extends Path<TForm> = any,
+>(
+  props: Omit<
+    ControlledAutocompleteFieldProps<TForm, TFieldName, RichDropdownValue>,
+    "allOptions" | "renderOption"
+  >,
+) => {
   const providers = hooks.useTable("providers");
   const aliases = hooks.useTable("providerAliases");
 
-  const collator = new Intl.Collator('en-GB');
+  const collator = new Intl.Collator("en-GB");
 
   const providerDropdownOptions: RichDropdownOptions = useMemo(() => {
-    return Object.keys(providers).sort((idA, idB) => collator.compare(providers[idA].name!, providers[idB].name!)).map<RichDropdownValue>(id => ({
-      label: providers[id].name!,
-      value: id,
-      image: { uri: providers[id].iconRelativeUrl! },
-      aliases: Object.keys(aliases).filter(aid => aliases[aid].providerId === id).map(a => aliases[a].alias!),
-    }));
+    return Object.keys(providers)
+      .sort((idA, idB) =>
+        collator.compare(providers[idA].name!, providers[idB].name!),
+      )
+      .map<RichDropdownValue>((id) => ({
+        label: providers[id].name!,
+        value: id,
+        image: { uri: providers[id].iconRelativeUrl! },
+        aliases: Object.keys(aliases)
+          .filter((aid) => aliases[aid].providerId === id)
+          .map((a) => aliases[a].alias!),
+      }));
   }, [providers, aliases]);
   return (
-    <ControlledAutocompleteField allOptions={providerDropdownOptions} renderOption={(o, onPress) => (
-      <RichDropdownOption option={o} onPress={onPress} />
-    )} {...props} />
-  )
-}
+    <ControlledAutocompleteField
+      allOptions={providerDropdownOptions}
+      renderOption={(o, onPress) => (
+        <RichDropdownOption option={o} onPress={onPress} />
+      )}
+      {...props}
+    />
+  );
+};
 
 export default ProviderDropdownField;

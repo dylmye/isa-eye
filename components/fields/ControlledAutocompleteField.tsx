@@ -1,16 +1,16 @@
-import BaseField from "@/types/baseField";
-import { Controller, FieldValues, Path } from "react-hook-form";
-import Autocomplete from "react-native-autocomplete-input";
-import { Pressable, TextInput } from "react-native";
-import { useState } from "react";
 import Fuse from "fuse.js";
-import FieldLabel from "./shared/FieldLabel";
-import styles from "./shared/styles";
+import { useState } from "react";
+import { Controller, type FieldValues, type Path } from "react-hook-form";
+import { Pressable, TextInput } from "react-native";
+import Autocomplete from "react-native-autocomplete-input";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import ValidationMessage from "./shared/ValidationMessage";
-import InfoMessage from "./shared/InfoMessage";
-import { DropdownValue } from "@/types/dropdown";
+import type BaseField from "@/types/baseField";
+import type { DropdownValue } from "@/types/dropdown";
 import ThemedText from "../ThemedText";
+import FieldLabel from "./shared/FieldLabel";
+import InfoMessage from "./shared/InfoMessage";
+import styles from "./shared/styles";
+import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledAutocompleteFieldProps<
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field

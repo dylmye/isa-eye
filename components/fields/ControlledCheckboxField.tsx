@@ -1,27 +1,27 @@
-import BaseField from "@/types/baseField";
-import { Controller, FieldValues, Path } from "react-hook-form";
-import * as CheckboxPrimitive from "@rn-primitives/checkbox";
-import FieldLabel from "./shared/FieldLabel";
-import styles from "./shared/styles";
-import { useThemeColor } from "@/hooks/useThemeColor";
-import ValidationMessage from "./shared/ValidationMessage";
-import InfoMessage from "./shared/InfoMessage";
-import { View } from "react-native";
-import ThemedText from "../ThemedText";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import * as CheckboxPrimitive from "@rn-primitives/checkbox";
+import { Controller, type FieldValues, type Path } from "react-hook-form";
+import { View } from "react-native";
+import { useThemeColor } from "@/hooks/useThemeColor";
+import type BaseField from "@/types/baseField";
+import ThemedText from "../ThemedText";
+import FieldLabel from "./shared/FieldLabel";
+import InfoMessage from "./shared/InfoMessage";
+import styles from "./shared/styles";
+import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledCheckboxFieldProps<
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
   Form extends FieldValues = {},
   // biome-ignore lint/suspicious/noExplicitAny: no possible default value
-  FieldName extends Path<Form> = any
+  FieldName extends Path<Form> = any,
 > extends BaseField<Form, FieldName> {}
 
 const ControlledCheckboxField = <
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
   TForm extends FieldValues = {},
   // biome-ignore lint/suspicious/noExplicitAny: no possible default value
-  TFieldName extends Path<TForm> = any
+  TFieldName extends Path<TForm> = any,
 >({
   label,
   required,

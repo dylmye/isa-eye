@@ -1,13 +1,12 @@
-import BaseField from "@/types/baseField";
-import { Controller, FieldValues, Path } from "react-hook-form";
 import * as RadioGroupPrimitive from "@rn-primitives/radio-group";
-import FieldLabel from "./shared/FieldLabel";
-import styles from "./shared/styles";
-import { useThemeColor } from "@/hooks/useThemeColor";
-import ValidationMessage from "./shared/ValidationMessage";
-import InfoMessage from "./shared/InfoMessage";
+import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { View } from "react-native";
+import type BaseField from "@/types/baseField";
 import ThemedText from "../ThemedText";
+import FieldLabel from "./shared/FieldLabel";
+import InfoMessage from "./shared/InfoMessage";
+import styles from "./shared/styles";
+import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledRadioFieldProps<
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
@@ -36,14 +35,13 @@ const ControlledRadioField = <
   options,
   ...props
 }: ControlledRadioFieldProps<TForm, TFieldName>) => {
-  const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
   return (
     <>
       <Controller
         {...props}
-        render={({ field: { onChange, onBlur, value, disabled } }) => (
+        render={({ field: { onChange, value, disabled } }) => (
           <>
             {label && (
               <FieldLabel
@@ -56,6 +54,8 @@ const ControlledRadioField = <
               value={value}
               onValueChange={onChange}
               style={styles.radioGroup}
+              // @TODO: confirm we need to set this or not (whole field disabled?)
+              disabled={disabled}
             >
               {options.map((o) => {
                 const isSelected = value === o.value;

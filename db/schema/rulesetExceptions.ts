@@ -8,19 +8,19 @@ import type { Row } from "tinybase/with-schemas";
  * given tax year. Any products that don't
  * have an exception contribute to the shared
  * allowance.
- * 
+ *
  * ID format: integer
  */
 const rulesetExceptionsTable = {
-  productId: { type: 'string' },
-  rulesetId: { type: 'string' },
-  allowancePence: { type: 'string' },
-  notes: { type: 'string' },
-  includedInShared: { type: 'boolean', default: true }
-} satisfies Record<string, CellSchema>
+  productId: { type: "string" },
+  rulesetId: { type: "string" },
+  allowancePence: { type: "string" },
+  notes: { type: "string" },
+  includedInShared: { type: "boolean", default: true },
+} satisfies Record<string, CellSchema>;
 
 export default rulesetExceptionsTable;
 
-type Schema = { rulesetExceptions: typeof rulesetExceptionsTable }
+type Schema = { rulesetExceptions: typeof rulesetExceptionsTable };
 
-export type RulesetException = Row<Schema, 'rulesetExceptions'>
+export type RulesetException = Row<Schema, "rulesetExceptions">;

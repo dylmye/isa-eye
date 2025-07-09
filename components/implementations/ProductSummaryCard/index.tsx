@@ -1,12 +1,11 @@
 import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
-
-import BankLogoIcon from "../BankLogoIcon";
 import CardBase from "@/components/CardBase";
 import ThemedText from "@/components/ThemedText";
-import getProductName from "@/utils/getProductName";
-import { AllProductsRow } from "@/db/queries/products";
+import type { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
+import getProductName from "@/utils/getProductName";
+import BankLogoIcon from "../BankLogoIcon";
 
 export interface ProductSummaryCardProps {
   /** Product is closed or non-interactable
@@ -18,9 +17,17 @@ export interface ProductSummaryCardProps {
   onPress?: () => void;
 }
 
-const ProductSummaryCard = ({ disabled = false, product, productId, onPress = () => {} }: ProductSummaryCardProps) => {
+const ProductSummaryCard = ({
+  disabled = false,
+  product,
+  productId,
+  onPress = () => {},
+}: ProductSummaryCardProps) => {
   const currentRuleset = hooks.useValue("currentTaxYear");
-  const productBalanceRow = hooks.useRow("annualBalances", `${productId}-${currentRuleset}`);
+  const productBalanceRow = hooks.useRow(
+    "annualBalances",
+    `${productId}-${currentRuleset}`,
+  );
 
   const formattedProductBalance = useMemo(() => {
     return new Intl.NumberFormat("en-GB", {
@@ -28,15 +35,28 @@ const ProductSummaryCard = ({ disabled = false, product, productId, onPress = ()
       currency: "GBP",
       maximumFractionDigits: 2,
       trailingZeroDisplay: "stripIfInteger",
-    }).format(Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? '0') / 100)
+    }).format(
+      Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? "0") /
+        100,
+    );
   }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
-  const formattedAccountName = getProductName(product)
+  const formattedAccountName = getProductName(product);
 
-  const productColourBackgroundWeb = useMemo(() => `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`, [product.providerColour])
+  const productColourBackgroundWeb = useMemo(
+    () =>
+      `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`,
+    [product.providerColour],
+  );
 
   return (
-    <CardBase style={[styles.container, disabled && styles.containerDisabled]} highlightColourWeb={productColourBackgroundWeb} accessibilityLabel={`Your ${formattedAccountName} account has used ${formattedProductBalance} of your ${currentRuleset} ISA allowance.`} accessibilityRole="list" onPress={onPress}>
+    <CardBase
+      style={[styles.container, disabled && styles.containerDisabled]}
+      highlightColourWeb={productColourBackgroundWeb}
+      accessibilityLabel={`Your ${formattedAccountName} account has used ${formattedProductBalance} of your ${currentRuleset} ISA allowance.`}
+      accessibilityRole="list"
+      onPress={onPress}
+    >
       <View style={styles.name}>
         <BankLogoIcon
           bankIcon={{ uri: product.providerIconRelativeUrl }}
@@ -56,7 +76,7 @@ const ProductSummaryCard = ({ disabled = false, product, productId, onPress = ()
         {formattedProductBalance}
       </ThemedText>
     </CardBase>
-  )
+  );
 };
 
 const styles = StyleSheet.create({

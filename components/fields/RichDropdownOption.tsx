@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import { Pressable } from "react-native";
+import type { RichDropdownValue } from "@/types/dropdown";
 import ThemedText from "../ThemedText";
-import { RichDropdownValue } from "@/types/dropdown";
 import styles from "./shared/styles";
 
 interface RichDropdownOptionProps {

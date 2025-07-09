@@ -1,7 +1,7 @@
+import type { PropsWithChildren } from "react";
 import { StyleSheet } from "react-native";
-import ThemedText from "./ThemedText";
-import { PropsWithChildren } from "react";
 import CardBase from "./CardBase";
+import ThemedText from "./ThemedText";
 
 interface CardProps {
   title: string;

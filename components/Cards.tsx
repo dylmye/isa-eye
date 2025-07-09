@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
-import { StyleSheet, View, ViewProps } from "react-native";
+import type { PropsWithChildren } from "react";
+import { StyleSheet, View, type ViewProps } from "react-native";
 
-interface CardsProps extends Exclude<ViewProps, 'children'> {}
+interface CardsProps extends Exclude<ViewProps, "children"> {}
 
 const Cards = ({ children, ...props }: PropsWithChildren<CardsProps>) => (
   <View style={styles.container} {...props}>
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     gap: 16,
     alignItems: "center",
     marginHorizontal: 16,
-  }
-})
+  },
+});
 
 export default Cards;

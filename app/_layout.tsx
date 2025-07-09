@@ -1,19 +1,19 @@
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { PortalHost } from "@rn-primitives/portal";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
-import { PortalHost } from '@rn-primitives/portal';
 import "react-native-reanimated";
 
+import type { Schemas } from "@/db/schema";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useSetupDatabase } from "@/hooks/useSetupDatabase";
-import { Schemas } from "@/db/schema";
 
 const { Provider: TinybaseProvider } =
   TinybaseUiReact as TinybaseUiReact.WithSchemas<Schemas>;

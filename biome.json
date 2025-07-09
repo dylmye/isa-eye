@@ -20,7 +20,11 @@
 				"useExhaustiveDependencies": "off"
 			},
 			"style": {
-				"useSelfClosingElements": "off"
+				"useSelfClosingElements": "off",
+				"noNonNullAssertion": "off"
+			},
+			"a11y": {
+				"useSemanticElements": "off"
 			}
 		}
 	},
