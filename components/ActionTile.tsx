@@ -1,5 +1,5 @@
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { Pressable, PressableProps, StyleSheet, useColorScheme, View } from "react-native";
+import { Pressable, PressableProps, StyleSheet, useColorScheme } from "react-native";
 import ThemedText from "./ThemedText";
 
 interface ActionTileProps extends PressableProps {

@@ -4,7 +4,9 @@ import ControlledTextField, {
 } from "./ControlledTextField";
 
 const ControlledTextareaField = <
-  TForm extends FieldValues = any,
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
   TFieldName extends Path<TForm> = any
 >(
   props: ControlledTextFieldProps<TForm, TFieldName>

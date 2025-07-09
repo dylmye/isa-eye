@@ -10,8 +10,10 @@ import { View } from "react-native";
 import ThemedText from "../ThemedText";
 
 export interface ControlledRadioFieldProps<
-  Form extends FieldValues = any,
-  FieldName extends Path<Form> = any
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  Form extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
+  FieldName extends Path<Form> = any,
 > extends BaseField<Form, FieldName> {
   options: {
     label: string;
@@ -21,8 +23,10 @@ export interface ControlledRadioFieldProps<
 }
 
 const ControlledRadioField = <
-  TForm extends FieldValues = any,
-  TFieldName extends Path<TForm> = any
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
+  TFieldName extends Path<TForm> = any,
 >({
   label,
   required,

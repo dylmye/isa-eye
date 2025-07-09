@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, useWindowDimensions } from "react-native";
 import CompositionChartInner from "./inner";
 import Card from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
@@ -8,6 +8,7 @@ import getProductName from "@/utils/getProductName";
 
 const CompositionCard = () => {
   const balances = useCurrentYearBalances();
+  const { width } = useWindowDimensions();
 
   const chartProducts = useMemo(() => {
     return balances.map(b => ({
@@ -28,7 +29,7 @@ const CompositionCard = () => {
         <View style={styles.section}>
           <CompositionChartInner products={chartProducts} />
         </View>
-        <View style={styles.section}>
+        {width > 450 && (<View style={styles.section}>
           <ThemedText style={styles.keyTitle}>Key</ThemedText>
           {chartProducts.map(p => (
             <View style={styles.keyIndicator} key={`product-key-row-${p.id}`}>
@@ -38,7 +39,7 @@ const CompositionCard = () => {
               <ThemedText numberOfLines={1}>{p.label}</ThemedText>
             </View>
           ))}
-        </View>
+        </View>)}
       </View>
     </Card>
   )

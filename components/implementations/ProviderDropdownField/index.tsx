@@ -13,8 +13,11 @@ const ProviderDropdownField = <
 >(props: Omit<ControlledAutocompleteFieldProps<TForm, TFieldName, RichDropdownValue>, 'allOptions' | 'renderOption'>) => {
   const providers = hooks.useTable("providers");
   const aliases = hooks.useTable("providerAliases");
+
+  const collator = new Intl.Collator('en-GB');
+
   const providerDropdownOptions: RichDropdownOptions = useMemo(() => {
-    return Object.keys(providers).map<RichDropdownValue>(id => ({
+    return Object.keys(providers).sort((idA, idB) => collator.compare(providers[idA].name!, providers[idB].name!)).map<RichDropdownValue>(id => ({
       label: providers[id].name!,
       value: id,
       image: { uri: providers[id].iconRelativeUrl! },

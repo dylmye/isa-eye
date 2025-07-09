@@ -7,12 +7,16 @@ import ProductSummaryCard from "@/components/implementations/ProductSummaryCard"
 import { useCurrentYearProducts } from "@/db/hooks";
 import hooks from "@/hooks/database";
 import EditProductModal from "../EditProductModal";
+import getProductName from "@/utils/getProductName";
 
 const ProductCards = () => {
   const [selectedProductId, setSelectedProductId] = useState<string | null>();
   const currentYearProducts = useCurrentYearProducts();
   const hasProductsInCurrentYear = !!currentYearProducts.length;
   const productsAnyYearCount = hooks.useRowCount("products");
+
+  const collator = new Intl.Collator('en-GB');
+
   return (
     <View>
       <ThemedText style={styles.title} numberOfLines={1} dynamicTypeRamp="title2">
@@ -22,7 +26,7 @@ const ProductCards = () => {
         {!hasProductsInCurrentYear && (
           <ThemedText>{productsAnyYearCount ? "None of your accounts have a balance in this year. Update your balance to get started." : "Add an account to get started!"}</ThemedText>
         )}
-        {(currentYearProducts ?? []).map(([id, product]) => (
+        {(currentYearProducts ?? []).sort(([_, pA], [__, pB]) => collator.compare(getProductName({ friendlyName: pA.friendlyName, providerName: pA.providerName, productTypeName: pA.productTypeName }), getProductName({ friendlyName: pB.friendlyName, providerName: pB.providerName, productTypeName: pB.productTypeName }))).map(([id, product]) => (
           <ProductSummaryCard key={`summary-product-${id}`} product={product} productId={id} onPress={() => setSelectedProductId(id)} />
         ))}
       </Cards>

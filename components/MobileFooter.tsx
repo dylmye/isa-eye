@@ -48,7 +48,7 @@ const MobileFooter = ({
         }
       />
       <AddButton size={32} onPress={onPressAdd} />
-      {!!nextRuleset ? (
+      {nextRuleset ? (
         <NavForwardButton
           disabled={!nextRuleset}
           onPress={() => router.push(`/overview/${nextRuleset}`)}

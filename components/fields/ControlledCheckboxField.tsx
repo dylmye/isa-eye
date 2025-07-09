@@ -11,12 +11,16 @@ import ThemedText from "../ThemedText";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export interface ControlledCheckboxFieldProps<
-  Form extends FieldValues = any,
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  Form extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
   FieldName extends Path<Form> = any
 > extends BaseField<Form, FieldName> {}
 
 const ControlledCheckboxField = <
-  TForm extends FieldValues = any,
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
   TFieldName extends Path<TForm> = any
 >({
   label,

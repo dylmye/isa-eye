@@ -65,7 +65,7 @@ const OverviewBar = ({
       {showNavButtons && (
         <NavForwardButton
           disabled={!nextRuleset}
-          onPress={() => !!nextRuleset && router.push(`/overview/${nextRuleset}`)}
+          onPress={() => nextRuleset && router.push(`/overview/${nextRuleset}`)}
         />
       )}
     </View>

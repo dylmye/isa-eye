@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import AddModal, { AddModalProps } from "@/components/AddModal";
 import { ControlledCurrencyField } from "@/components/fields";
@@ -26,7 +26,9 @@ const UpdateBalanceModalUI = ({
   onSubmitForm,
   ...props
 }: UpdateBalanceModalUIProps) => {
+  const store = hooks.useStore();
   const currentRulesetId = hooks.useValue("currentTaxYear");
+  const [currentProductExistingValue, setCurrentProductExistingValue] = useState<number | null>(null);
   const {
     control,
     handleSubmit,
@@ -48,14 +50,23 @@ const UpdateBalanceModalUI = ({
 
   const selectedProductId = watch("productId");
   const selectedRulesetId = watch("rulesetId");
-  const selectedProductIsFlexible = hooks.useCell("products", selectedProductId, "flexible") as boolean | undefined;
-  const selectedExistingBalance = hooks.useRow("annualBalances", `${selectedProductId}-${selectedRulesetId}`);
+  const selectedProduct = hooks.useRow("products", selectedProductId);
 
+  // this might be the worst code of 2025
+  // TODO: overwrite existing value - or just set amount directly?
   useEffect(() => {
+    const selectedExistingBalance = store?.getRow("annualBalances", `${selectedProductId}-${selectedRulesetId ?? currentRulesetId}`);
     if (selectedExistingBalance?.deductedFromAllowancePence) {
-      setValue("amount", Number.parseFloat(selectedExistingBalance.deductedFromAllowancePence) / 100);
+      setCurrentProductExistingValue(Number.parseFloat(selectedExistingBalance.deductedFromAllowancePence) / 100);
+    } else {
+      if (!selectedProductId) {
+        setCurrentProductExistingValue(null);
+      } else {
+        setValue("amount", 0);
+        setCurrentProductExistingValue(0);
+      }
     }
-  }, [selectedExistingBalance, selectedRulesetId])
+  }, [selectedRulesetId, selectedProductId, currentRulesetId])
 
   return (
     <AddModal {...props}>
@@ -68,7 +79,7 @@ const UpdateBalanceModalUI = ({
           label="Account"
           required
         />
-        {selectedProductId && (
+        {currentProductExistingValue !== null && (
           <>
             <RulesetDropdownField<UpdateBalanceData, "rulesetId">
               control={control}
@@ -81,10 +92,11 @@ const UpdateBalanceModalUI = ({
             <ControlledCurrencyField<UpdateBalanceData, "amount">
               control={control}
               errors={errors}
+              defaultValue={currentProductExistingValue}
               name="amount"
               label="Allowance used"
               required
-              note={selectedProductIsFlexible ? `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
+              note={selectedProduct?.flexible ? `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
 If you've withdrawn more than the amount you've contributed this tax year, enter £0 and don't edit previous year contributions.
 Don't include transfers and interest/gains earned.` :
                 "Enter the sum of all contributions you've made during this tax year. Don't subtract withdrawals. Don't include transfers and interest/gains earned."

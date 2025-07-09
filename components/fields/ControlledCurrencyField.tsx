@@ -4,10 +4,12 @@ import ControlledTextField, {
 } from "./ControlledTextField";
 
 const ControlledCurrencyField = <
-  TForm extends FieldValues = any,
-  TFieldName extends Path<TForm> = any
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
+  TFieldName extends Path<TForm> = any,
 >(
-  props: ControlledTextFieldProps<TForm, TFieldName>
+  props: ControlledTextFieldProps<TForm, TFieldName>,
 ) => (
   <ControlledTextField
     {...props}

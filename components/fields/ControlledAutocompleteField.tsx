@@ -13,9 +13,11 @@ import { DropdownValue } from "@/types/dropdown";
 import ThemedText from "../ThemedText";
 
 export interface ControlledAutocompleteFieldProps<
-  Form extends FieldValues = any,
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  Form extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
   FieldName extends Path<Form> = any,
-  Option extends DropdownValue = DropdownValue
+  Option extends DropdownValue = DropdownValue,
 > extends BaseField<Form, FieldName> {
   allOptions: Option[];
   renderOption?: (o: Option, onPress: () => void) => React.ReactElement;
@@ -23,9 +25,11 @@ export interface ControlledAutocompleteFieldProps<
 }
 
 const ControlledAutocompleteField = <
-  TForm extends FieldValues = any,
+  // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
+  TForm extends FieldValues = {},
+  // biome-ignore lint/suspicious/noExplicitAny: no possible default value
   TFieldName extends Path<TForm> = any,
-  TOption extends DropdownValue = DropdownValue
+  TOption extends DropdownValue = DropdownValue,
 >({
   placeholder,
   required,
@@ -40,7 +44,9 @@ const ControlledAutocompleteField = <
 }: ControlledAutocompleteFieldProps<TForm, TFieldName, TOption>) => {
   const [filteredOptions, updateFilteredOptions] = useState(allOptions);
   const [showResults, setResultsVisiblity] = useState(_DEBUG_IS_OPEN ?? false);
-  const [textInputValue, setTextInputValue] = useState<string>(props.defaultValue ?? "");
+  const [textInputValue, setTextInputValue] = useState<string>(
+    props.defaultValue ?? "",
+  );
   const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
@@ -77,7 +83,7 @@ const ControlledAutocompleteField = <
                   !showResults && setResultsVisiblity(true);
                   // @TODO: debounce this bad boi
                   updateFilteredOptions(
-                    fuse.search(newText).map((r) => r.item)
+                    fuse.search(newText).map((r) => r.item),
                   );
                   return setTextInputValue(newText);
                 }}
@@ -89,7 +95,7 @@ const ControlledAutocompleteField = <
                   if (
                     "relatedTarget" in e &&
                     (e.relatedTarget as { role: string | null })?.role ===
-                    "listitem"
+                      "listitem"
                   )
                     return;
 
@@ -113,7 +119,9 @@ const ControlledAutocompleteField = <
                   keyboardShouldPersistTaps: "always",
                   keyExtractor: (item) => item.value,
                   renderItem: ({ item }) =>
-                    renderOption?.(item, () => onPressItem(item.value, item.label)) ?? (
+                    renderOption?.(item, () =>
+                      onPressItem(item.value, item.label),
+                    ) ?? (
                       <Pressable
                         onPress={() => {
                           onPressItem(item.value, item.label);
