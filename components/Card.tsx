@@ -19,4 +19,5 @@ const Card = ({ title, children }: PropsWithChildren<CardProps>) => (
   </CardBase>
 );
 
+/** @deprecated - Use ui/Card instead */
 export default Card;
