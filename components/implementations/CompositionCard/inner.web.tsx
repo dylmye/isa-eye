@@ -1,7 +1,7 @@
 import { WithSkiaWeb } from "@shopify/react-native-skia/lib/module/web";
 import { version } from "canvaskit-wasm/package.json";
 import { memo } from "react";
-import { Text } from "@/components/ui";
+import { Skeleton } from "@/components/ui";
 import type CompositionChartProps from "./interface";
 
 // On web, we need to load all Skia components (including victory-native-xl components)
@@ -14,7 +14,7 @@ const CompositionCardInner = (props: CompositionChartProps) => {
       }}
       getComponent={() => import("./chart.tsx")}
       componentProps={props}
-      fallback={<Text>Loading...</Text>}
+      fallback={<Skeleton className="m-auto h-36 w-36 rounded-full" />}
     />
   );
 };

@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Cards from "@/components/Cards";
+import CardStack from "@/components/CardStack";
 import AddProductModal from "@/components/implementations/AddProductModal";
 import CompositionCard from "@/components/implementations/CompositionCard";
 import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
@@ -59,7 +59,7 @@ const OverviewForRuleset = () => {
       />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <PageColumn>
-          <Cards>
+          <CardStack>
             {!isMediumScreen && (
               <DesktopActionTiles
                 onPress={(key) =>
@@ -69,7 +69,7 @@ const OverviewForRuleset = () => {
               />
             )}
             {!!hasProducts && <CompositionCard />}
-          </Cards>
+          </CardStack>
           <ProductCards />
         </PageColumn>
       </ScrollView>

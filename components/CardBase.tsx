@@ -89,4 +89,5 @@ const styles = StyleSheet.create({
   },
 });
 
+/** @deprecated - Replace with Card */
 export default CardBase;

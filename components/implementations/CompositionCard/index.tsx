@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
-import { StyleSheet, useWindowDimensions, View } from "react-native";
-import Card from "@/components/Card";
-import { Text } from "@/components/ui";
+import { useWindowDimensions, View } from "react-native";
+import { Card, Text } from "@/components/ui";
 import { useCurrentYearBalances } from "@/db/hooks";
 import getProductName from "@/utils/getProductName";
 import CompositionChartInner from "./inner";
@@ -28,56 +27,35 @@ const CompositionCard = () => {
   }
 
   return (
-    <Card title="Composition">
-      <View style={styles.contentContainer}>
-        <View style={styles.section}>
+    <Card className="w-full">
+      <Card.Header>
+        <Card.Title>Composition</Card.Title>
+      </Card.Header>
+      {/* fixed height is required by victory */}
+      <Card.Content className="flex h-44 flex-row gap-4">
+        <View className="min-w-48 flex-1">
           <CompositionChartInner products={chartProducts} />
         </View>
         {width > 450 && (
-          <View style={styles.section}>
+          <View className="min-w-48 flex-1">
             <Text className="font-bold text-lg">Key</Text>
             {chartProducts.map((p) => (
-              <View style={styles.keyIndicator} key={`product-key-row-${p.id}`}>
+              <View
+                className="flex flex-row items-center py-1"
+                key={`product-key-row-${p.id}`}
+              >
                 <View
-                  style={[
-                    styles.keyIndicatorIcon,
-                    { backgroundColor: p.colour },
-                  ]}
+                  className="mr-2 h-3 w-3 rounded-full"
+                  style={{ backgroundColor: p.colour }}
                 />
                 <Text numberOfLines={1}>{p.label}</Text>
               </View>
             ))}
           </View>
         )}
-      </View>
+      </Card.Content>
     </Card>
   );
 };
-
-const styles = StyleSheet.create({
-  contentContainer: {
-    // static height required by Victory
-    height: 150,
-    display: "flex",
-    flexDirection: "row",
-    gap: 16,
-  },
-  section: {
-    flex: 1,
-    minWidth: 200,
-  },
-  keyIndicator: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 2,
-  },
-  keyIndicatorIcon: {
-    borderRadius: "100%",
-    width: 12,
-    height: 12,
-    marginRight: 8,
-  },
-});
 
 export default CompositionCard;

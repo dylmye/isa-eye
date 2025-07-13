@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import Cards from "@/components/Cards";
+import CardStack from "@/components/CardStack";
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
 import { Text } from "@/components/ui";
 import { useCurrentYearProducts } from "@/db/hooks";
@@ -25,7 +25,7 @@ const ProductCards = () => {
       >
         Accounts
       </Text>
-      <Cards>
+      <CardStack>
         {/* @TODO replace with info card */}
         {!hasProductsInCurrentYear && (
           <Text className="text-lg">
@@ -57,7 +57,7 @@ const ProductCards = () => {
               onPress={() => setSelectedProductId(id)}
             />
           ))}
-      </Cards>
+      </CardStack>
       <EditProductModal
         isVisible={!!selectedProductId}
         onDismiss={() => setSelectedProductId(null)}
