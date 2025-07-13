@@ -1,6 +1,6 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { View } from "react-native";
-import ThemedText from "@/components/ThemedText";
+import { Text } from "@/components/ui";
 import styles from "../styles";
 
 interface ValidationMessageProps {
@@ -8,13 +8,14 @@ interface ValidationMessageProps {
 }
 
 const ValidationMessage = ({ message }: ValidationMessageProps) => (
-  <View style={[styles.validationMessage, styles.messageShared]}>
-    <ThemedText
-      style={[styles.validationMessageText, styles.messageTextShared]}
-    >
+  <View
+    className="mb-2 rounded-md bg-red-300 p-2"
+    style={[styles.validationMessage, styles.messageShared]}
+  >
+    <Text className="color-red-600 flex flex-row items-center gap-1">
       <MaterialCommunityIcons name="alert-octagram" color="inherit" size={18} />
       {message}
-    </ThemedText>
+    </Text>
   </View>
 );
 

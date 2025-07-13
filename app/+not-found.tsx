@@ -1,15 +1,15 @@
 import { Link, Stack } from "expo-router";
 import { StyleSheet, View } from "react-native";
-import ThemedText from "@/components/ThemedText";
+import { Text } from "@/components/ui";
 
 export default function NotFoundScreen() {
   return (
     <>
       <Stack.Screen options={{ title: "Oops!" }} />
       <View style={styles.container}>
-        <ThemedText type="title">Can't find this page.</ThemedText>
+        <Text>Can't find this page.</Text>
         <Link href="/" style={styles.link}>
-          <ThemedText type="link">Click to return home.</ThemedText>
+          <Text>Click to return home.</Text>
         </Link>
       </View>
     </>

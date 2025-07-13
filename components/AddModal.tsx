@@ -1,8 +1,9 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import type { PropsWithChildren } from "react";
-import { Modal, StyleSheet, useColorScheme, View } from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
+import { Text } from "@/components/ui";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import ThemedText from "./ThemedText";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 export interface AddModalHeaderProps {
   text?: string;
@@ -11,7 +12,7 @@ export interface AddModalHeaderProps {
 
 const AddModalHeader = ({ text, onDismiss }: AddModalHeaderProps) => (
   <View style={styles.modalHeader}>
-    <ThemedText type="subtitle">{text}</ThemedText>
+    <Text className="font-bold text-xl">{text}</Text>
     <MaterialCommunityIcons.Button
       name="close"
       onPress={onDismiss}
@@ -36,10 +37,10 @@ const AddModal = ({
   onDismiss,
   children,
 }: PropsWithChildren<AddModalProps>) => {
-  const colourScheme = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   const schemeStyles =
-    colourScheme === "light"
+    colorScheme === "light"
       ? {
           borderColor: "rgba(0, 0, 0, 0.04)",
           borderWidth: 2,

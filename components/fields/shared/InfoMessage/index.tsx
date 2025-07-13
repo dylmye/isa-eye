@@ -1,6 +1,6 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { View } from "react-native";
-import ThemedText from "@/components/ThemedText";
+import { Text } from "@/components/ui";
 import styles from "../styles";
 
 interface InfoMessageProps {
@@ -8,15 +8,18 @@ interface InfoMessageProps {
 }
 
 const InfoMessage = ({ message }: InfoMessageProps) => (
-  <View style={[styles.infoMessage, styles.messageShared]}>
-    <ThemedText style={[styles.infoMessageText, styles.messageTextShared]}>
+  <View
+    className="mb-2 rounded-md bg-blue-300 p-2"
+    style={styles.messageShared}
+  >
+    <Text className="color-blue-600 flex flex-row items-center gap-1">
       <MaterialCommunityIcons
         name="information-outline"
         color="inherit"
         size={18}
       />
       {message}
-    </ThemedText>
+    </Text>
   </View>
 );
 

@@ -25,12 +25,12 @@ const CardBase = ({
   onPress,
   ...props
 }: PropsWithChildren<CardBaseProps>) => {
-  const colourScheme = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   const isWeb = Platform.OS === "web";
 
   const baseBackgroundColour = useMemo<ColorValue>(() => {
-    return colourScheme === "light"
+    return colorScheme === "light"
       ? getCrossPlatformColour(
           "secondarySystemBackground",
           "@android:color/system_accent1_900",
@@ -41,10 +41,10 @@ const CardBase = ({
           "@android:color/system_accent1_900",
           "rgba(255, 255, 255, 0.15)",
         );
-  }, [colourScheme]);
+  }, [colorScheme]);
 
   const schemeStyles =
-    colourScheme === "light"
+    colorScheme === "light"
       ? {
           borderColor: "rgba(0, 0, 0, 0.04)",
           borderWidth: 2,

@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { Pressable, TextInput } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
+import { Text } from "@/components/ui";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import type BaseField from "@/types/baseField";
 import type { DropdownValue } from "@/types/dropdown";
-import ThemedText from "../ThemedText";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
 import styles from "./shared/styles";
@@ -129,7 +129,7 @@ const ControlledAutocompleteField = <
                         style={styles.autocompleteResult}
                         role="listitem"
                       >
-                        <ThemedText>{item.label}</ThemedText>
+                        <Text>{item.label}</Text>
                       </Pressable>
                     ),
                   style: styles.autocompleteResultsFlatlist,

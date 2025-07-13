@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import CardBase from "@/components/CardBase";
-import ThemedText from "@/components/ThemedText";
+import { Text } from "@/components/ui";
 import type { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
 import getProductName from "@/utils/getProductName";
@@ -63,18 +63,17 @@ const ProductSummaryCard = ({
           size={38}
           style={styles.icon}
         />
-        <ThemedText
-          type="defaultSemiBold"
-          style={styles.nameText}
+        <Text
+          className="mx-2 overflow-ellipsis font-semibold text-2xl leading-8"
           numberOfLines={1}
           ellipsizeMode="tail"
         >
           {formattedAccountName}
-        </ThemedText>
+        </Text>
       </View>
-      <ThemedText type="defaultSemiBold" style={styles.valueText}>
+      <Text className="font-semibold text-2xl leading-9">
         {formattedProductBalance}
-      </ThemedText>
+      </Text>
     </CardBase>
   );
 };
@@ -92,16 +91,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     overflow: "hidden",
-    lineHeight: 38,
-  },
-  nameText: {
-    fontSize: 24,
-    lineHeight: 32,
-    marginHorizontal: 8,
-    textOverflow: "ellipsis",
-  },
-  valueText: {
-    fontSize: 24,
     lineHeight: 38,
   },
 });

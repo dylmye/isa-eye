@@ -1,8 +1,9 @@
 import * as RadioGroupPrimitive from "@rn-primitives/radio-group";
 import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { View } from "react-native";
+import { Text } from "@/components/ui";
 import type BaseField from "@/types/baseField";
-import ThemedText from "../ThemedText";
+import { cn } from "@/utils/styles";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
 import styles from "./shared/styles";
@@ -77,13 +78,13 @@ const ControlledRadioField = <
                     >
                       <RadioGroupPrimitive.Indicator />
                     </RadioGroupPrimitive.Item>
-                    <ThemedText
+                    <Text
                       nativeID={`${o.value}-label`}
-                      style={isSelected && styles.selectedRadioOptionText}
+                      className={cn(isSelected && "font-semibold")}
                       onPress={() => onChange(o.value)}
                     >
                       {o.label}
-                    </ThemedText>
+                    </Text>
                   </View>
                 );
               })}

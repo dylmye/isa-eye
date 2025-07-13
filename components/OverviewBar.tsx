@@ -1,12 +1,12 @@
 import { router } from "expo-router";
 import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
+import { Text } from "@/components/ui";
 import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
 import hooks from "@/hooks/database";
 import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
 import NavBackButton from "./implementations/NavBackButton";
 import NavForwardButton from "./implementations/NavForwardButton";
-import ThemedText from "./ThemedText";
 
 interface OverviewBarProps {
   rulesetId: string;
@@ -49,21 +49,20 @@ const OverviewBar = ({
         />
       )}
       <View>
-        <ThemedText aria-hidden style={[styles.text, styles.dateSubtitle]}>
+        <Text className="mb-2 text-center font-semibold text-lg" aria-hidden>
           {rulesetId}
-        </ThemedText>
-        <ThemedText
+        </Text>
+        <Text
           aria-label={`Your remaining ISA allowance for the ${rulesetId} tax year.`}
-          style={styles.text}
-          type="title"
           adjustsFontSizeToFit
+          className="text-center font-bold text-7xl"
           dynamicTypeRamp="largeTitle"
         >
           {formattedRemainingBalance}
-        </ThemedText>
-        <ThemedText aria-hidden style={styles.text}>
+        </Text>
+        <Text className="text-center" aria-hidden>
           remaining
-        </ThemedText>
+        </Text>
       </View>
       {showNavButtons && (
         <NavForwardButton
@@ -77,33 +76,25 @@ const OverviewBar = ({
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 24,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: getCrossPlatformColour(
-      "secondarySystemBackground",
-      "@android:color/system_accent1_900",
-      "rgba(255, 255, 255, 0.15)",
-    ),
-    paddingVertical: 16,
-    shadowColor: "#404040",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowOpacity: 0.31,
-    shadowRadius: 3,
-    elevation: 5,
-  },
-  text: {
-    textAlign: "center",
-  },
-  dateSubtitle: {
-    fontSize: 18,
-    marginBottom: 8,
-    fontWeight: "600",
+    // display: "flex",
+    // flexDirection: "row",
+    // gap: 24,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // backgroundColor: getCrossPlatformColour(
+    //   "secondarySystemBackground",
+    //   "@android:color/system_accent1_900",
+    //   "rgba(255, 255, 255, 0.15)",
+    // ),
+    // paddingVertical: 16,
+    // shadowColor: "#404040",
+    // shadowOffset: {
+    //   width: 1,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.31,
+    // shadowRadius: 3,
+    // elevation: 5,
   },
 });
 

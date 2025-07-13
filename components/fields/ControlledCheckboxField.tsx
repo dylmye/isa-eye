@@ -2,9 +2,9 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import * as CheckboxPrimitive from "@rn-primitives/checkbox";
 import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { View } from "react-native";
+import { Text } from "@/components/ui";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import type BaseField from "@/types/baseField";
-import ThemedText from "../ThemedText";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
 import styles from "./shared/styles";
@@ -61,7 +61,7 @@ const ControlledCheckboxField = <
                   <MaterialCommunityIcons name="check" color={textColor} />
                 </CheckboxPrimitive.Indicator>
               </CheckboxPrimitive.Root>
-              <ThemedText style={{ lineHeight: 16 }}>Yes</ThemedText>
+              <Text className="ml-1 leading-4">Yes</Text>
             </View>
           </>
         )}

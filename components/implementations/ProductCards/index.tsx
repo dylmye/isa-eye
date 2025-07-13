@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import Cards from "@/components/Cards";
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
-import ThemedText from "@/components/ThemedText";
+import { Text } from "@/components/ui";
 import { useCurrentYearProducts } from "@/db/hooks";
 import hooks from "@/hooks/database";
 import getProductName from "@/utils/getProductName";
@@ -18,20 +18,21 @@ const ProductCards = () => {
 
   return (
     <View>
-      <ThemedText
-        style={styles.title}
+      <Text
+        className="mx-4 my-3 text-left font-bold text-xl"
         numberOfLines={1}
         dynamicTypeRamp="title2"
       >
         Accounts
-      </ThemedText>
+      </Text>
       <Cards>
+        {/* @TODO replace with info card */}
         {!hasProductsInCurrentYear && (
-          <ThemedText>
+          <Text className="text-lg">
             {productsAnyYearCount
               ? "None of your accounts have a balance in this year. Update your balance to get started."
               : "Add an account to get started!"}
-          </ThemedText>
+          </Text>
         )}
         {(currentYearProducts ?? [])
           .sort(([_, pA], [__, pB]) =>
@@ -65,18 +66,5 @@ const ProductCards = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  titleWrapper: {
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 21,
-    fontWeight: "bold",
-    marginVertical: 12,
-    marginHorizontal: 16,
-    textAlign: "left",
-  },
-});
 
 export default ProductCards;

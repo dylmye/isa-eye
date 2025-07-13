@@ -49,9 +49,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   messageShared: {
-    padding: 6,
-    borderRadius: 4,
-    marginBottom: 8,
     maxWidth: 600,
   },
   messageTextShared: {
@@ -105,9 +102,6 @@ const styles = StyleSheet.create({
       "@android:color/system_accent1_900",
       "rgba(255, 255, 255, 0.25)",
     ) as string,
-  },
-  selectedRadioOptionText: {
-    fontWeight: "600",
   },
   checkbox: {
     height: 16,

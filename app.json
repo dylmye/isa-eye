@@ -14,14 +14,14 @@
 		"platforms": ["android", "ios", "web"],
 		"ios": {
 			"supportsTablet": true,
-			"bundleIdentifier": "com.dylmye.isa"
+			"bundleIdentifier": "me.dylmye.isa"
 		},
 		"android": {
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.dylmye.isa"
+			"package": "me.dylmye.isa"
 		},
 		"web": {
 			"bundler": "metro",

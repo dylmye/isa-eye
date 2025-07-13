@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import ThemedText from "@/components/ThemedText";
+import { Text } from "@/components/ui";
 import styles from "../styles";
 
 interface FieldLabelProps {
@@ -11,14 +11,14 @@ interface FieldLabelProps {
 // @TODO: replace with rn-primitives Label
 const FieldLabel = ({ label, fieldName, required }: FieldLabelProps) => {
   const text = (
-    <ThemedText
+    <Text
       nativeID={`${fieldName}-label`}
       role="presentation"
-      style={styles.labelText}
+      className="font-semibold text-sm"
     >
       {label}
       {required ? " *" : " (optional)"}
-    </ThemedText>
+    </Text>
   );
 
   if (Platform.OS === "web") {

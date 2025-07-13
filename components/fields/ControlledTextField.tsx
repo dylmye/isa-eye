@@ -1,8 +1,8 @@
 import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { TextInput, type TextInputProps, View } from "react-native";
+import { Text } from "@/components/ui";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import type BaseField from "@/types/baseField";
-import ThemedText from "../ThemedText";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
 import styles from "./shared/styles";
@@ -60,9 +60,7 @@ const ControlledTextField = <
             <View style={styles.fieldWithAdornments}>
               {prefix && (
                 <View style={styles.fieldPrefix}>
-                  <ThemedText style={styles.fieldAdornmentText}>
-                    {prefix}
-                  </ThemedText>
+                  <Text className="font-semibold text-base">{prefix}</Text>
                 </View>
               )}
               <TextInput
@@ -80,9 +78,7 @@ const ControlledTextField = <
               />
               {suffix && (
                 <View style={styles.fieldSuffix}>
-                  <ThemedText style={styles.fieldAdornmentText}>
-                    {suffix}
-                  </ThemedText>
+                  <Text className="font-semibold text-base">{suffix}</Text>
                 </View>
               )}
             </View>
