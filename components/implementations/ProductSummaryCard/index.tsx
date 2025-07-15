@@ -17,6 +17,7 @@ export interface ProductSummaryCardProps {
   onPress?: () => void;
 }
 
+// @TODO: replace cardbase with nativewind
 const ProductSummaryCard = ({
   disabled = false,
   product,
