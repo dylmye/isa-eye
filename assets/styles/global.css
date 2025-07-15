@@ -4,7 +4,7 @@
 
 @layer base {
 	/* Keep these colours in sync with @/constants/Colors.ts */
-	@media (prefers-color-scheme: light) {
+	/* @media (prefers-color-scheme: light) { */
 		:root {
 			--background: 160 41% 100%;
 			--foreground: 160 61% 3%;
@@ -32,10 +32,10 @@
 			--chart-5: 160 102% 38%;
 			--radius: 0.5rem;
 		}
-	}
+	/* } */
 
-	@media (prefers-color-scheme: dark) {
-		:root {
+	/* @media (prefers-color-scheme: dark) { */
+		.dark:root {
 			--background: 160 33% 3%;
       		--foreground: 160 32% 99%;
 			--card: 160 33% 3%;
@@ -63,5 +63,5 @@
 			--chart-5: 160 102% 38%;
 			--radius: 0.5rem;
 		}
-	}
+	/* } */
 }

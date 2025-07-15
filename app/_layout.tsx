@@ -11,7 +11,7 @@ import { StatusBar } from "expo-status-bar";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
 import "react-native-reanimated";
 
-import { NAV_THEME } from "@/constants/Colors";
+import { NAV_THEME } from "@/constants/navTheme";
 import type { Schemas } from "@/db/schema";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useSetupDatabase } from "@/hooks/useSetupDatabase";
@@ -58,6 +58,17 @@ const RootLayout = () => {
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;
   }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!isColorSchemeLoaded) {
+      return;
+    }
+    if (Platform.OS === "web" && isDarkColorScheme) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isColorSchemeLoaded, isDarkColorScheme]);
 
   if (!isColorSchemeLoaded) {
     return null;

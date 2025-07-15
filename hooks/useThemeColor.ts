@@ -3,7 +3,7 @@
  * https://docs.expo.dev/guides/color-schemes/
  */
 
-import { NAV_THEME } from "@/constants/Colors";
+import { NAV_THEME } from "@/constants/navTheme";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 /**

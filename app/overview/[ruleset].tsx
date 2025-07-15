@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,12 +16,13 @@ import { useCurrentYearProducts } from "@/db/hooks";
 import hooks from "@/hooks/database";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
 import type ModalVisibilityState from "@/types/modalVisibilityState";
-import { getOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
+import { useGetOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 
 const DEFAULT_RULESET_ID = "2024/2025";
 
 const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
+  const currentYearProducts = useCurrentYearProducts();
   const searchParams = useLocalSearchParams<{ ruleset?: string }>();
   const [modalVisiblity, updateModalVisibility] =
     useState<ModalVisibilityState>({
@@ -29,7 +30,15 @@ const OverviewForRuleset = () => {
       updateBalance: false,
       bulkUpload: false,
     });
+  const hasProducts = !!currentYearProducts.length;
 
+  const navbarProps = useGetOverviewNavbarProps();
+
+  /**
+   *
+   * Ruleset handling
+   *
+   */
   const currentRulesetFormattedName = useMemo(
     () => searchParams?.ruleset?.replace("-", "/") ?? DEFAULT_RULESET_ID,
     [searchParams?.ruleset],
@@ -39,14 +48,13 @@ const OverviewForRuleset = () => {
     (newYear: string) => newYear,
     [],
   );
-
-  const navbarProps = getOverviewNavbarProps();
-
-  const currentYearProducts = useCurrentYearProducts();
-  const hasProducts = !!currentYearProducts.length;
-
+  const existingRulesets = hooks.useRowIds("rulesets");
   useEffect(() => {
-    updateCurrentRulesetForStore(currentRulesetFormattedName);
+    if (existingRulesets.includes(currentRulesetFormattedName)) {
+      updateCurrentRulesetForStore(currentRulesetFormattedName);
+    } else {
+      router.replace("/+not-found");
+    }
   }, [currentRulesetFormattedName]);
 
   return (
