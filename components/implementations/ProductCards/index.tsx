@@ -17,7 +17,7 @@ const ProductCards = () => {
 
   const data = useMemo(
     () =>
-      (currentYearProducts ?? []).sort(([_, pA], [__, pB]) =>
+      (currentYearProducts ?? []).toSorted(([_, pA], [__, pB]) =>
         collator.compare(
           getProductName({
             friendlyName: pA.friendlyName,

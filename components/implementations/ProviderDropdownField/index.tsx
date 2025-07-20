@@ -25,7 +25,7 @@ const ProviderDropdownField = <
 
   const providerDropdownOptions: RichDropdownOptions = useMemo(() => {
     return Object.keys(providers)
-      .sort((idA, idB) =>
+      .toSorted((idA, idB) =>
         collator.compare(providers[idA].name!, providers[idB].name!),
       )
       .map<RichDropdownValue>((id) => ({

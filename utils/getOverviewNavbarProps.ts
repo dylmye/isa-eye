@@ -12,8 +12,16 @@ interface UseOverviewNavProps {
 export const useGetOverviewNavbarProps = (): UseOverviewNavProps => {
   const currentRulesetName = hooks.useValue("currentTaxYear") as string;
   const rulesets = hooks.useRowIds("rulesets") as string[];
-  const lastIndex = rulesets.length - 1;
-  const currIndex = rulesets.findIndex((r) => r === currentRulesetName);
+
+  // sort rulesets by numeric value of starting year.
+  const sortedRulesets = useMemo(() => {
+    return rulesets.toSorted(
+      (a, b) =>
+        Number.parseInt(a.split("/")[0]) - Number.parseInt(b.split("/")[0]),
+    );
+  }, [rulesets]);
+  const lastIndex = sortedRulesets.length - 1;
+  const currIndex = sortedRulesets.findIndex((r) => r === currentRulesetName);
 
   return useMemo(() => {
     switch (currIndex) {
@@ -23,19 +31,25 @@ export const useGetOverviewNavbarProps = (): UseOverviewNavProps => {
       // first (earliest) ruleset
       case 0:
         return {
-          nextRulesetName: formatRulesetNameForNav(rulesets[1]),
+          nextRulesetName: formatRulesetNameForNav(sortedRulesets[1]),
         };
       // last (latest) ruleset
       case lastIndex:
         return {
-          previousRulesetName: formatRulesetNameForNav(rulesets[lastIndex - 1]),
+          previousRulesetName: formatRulesetNameForNav(
+            sortedRulesets[lastIndex - 1],
+          ),
         };
       // any others
       default:
         return {
-          previousRulesetName: formatRulesetNameForNav(rulesets[currIndex - 1]),
-          nextRulesetName: formatRulesetNameForNav(rulesets[currIndex + 1]),
+          previousRulesetName: formatRulesetNameForNav(
+            sortedRulesets[currIndex - 1],
+          ),
+          nextRulesetName: formatRulesetNameForNav(
+            sortedRulesets[currIndex + 1],
+          ),
         };
     }
-  }, [rulesets, currIndex]);
+  }, [sortedRulesets, currIndex]);
 };
