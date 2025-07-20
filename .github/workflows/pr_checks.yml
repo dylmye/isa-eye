@@ -24,6 +24,6 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
       - name: Debug info
-        uses: bun x expo-doctor -v
+        run: bun x expo-doctor -v
       - name: Call the doctor
         run: bun x expo-doctor
