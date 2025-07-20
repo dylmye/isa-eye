@@ -23,6 +23,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
       - name: Debug info
         run: bun x expo-doctor -v
       - name: Call the doctor
