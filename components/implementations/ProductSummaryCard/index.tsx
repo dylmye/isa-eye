@@ -1,34 +1,27 @@
 import { Image } from "expo-image";
 import { useMemo } from "react";
-import { StyleSheet, View } from "react-native";
-import CardBase from "@/components/CardBase";
+import { Platform, View } from "react-native";
 import { Text } from "@/components/ui";
 import type { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
 import getProductName from "@/utils/getProductName";
 
 export interface ProductSummaryCardProps {
-  /** Product is closed or non-interactable
-   * @default false
-   */
-  disabled?: boolean;
   product: AllProductsRow;
   productId: string;
-  onPress?: () => void;
 }
 
-// @TODO: replace cardbase with nativewind
 const ProductSummaryCard = ({
-  disabled = false,
   product,
   productId,
-  onPress = () => {},
 }: ProductSummaryCardProps) => {
   const currentRuleset = hooks.useValue("currentTaxYear");
   const productBalanceRow = hooks.useRow(
     "annualBalances",
     `${productId}-${currentRuleset}`,
   );
+
+  const isWeb = Platform.OS === "web";
 
   const formattedProductBalance = useMemo(() => {
     return new Intl.NumberFormat("en-GB", {
@@ -51,14 +44,16 @@ const ProductSummaryCard = ({
   );
 
   return (
-    <CardBase
-      style={[styles.container, disabled && styles.containerDisabled]}
-      highlightColourWeb={productColourBackgroundWeb}
-      accessibilityLabel={`Your ${formattedAccountName} account has used ${formattedProductBalance} of your ${currentRuleset} ISA allowance.`}
-      accessibilityRole="list"
-      onPress={onPress}
+    <View
+      className="flex w-full flex-row items-center justify-between rounded-lg border-2 border-border bg-card px-4 py-3 transition hover:brightness-110"
+      style={
+        isWeb &&
+        productColourBackgroundWeb && {
+          backgroundImage: productColourBackgroundWeb,
+        }
+      }
     >
-      <View style={styles.name}>
+      <View className="flex flex-row gap-2">
         <View className="h-9 w-9">
           <Image
             source={product.providerIconRelativeUrl}
@@ -66,32 +61,17 @@ const ProductSummaryCard = ({
           />
         </View>
         <Text
-          className="mx-2 overflow-ellipsis font-semibold text-2xl leading-8"
+          className="mr-2 overflow-ellipsis font-semibold text-2xl text-card-foreground"
           numberOfLines={1}
-          ellipsizeMode="tail"
         >
           {formattedAccountName}
         </Text>
       </View>
-      <Text className="font-semibold text-2xl leading-9">
+      <Text className="font-semibold text-2xl text-card-foreground">
         {formattedProductBalance}
       </Text>
-    </CardBase>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  containerDisabled: {},
-  name: {
-    flex: 1,
-    flexDirection: "row",
-    overflow: "hidden",
-    lineHeight: 38,
-  },
-});
 
 export default ProductSummaryCard;

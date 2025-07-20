@@ -38,7 +38,10 @@ const ProductCards = () => {
     item: [id, product],
   }) => (
     <EditProductDialog existingId={id as string}>
-      <ProductSummaryCard product={product} productId={id} />
+      {/* @TODO: Determine why we need a local view as immediate dialog child */}
+      <View>
+        <ProductSummaryCard product={product} productId={id} />
+      </View>
     </EditProductDialog>
   );
 
@@ -56,7 +59,7 @@ const ProductCards = () => {
         renderItem={renderCard}
         contentContainerClassName="mx-4 flex flex-col items-center"
         className="w-full"
-        ItemSeparatorComponent={() => <View className="pb-4" />}
+        ItemSeparatorComponent={() => <View className="pb-2" />}
         ListEmptyComponent={
           <ProductCardsEmpty anyExistingProducts={!!productsAnyYearCount} />
         }

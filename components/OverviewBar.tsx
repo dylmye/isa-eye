@@ -36,9 +36,8 @@ const OverviewBar = ({
     return formatHeadlineCurrency(currentRow?.remainingBalance ?? 20_000);
   }, [remainingBalanceRow, rulesetId]);
 
-  // @TODO: make this card same width as the others
   return (
-    <Card className="w-full">
+    <Card className="w-full rounded-b-none">
       <Card.Content className="color-foreground flex flex-row items-center justify-center py-4">
         {showNavButtons && (
           <NavBackButton
