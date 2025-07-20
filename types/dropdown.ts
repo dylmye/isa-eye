@@ -1,5 +1,3 @@
-import type { ImageSourcePropType } from "react-native";
-
 export interface DropdownValue<TValue = string> {
   label: string;
   value: TValue;
@@ -7,7 +5,7 @@ export interface DropdownValue<TValue = string> {
 
 export interface RichDropdownValue<TValue = string>
   extends DropdownValue<TValue> {
-  image?: ImageSourcePropType;
+  image?: string;
   aliases?: string[];
 }
 

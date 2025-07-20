@@ -4,8 +4,9 @@ import { View } from "react-native";
 import { Card, Text } from "@/components/ui";
 import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
 import hooks from "@/hooks/database";
-import NavBackButton from "./implementations/NavBackButton";
-import NavForwardButton from "./implementations/NavForwardButton";
+import { formatHeadlineCurrency } from "@/utils/formatHeadlineCurrency";
+import NavBackButton from "./NavBackButton";
+import NavForwardButton from "./NavForwardButton";
 
 interface OverviewBarProps {
   rulesetId: string;
@@ -14,6 +15,9 @@ interface OverviewBarProps {
   nextRuleset?: string;
 }
 
+/**
+ * Feature card for viewing current ruleset and associated information, desktop navigation
+ */
 const OverviewBar = ({
   rulesetId,
   showNavButtons,
@@ -29,18 +33,13 @@ const OverviewBar = ({
     const currentRow = Object.values(remainingBalanceRow ?? {}).find(
       (r) => r.rulesetId === rulesetId,
     );
-    return new Intl.NumberFormat("en-GB", {
-      style: "currency",
-      currency: "GBP",
-      maximumFractionDigits: 2,
-      trailingZeroDisplay: "stripIfInteger",
-    }).format(currentRow?.remainingBalance ?? 20_000);
+    return formatHeadlineCurrency(currentRow?.remainingBalance ?? 20_000);
   }, [remainingBalanceRow, rulesetId]);
 
   // @TODO: make this card same width as the others
   return (
     <Card className="w-full">
-      <Card.Content className="flex flex-row items-center justify-center py-4">
+      <Card.Content className="color-foreground flex flex-row items-center justify-center py-4">
         {showNavButtons && (
           <NavBackButton
             disabled={!previousRuleset}

@@ -31,7 +31,7 @@ const ProviderDropdownField = <
       .map<RichDropdownValue>((id) => ({
         label: providers[id].name!,
         value: id,
-        image: { uri: providers[id].iconRelativeUrl! },
+        image: providers[id].iconRelativeUrl,
         aliases: Object.keys(aliases)
           .filter((aid) => aliases[aid].providerId === id)
           .map((a) => aliases[a].alias!),

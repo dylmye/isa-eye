@@ -3,7 +3,6 @@ import type { FieldValues, Path } from "react-hook-form";
 
 import { ControlledAutocompleteField } from "@/components/fields";
 import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
-import RichDropdownOption from "@/components/fields/RichDropdownOption";
 import hooks from "@/hooks/database";
 import type { DropdownOptions, DropdownValue } from "@/types/dropdown";
 
@@ -30,9 +29,6 @@ const RulesetDropdownField = <
   return (
     <ControlledAutocompleteField
       allOptions={rulesetDropdownOptions}
-      renderOption={(o, onPress) => (
-        <RichDropdownOption option={o} onPress={onPress} />
-      )}
       {...props}
     />
   );

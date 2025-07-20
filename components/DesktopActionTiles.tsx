@@ -1,7 +1,7 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { View } from "react-native";
 import ActionTile from "@/components/ActionTile";
-import { UpdateBalanceDialog } from "@/components/dialogs";
+import { AddProductDialog, UpdateBalanceDialog } from "@/components/dialogs";
 import type ModalVisibilityState from "@/types/modalVisibilityState";
 
 interface DesktopActionTilesProps {
@@ -9,6 +9,9 @@ interface DesktopActionTilesProps {
   hasProducts: boolean;
 }
 
+/**
+ * Set of `ActionTile`s for primary actions.
+ */
 const DesktopActionTiles = ({
   onPress,
   hasProducts,
@@ -17,12 +20,20 @@ const DesktopActionTiles = ({
 
   return (
     <View className="flex w-full flex-row justify-evenly gap-3">
-      {hasProducts && <UpdateBalanceDialog />}
-      <ActionTile
-        title="Add Account"
-        onPress={() => onPress("addProduct")}
-        icon={<MaterialCommunityIcons size={iconSize} name="bank-plus" />}
-      />
+      {hasProducts && (
+        <UpdateBalanceDialog>
+          <ActionTile
+            title="Update Balance"
+            icon={<MaterialCommunityIcons name="cash-plus" size={52} />}
+          />
+        </UpdateBalanceDialog>
+      )}
+      <AddProductDialog>
+        <ActionTile
+          title="Add Account"
+          icon={<MaterialCommunityIcons name="bank-plus" size={52} />}
+        />
+      </AddProductDialog>
       <ActionTile
         title="Bulk Import"
         onPress={() => onPress("bulkUpload")}

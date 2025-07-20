@@ -1,3 +1,4 @@
+import { Image } from "expo-image";
 import { useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import CardBase from "@/components/CardBase";
@@ -5,7 +6,6 @@ import { Text } from "@/components/ui";
 import type { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
 import getProductName from "@/utils/getProductName";
-import BankLogoIcon from "../BankLogoIcon";
 
 export interface ProductSummaryCardProps {
   /** Product is closed or non-interactable
@@ -59,11 +59,12 @@ const ProductSummaryCard = ({
       onPress={onPress}
     >
       <View style={styles.name}>
-        <BankLogoIcon
-          bankIcon={{ uri: product.providerIconRelativeUrl }}
-          size={38}
-          style={styles.icon}
-        />
+        <View className="h-9 w-9">
+          <Image
+            source={product.providerIconRelativeUrl}
+            className="flex-1 rounded-full border-2 border-ring"
+          />
+        </View>
         <Text
           className="mx-2 overflow-ellipsis font-semibold text-2xl leading-8"
           numberOfLines={1}
@@ -85,9 +86,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   containerDisabled: {},
-  icon: {
-    flex: 1,
-  },
   name: {
     flex: 1,
     flexDirection: "row",

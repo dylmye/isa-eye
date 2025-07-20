@@ -1,11 +1,9 @@
 import { Controller, type FieldValues, type Path } from "react-hook-form";
-import { TextInput, type TextInputProps, View } from "react-native";
-import { Text } from "@/components/ui";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { type TextInputProps, View } from "react-native";
+import { Input, Text } from "@/components/ui";
 import type BaseField from "@/types/baseField";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
-import styles from "./shared/styles";
 import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledTextFieldProps<
@@ -41,7 +39,6 @@ const ControlledTextField = <
   note,
   ...props
 }: ControlledTextFieldProps<TForm, TFieldName>) => {
-  const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
   return (
@@ -57,14 +54,13 @@ const ControlledTextField = <
                 required={required}
               />
             )}
-            <View style={styles.fieldWithAdornments}>
+            <View className="flex flex-row items-center">
               {prefix && (
-                <View style={styles.fieldPrefix}>
+                <View className="pr-2">
                   <Text className="font-semibold text-base">{prefix}</Text>
                 </View>
               )}
-              <TextInput
-                style={{ ...styles.field, color: textColor }}
+              <Input
                 {...componentProps}
                 placeholder={placeholder}
                 onBlur={onBlur}
@@ -77,7 +73,7 @@ const ControlledTextField = <
                 aria-errormessage={currFieldErrs?.message}
               />
               {suffix && (
-                <View style={styles.fieldSuffix}>
+                <View className="pl-2">
                   <Text className="font-semibold text-base">{suffix}</Text>
                 </View>
               )}

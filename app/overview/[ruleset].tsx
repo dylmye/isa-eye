@@ -4,11 +4,9 @@ import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import CardStack from "@/components/CardStack";
-import AddProductModal from "@/components/implementations/AddProductModal";
+import DesktopActionTiles from "@/components/DesktopActionTiles";
 import CompositionCard from "@/components/implementations/CompositionCard";
-import DesktopActionTiles from "@/components/implementations/DesktopActionTiles";
 import ProductCards from "@/components/implementations/ProductCards";
-import UpdateBalanceModal from "@/components/implementations/UpdateBalanceModal";
 import MobileFooter from "@/components/MobileFooter";
 import OverviewBar from "@/components/OverviewBar";
 import PageColumn from "@/components/PageColumn";
@@ -58,7 +56,7 @@ const OverviewForRuleset = () => {
   }, [currentRulesetFormattedName]);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView className="flex-1">
       <OverviewBar
         rulesetId={currentRulesetFormattedName}
         showNavButtons={!isMediumScreen}
@@ -93,18 +91,6 @@ const OverviewForRuleset = () => {
           }
         />
       )}
-      <UpdateBalanceModal
-        isVisible={modalVisiblity?.updateBalance}
-        onDismiss={() =>
-          updateModalVisibility({ ...modalVisiblity, updateBalance: false })
-        }
-      />
-      <AddProductModal
-        isVisible={modalVisiblity?.addProduct}
-        onDismiss={() =>
-          updateModalVisibility({ ...modalVisiblity, addProduct: false })
-        }
-      />
     </SafeAreaView>
   );
 };

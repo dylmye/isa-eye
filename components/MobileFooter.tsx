@@ -1,13 +1,14 @@
 import type { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import type { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { router } from "expo-router";
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useCallback, useRef } from "react";
+import { View } from "react-native";
 
-import { getCrossPlatformColour } from "@/hooks/getCrossPlatformColour";
-import { useAddButtonDisambi } from "@/hooks/useAddButtonDisambi";
-import NavBackButton from "./implementations/NavBackButton";
-import NavForwardButton from "./implementations/NavForwardButton";
+import { MobileActionsBottomSheet } from "./dialogs";
+import NavBackButton from "./NavBackButton";
+import NavForwardButton from "./NavForwardButton";
+import { Card } from "./ui";
 
 const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   iconStyle: {
@@ -15,6 +16,7 @@ const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   },
   size: 24,
   backgroundColor: "transparent",
+  color: "inherit",
 };
 
 const AddButton = (props: Omit<IconButtonProps<"">, "name">) => (
@@ -28,59 +30,36 @@ interface MobileFooterProps {
   onAddProductPress: () => void;
 }
 
-const MobileFooter = ({
-  previousRuleset,
-  nextRuleset,
-  onUpdateBalancePress,
-  onAddProductPress,
-}: MobileFooterProps) => {
-  const onPressAdd = useAddButtonDisambi(
-    onUpdateBalancePress,
-    onAddProductPress,
-  );
+/**
+ * Actions footer for small-width viewports
+ */
+const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => {
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
 
   return (
-    <View style={styles.container}>
+    <Card className="color-foreground flex w-full flex-row items-center justify-between py-3">
       <NavBackButton
         disabled={!previousRuleset}
         onPress={() =>
           !!previousRuleset && router.push(`/overview/${previousRuleset}`)
         }
       />
-      <AddButton size={32} onPress={onPressAdd} />
+      <AddButton size={32} onPress={handlePresentModalPress} />
       {nextRuleset ? (
         <NavForwardButton
           disabled={!nextRuleset}
           onPress={() => router.push(`/overview/${nextRuleset}`)}
         />
       ) : (
-        <View style={{ width: 45 }} />
+        <View className="w-[40]" />
       )}
-    </View>
+      <MobileActionsBottomSheet ref={bottomSheetModalRef} />
+    </Card>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 16,
-    backgroundColor: getCrossPlatformColour(
-      "secondarySystemBackground",
-      "@android:color/system_accent1_900",
-      "rgb(39, 39, 39)",
-    ),
-    shadowColor: "#404040",
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowOpacity: 0.31,
-    shadowRadius: 3,
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-});
 
 export default MobileFooter;

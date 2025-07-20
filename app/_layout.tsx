@@ -1,4 +1,3 @@
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import {
   DarkTheme,
   DefaultTheme,
@@ -17,6 +16,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { useSetupDatabase } from "@/hooks/useSetupDatabase";
 
 import "@/assets/styles/global.css";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Platform } from "react-native";
 
@@ -77,9 +77,9 @@ const RootLayout = () => {
   return (
     <TinybaseProvider store={store} queries={queries} indexes={indexes}>
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <ActionSheetProvider>
+        <BottomSheetModalProvider>
           <Stack screenOptions={{ headerShown: false }} />
-        </ActionSheetProvider>
+        </BottomSheetModalProvider>
         <StatusBar style="auto" />
         <PortalHost />
       </ThemeProvider>

@@ -6,6 +6,9 @@ interface ChartTooltipProps {
   y: SharedValue<number>;
 }
 
+/**
+ * Tooltip component for Victory charts
+ */
 const ChartTooltip = ({ x, y }: ChartTooltipProps) => (
   <Circle cx={x} cy={y} r={6} color="white" />
 );

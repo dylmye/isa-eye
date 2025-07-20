@@ -1,6 +1,5 @@
 import { Platform } from "react-native";
-import { Text } from "@/components/ui";
-import styles from "../styles";
+import { Label } from "@/components/ui";
 
 interface FieldLabelProps {
   label: string;
@@ -11,19 +10,19 @@ interface FieldLabelProps {
 // @TODO: replace with rn-primitives Label
 const FieldLabel = ({ label, fieldName, required }: FieldLabelProps) => {
   const text = (
-    <Text
+    <Label
       nativeID={`${fieldName}-label`}
       role="presentation"
-      className="font-semibold text-sm"
+      className="mt-2 font-semibold text-sm"
     >
       {label}
       {required ? " *" : " (optional)"}
-    </Text>
+    </Label>
   );
 
   if (Platform.OS === "web") {
     return (
-      <label htmlFor={fieldName} style={styles.label}>
+      <label htmlFor={fieldName} className="mb-1">
         {text}
       </label>
     );

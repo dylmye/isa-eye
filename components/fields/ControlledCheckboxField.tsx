@@ -1,13 +1,9 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import * as CheckboxPrimitive from "@rn-primitives/checkbox";
 import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { View } from "react-native";
-import { Text } from "@/components/ui";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { Checkbox, Label } from "@/components/ui";
 import type BaseField from "@/types/baseField";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
-import styles from "./shared/styles";
 import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledCheckboxFieldProps<
@@ -30,14 +26,13 @@ const ControlledCheckboxField = <
   note,
   ...props
 }: ControlledCheckboxFieldProps<TForm, TFieldName>) => {
-  const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
   return (
     <>
       <Controller
         {...props}
-        render={({ field: { onChange, onBlur, value, disabled } }) => (
+        render={({ field: { onChange, value, disabled, name } }) => (
           <>
             {label && (
               <FieldLabel
@@ -46,22 +41,14 @@ const ControlledCheckboxField = <
                 required={required}
               />
             )}
-            <View style={styles.checkboxWrapper}>
-              <CheckboxPrimitive.Root
+            <View className="flex flex-row gap-2">
+              <Checkbox
                 checked={!!value}
-                disabled={disabled}
-                onBlur={onBlur}
                 onCheckedChange={onChange}
-                style={{
-                  ...styles.checkbox,
-                  borderColor: textColor,
-                }}
-              >
-                <CheckboxPrimitive.Indicator>
-                  <MaterialCommunityIcons name="check" color={textColor} />
-                </CheckboxPrimitive.Indicator>
-              </CheckboxPrimitive.Root>
-              <Text className="ml-1 leading-4">Yes</Text>
+                disabled={disabled}
+                aria-labelledby={`${name}-label`}
+              />
+              <Label>Yes</Label>
             </View>
           </>
         )}

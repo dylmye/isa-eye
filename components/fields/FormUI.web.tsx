@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from "react";
-import styles from "./shared/styles";
 
 const FormUI = ({ children }: PropsWithChildren) => (
-  <form style={styles.form}>{children}</form>
+  <form className="flex flex-col py-2">{children}</form>
 );
 
 export default FormUI;

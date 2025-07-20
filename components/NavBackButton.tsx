@@ -9,8 +9,12 @@ const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   },
   size: 24,
   backgroundColor: "transparent",
+  color: "inherit",
 };
 
+/**
+ * Platform-specific button for navigation
+ */
 const NavBackButton = (props: Omit<IconButtonProps<"">, "name">) =>
   Platform.OS === "ios" ? (
     <MaterialIcons.Button

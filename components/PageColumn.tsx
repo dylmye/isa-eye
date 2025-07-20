@@ -1,17 +1,13 @@
 import type { PropsWithChildren } from "react";
-import { type DimensionValue, Platform, StyleSheet, View } from "react-native";
+import { View } from "react-native";
 
+/**
+ * Container for main page views
+ */
 const PageColumn = ({ children }: PropsWithChildren<unknown>) => (
-  <View style={styles.container}>{children}</View>
+  <View className="container my-6 max-w-[50rem] self-center px-4">
+    {children}
+  </View>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    ...(Platform.OS === "web" && { maxWidth: "50rem" as DimensionValue }),
-    alignSelf: "center",
-    width: "100%",
-    marginBlock: 24,
-  },
-});
 
 export default PageColumn;

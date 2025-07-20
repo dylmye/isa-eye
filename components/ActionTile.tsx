@@ -8,12 +8,15 @@ interface ActionTileProps extends PressableProps {
   onPress?: () => void;
 }
 
+/**
+ * XXL buttons for primary actions on desktop.
+ */
 const ActionTile = ({ title, icon, onPress, ...props }: ActionTileProps) => {
   return (
     <Pressable {...props} className="flex-1" onPress={onPress}>
       <Card
         className={cn(
-          "min-h-16 items-center justify-center rounded-lg bg-primary py-3 hover:opacity-95",
+          "min-h-16 items-center justify-center rounded-lg bg-primary py-3 transition-colors hover:opacity-95",
           props?.disabled && "cursor-not-allowed opacity-75 hover:opacity-75",
         )}
       >

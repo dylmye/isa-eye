@@ -1,15 +1,16 @@
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Fuse from "fuse.js";
 import { useState } from "react";
 import { Controller, type FieldValues, type Path } from "react-hook-form";
-import { Pressable, TextInput } from "react-native";
+import { View } from "react-native";
 import Autocomplete from "react-native-autocomplete-input";
-import { Text } from "@/components/ui";
-import { useThemeColor } from "@/hooks/useThemeColor";
+
+import { Input } from "@/components/ui";
 import type BaseField from "@/types/baseField";
 import type { DropdownValue } from "@/types/dropdown";
+import DropdownOption from "./DropdownOption";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
-import styles from "./shared/styles";
 import ValidationMessage from "./shared/ValidationMessage";
 
 export interface ControlledAutocompleteFieldProps<
@@ -47,7 +48,6 @@ const ControlledAutocompleteField = <
   const [textInputValue, setTextInputValue] = useState<string>(
     props.defaultValue ?? "",
   );
-  const textColor = useThemeColor({}, "text");
   const currFieldErrs = errors?.[props.name];
 
   const fuse = new Fuse(allOptions, {
@@ -102,16 +102,17 @@ const ControlledAutocompleteField = <
                   setResultsVisiblity(false);
                 }}
                 renderTextInput={(props) => (
-                  <TextInput
-                    {...props}
-                    value={textInputValue}
-                    style={{
-                      ...styles.field,
-                      color: textColor,
-                    }}
-                  />
+                  <View className="relative flex flex-row">
+                    <Input {...props} value={textInputValue} />
+                    <MaterialCommunityIcons
+                      name="chevron-down"
+                      size={16}
+                      aria-hidden={true}
+                      className="absolute right-4 text-foreground opacity-50"
+                    />
+                  </View>
                 )}
-                containerStyle={!showResults && styles.autocompleteInput}
+                containerStyle={!showResults && { zIndex: 0 }}
                 inputContainerStyle={{
                   borderColor: "transparent",
                 }}
@@ -122,17 +123,15 @@ const ControlledAutocompleteField = <
                     renderOption?.(item, () =>
                       onPressItem(item.value, item.label),
                     ) ?? (
-                      <Pressable
+                      <DropdownOption
+                        option={item}
                         onPress={() => {
                           onPressItem(item.value, item.label);
                         }}
-                        style={styles.autocompleteResult}
-                        role="listitem"
-                      >
-                        <Text>{item.label}</Text>
-                      </Pressable>
+                      />
                     ),
-                  style: styles.autocompleteResultsFlatlist,
+                  className:
+                    "bg-popover px-1 py-1 z-[1000] max-h-[320] rounded-md border-input shadow-foreground/10 shadow-md",
                 }}
               />
             </>

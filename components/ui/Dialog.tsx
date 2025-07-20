@@ -13,12 +13,12 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-function DialogOverlayWeb({
+const DialogOverlayWeb = ({
   className,
   ...props
 }: DialogPrimitive.OverlayProps & {
   ref?: React.RefObject<DialogPrimitive.OverlayRef>;
-}) {
+}) => {
   const { open } = DialogPrimitive.useRootContext();
   return (
     <DialogPrimitive.Overlay
@@ -32,16 +32,17 @@ function DialogOverlayWeb({
       {...props}
     />
   );
-}
+};
+DialogOverlayWeb.displayName = "Dialog.Overlay";
 
-function DialogOverlayNative({
+const DialogOverlayNative = ({
   className,
   children,
   ...props
 }: DialogPrimitive.OverlayProps & {
   ref?: React.RefObject<DialogPrimitive.OverlayRef>;
   children?: React.ReactNode;
-}) {
+}) => {
   return (
     <DialogPrimitive.Overlay
       style={StyleSheet.absoluteFill}
@@ -59,14 +60,15 @@ function DialogOverlayNative({
       </Animated.View>
     </DialogPrimitive.Overlay>
   );
-}
+};
+DialogOverlayNative.displayName = "Dialog.Overlay";
 
 const DialogOverlay = Platform.select({
   web: DialogOverlayWeb,
   default: DialogOverlayNative,
 });
 
-function DialogContent({
+const DialogContent = ({
   className,
   children,
   portalHost,
@@ -75,14 +77,14 @@ function DialogContent({
   ref?: React.RefObject<DialogPrimitive.ContentRef>;
   className?: string;
   portalHost?: string;
-}) {
+}) => {
   const { open } = DialogPrimitive.useRootContext();
   return (
     <DialogPortal hostName={portalHost}>
       <DialogOverlay>
         <DialogPrimitive.Content
           className={cn(
-            "max-w-lg web:cursor-default gap-4 rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
+            "min-w-[40vw] max-w-lg web:cursor-default gap-4 rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
             open
               ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
               : "web:fade-out-0 web:zoom-out-95 web:animate-out",
@@ -109,9 +111,10 @@ function DialogContent({
       </DialogOverlay>
     </DialogPortal>
   );
-}
+};
+DialogContent.displayName = "Dialog.Content";
 
-function DialogHeader({ className, ...props }: ViewProps) {
+const DialogHeader = ({ className, ...props }: ViewProps) => {
   return (
     <View
       className={cn(
@@ -121,9 +124,10 @@ function DialogHeader({ className, ...props }: ViewProps) {
       {...props}
     />
   );
-}
+};
+DialogHeader.displayName = "Dialog.Header";
 
-function DialogFooter({ className, ...props }: ViewProps) {
+const DialogFooter = ({ className, ...props }: ViewProps) => {
   return (
     <View
       className={cn(
@@ -133,14 +137,15 @@ function DialogFooter({ className, ...props }: ViewProps) {
       {...props}
     />
   );
-}
+};
+DialogFooter.displayName = "Dialog.Footer";
 
-function DialogTitle({
+const DialogTitle = ({
   className,
   ...props
 }: DialogPrimitive.TitleProps & {
   ref?: React.RefObject<DialogPrimitive.TitleRef>;
-}) {
+}) => {
   return (
     <DialogPrimitive.Title
       className={cn(
@@ -150,14 +155,15 @@ function DialogTitle({
       {...props}
     />
   );
-}
+};
+DialogTitle.displayName = "Dialog.Title";
 
-function DialogDescription({
+const DialogDescription = ({
   className,
   ...props
 }: DialogPrimitive.DescriptionProps & {
   ref?: React.RefObject<DialogPrimitive.DescriptionRef>;
-}) {
+}) => {
   return (
     <DialogPrimitive.Description
       className={cn(
@@ -167,7 +173,8 @@ function DialogDescription({
       {...props}
     />
   );
-}
+};
+DialogDescription.displayName = "Dialog.Description";
 
 export {
   Dialog,
