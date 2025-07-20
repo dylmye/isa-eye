@@ -16,3 +16,14 @@ jobs:
           version: latest
       - name: Run Biome
         run: biome ci .
+  doctor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Debug info
+        uses: bun x expo-doctor -v
+      - name: Call the doctor
+        run: bun x expo-doctor

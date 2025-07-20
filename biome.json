@@ -6,7 +6,8 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"ignoreUnknown": true
+		"ignoreUnknown": true,
+		"includes": ["**", "!tsconfig.json", "!nativewind-env.d.ts"]
 	},
 	"formatter": {
 		"enabled": true,
