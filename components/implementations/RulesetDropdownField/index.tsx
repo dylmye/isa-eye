@@ -5,6 +5,7 @@ import { ControlledAutocompleteField } from "@/components/fields";
 import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
 import hooks from "@/hooks/database";
 import type { DropdownOptions, DropdownValue } from "@/types/dropdown";
+import { sortRulesetIds } from "@/utils/sorters";
 
 const RulesetDropdownField = <
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
@@ -20,7 +21,7 @@ const RulesetDropdownField = <
   const rulesets = hooks.useTable("rulesets");
   const rulesetDropdownOptions: DropdownOptions = useMemo(() => {
     return Object.keys(rulesets)
-      .reverse()
+      .toSorted(sortRulesetIds)
       .map<DropdownValue>((id) => ({
         label: id,
         value: id,

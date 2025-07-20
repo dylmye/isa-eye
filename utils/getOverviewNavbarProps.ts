@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import hooks from "@/hooks/database";
 import { formatRulesetNameForNav } from "./formatRulesetNameForNav";
+import { sortRulesetIds } from "./sorters";
 
 interface UseOverviewNavProps {
   /** Towards the oldest ruleset (index len-1) */
@@ -15,10 +16,7 @@ export const useGetOverviewNavbarProps = (): UseOverviewNavProps => {
 
   // sort rulesets by numeric value of starting year.
   const sortedRulesets = useMemo(() => {
-    return rulesets.toSorted(
-      (a, b) =>
-        Number.parseInt(a.split("/")[0]) - Number.parseInt(b.split("/")[0]),
-    );
+    return rulesets.toSorted(sortRulesetIds);
   }, [rulesets]);
   const lastIndex = sortedRulesets.length - 1;
   const currIndex = sortedRulesets.findIndex((r) => r === currentRulesetName);

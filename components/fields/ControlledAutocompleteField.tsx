@@ -102,13 +102,13 @@ const ControlledAutocompleteField = <
                   setResultsVisiblity(false);
                 }}
                 renderTextInput={(props) => (
-                  <View className="relative flex flex-row">
+                  <View className="flex items-center">
                     <Input {...props} value={textInputValue} />
                     <MaterialCommunityIcons
                       name="chevron-down"
                       size={16}
                       aria-hidden={true}
-                      className="absolute right-4 text-foreground opacity-50"
+                      className="pointer-events-none absolute right-4 h-10 text-foreground opacity-50"
                     />
                   </View>
                 )}

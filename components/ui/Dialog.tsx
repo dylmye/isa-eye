@@ -84,7 +84,7 @@ const DialogContent = ({
       <DialogOverlay>
         <DialogPrimitive.Content
           className={cn(
-            "min-w-[40vw] max-w-lg web:cursor-default gap-4 rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
+            "max-h-[100vh] min-w-[40vw] max-w-lg web:cursor-default gap-4 overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
             open
               ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
               : "web:fade-out-0 web:zoom-out-95 web:animate-out",
