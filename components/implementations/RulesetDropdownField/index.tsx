@@ -22,6 +22,7 @@ const RulesetDropdownField = <
   const rulesetDropdownOptions: DropdownOptions = useMemo(() => {
     return Object.keys(rulesets)
       .toSorted(sortRulesetIds)
+      .toReversed()
       .map<DropdownValue>((id) => ({
         label: id,
         value: id,

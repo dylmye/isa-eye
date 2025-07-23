@@ -108,7 +108,7 @@ const ControlledAutocompleteField = <
                       name="chevron-down"
                       size={16}
                       aria-hidden={true}
-                      className="pointer-events-none absolute right-4 h-10 text-foreground opacity-50"
+                      className="pointer-events-none absolute right-4 h-10 content-center text-foreground opacity-50"
                     />
                   </View>
                 )}

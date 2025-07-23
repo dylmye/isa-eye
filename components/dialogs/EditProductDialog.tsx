@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren, useState } from "react";
 import { useForm } from "react-hook-form";
+import { View } from "react-native";
 import {
   Button,
   Dialog,
@@ -31,6 +32,7 @@ const EditProductDialog = ({
   children,
 }: PropsWithChildren<EditProductDialogProps>) => {
   const [open, setOpen] = useState(false);
+  const currentRulesetName = hooks.useValue("currentTaxYear") as string;
 
   const onUpdateOpenState = (newState: boolean) => {
     if (!newState) {
@@ -76,6 +78,20 @@ const EditProductDialog = ({
     },
   );
 
+  const onPressCloseAccount = hooks.useSetPartialRowCallback(
+    "products",
+    existingId,
+    () => ({
+      endTaxYear: currentRulesetName,
+    }),
+  );
+
+  const onPressReopenAccount = hooks.useDelCellCallback(
+    "products",
+    existingId,
+    "endTaxYear",
+  );
+
   const onSubmit = (data: EditProductData) => {
     onSubmitForm(data);
     onUpdateOpenState(false);
@@ -105,6 +121,33 @@ const EditProductDialog = ({
                 note="Check with your bank whether this ISA is flexible."
               />
             </FormUI>
+            <View className="flex flex-col gap-2">
+              <Text className="text-sm">
+                {existingProductData.endTaxYear
+                  ? `This account was closed in ${existingProductData.endTaxYear}. `
+                  : `Closed accounts don't show in future years' account lists and aren't open to future contributions. Nothing else changes: you can still update balances up until the ${currentRulesetName} tax year. `}
+                <Text className="font-bold text-sm">
+                  Any future contributions already added will still count
+                  towards your allowance but won't be visible in the accounts
+                  list.
+                </Text>
+              </Text>
+              <Button
+                className="w-fit flex-grow-0"
+                variant="outline"
+                onPress={
+                  existingProductData.endTaxYear
+                    ? onPressReopenAccount
+                    : onPressCloseAccount
+                }
+              >
+                <Text>
+                  {existingProductData.endTaxYear
+                    ? "Re-open account"
+                    : `Close account`}
+                </Text>
+              </Button>
+            </View>
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

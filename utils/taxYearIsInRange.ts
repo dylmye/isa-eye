@@ -9,7 +9,7 @@ export const taxYearIsInRange = (
 ): boolean => {
   const startYear: number = Number(startRange.split("/")[0]);
   const endYear: number | null = endRange
-    ? Number(endRange.split("/")[1])
+    ? Number(endRange.split("/")[0])
     : null;
   const targetYear: number = Number(target.split("/")[0]);
 

@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { View } from "react-native";
 import {
   Button,
   Dialog,
@@ -109,7 +110,7 @@ const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
                 label="Account"
                 required
               />
-              {currentProductExistingValue !== null && (
+              {currentProductExistingValue !== null ? (
                 <>
                   <RulesetDropdownField<UpdateBalanceData, "rulesetId">
                     control={control}
@@ -135,6 +136,8 @@ Don't include transfers and interest/gains earned.`
                     }
                   />
                 </>
+              ) : (
+                <View style={{ height: 48 }} />
               )}
             </FormUI>
           </DialogDescription>

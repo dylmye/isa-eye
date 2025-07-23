@@ -7,7 +7,6 @@ interface FieldLabelProps {
   required?: boolean;
 }
 
-// @TODO: replace with rn-primitives Label
 const FieldLabel = ({ label, fieldName, required }: FieldLabelProps) => {
   const text = (
     <Label
