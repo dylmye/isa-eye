@@ -230,9 +230,35 @@ export const rulesets: readonly RulesetSeedData[] = [
       },
     ],
     notes:
-      'Fractional share contracts were added to the products allowed within Stocks and Shares ISAs. There were no changes to allowances for ISAs and allowances for all ISA types were frozen until the 2030/2031 tax year. The announced "British ISA" was scrapped. It is now permissible to open and pay into multiple of the same type of ISAs in the same year.',
+      "Fractional share contracts were added to the eligble investments within Stocks and Shares, Junior and Lifetime ISAs. It is now permissible to open and pay into multiple of the same type of ISAs in the same year, with Lifetime ISAs and Junior ISAs excepted. The minimum age for opening an ISA increased from 16 to 18. Partial transfers of ISA contributions were introduced. There were no changes to allowances for ISAs and allowances for all ISA types were frozen until the 2030/2031 tax year.",
   },
-  // 2025/2026?
+  {
+    name: "2025/2026",
+    sharedAllowancePence: 2000000,
+    startDate: "2025-04-06",
+    endDate: "2026-04-05",
+    productSpecificRulesets: [
+      {
+        code: "HELP_TO_BUY",
+        allowancePence: 240000,
+        includedInOverall: true,
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
+      },
+      {
+        code: "LIFETIME",
+        allowancePence: 400000,
+        includedInOverall: true,
+      },
+      {
+        code: "JUNIOR",
+        allowancePence: 900000,
+        includedInOverall: false,
+      },
+    ],
+    notes:
+      "Long-Term Asset Funds were added to the eligible investments within Innovative Fund ISAs. A National Insurance number is now required to be provided to open an ISA, unless ineligible. There were no changes to allowances.",
+  },
 ];
 
 export default rulesets;
