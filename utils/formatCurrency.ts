@@ -1,4 +1,4 @@
-export const formatHeadlineCurrency = (amount: number) =>
+export const formatCurrency = (amount: number) =>
   new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "GBP",

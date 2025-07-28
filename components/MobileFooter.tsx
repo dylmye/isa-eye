@@ -42,16 +42,18 @@ const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => {
 
   return (
     <Card className="color-foreground flex w-full flex-row items-center justify-between py-3">
-      <NavBackButton
-        disabled={!previousRuleset}
-        onPress={() =>
-          !!previousRuleset && router.push(`/overview/${previousRuleset}`)
-        }
-      />
+      {previousRuleset ? (
+        <NavBackButton
+          onPress={() =>
+            !!previousRuleset && router.push(`/overview/${previousRuleset}`)
+          }
+        />
+      ) : (
+        <View className="w-[40]" />
+      )}
       <AddButton size={32} onPress={handlePresentModalPress} />
       {nextRuleset ? (
         <NavForwardButton
-          disabled={!nextRuleset}
           onPress={() => router.push(`/overview/${nextRuleset}`)}
         />
       ) : (

@@ -95,6 +95,7 @@ const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
     }
   }, [selectedRulesetId, selectedProductId, currentRulesetId]);
 
+  // @TODO: add form validation for rulesetId within product open-close range
   return (
     <Dialog className="flex-1" open={open} onOpenChange={onUpdateOpenState}>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -110,7 +111,7 @@ const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
                 label="Account"
                 required
               />
-              {currentProductExistingValue !== null ? (
+              {currentProductExistingValue !== null && selectedProduct ? (
                 <>
                   <RulesetDropdownField<UpdateBalanceData, "rulesetId">
                     control={control}
@@ -118,6 +119,10 @@ const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
                     defaultValue={currentRulesetId as string}
                     name="rulesetId"
                     label="Tax Year"
+                    filterRulesets={[
+                      selectedProduct.startTaxYear,
+                      selectedProduct?.endTaxYear,
+                    ]}
                     required
                   />
                   <ControlledCurrencyField<UpdateBalanceData, "amount">

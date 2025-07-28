@@ -4,7 +4,7 @@ import type { Row } from "tinybase/with-schemas";
 /**
  * Ruleset Exceptions
  *
- * An allowance for a specific product for a
+ * An allowance for a specific product type for a
  * given tax year. Any products that don't
  * have an exception contribute to the shared
  * allowance.
@@ -12,7 +12,7 @@ import type { Row } from "tinybase/with-schemas";
  * ID format: integer
  */
 const rulesetExceptionsTable = {
-  productId: { type: "string" },
+  productTypeId: { type: "string" },
   rulesetId: { type: "string" },
   allowancePence: { type: "string" },
   notes: { type: "string" },

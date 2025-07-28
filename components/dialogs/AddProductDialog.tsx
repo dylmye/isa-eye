@@ -32,6 +32,7 @@ interface AddProductData {
 
 const AddProductDialog = ({ children }: PropsWithChildren) => {
   const [open, setOpen] = useState(false);
+  const currentRulesetName = hooks.useValue("currentTaxYear") as string;
 
   const onUpdateOpenState = (newState: boolean) => {
     if (!newState) {
@@ -89,9 +90,10 @@ const AddProductDialog = ({ children }: PropsWithChildren) => {
                 control={control}
                 errors={errors}
                 name="openedInTaxYear"
+                defaultValue={currentRulesetName as string}
                 label="Year of opening"
                 required
-                note="The tax year runs from 6th April to 5th April, so an ISA opened on 2nd Feb 2024 would be in the 2023/2024 tax year."
+                note="The tax year runs from 6th April to 5th April of the following year, so an ISA opened on 2nd Feb 2024 would be in the 2023/2024 tax year."
               />
               <ProductTypeDropdownField<AddProductData, "isaTypeCode">
                 control={control}

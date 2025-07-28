@@ -4,6 +4,7 @@ import { Platform, View } from "react-native";
 import { Text } from "@/components/ui";
 import type { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
+import { formatCurrency } from "@/utils/formatCurrency";
 import getProductName from "@/utils/getProductName";
 
 export interface ProductSummaryCardProps {
@@ -24,12 +25,7 @@ const ProductSummaryCard = ({
   const isWeb = Platform.OS === "web";
 
   const formattedProductBalance = useMemo(() => {
-    return new Intl.NumberFormat("en-GB", {
-      style: "currency",
-      currency: "GBP",
-      maximumFractionDigits: 2,
-      trailingZeroDisplay: "stripIfInteger",
-    }).format(
+    return formatCurrency(
       Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? "0") /
         100,
     );

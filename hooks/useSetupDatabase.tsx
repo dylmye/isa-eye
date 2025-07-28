@@ -10,6 +10,7 @@ import {
   createStore,
   type Indexes,
   type Queries,
+  type Relationships,
   type Store,
 } from "tinybase/with-schemas";
 import queryDefs from "@/db/queries";
@@ -29,6 +30,7 @@ export const useSetupDatabase = (): {
   store: Store<Schemas>;
   queries: Queries<Schemas> | undefined;
   indexes: Indexes<Schemas>;
+  relationships: Relationships<Schemas>;
 } => {
   const store = useCreateStore(() =>
     createStore().setTablesSchema(tableSchema).setValuesSchema(keyvalueSchema),
@@ -42,6 +44,7 @@ export const useSetupDatabase = (): {
   });
 
   const indexes = createIndexes(store);
+  const relationships = createRelationships(store);
 
   try {
     // biome-ignore lint/correctness/useHookAtTopLevel: no better way to error catch this
@@ -61,7 +64,6 @@ export const useSetupDatabase = (): {
     );
     tableIndexes.forEach((i) => indexes.setIndexDefinition(i[0], i[1], i[2]));
 
-    const relationships = createRelationships(store);
     tableRelationships.forEach((r) =>
       relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3]),
     );
@@ -78,5 +80,6 @@ export const useSetupDatabase = (): {
     store,
     queries,
     indexes,
+    relationships,
   };
 };

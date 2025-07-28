@@ -23,50 +23,50 @@ interface RulesetSeedData {
 export const rulesets: readonly RulesetSeedData[] = [
   {
     name: "2017/2018",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2017-04-06",
     endDate: "2018-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 4128,
+        allowancePence: 412800,
         includedInOverall: false,
       },
     ],
   },
   {
     name: "2018/2019",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2018-04-06",
     endDate: "2019-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 4128,
+        allowancePence: 412800,
         includedInOverall: false,
       },
     ],
@@ -75,25 +75,25 @@ export const rulesets: readonly RulesetSeedData[] = [
   },
   {
     name: "2019/2020",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2019-04-06",
     endDate: "2020-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 4368,
+        allowancePence: 436800,
         includedInOverall: false,
       },
     ],
@@ -102,25 +102,25 @@ export const rulesets: readonly RulesetSeedData[] = [
   },
   {
     name: "2020/2021",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2020-04-06",
     endDate: "2021-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 9000,
+        allowancePence: 900000,
         includedInOverall: false,
       },
     ],
@@ -129,25 +129,25 @@ export const rulesets: readonly RulesetSeedData[] = [
   },
   {
     name: "2021/2022",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2021-04-06",
     endDate: "2022-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 9000,
+        allowancePence: 900000,
         includedInOverall: false,
       },
     ],
@@ -155,25 +155,25 @@ export const rulesets: readonly RulesetSeedData[] = [
   },
   {
     name: "2022/2023",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2022-04-06",
     endDate: "2023-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 9000,
+        allowancePence: 900000,
         includedInOverall: false,
       },
     ],
@@ -181,25 +181,25 @@ export const rulesets: readonly RulesetSeedData[] = [
   },
   {
     name: "2023/2024",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2023-04-06",
     endDate: "2024-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 9000,
+        allowancePence: 900000,
         includedInOverall: false,
       },
     ],
@@ -207,25 +207,25 @@ export const rulesets: readonly RulesetSeedData[] = [
   },
   {
     name: "2024/2025",
-    sharedAllowancePence: 20000,
+    sharedAllowancePence: 2000000,
     startDate: "2024-04-06",
     endDate: "2025-04-05",
     productSpecificRulesets: [
       {
         code: "HELP_TO_BUY",
-        allowancePence: 2400,
+        allowancePence: 240000,
         includedInOverall: true,
         notes:
           "Contribute up to £200 a month, and up to £1,200 in the first month.",
       },
       {
         code: "LIFETIME",
-        allowancePence: 4000,
+        allowancePence: 400000,
         includedInOverall: true,
       },
       {
         code: "JUNIOR",
-        allowancePence: 9000,
+        allowancePence: 900000,
         includedInOverall: false,
       },
     ],

@@ -6,6 +6,7 @@ import type { ControlledAutocompleteFieldProps } from "@/components/fields/Contr
 import hooks from "@/hooks/database";
 import type { DropdownOptions, DropdownValue } from "@/types/dropdown";
 import { sortRulesetIds } from "@/utils/sorters";
+import { taxYearIsInRange } from "@/utils/taxYearIsInRange";
 
 const RulesetDropdownField = <
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
@@ -16,18 +17,26 @@ const RulesetDropdownField = <
   props: Omit<
     ControlledAutocompleteFieldProps<TForm, TFieldName, DropdownValue>,
     "allOptions" | "renderOption"
-  >,
+  > & {
+    filterRulesets?: [string | undefined, string | undefined];
+  },
 ) => {
   const rulesets = hooks.useTable("rulesets");
   const rulesetDropdownOptions: DropdownOptions = useMemo(() => {
-    return Object.keys(rulesets)
+    const filteredRulesets = Object.keys(rulesets)
       .toSorted(sortRulesetIds)
-      .toReversed()
-      .map<DropdownValue>((id) => ({
-        label: id,
-        value: id,
-      }));
-  }, [rulesets]);
+      .filter((r) => {
+        return (
+          !props.filterRulesets ||
+          taxYearIsInRange(r, props.filterRulesets[0], props.filterRulesets[1])
+        );
+      });
+
+    return filteredRulesets.toReversed().map<DropdownValue>((id) => ({
+      label: id,
+      value: id,
+    }));
+  }, [rulesets, props.filterRulesets]);
   return (
     <ControlledAutocompleteField
       allOptions={rulesetDropdownOptions}

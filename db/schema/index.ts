@@ -34,6 +34,11 @@ export const keyvalueSchema = {
     type: "string",
     default: rulesetsSeedData[rulesetsSeedData.length - 1].name,
   } as ValueSchema,
+  /** Show the intro dialog on first load; track close status to prevent re-showing */
+  showIntroDialog: {
+    type: "boolean",
+    default: true,
+  } as ValueSchema,
 };
 
 export type Schemas = [typeof tableSchema, typeof keyvalueSchema];

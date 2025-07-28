@@ -15,12 +15,14 @@ import {
 } from "@/components/ui";
 import type { Product } from "@/db/schema";
 import hooks from "@/hooks/database";
+import { taxYearIsInRange } from "@/utils/taxYearIsInRange";
 import { ControlledCheckboxField, ControlledTextField } from "../fields";
 import FormUI from "../fields/FormUI";
 
 interface EditProductData {
   productName: string;
   isFlexible: boolean;
+  startTaxYear: string;
 }
 
 interface EditProductDialogProps {
@@ -84,6 +86,29 @@ const EditProductDialog = ({
     () => ({
       endTaxYear: currentRulesetName,
     }),
+    [],
+    undefined,
+    (store) => {
+      const rowIdsToDelete: string[] = [];
+      store.forEachRow("annualBalances", (rowId, _forEachCell) => {
+        const [productId, rulesetId] = rowId.split("-");
+        // @TODO: a better way to do this
+        if (
+          productId === existingId &&
+          !taxYearIsInRange(
+            rulesetId,
+            existingProductData.startTaxYear,
+            existingProductData.endTaxYear,
+          )
+        ) {
+          rowIdsToDelete.push(rowId);
+        }
+      });
+      // @TODO: this isn't working for some reason
+      console.log(`Deleting: ${rowIdsToDelete.join(", ")}`);
+      rowIdsToDelete.forEach((rId) => store.delRow("annualBalances", rId));
+    },
+    [existingProductData],
   );
 
   const onPressReopenAccount = hooks.useDelCellCallback(
@@ -120,18 +145,30 @@ const EditProductDialog = ({
                 label="Flexible?"
                 note="Check with your bank whether this ISA is flexible."
               />
+              <ControlledTextField
+                control={control}
+                defaultValue={existingProductData.startTaxYear}
+                name="startTaxYear"
+                label="Opened In Year"
+                disabled
+              />
             </FormUI>
             <View className="flex flex-col gap-2">
-              <Text className="text-sm">
-                {existingProductData.endTaxYear
-                  ? `This account was closed in ${existingProductData.endTaxYear}. `
-                  : `Closed accounts don't show in future years' account lists and aren't open to future contributions. Nothing else changes: you can still update balances up until the ${currentRulesetName} tax year. `}
-                <Text className="font-bold text-sm">
-                  Any future contributions already added will still count
-                  towards your allowance but won't be visible in the accounts
-                  list.
+              {existingProductData.endTaxYear ? (
+                <Text className="text-sm">
+                  This account was closed in {existingProductData.endTaxYear}.
                 </Text>
-              </Text>
+              ) : (
+                <Text className="text-sm">
+                  Closed accounts don't show in future years' account lists and
+                  aren't open to future contributions. You can still update
+                  balances up until the {currentRulesetName} tax year, however{" "}
+                  <Text className="font-semibold text-sm">
+                    any future contributions already added will be permanently
+                    deleted.
+                  </Text>
+                </Text>
+              )}
               <Button
                 className="w-fit flex-grow-0"
                 variant="outline"

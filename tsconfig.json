@@ -19,6 +19,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "./types/*.d.ts",
+    // nativewind adds this file if it can't find it in root
     "nativewind-env.d.ts"
   ]
 }

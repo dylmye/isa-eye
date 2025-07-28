@@ -1,6 +1,7 @@
-import { Link, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { View } from "react-native";
-import { Card, Text } from "@/components/ui";
+import Link from "@/components/Link";
+import { Card } from "@/components/ui";
 
 export default function NotFoundScreen() {
   return (
@@ -12,9 +13,7 @@ export default function NotFoundScreen() {
             <Card.Title>Can't find this page.</Card.Title>
           </Card.Header>
           <Card.Content>
-            <Link href="/">
-              <Text>Click to return home.</Text>
-            </Link>
+            <Link href="/">Click to return home.</Link>
           </Card.Content>
         </Card>
       </View>

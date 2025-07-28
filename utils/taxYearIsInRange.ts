@@ -4,9 +4,10 @@
  */
 export const taxYearIsInRange = (
   target: string,
-  startRange: string,
+  startRange?: string,
   endRange?: string,
 ): boolean => {
+  if (!startRange) return false;
   const startYear: number = Number(startRange.split("/")[0]);
   const endYear: number | null = endRange
     ? Number(endRange.split("/")[0])

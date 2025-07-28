@@ -2,6 +2,7 @@ import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { type TextInputProps, View } from "react-native";
 import { Input, Text } from "@/components/ui";
 import type BaseField from "@/types/baseField";
+import { cn } from "@/utils/styles";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
 import ValidationMessage from "./shared/ValidationMessage";
@@ -52,6 +53,7 @@ const ControlledTextField = <
                 label={label}
                 fieldName={props.name}
                 required={required}
+                disabled={disabled}
               />
             )}
             <View className="flex flex-row items-center">
@@ -71,6 +73,8 @@ const ControlledTextField = <
                 nativeID={props.name}
                 aria-invalid={!!currFieldErrs}
                 aria-errormessage={currFieldErrs?.message}
+                aria-disabled={disabled}
+                className={cn(disabled && "cursor-not-allowed bg-muted")}
               />
               {suffix && (
                 <View className="pl-2">

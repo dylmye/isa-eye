@@ -5,9 +5,15 @@ interface FieldLabelProps {
   label: string;
   fieldName: string;
   required?: boolean;
+  disabled?: boolean;
 }
 
-const FieldLabel = ({ label, fieldName, required }: FieldLabelProps) => {
+const FieldLabel = ({
+  label,
+  fieldName,
+  required,
+  disabled,
+}: FieldLabelProps) => {
   const text = (
     <Label
       nativeID={`${fieldName}-label`}
@@ -15,7 +21,7 @@ const FieldLabel = ({ label, fieldName, required }: FieldLabelProps) => {
       className="mt-2 font-semibold text-sm"
     >
       {label}
-      {required ? " *" : " (optional)"}
+      {!disabled && (required ? " *" : " (optional)")}
     </Label>
   );
 

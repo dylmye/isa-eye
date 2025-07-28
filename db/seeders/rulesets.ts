@@ -13,14 +13,14 @@ const seedRulesets = (store: Store<Schemas>) => {
         sharedAllowancePence: currentSeedData.sharedAllowancePence.toString(),
         startDate: currentSeedData.startDate,
         endDate: currentSeedData.endDate,
-        notes: currentSeedData.name,
+        notes: currentSeedData.notes,
       });
 
       currentSeedData.productSpecificRulesets?.forEach(
         ({ code, allowancePence, notes, includedInOverall }) => {
           store.addRow("rulesetExceptions", {
             rulesetId: currentSeedData.name,
-            productId: code,
+            productTypeId: code,
             allowancePence: allowancePence.toString(),
             includedInShared: includedInOverall,
             notes: notes,

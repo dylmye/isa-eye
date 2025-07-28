@@ -28,7 +28,7 @@ const ProductDropdownField = <
         productTypeName: products[id].productTypeName as string,
       }),
       value: id,
-      image: { uri: products[id].providerIconRelativeUrl as string },
+      image: products[id].providerIconRelativeUrl as string,
     }));
   }, [products]);
   return (

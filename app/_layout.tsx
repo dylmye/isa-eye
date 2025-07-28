@@ -44,7 +44,7 @@ const RootLayout = () => {
   const hasMounted = useRef(false);
   const { isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
-  const { store, queries, indexes } = useSetupDatabase();
+  const { store, queries, indexes, relationships } = useSetupDatabase();
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -75,7 +75,12 @@ const RootLayout = () => {
   }
 
   return (
-    <TinybaseProvider store={store} queries={queries} indexes={indexes}>
+    <TinybaseProvider
+      store={store}
+      queries={queries}
+      indexes={indexes}
+      relationships={relationships}
+    >
       <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
         <BottomSheetModalProvider>
           <Stack screenOptions={{ headerShown: false }} />
