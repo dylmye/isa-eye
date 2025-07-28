@@ -81,7 +81,6 @@ const ControlledAutocompleteField = <
                 value={value}
                 onChangeText={(newText) => {
                   !showResults && setResultsVisiblity(true);
-                  // @TODO: debounce this bad boi
                   updateFilteredOptions(
                     fuse.search(newText).map((r) => r.item),
                   );

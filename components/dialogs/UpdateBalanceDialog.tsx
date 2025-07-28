@@ -73,7 +73,7 @@ const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
   const selectedRulesetId = watch("rulesetId");
   const selectedProduct = hooks.useRow("products", selectedProductId);
 
-  // this might be the worst code of 2025
+  // this might be the worst code of 2025 and idk if it even works reliably
   // @TODO: overwrite existing value - or just set amount directly?
   useEffect(() => {
     const selectedExistingBalance = store?.getRow(

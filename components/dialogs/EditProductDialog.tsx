@@ -71,7 +71,6 @@ const EditProductDialog = ({
     (store) => {
       const rowIdsToDelete: string[] = [];
       store.forEachRow("annualBalances", (rowId, _forEachCell) => {
-        // @TODO: a better way to do this
         if (rowId.startsWith(existingId)) {
           rowIdsToDelete.push(rowId);
         }
@@ -92,20 +91,18 @@ const EditProductDialog = ({
       const rowIdsToDelete: string[] = [];
       store.forEachRow("annualBalances", (rowId, _forEachCell) => {
         const [productId, rulesetId] = rowId.split("-");
-        // @TODO: a better way to do this
         if (
           productId === existingId &&
           !taxYearIsInRange(
             rulesetId,
             existingProductData.startTaxYear,
-            existingProductData.endTaxYear,
+            // we can't use the updated endTaxYear because it's not updated
+            currentRulesetName,
           )
         ) {
           rowIdsToDelete.push(rowId);
         }
       });
-      // @TODO: this isn't working for some reason
-      console.log(`Deleting: ${rowIdsToDelete.join(", ")}`);
       rowIdsToDelete.forEach((rId) => store.delRow("annualBalances", rId));
     },
     [existingProductData],

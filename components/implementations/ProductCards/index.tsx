@@ -38,7 +38,6 @@ const ProductCards = () => {
     item: [id, product],
   }) => (
     <EditProductDialog existingId={id as string}>
-      {/* @TODO: Determine why we need a local view as immediate dialog child */}
       <View>
         <ProductSummaryCard product={product} productId={id} />
       </View>

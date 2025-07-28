@@ -27,8 +27,8 @@ const OverviewBar = ({
   previousRuleset,
   nextRuleset,
 }: OverviewBarProps) => {
-  const queries = hooks.useQueries();
-  const remainingBalanceRow = queries?.getResultTable(
+  const currentRuleset = hooks.useRow("rulesets", rulesetId);
+  const remainingBalanceRow = hooks.useResultTable(
     "remainingBalanceByYear",
   ) as Record<string, RemainingBalanceByYearRow>;
 
@@ -36,8 +36,11 @@ const OverviewBar = ({
     const currentRow = Object.values(remainingBalanceRow ?? {}).find(
       (r) => r.rulesetId === rulesetId,
     );
-    return formatCurrency(currentRow?.remainingBalance ?? 20_000);
-  }, [remainingBalanceRow, rulesetId]);
+    const currentRulesetAllowance =
+      Number.parseFloat(currentRuleset?.sharedAllowancePence ?? "0") / 100;
+    const currentBalance = currentRow?.remainingBalance ?? 0;
+    return formatCurrency(currentRulesetAllowance - currentBalance);
+  }, [remainingBalanceRow, rulesetId, currentRuleset?.sharedAllowancePence]);
 
   return (
     <Card className="w-full rounded-b-none">

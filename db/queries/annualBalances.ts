@@ -48,8 +48,8 @@ export const remainingBalanceByYear = (queries: Queries<Schemas>) =>
       select("deductedFromAllowancePence");
       group("deductedFromAllowancePence", (cells) => {
         const calculatedValue = cells.reduce<number>(
-          (acc, curr) => acc - Number.parseFloat(curr as string) / 100,
-          20_000,
+          (acc, curr) => acc + Number.parseFloat(curr as string) / 100,
+          0,
         );
         // We don't show negative balance
         return Math.max(calculatedValue, 0);
