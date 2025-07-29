@@ -10,27 +10,42 @@
 		"orientation": "portrait",
 		"userInterfaceStyle": "automatic",
 		"newArchEnabled": true,
-		"icon": "./assets/images/icon.png",
 		"platforms": ["android", "ios", "web"],
 		"ios": {
+			"icon": {
+				"dark": "./assets/images/app-icons/ios-dark-1024.png",
+				"light": "./assets/images/app-icons/ios-light-1024.png",
+				"tinted": "./assets/images/app-icons/ios-monochrome-1024.png"
+			},
 			"supportsTablet": true,
 			"bundleIdentifier": "me.dylmye.isa"
 		},
 		"android": {
+			"icon": "./assets/images/app-icons/android-legacy-xxxhdpi.png",
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/images/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
+				"foregroundImage": "./assets/images/app-icons/android-foreground-xxxhdpi.png",
+				"monochromeImage": "./assets/image/app-icons/android-monochrome-xxxhdpi.png",
+				"backgroundColor": "#0f1f19"
 			},
 			"package": "me.dylmye.isa"
 		},
 		"web": {
 			"bundler": "metro",
 			"output": "single",
-			"favicon": "./assets/images/favicon.png",
+			"favicon": "./assets/images/app-icons/web-favicon-192.png",
 			"lang": "en-GB",
 			"display": "minimal-ui",
 			"orientation": "portrait",
-			"preferRelatedApplications": true
+			"preferRelatedApplications": true,
+			"themeColor": "#0f1f19",
+			"backgroundColor": "#050a08",
+			"description": "Keep track of your ISA allowance across accounts and years.",
+			"dir": "ltr",
+			"splash": {
+				"backgroundColor": "#0f1f19",
+				"resizeMode": "contain",
+				"image": "./assets/images/app-icons/splash-dark-512.png"
+			}
 		},
 		"experiments": {
 			"typedRoutes": true
@@ -51,10 +66,14 @@
 			[
 				"expo-splash-screen",
 				{
-					"image": "./assets/images/splash-icon.png",
+					"image": "./assets/images/app-icons/splash-light-512.png",
 					"imageWidth": 200,
 					"resizeMode": "contain",
-					"backgroundColor": "#ffffff"
+					"backgroundColor": "#01c181",
+					"dark": {
+						"image": "./assets/images/app-icons/splash-dark-512.png",
+						"backgroundColor": "#0f1f19"
+					}
 				}
 			],
 			[
