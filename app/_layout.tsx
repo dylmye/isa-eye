@@ -53,7 +53,7 @@ const RootLayout = () => {
 
     if (Platform.OS === "web") {
       // Adds the background color to the html element to prevent white background on overscroll.
-      document.documentElement.classList.add("bg-background");
+      document?.documentElement.classList.add("bg-background");
     }
     setIsColorSchemeLoaded(true);
     hasMounted.current = true;
@@ -63,10 +63,12 @@ const RootLayout = () => {
     if (!isColorSchemeLoaded) {
       return;
     }
-    if (Platform.OS === "web" && isDarkColorScheme) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    if (Platform.OS === "web") {
+      if (isDarkColorScheme) {
+        document?.documentElement.classList.add("dark");
+      } else {
+        document?.documentElement.classList.remove("dark");
+      }
     }
   }, [isColorSchemeLoaded, isDarkColorScheme]);
 

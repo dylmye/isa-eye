@@ -1,6 +1,6 @@
+import toSorted from "array.prototype.tosorted";
 import { useMemo } from "react";
 import type { FieldValues, Path } from "react-hook-form";
-
 import { ControlledAutocompleteField } from "@/components/fields";
 import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
 import hooks from "@/hooks/database";
@@ -23,14 +23,15 @@ const RulesetDropdownField = <
 ) => {
   const rulesets = hooks.useTable("rulesets");
   const rulesetDropdownOptions: DropdownOptions = useMemo(() => {
-    const filteredRulesets = Object.keys(rulesets)
-      .toSorted(sortRulesetIds)
-      .filter((r) => {
-        return (
-          !props.filterRulesets ||
-          taxYearIsInRange(r, props.filterRulesets[0], props.filterRulesets[1])
-        );
-      });
+    const filteredRulesets = toSorted(
+      Object.keys(rulesets),
+      sortRulesetIds,
+    ).filter((r) => {
+      return (
+        !props.filterRulesets ||
+        taxYearIsInRange(r, props.filterRulesets[0], props.filterRulesets[1])
+      );
+    });
 
     return filteredRulesets.toReversed().map<DropdownValue>((id) => ({
       label: id,

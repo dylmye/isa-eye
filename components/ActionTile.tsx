@@ -1,4 +1,4 @@
-import { Pressable, type PressableProps } from "react-native";
+import { Platform, Pressable, type PressableProps } from "react-native";
 import { Card, Text } from "@/components/ui";
 import { cn } from "@/utils/styles";
 
@@ -16,7 +16,8 @@ const ActionTile = ({ title, icon, onPress, ...props }: ActionTileProps) => {
     <Pressable {...props} className="flex-1" onPress={onPress}>
       <Card
         className={cn(
-          "min-h-16 items-center justify-center rounded-lg bg-primary py-3 transition-colors hover:opacity-95",
+          "min-h-16 items-center justify-center rounded-lg bg-primary py-3",
+          Platform.OS === "web" && "transition-colors hover:opacity-95",
           props?.disabled && "cursor-not-allowed opacity-75 hover:opacity-75",
         )}
       >

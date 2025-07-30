@@ -1,6 +1,6 @@
+import toSorted from "array.prototype.tosorted";
 import { useMemo } from "react";
 import type { FieldValues, Path } from "react-hook-form";
-
 import { ControlledAutocompleteField } from "@/components/fields";
 import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
@@ -24,18 +24,16 @@ const ProviderDropdownField = <
   const collator = new Intl.Collator("en-GB");
 
   const providerDropdownOptions: RichDropdownOptions = useMemo(() => {
-    return Object.keys(providers)
-      .toSorted((idA, idB) =>
-        collator.compare(providers[idA].name!, providers[idB].name!),
-      )
-      .map<RichDropdownValue>((id) => ({
-        label: providers[id].name!,
-        value: id,
-        image: providers[id].iconRelativeUrl,
-        aliases: Object.keys(aliases)
-          .filter((aid) => aliases[aid].providerId === id)
-          .map((a) => aliases[a].alias!),
-      }));
+    return toSorted(Object.keys(providers), (idA, idB) =>
+      collator.compare(providers[idA].name!, providers[idB].name!),
+    ).map<RichDropdownValue>((id) => ({
+      label: providers[id].name!,
+      value: id,
+      image: providers[id].iconRelativeUrl,
+      aliases: Object.keys(aliases)
+        .filter((aid) => aliases[aid].providerId === id)
+        .map((a) => aliases[a].alias!),
+    }));
   }, [providers, aliases]);
   return (
     <ControlledAutocompleteField

@@ -24,7 +24,7 @@
 			"icon": "./assets/images/app-icons/android-legacy-xxxhdpi.png",
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/images/app-icons/android-foreground-xxxhdpi.png",
-				"monochromeImage": "./assets/image/app-icons/android-monochrome-xxxhdpi.png",
+				"monochromeImage": "./assets/images/app-icons/android-monochrome-xxxhdpi.png",
 				"backgroundColor": "#0f1f19"
 			},
 			"package": "me.dylmye.isa"

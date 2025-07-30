@@ -1,4 +1,5 @@
 import { FlashList, type ListRenderItem } from "@shopify/flash-list";
+import toSorted from "array.prototype.tosorted";
 import React, { useMemo } from "react";
 import { View } from "react-native";
 import { EditProductDialog } from "@/components/dialogs";
@@ -17,7 +18,7 @@ const ProductCards = () => {
 
   const data = useMemo(
     () =>
-      (currentYearProducts ?? []).toSorted(([_, pA], [__, pB]) =>
+      toSorted(currentYearProducts ?? [], ([_, pA], [__, pB]) =>
         collator.compare(
           getProductName({
             friendlyName: pA.friendlyName,

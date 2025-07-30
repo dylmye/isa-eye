@@ -7,7 +7,12 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!tsconfig.json", "!nativewind-env.d.ts"]
+		"includes": [
+			"**",
+			"!tsconfig.json",
+			"!nativewind-env.d.ts",
+			"!package.json"
+		]
 	},
 	"formatter": {
 		"enabled": true,
