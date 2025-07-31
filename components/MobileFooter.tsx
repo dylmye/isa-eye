@@ -16,7 +16,7 @@ const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   },
   size: 24,
   backgroundColor: "transparent",
-  color: "inherit",
+  className: "color-foreground",
 };
 
 const AddButton = (props: Omit<IconButtonProps<"">, "name">) => (
@@ -26,14 +26,17 @@ const AddButton = (props: Omit<IconButtonProps<"">, "name">) => (
 interface MobileFooterProps {
   previousRuleset?: string;
   nextRuleset?: string;
-  onUpdateBalancePress: () => void;
-  onAddProductPress: () => void;
+  hasProducts?: boolean;
 }
 
 /**
  * Actions footer for small-width viewports
  */
-const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => {
+const MobileFooter = ({
+  previousRuleset,
+  nextRuleset,
+  hasProducts,
+}: MobileFooterProps) => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   const handlePresentModalPress = useCallback(() => {
@@ -59,7 +62,10 @@ const MobileFooter = ({ previousRuleset, nextRuleset }: MobileFooterProps) => {
       ) : (
         <View className="w-[40]" />
       )}
-      <MobileActionsBottomSheet ref={bottomSheetModalRef} />
+      <MobileActionsBottomSheet
+        ref={bottomSheetModalRef}
+        hasProducts={hasProducts}
+      />
     </Card>
   );
 };

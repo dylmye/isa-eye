@@ -1,11 +1,12 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
 import { useMemo } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { Card, Text } from "@/components/ui";
 import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
 import hooks from "@/hooks/database";
 import { formatCurrency } from "@/utils/formatCurrency";
+import { cn } from "@/utils/styles";
 import { IntroDialog, RulesetDescriptionDialog } from "./dialogs";
 import Logo from "./Logo";
 import NavBackButton from "./NavBackButton";
@@ -45,13 +46,17 @@ const OverviewBar = ({
   return (
     <Card className="w-full rounded-b-none">
       <Card.Content className="color-foreground flex flex-column py-4">
-        <View className="mb-2 flex w-full flex-row items-center justify-between">
+        <View className="mb-2 flex min-h-6 flex-1 flex-row items-center justify-between">
           <Logo className="h-5 w-5 fill-primary" accessibilityLabel="ISA Eye" />
           {/* @TODO why do we need to nest this so damn much */}
           <View>
             <RulesetDescriptionDialog>
               <Text
-                className="color-current hover:color-primary text-center font-semibold text-lg leading-4 transition-colors"
+                className={cn(
+                  "text-center font-semibold text-foreground text-lg leading-4 transition-colors",
+                  Platform.OS === "web" &&
+                    "transition-colors hover:text-primary",
+                )}
                 aria-hidden
                 accessibilityLabel={`Currently viewing your data for the ${rulesetId} tax year. Press for notes.`}
               >
@@ -67,8 +72,12 @@ const OverviewBar = ({
           </View>
           <View>
             <IntroDialog>
-              <View className="color-primary hover:color-current transition-colors">
-                <MaterialCommunityIcons name="help" color="inherit" size={20} />
+              <View>
+                <MaterialCommunityIcons
+                  name="help"
+                  size={20}
+                  className="color-primary hover:color-current transition-colors"
+                />
               </View>
             </IntroDialog>
           </View>

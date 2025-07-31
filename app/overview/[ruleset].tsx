@@ -1,7 +1,6 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-import { ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView, View } from "react-native";
 
 import CardStack from "@/components/CardStack";
 import DesktopActionTiles from "@/components/DesktopActionTiles";
@@ -56,7 +55,7 @@ const OverviewForRuleset = () => {
   }, [currentRulesetFormattedName]);
 
   return (
-    <SafeAreaView className="flex-1">
+    <View className="flex-1">
       <OverviewBar
         rulesetId={currentRulesetFormattedName}
         showNavButtons={!isMediumScreen}
@@ -83,15 +82,10 @@ const OverviewForRuleset = () => {
         <MobileFooter
           previousRuleset={navbarProps?.previousRulesetName}
           nextRuleset={navbarProps?.nextRulesetName}
-          onAddProductPress={() =>
-            updateModalVisibility({ ...modalVisiblity, addProduct: true })
-          }
-          onUpdateBalancePress={() =>
-            updateModalVisibility({ ...modalVisiblity, updateBalance: true })
-          }
+          hasProducts={hasProducts}
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 

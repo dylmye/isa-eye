@@ -8,7 +8,14 @@ import { Separator, Text } from "../ui";
 import AddProductDialog from "./AddProductDialog";
 import UpdateBalanceDialog from "./UpdateBalanceDialog";
 
-const MobileActionsBottomSheet = forwardRef<BottomSheetModal>((_props, ref) => {
+interface MobileActionsBottomSheetProps {
+  hasProducts?: boolean;
+}
+
+const MobileActionsBottomSheet = forwardRef<
+  BottomSheetModal,
+  MobileActionsBottomSheetProps
+>(({ hasProducts }, ref) => {
   const { colorScheme } = useColorScheme();
   return (
     <BottomSheetModal
@@ -32,18 +39,20 @@ const MobileActionsBottomSheet = forwardRef<BottomSheetModal>((_props, ref) => {
           </Pressable>
         </AddProductDialog>
         <Separator />
-        <UpdateBalanceDialog>
-          <Pressable className="flex-1 items-start p-3">
-            <Text className="font-semibold">
-              <MaterialCommunityIcons
-                name="bank-plus"
-                size={20}
-                className="mr-2"
-              />
-              Update Balance
-            </Text>
-          </Pressable>
-        </UpdateBalanceDialog>
+        {hasProducts && (
+          <UpdateBalanceDialog>
+            <Pressable className="flex-1 items-start p-3">
+              <Text className="font-semibold">
+                <MaterialCommunityIcons
+                  name="bank-plus"
+                  size={20}
+                  className="mr-2"
+                />
+                Update Balance
+              </Text>
+            </Pressable>
+          </UpdateBalanceDialog>
+        )}
         <Separator />
         <View className="flex-1 items-start p-3">
           <Text className="font-semibold text-muted">Bulk import</Text>

@@ -3,5 +3,6 @@ export const formatCurrency = (amount: number) =>
     style: "currency",
     currency: "GBP",
     maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
     trailingZeroDisplay: "stripIfInteger",
   }).format(amount);

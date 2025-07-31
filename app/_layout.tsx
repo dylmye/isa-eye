@@ -1,3 +1,4 @@
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import {
   DarkTheme,
   DefaultTheme,
@@ -7,6 +8,7 @@ import { PortalHost } from "@rn-primitives/portal";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
 import "react-native-reanimated";
 
@@ -14,18 +16,20 @@ import { NAV_THEME } from "@/constants/navTheme";
 import type { Schemas } from "@/db/schema";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useSetupDatabase } from "@/hooks/useSetupDatabase";
+import "@/utils/cssInterops";
 
 import "@/assets/styles/global.css";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Platform } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { usePlatformSpecificSetup } from "@/hooks/usePlatformSetup";
 
 const LIGHT_THEME: typeof DefaultTheme = {
   ...DefaultTheme,
+  dark: false,
   colors: NAV_THEME.light,
 };
 const DARK_THEME: typeof DefaultTheme = {
   ...DarkTheme,
+  dark: true,
   colors: NAV_THEME.dark,
 };
 
@@ -35,46 +39,10 @@ const { Provider: TinybaseProvider } =
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-const useIsomorphicLayoutEffect =
-  Platform.OS === "web" && typeof window === "undefined"
-    ? useEffect
-    : useLayoutEffect;
-
 const RootLayout = () => {
-  const hasMounted = useRef(false);
+  usePlatformSpecificSetup();
   const { isDarkColorScheme } = useColorScheme();
-  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = useState(false);
   const { store, queries, indexes, relationships } = useSetupDatabase();
-
-  useIsomorphicLayoutEffect(() => {
-    if (hasMounted.current) {
-      return;
-    }
-
-    if (Platform.OS === "web") {
-      // Adds the background color to the html element to prevent white background on overscroll.
-      document?.documentElement.classList.add("bg-background");
-    }
-    setIsColorSchemeLoaded(true);
-    hasMounted.current = true;
-  }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    if (!isColorSchemeLoaded) {
-      return;
-    }
-    if (Platform.OS === "web") {
-      if (isDarkColorScheme) {
-        document?.documentElement.classList.add("dark");
-      } else {
-        document?.documentElement.classList.remove("dark");
-      }
-    }
-  }, [isColorSchemeLoaded, isDarkColorScheme]);
-
-  if (!isColorSchemeLoaded) {
-    return null;
-  }
 
   return (
     <TinybaseProvider
@@ -83,13 +51,19 @@ const RootLayout = () => {
       indexes={indexes}
       relationships={relationships}
     >
-      <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-        <BottomSheetModalProvider>
-          <Stack screenOptions={{ headerShown: false }} />
-        </BottomSheetModalProvider>
-        <StatusBar style="auto" />
-        <PortalHost />
-      </ThemeProvider>
+      <SafeAreaProvider>
+        <GestureHandlerRootView>
+          <BottomSheetModalProvider>
+            <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+              <SafeAreaView className="flex-1">
+                <Stack screenOptions={{ headerShown: false }} />
+              </SafeAreaView>
+              <StatusBar style="auto" />
+              <PortalHost />
+            </ThemeProvider>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
     </TinybaseProvider>
   );
 };

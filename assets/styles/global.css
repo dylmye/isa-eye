@@ -31,7 +31,7 @@
 		--chart-5: 160 102% 38%;
 		--radius: 0.5rem;
 	}
-	.dark {
+	.dark:root {
 		--background: 160 33% 3%;
 		--foreground: 160 32% 99%;
 		--card: 160 33% 9%;

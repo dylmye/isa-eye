@@ -9,7 +9,7 @@ const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   },
   size: 24,
   backgroundColor: "transparent",
-  color: "inherit",
+  className: "color-foreground",
 };
 
 /**
