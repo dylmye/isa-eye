@@ -1,64 +1,68 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet, {
+  BottomSheetBackdrop,
+  type BottomSheetBackdropProps,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
+import { Portal } from "@rn-primitives/portal";
 import { forwardRef } from "react";
-import { Pressable, View } from "react-native";
+
 import { NAV_THEME } from "@/constants/navTheme";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Separator, Text } from "../ui";
-import AddProductDialog from "./AddProductDialog";
+import BottomSheetItem from "../BottomSheetItem";
+import { Separator } from "../ui";
 import UpdateBalanceDialog from "./UpdateBalanceDialog";
 
 interface MobileActionsBottomSheetProps {
   hasProducts?: boolean;
+  onDismiss?: () => void;
 }
 
 const MobileActionsBottomSheet = forwardRef<
-  BottomSheetModal,
+  BottomSheet,
   MobileActionsBottomSheetProps
->(({ hasProducts }, ref) => {
+>(({ hasProducts, onDismiss }, ref) => {
   const { colorScheme } = useColorScheme();
+
+  const renderBackdrop = (props: BottomSheetBackdropProps) => (
+    <BottomSheetBackdrop {...props} appearsOnIndex={0} disappearsOnIndex={-1} />
+  );
+
   return (
-    <BottomSheetModal
-      ref={ref}
-      backgroundStyle={{ backgroundColor: NAV_THEME[colorScheme].card }}
-      handleIndicatorStyle={{ backgroundColor: NAV_THEME[colorScheme].text }}
-      enablePanDownToClose
-      name="mobile-actions"
-    >
-      <BottomSheetView>
-        <AddProductDialog>
-          <Pressable className="flex-1 items-start p-3">
-            <Text className="font-semibold">
-              <MaterialCommunityIcons
-                name="cash-plus"
-                size={20}
-                className="mr-2"
+    <Portal name="mobile-actions">
+      <BottomSheet
+        ref={ref}
+        index={-1}
+        backgroundStyle={{ backgroundColor: NAV_THEME[colorScheme].card }}
+        handleIndicatorStyle={{ backgroundColor: NAV_THEME[colorScheme].text }}
+        backdropComponent={renderBackdrop}
+        enablePanDownToClose
+      >
+        <BottomSheetView>
+          <BottomSheetItem
+            icon="cash-plus"
+            label="Add Account"
+            onPress={onDismiss}
+          />
+          <Separator />
+          {hasProducts && (
+            <UpdateBalanceDialog>
+              <BottomSheetItem
+                icon="bank-plus"
+                label="Update Balance"
+                onPress={onDismiss}
               />
-              Add Account
-            </Text>
-          </Pressable>
-        </AddProductDialog>
-        <Separator />
-        {hasProducts && (
-          <UpdateBalanceDialog>
-            <Pressable className="flex-1 items-start p-3">
-              <Text className="font-semibold">
-                <MaterialCommunityIcons
-                  name="bank-plus"
-                  size={20}
-                  className="mr-2"
-                />
-                Update Balance
-              </Text>
-            </Pressable>
-          </UpdateBalanceDialog>
-        )}
-        <Separator />
-        <View className="flex-1 items-start p-3">
-          <Text className="font-semibold text-muted">Bulk import</Text>
-        </View>
-      </BottomSheetView>
-    </BottomSheetModal>
+            </UpdateBalanceDialog>
+          )}
+          <Separator />
+          <BottomSheetItem
+            icon="database-import"
+            label="Bulk Import"
+            disabled
+            onPress={onDismiss}
+          />
+        </BottomSheetView>
+      </BottomSheet>
+    </Portal>
   );
 });
 

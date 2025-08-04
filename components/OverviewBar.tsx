@@ -1,7 +1,8 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
 import { useMemo } from "react";
-import { Platform, View } from "react-native";
+import { Platform, Pressable, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Card, Text } from "@/components/ui";
 import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
 import hooks from "@/hooks/database";
@@ -28,6 +29,8 @@ const OverviewBar = ({
   previousRuleset,
   nextRuleset,
 }: OverviewBarProps) => {
+  const { top: topInset } = useSafeAreaInsets();
+
   const currentRuleset = hooks.useRow("rulesets", rulesetId);
   const remainingBalanceRow = hooks.useResultTable(
     "remainingBalanceByYear",
@@ -45,40 +48,55 @@ const OverviewBar = ({
 
   return (
     <Card className="w-full rounded-b-none">
-      <Card.Content className="color-foreground flex flex-column py-4">
-        <View className="mb-2 flex min-h-6 flex-1 flex-row items-center justify-between">
+      <Card.Content
+        className={cn(
+          "color-foreground flex flex-column py-4",
+          Platform.OS !== "web" && "mb-4",
+        )}
+        style={{ paddingTop: topInset }}
+      >
+        <View className="my-2 flex min-h-6 flex-1 flex-row items-center justify-between">
           <Logo className="h-5 w-5 fill-primary" accessibilityLabel="ISA Eye" />
-          {/* @TODO why do we need to nest this so damn much */}
           <View>
             <RulesetDescriptionDialog>
-              <Text
-                className={cn(
-                  "text-center font-semibold text-foreground text-lg leading-4 transition-colors",
-                  Platform.OS === "web" &&
-                    "transition-colors hover:text-primary",
-                )}
-                aria-hidden
-                accessibilityLabel={`Currently viewing your data for the ${rulesetId} tax year. Press for notes.`}
+              <Pressable
+                className="group flex flex-row items-center gap-1"
+                hitSlop={12}
               >
-                {rulesetId}
+                <Text
+                  className={cn(
+                    "gap-1 font-semibold text-foreground text-lg leading-4 transition-colors group-hover:text-primary",
+                    Platform.OS === "web" && "transition-colors",
+                  )}
+                  aria-hidden
+                  accessibilityLabel={`Currently viewing your data for the ${rulesetId} tax year. Press for notes.`}
+                >
+                  {rulesetId}
+                </Text>
                 <MaterialCommunityIcons
                   name="information-outline"
-                  color="inherit"
                   size={18}
-                  className="ml-1"
+                  className={cn(
+                    "color-foreground group-hover:color-primary",
+                    Platform.OS === "web" && "transition-colors",
+                  )}
+                  aria-hidden
                 />
-              </Text>
+              </Pressable>
             </RulesetDescriptionDialog>
           </View>
           <View>
             <IntroDialog>
-              <View>
+              <Pressable hitSlop={12}>
                 <MaterialCommunityIcons
                   name="help"
                   size={20}
-                  className="color-primary hover:color-current transition-colors"
+                  className={cn(
+                    "color-foreground hover:color-primary",
+                    Platform.OS === "web" && "transition-colors",
+                  )}
                 />
-              </View>
+              </Pressable>
             </IntroDialog>
           </View>
         </View>
@@ -86,7 +104,8 @@ const OverviewBar = ({
           {showNavButtons && previousRuleset ? (
             <NavBackButton
               onPress={() =>
-                !!previousRuleset && router.push(`/overview/${previousRuleset}`)
+                !!previousRuleset &&
+                router.replace(`/overview/${previousRuleset}`)
               }
             />
           ) : (
@@ -108,7 +127,7 @@ const OverviewBar = ({
           {showNavButtons && nextRuleset ? (
             <NavForwardButton
               onPress={() =>
-                nextRuleset && router.push(`/overview/${nextRuleset}`)
+                nextRuleset && router.replace(`/overview/${nextRuleset}`)
               }
             />
           ) : (

@@ -6,7 +6,7 @@ import { cn } from "@/utils/styles";
 import { Text } from "./Text";
 
 const alertVariants = cva(
-  "relative bg-background w-full rounded-lg border p-2 shadow shadow-foreground/10",
+  "-z-[1] relative bg-background w-full rounded-lg border p-3 shadow shadow-foreground/10 flex flex-row gap-4",
   {
     variants: {
       variant: {
@@ -55,14 +55,14 @@ const Alert = ({
       className={alertVariants({ variant, className })}
       {...props}
     >
-      <View className="absolute left-3.5">
+      <View>
         <MaterialCommunityIcons
           name={icon}
           size={iconSize}
           className={colorVariants({ variant, className })}
         />
       </View>
-      {children}
+      <View className="flex-1">{children}</View>
     </View>
   );
 };
@@ -71,7 +71,7 @@ const AlertTitle = ({ className, ...props }: ComponentProps<typeof Text>) => {
   return (
     <Text
       className={cn(
-        "mb-1 pl-7 font-medium text-base text-foreground leading-none tracking-tight",
+        "mb-1 font-medium text-base text-foreground leading-none tracking-tight",
         className,
       )}
       {...props}
@@ -86,7 +86,7 @@ const AlertDescription = ({
 }: ComponentProps<typeof Text>) => {
   return (
     <Text
-      className={cn("pl-7 text-foreground text-sm leading-relaxed", className)}
+      className={cn("text-foreground text-sm leading-relaxed", className)}
       {...props}
     />
   );

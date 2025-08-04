@@ -6,7 +6,7 @@ interface InfoMessageProps {
 }
 
 const InfoMessage = ({ message }: InfoMessageProps) => (
-  <View className="my-2">
+  <View className="-z-[1] my-2">
     <Alert icon="information-outline" variant="informative">
       <Alert.Description>{message}</Alert.Description>
     </Alert>

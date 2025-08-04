@@ -1,13 +1,14 @@
 import { FlashList, type ListRenderItem } from "@shopify/flash-list";
 import toSorted from "array.prototype.tosorted";
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { EditProductDialog } from "@/components/dialogs";
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
 import { Text } from "@/components/ui";
 import { useCurrentYearProducts } from "@/db/hooks";
 import hooks from "@/hooks/database";
 import getProductName from "@/utils/getProductName";
+import { cn } from "@/utils/styles";
 import ProductCardsEmpty from "./ProductCardsEmpty";
 
 const ProductCards = () => {
@@ -57,11 +58,16 @@ const ProductCards = () => {
       <FlashList
         data={data}
         renderItem={renderCard}
-        contentContainerClassName="mx-4 flex flex-col items-center"
+        contentContainerClassName={cn(
+          "mx-4 flex flex-col",
+          Platform.OS === "web" && "items-center",
+        )}
         className="w-full"
         ItemSeparatorComponent={() => <View className="pb-2" />}
         ListEmptyComponent={
-          <ProductCardsEmpty anyExistingProducts={!!productsAnyYearCount} />
+          <View className="flex flex-1">
+            <ProductCardsEmpty anyExistingProducts={!!productsAnyYearCount} />
+          </View>
         }
         estimatedItemSize={64}
       />

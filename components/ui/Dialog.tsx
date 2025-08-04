@@ -3,6 +3,8 @@ import * as DialogPrimitive from "@rn-primitives/dialog";
 import React from "react";
 import { Platform, StyleSheet, View, type ViewProps } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import { cn } from "@/utils/styles";
 
 const Dialog = DialogPrimitive.Root;
@@ -82,32 +84,34 @@ const DialogContent = ({
   return (
     <DialogPortal hostName={portalHost}>
       <DialogOverlay>
-        <DialogPrimitive.Content
-          className={cn(
-            "max-h-[100vh] min-w-[40vw] max-w-lg web:cursor-default gap-4 overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
-            open
-              ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
-              : "web:fade-out-0 web:zoom-out-95 web:animate-out",
-            className,
-          )}
-          {...props}
-        >
-          {children}
-          <DialogPrimitive.Close
-            className={
-              "web:group absolute top-4 right-4 rounded-sm p-0.5 opacity-70 web:ring-offset-background web:transition-opacity web:hover:opacity-100 web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 web:disabled:pointer-events-none"
-            }
+        <SafeAreaView>
+          <DialogPrimitive.Content
+            className={cn(
+              "isolate web:max-h-[100vh] min-w-[40vw] max-w-lg web:cursor-default gap-4 native:overflow-scroll web:overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
+              open
+                ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
+                : "web:fade-out-0 web:zoom-out-95 web:animate-out",
+              className,
+            )}
+            {...props}
           >
-            <MaterialCommunityIcons
-              name="close"
-              size={Platform.OS === "web" ? 16 : 18}
-              className={cn(
-                "text-muted-foreground",
-                open && "text-accent-foreground",
-              )}
-            />
-          </DialogPrimitive.Close>
-        </DialogPrimitive.Content>
+            {children}
+            <DialogPrimitive.Close
+              className={
+                "web:group absolute top-4 right-4 rounded-sm p-0.5 opacity-70 web:ring-offset-background web:transition-opacity web:hover:opacity-100 web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 web:disabled:pointer-events-none"
+              }
+            >
+              <MaterialCommunityIcons
+                name="close"
+                size={Platform.OS === "web" ? 16 : 18}
+                className={cn(
+                  "text-muted-foreground",
+                  open && "text-accent-foreground",
+                )}
+              />
+            </DialogPrimitive.Close>
+          </DialogPrimitive.Content>
+        </SafeAreaView>
       </DialogOverlay>
     </DialogPortal>
   );

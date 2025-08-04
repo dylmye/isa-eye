@@ -1,14 +1,14 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { FlashList } from "@shopify/flash-list";
 import Fuse from "fuse.js";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Controller, type FieldValues, type Path } from "react-hook-form";
-import { View } from "react-native";
-import Autocomplete from "react-native-autocomplete-input";
+import { Pressable, View } from "react-native";
 
-import { Input } from "@/components/ui";
+import { Input, Text } from "@/components/ui";
 import type BaseField from "@/types/baseField";
 import type { DropdownValue } from "@/types/dropdown";
-import DropdownOption from "./DropdownOption";
+import { cn } from "@/utils/styles";
 import FieldLabel from "./shared/FieldLabel";
 import InfoMessage from "./shared/InfoMessage";
 import ValidationMessage from "./shared/ValidationMessage";
@@ -55,85 +55,81 @@ const ControlledAutocompleteField = <
     threshold: 0.2,
   });
 
+  const onSelectResult = useCallback((selectedItem: TOption) => {
+    setTextInputValue(selectedItem.label);
+    requestAnimationFrame(() => {
+      setResultsVisiblity(false);
+    });
+  }, []);
+
   return (
     <>
       <Controller
         {...props}
         render={({ field: { onChange, value, disabled } }) => {
-          const onPressItem = (value: string, label: string) => {
-            setResultsVisiblity(false);
-            onChange(value);
-            setTextInputValue(label);
-          };
           return (
-            <>
+            <View>
               {label && (
                 <FieldLabel
                   label={label}
                   fieldName={props.name}
                   required={required}
+                  disabled={disabled}
                 />
               )}
-              <Autocomplete
-                editable={!disabled}
-                autoCorrect={false}
-                data={showResults ? filteredOptions : []}
-                value={value}
-                onChangeText={(newText) => {
-                  !showResults && setResultsVisiblity(true);
-                  updateFilteredOptions(
-                    fuse.search(newText).map((r) => r.item),
-                  );
-                  return setTextInputValue(newText);
-                }}
-                onFocus={() => {
-                  setResultsVisiblity(true);
-                }}
-                onBlur={(e) => {
-                  // handle case where option is selected but onBlur is called first
-                  if (
-                    "relatedTarget" in e &&
-                    (e.relatedTarget as { role: string | null })?.role ===
-                      "listitem"
-                  )
-                    return;
-
-                  setResultsVisiblity(false);
-                }}
-                renderTextInput={(props) => (
-                  <View className="flex items-center">
-                    <Input {...props} value={textInputValue} />
-                    <MaterialCommunityIcons
-                      name="chevron-down"
-                      size={16}
-                      aria-hidden={true}
-                      className="pointer-events-none absolute right-4 h-10 content-center text-foreground opacity-50"
-                    />
-                  </View>
-                )}
-                containerStyle={!showResults && { zIndex: 0 }}
-                inputContainerStyle={{
-                  borderColor: "transparent",
-                }}
-                flatListProps={{
-                  keyboardShouldPersistTaps: "always",
-                  keyExtractor: (item) => item.value,
-                  renderItem: ({ item }) =>
-                    renderOption?.(item, () =>
-                      onPressItem(item.value, item.label),
-                    ) ?? (
-                      <DropdownOption
-                        option={item}
+              <View className="flex items-center" collapsable={false}>
+                <Input
+                  value={textInputValue}
+                  placeholder="Start typing..."
+                  onFocus={() => {
+                    setResultsVisiblity(true);
+                  }}
+                  // this triggers before the option is selected, only after first selection
+                  // onBlur={() => setResultsVisiblity(false)}
+                  onChangeText={(newText) => {
+                    setTextInputValue(newText);
+                    setResultsVisiblity(true);
+                    updateFilteredOptions(
+                      fuse.search(newText).map((r) => r.item),
+                    );
+                  }}
+                  nativeID={props.name}
+                  aria-labelledby={label && `${props.name}-label`}
+                  role="combobox"
+                  aria-expanded={showResults}
+                  readOnly={disabled}
+                  aria-disabled={disabled}
+                />
+                <MaterialCommunityIcons
+                  name="chevron-down"
+                  size={16}
+                  aria-hidden={true}
+                  className="pointer-events-none absolute right-4 h-10 content-center text-foreground opacity-50"
+                />
+              </View>
+              {showResults && (
+                <View className="max-h-48 w-full rounded border border-card bg-card shadow-md">
+                  <FlashList
+                    data={filteredOptions}
+                    renderItem={({ item }) => (
+                      <Pressable
+                        className={cn(
+                          "z-50 cursor-pointer border-gray-200 border-b bg-card px-3 py-2",
+                          value === item.value && "bg-primary",
+                        )}
                         onPress={() => {
-                          onPressItem(item.value, item.label);
+                          onChange(item.value);
+                          onSelectResult(item);
                         }}
-                      />
-                    ),
-                  className:
-                    "bg-popover px-1 py-1 z-[1000] max-h-[320] rounded-md border-input shadow-foreground/10 shadow-md",
-                }}
-              />
-            </>
+                      >
+                        <Text className="text-base">{item.label}</Text>
+                      </Pressable>
+                    )}
+                    estimatedItemSize={41}
+                  />
+                </View>
+              )}
+            </View>
           );
         }}
         rules={{

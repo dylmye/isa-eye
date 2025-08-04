@@ -25,7 +25,7 @@ const RulesetDescriptionDialog = ({ children }: PropsWithChildren) => {
 
   return (
     <Dialog className="flex-1" open={open} onOpenChange={setOpen}>
-      <DialogTrigger>{children}</DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Notes for {currentRulesetId} tax year</DialogTitle>

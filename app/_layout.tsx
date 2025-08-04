@@ -1,4 +1,5 @@
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { PortalProvider } from "@gorhom/portal";
 import {
   DarkTheme,
   DefaultTheme,
@@ -9,6 +10,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
 import "react-native-reanimated";
 
@@ -19,7 +21,6 @@ import { useSetupDatabase } from "@/hooks/useSetupDatabase";
 import "@/utils/cssInterops";
 
 import "@/assets/styles/global.css";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { usePlatformSpecificSetup } from "@/hooks/usePlatformSetup";
 
 const LIGHT_THEME: typeof DefaultTheme = {
@@ -39,6 +40,10 @@ const { Provider: TinybaseProvider } =
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
+export const unstable_settings = {
+  initialRouteName: "index",
+};
+
 const RootLayout = () => {
   usePlatformSpecificSetup();
   const { isDarkColorScheme } = useColorScheme();
@@ -53,15 +58,22 @@ const RootLayout = () => {
     >
       <SafeAreaProvider>
         <GestureHandlerRootView>
-          <BottomSheetModalProvider>
-            <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-              <SafeAreaView className="flex-1">
-                <Stack screenOptions={{ headerShown: false }} />
-              </SafeAreaView>
-              <StatusBar style="auto" />
-              <PortalHost />
-            </ThemeProvider>
-          </BottomSheetModalProvider>
+          <PortalProvider>
+            <BottomSheetModalProvider>
+              <ThemeProvider
+                value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}
+              >
+                <Stack
+                  screenOptions={{
+                    headerShown: false,
+                    animation: "fade",
+                  }}
+                />
+                <StatusBar style="auto" />
+                <PortalHost />
+              </ThemeProvider>
+            </BottomSheetModalProvider>
+          </PortalProvider>
         </GestureHandlerRootView>
       </SafeAreaProvider>
     </TinybaseProvider>

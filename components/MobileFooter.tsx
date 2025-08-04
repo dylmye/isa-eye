@@ -1,6 +1,6 @@
 import type { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import type { BottomSheetModal } from "@gorhom/bottom-sheet";
+import type BottomSheet from "@gorhom/bottom-sheet";
 import { router } from "expo-router";
 import React, { useCallback, useRef } from "react";
 import { View } from "react-native";
@@ -37,10 +37,14 @@ const MobileFooter = ({
   nextRuleset,
   hasProducts,
 }: MobileFooterProps) => {
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const bottomSheetModalRef = useRef<BottomSheet>(null);
 
   const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
+    bottomSheetModalRef.current?.snapToIndex(0);
+  }, []);
+
+  const onDismissModal = useCallback(() => {
+    bottomSheetModalRef.current?.close();
   }, []);
 
   return (
@@ -48,7 +52,7 @@ const MobileFooter = ({
       {previousRuleset ? (
         <NavBackButton
           onPress={() =>
-            !!previousRuleset && router.push(`/overview/${previousRuleset}`)
+            !!previousRuleset && router.replace(`/overview/${previousRuleset}`)
           }
         />
       ) : (
@@ -57,7 +61,7 @@ const MobileFooter = ({
       <AddButton size={32} onPress={handlePresentModalPress} />
       {nextRuleset ? (
         <NavForwardButton
-          onPress={() => router.push(`/overview/${nextRuleset}`)}
+          onPress={() => router.replace(`/overview/${nextRuleset}`)}
         />
       ) : (
         <View className="w-[40]" />
@@ -65,6 +69,7 @@ const MobileFooter = ({
       <MobileActionsBottomSheet
         ref={bottomSheetModalRef}
         hasProducts={hasProducts}
+        onDismiss={onDismissModal}
       />
     </Card>
   );

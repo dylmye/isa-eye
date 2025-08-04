@@ -1,4 +1,4 @@
-export { default as AddProductDialog } from "./AddProductDialog";
+export { default as AddProductDialog } from "./AddProductDialog2";
 export { default as EditProductDialog } from "./EditProductDialog";
 export { default as IntroDialog } from "./IntroDialog";
 export { default as MobileActionsBottomSheet } from "./MobileActionsBottomSheet";

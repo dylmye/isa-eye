@@ -2,7 +2,6 @@ import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
 import { ScrollView, View } from "react-native";
 
-import CardStack from "@/components/CardStack";
 import DesktopActionTiles from "@/components/DesktopActionTiles";
 import CompositionCard from "@/components/implementations/CompositionCard";
 import ProductCards from "@/components/implementations/ProductCards";
@@ -64,7 +63,7 @@ const OverviewForRuleset = () => {
       />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <PageColumn>
-          <CardStack>
+          <View className="flex flex-col items-center gap-4">
             {!isMediumScreen && (
               <DesktopActionTiles
                 onPress={(key) =>
@@ -74,7 +73,7 @@ const OverviewForRuleset = () => {
               />
             )}
             {!!hasProducts && <CompositionCard />}
-          </CardStack>
+          </View>
           <ProductCards />
         </PageColumn>
       </ScrollView>

@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import type { FieldValues, Path } from "react-hook-form";
 
-import { ControlledAutocompleteField } from "@/components/fields";
-import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
+import { ControlledSelectField } from "@/components/fields";
+import type { ControlledSelectFieldProps } from "@/components/fields/ControlledSelectField";
 import hooks from "@/hooks/database";
 import type { DropdownOptions, DropdownValue } from "@/types/dropdown";
 
@@ -13,7 +13,7 @@ const ProductTypeDropdownField = <
   TFieldName extends Path<TForm> = any,
 >(
   props: Omit<
-    ControlledAutocompleteFieldProps<TForm, TFieldName, DropdownValue>,
+    ControlledSelectFieldProps<TForm, TFieldName, DropdownValue>,
     "allOptions" | "renderOption"
   >,
 ) => {
@@ -25,10 +25,7 @@ const ProductTypeDropdownField = <
     }));
   }, [productTypes]);
   return (
-    <ControlledAutocompleteField
-      allOptions={productTypeDropdownOptions}
-      {...props}
-    />
+    <ControlledSelectField allOptions={productTypeDropdownOptions} {...props} />
   );
 };
 

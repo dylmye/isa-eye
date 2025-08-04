@@ -1,7 +1,8 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { router } from "expo-router";
 import { View } from "react-native";
 import ActionTile from "@/components/ActionTile";
-import { AddProductDialog, UpdateBalanceDialog } from "@/components/dialogs";
+import { UpdateBalanceDialog } from "@/components/dialogs";
 import type ModalVisibilityState from "@/types/modalVisibilityState";
 
 interface DesktopActionTilesProps {
@@ -28,12 +29,11 @@ const DesktopActionTiles = ({
           />
         </UpdateBalanceDialog>
       )}
-      <AddProductDialog>
-        <ActionTile
-          title="Add Account"
-          icon={<MaterialCommunityIcons name="bank-plus" size={52} />}
-        />
-      </AddProductDialog>
+      <ActionTile
+        title="Add Account"
+        icon={<MaterialCommunityIcons name="bank-plus" size={52} />}
+        onPress={() => router.push("/add/account")}
+      />
       <ActionTile
         title="Bulk Import"
         onPress={() => onPress("bulkUpload")}

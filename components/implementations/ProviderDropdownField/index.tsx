@@ -1,7 +1,7 @@
 import toSorted from "array.prototype.tosorted";
 import { useMemo } from "react";
 import type { FieldValues, Path } from "react-hook-form";
-import { ControlledAutocompleteField } from "@/components/fields";
+import { ControlledSelectField } from "@/components/fields";
 import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
 import RichDropdownOption from "@/components/fields/RichDropdownOption";
 import hooks from "@/hooks/database";
@@ -36,7 +36,7 @@ const ProviderDropdownField = <
     }));
   }, [providers, aliases]);
   return (
-    <ControlledAutocompleteField
+    <ControlledSelectField
       allOptions={providerDropdownOptions}
       renderOption={(o, onPress) => (
         <RichDropdownOption option={o} onPress={onPress} />
