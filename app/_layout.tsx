@@ -58,22 +58,18 @@ const RootLayout = () => {
     >
       <SafeAreaProvider>
         <GestureHandlerRootView>
-          <PortalProvider>
-            <BottomSheetModalProvider>
-              <ThemeProvider
-                value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}
-              >
-                <Stack
-                  screenOptions={{
-                    headerShown: false,
-                    animation: "fade",
-                  }}
-                />
-                <StatusBar style="auto" />
-                <PortalHost />
-              </ThemeProvider>
-            </BottomSheetModalProvider>
-          </PortalProvider>
+          <BottomSheetModalProvider>
+            <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  animation: "fade",
+                }}
+              />
+              <StatusBar style="auto" />
+            </ThemeProvider>
+          </BottomSheetModalProvider>
+          <PortalHost />
         </GestureHandlerRootView>
       </SafeAreaProvider>
     </TinybaseProvider>

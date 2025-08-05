@@ -1,6 +1,6 @@
-export { default as AddProductDialog } from "./AddProductDialog2";
+export { default as AddProductDialog } from "./AddProductDialog";
 export { default as EditProductDialog } from "./EditProductDialog";
 export { default as IntroDialog } from "./IntroDialog";
 export { default as MobileActionsBottomSheet } from "./MobileActionsBottomSheet";
 export { default as RulesetDescriptionDialog } from "./RulesetDescriptionDialog";
-export { default as UpdateBalanceDialog } from "./UpdateBalanceDialog";
+export { default as UpdateProductBalanceDialog } from "./UpdateProductBalanceDialog";

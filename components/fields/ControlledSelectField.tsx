@@ -1,5 +1,6 @@
 import { Controller, type FieldValues, type Path } from "react-hook-form";
 import { View } from "react-native";
+import { ScrollView as GestureHandledScrollView } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   Select,
@@ -23,7 +24,6 @@ export interface ControlledSelectFieldProps<
   Option extends DropdownValue = DropdownValue,
 > extends BaseField<Form, FieldName> {
   allOptions: Option[];
-  renderOption?: (o: Option, onPress: () => void) => React.ReactElement;
 }
 
 const ControlledSelectField = <
@@ -40,7 +40,6 @@ const ControlledSelectField = <
   errors,
   note,
   allOptions,
-  renderOption,
   ...props
 }: ControlledSelectFieldProps<TForm, TFieldName, TOption>) => {
   const currFieldErrs = errors?.[props.name];
@@ -75,18 +74,21 @@ const ControlledSelectField = <
                     placeholder="Select an option"
                   />
                 </SelectTrigger>
-                <SelectContent insets={contentInsets}>
-                  <SelectGroup>
-                    {allOptions?.map((o) => (
-                      <SelectItem
-                        label={o.label}
-                        value={o.value}
-                        key={`select-opt-${o.value}`}
-                      >
-                        {o.label}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
+                <SelectContent insets={contentInsets} collapsable={false}>
+                  {/* Use GH scrollview: https://github.com/mrzachnugent/react-native-reusables/issues/163#issuecomment-2198220936 */}
+                  <GestureHandledScrollView className="max-h-42 w-full">
+                    <SelectGroup className="w-full">
+                      {allOptions?.map((o) => (
+                        <SelectItem
+                          label={o.label}
+                          value={o.value}
+                          key={`select-opt-${o.value}`}
+                        >
+                          {o.label}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </GestureHandledScrollView>
                 </SelectContent>
               </Select>
             </View>
@@ -98,9 +100,6 @@ const ControlledSelectField = <
             value: required ?? false,
             message: "Select an option",
           },
-          validate: (value) =>
-            allOptions.map((o) => o.value).includes(value) ||
-            "Select a valid option",
         }}
         disabled={disabled}
       />

@@ -1,10 +1,11 @@
-import { router, Stack } from "expo-router";
+import { router, Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
 
-import { AddProductDialog } from "@/components/dialogs";
+import { EditProductDialog } from "@/components/dialogs";
 import { Dialog, DialogOverlay } from "@/components/ui";
 
-const AddAccountDialog = () => {
+const EditAccountDialog = () => {
+  const searchParams = useLocalSearchParams<{ accountId?: string }>();
   return (
     <React.Fragment>
       <Stack.Screen options={{ presentation: "transparentModal" }} />
@@ -14,11 +15,11 @@ const AddAccountDialog = () => {
         onOpenChange={() => router.canGoBack() && router.dismiss()}
       >
         <DialogOverlay>
-          <AddProductDialog />
+          <EditProductDialog existingId={searchParams?.accountId as string} />
         </DialogOverlay>
       </Dialog>
     </React.Fragment>
   );
 };
 
-export default AddAccountDialog;
+export default EditAccountDialog;

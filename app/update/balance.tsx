@@ -1,10 +1,10 @@
 import { router, Stack } from "expo-router";
 import React from "react";
 
-import { AddProductDialog } from "@/components/dialogs";
+import { UpdateProductBalanceDialog } from "@/components/dialogs";
 import { Dialog, DialogOverlay } from "@/components/ui";
 
-const AddAccountDialog = () => {
+const UpdateBalanceDialog = () => {
   return (
     <React.Fragment>
       <Stack.Screen options={{ presentation: "transparentModal" }} />
@@ -14,11 +14,11 @@ const AddAccountDialog = () => {
         onOpenChange={() => router.canGoBack() && router.dismiss()}
       >
         <DialogOverlay>
-          <AddProductDialog />
+          <UpdateProductBalanceDialog />
         </DialogOverlay>
       </Dialog>
     </React.Fragment>
   );
 };
 
-export default AddAccountDialog;
+export default UpdateBalanceDialog;

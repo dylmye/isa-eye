@@ -1,16 +1,14 @@
-import React, { type PropsWithChildren, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import {
   Button,
-  Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   Text,
 } from "@/components/ui";
 import type { AnnualBalance } from "@/db/schema";
@@ -28,14 +26,11 @@ export interface UpdateBalanceData {
   amount?: number;
 }
 
-const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
-  const [open, setOpen] = useState(false);
-
+const UpdateProductBalanceDialog = () => {
   const onUpdateOpenState = (newState: boolean) => {
     if (!newState) {
       reset();
     }
-    setOpen(newState);
   };
 
   const store = hooks.useStore();
@@ -97,69 +92,66 @@ const UpdateBalanceDialog = ({ children }: PropsWithChildren) => {
 
   // @TODO: add form validation for rulesetId within product open-close range
   return (
-    <Dialog className="flex-1" open={open} onOpenChange={onUpdateOpenState}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Update Balance</DialogTitle>
-          <DialogDescription>
-            <FormUI>
-              <ProductDropdownField<UpdateBalanceData, "productId">
-                control={control}
-                errors={errors}
-                name="productId"
-                label="Account"
-                required
-              />
-              {currentProductExistingValue !== null && selectedProduct ? (
-                <>
-                  <RulesetDropdownField<UpdateBalanceData, "rulesetId">
-                    control={control}
-                    errors={errors}
-                    defaultValue={currentRulesetId as string}
-                    name="rulesetId"
-                    label="Tax Year"
-                    filterRulesets={[
-                      selectedProduct.startTaxYear,
-                      selectedProduct?.endTaxYear,
-                    ]}
-                    required
-                  />
-                  <ControlledCurrencyField<UpdateBalanceData, "amount">
-                    control={control}
-                    errors={errors}
-                    defaultValue={currentProductExistingValue}
-                    name="amount"
-                    label="Allowance used"
-                    required
-                    note={
-                      selectedProduct?.flexible
-                        ? `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
+    <DialogContent className="sm:max-w-[425px]">
+      <DialogHeader>
+        <DialogTitle>Update Balance</DialogTitle>
+        <DialogDescription>
+          <FormUI>
+            <ProductDropdownField<UpdateBalanceData, "productId">
+              control={control}
+              errors={errors}
+              name="productId"
+              label="Account"
+              required
+            />
+            {currentProductExistingValue !== null && selectedProduct ? (
+              <>
+                <RulesetDropdownField<UpdateBalanceData, "rulesetId">
+                  control={control}
+                  errors={errors}
+                  defaultValue={currentRulesetId as string}
+                  name="rulesetId"
+                  label="Tax Year"
+                  filterRulesets={[
+                    selectedProduct.startTaxYear,
+                    selectedProduct?.endTaxYear,
+                  ]}
+                  required
+                />
+                <ControlledCurrencyField<UpdateBalanceData, "amount">
+                  control={control}
+                  errors={errors}
+                  defaultValue={currentProductExistingValue}
+                  name="amount"
+                  label="Allowance used"
+                  required
+                  note={
+                    selectedProduct?.flexible
+                      ? `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
 If you've withdrawn more than the amount you've contributed this tax year, enter £0 and don't edit previous year contributions.
 Don't include transfers and interest/gains earned.`
-                        : "Enter the sum of all contributions you've made during this tax year. Don't subtract withdrawals. Don't include transfers and interest/gains earned."
-                    }
-                  />
-                </>
-              ) : (
-                <View style={{ height: 48 }} />
-              )}
-            </FormUI>
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button variant="secondary">
-              <Text>Cancel</Text>
-            </Button>
-          </DialogClose>
-          <Button onPress={handleSubmit(onSubmit)}>
-            <Text>Update</Text>
+                      : "Enter the sum of all contributions you've made during this tax year. Don't subtract withdrawals. Don't include transfers and interest/gains earned."
+                  }
+                />
+              </>
+            ) : (
+              <View style={{ height: 48 }} />
+            )}
+          </FormUI>
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <DialogClose asChild>
+          <Button variant="secondary">
+            <Text>Cancel</Text>
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </DialogClose>
+        <Button onPress={handleSubmit(onSubmit)}>
+          <Text>Update</Text>
+        </Button>
+      </DialogFooter>
+    </DialogContent>
   );
 };
 
-export default UpdateBalanceDialog;
+export default UpdateProductBalanceDialog;

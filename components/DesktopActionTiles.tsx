@@ -2,7 +2,6 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
 import { View } from "react-native";
 import ActionTile from "@/components/ActionTile";
-import { UpdateBalanceDialog } from "@/components/dialogs";
 import type ModalVisibilityState from "@/types/modalVisibilityState";
 
 interface DesktopActionTilesProps {
@@ -22,12 +21,11 @@ const DesktopActionTiles = ({
   return (
     <View className="flex w-full flex-row justify-evenly gap-3">
       {hasProducts && (
-        <UpdateBalanceDialog>
-          <ActionTile
-            title="Update Balance"
-            icon={<MaterialCommunityIcons name="cash-plus" size={52} />}
-          />
-        </UpdateBalanceDialog>
+        <ActionTile
+          title="Update Balance"
+          icon={<MaterialCommunityIcons name="cash-plus" size={52} />}
+          onPress={() => router.push("/update/balance")}
+        />
       )}
       <ActionTile
         title="Add Account"

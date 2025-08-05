@@ -4,13 +4,12 @@ import BottomSheet, {
   BottomSheetView,
 } from "@gorhom/bottom-sheet";
 import { Portal } from "@rn-primitives/portal";
+import { router } from "expo-router";
 import { forwardRef } from "react";
-
 import { NAV_THEME } from "@/constants/navTheme";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import BottomSheetItem from "../BottomSheetItem";
 import { Separator } from "../ui";
-import UpdateBalanceDialog from "./UpdateBalanceDialog";
 
 interface MobileActionsBottomSheetProps {
   hasProducts?: boolean;
@@ -41,17 +40,15 @@ const MobileActionsBottomSheet = forwardRef<
           <BottomSheetItem
             icon="cash-plus"
             label="Add Account"
-            onPress={onDismiss}
+            onPress={() => router.push("/add/account")}
           />
           <Separator />
           {hasProducts && (
-            <UpdateBalanceDialog>
-              <BottomSheetItem
-                icon="bank-plus"
-                label="Update Balance"
-                onPress={onDismiss}
-              />
-            </UpdateBalanceDialog>
+            <BottomSheetItem
+              icon="bank-plus"
+              label="Update Balance"
+              onPress={onDismiss}
+            />
           )}
           <Separator />
           <BottomSheetItem

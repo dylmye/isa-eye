@@ -1,11 +1,10 @@
 import { useMemo } from "react";
 import type { FieldValues, Path } from "react-hook-form";
 
-import { ControlledAutocompleteField } from "@/components/fields";
-import type { ControlledAutocompleteFieldProps } from "@/components/fields/ControlledAutocompleteField";
-import RichDropdownOption from "@/components/fields/RichDropdownOption";
+import { ControlledSelectField } from "@/components/fields";
+import type { ControlledSelectFieldProps } from "@/components/fields/ControlledSelectField";
 import hooks from "@/hooks/database";
-import type { RichDropdownOptions, RichDropdownValue } from "@/types/dropdown";
+import type { DropdownOptions, DropdownValue } from "@/types/dropdown";
 import getProductName from "@/utils/getProductName";
 
 const ProductDropdownField = <
@@ -15,30 +14,23 @@ const ProductDropdownField = <
   TFieldName extends Path<TForm> = any,
 >(
   props: Omit<
-    ControlledAutocompleteFieldProps<TForm, TFieldName, RichDropdownValue>,
+    ControlledSelectFieldProps<TForm, TFieldName, DropdownValue>,
     "allOptions" | "renderOption"
   >,
 ) => {
   const products = hooks.useResultTable("allProducts");
-  const providerDropdownOptions: RichDropdownOptions = useMemo(() => {
-    return Object.keys(products).map<RichDropdownValue>((id) => ({
+  const providerDropdownOptions: DropdownOptions = useMemo(() => {
+    return Object.keys(products).map<DropdownValue>((id) => ({
       label: getProductName({
         friendlyName: products[id].friendlyName as string,
         providerName: products[id].providerName as string,
         productTypeName: products[id].productTypeName as string,
       }),
       value: id,
-      image: products[id].providerIconRelativeUrl as string,
     }));
   }, [products]);
   return (
-    <ControlledAutocompleteField
-      allOptions={providerDropdownOptions}
-      renderOption={(o, onPress) => (
-        <RichDropdownOption option={o} onPress={onPress} />
-      )}
-      {...props}
-    />
+    <ControlledSelectField allOptions={providerDropdownOptions} {...props} />
   );
 };
 

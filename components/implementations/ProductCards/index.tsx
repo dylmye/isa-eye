@@ -1,8 +1,9 @@
 import { FlashList, type ListRenderItem } from "@shopify/flash-list";
 import toSorted from "array.prototype.tosorted";
+import { router } from "expo-router";
 import React, { useMemo } from "react";
-import { Platform, View } from "react-native";
-import { EditProductDialog } from "@/components/dialogs";
+import { Platform, Pressable, View } from "react-native";
+
 import ProductSummaryCard from "@/components/implementations/ProductSummaryCard";
 import { Text } from "@/components/ui";
 import { useCurrentYearProducts } from "@/db/hooks";
@@ -39,11 +40,9 @@ const ProductCards = () => {
   const renderCard: ListRenderItem<(typeof currentYearProducts)[0]> = ({
     item: [id, product],
   }) => (
-    <EditProductDialog existingId={id as string}>
-      <View>
-        <ProductSummaryCard product={product} productId={id} />
-      </View>
-    </EditProductDialog>
+    <Pressable onPress={() => router.push(`/edit/account/${id}`)}>
+      <ProductSummaryCard product={product} productId={id} />
+    </Pressable>
   );
 
   return (

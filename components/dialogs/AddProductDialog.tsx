@@ -1,6 +1,6 @@
-import { PortalHost } from "@gorhom/portal";
 import React from "react";
 import { useForm } from "react-hook-form";
+
 import {
   Button,
   DialogClose,
@@ -27,7 +27,7 @@ interface AddProductData {
   isFlexible: boolean;
 }
 
-const AddProductDialog = ({ portalHostName }: { portalHostName: string }) => {
+const AddProductDialog = () => {
   const currentRulesetName = hooks.useValue("currentTaxYear") as string;
 
   const onUpdateOpenState = (newState: boolean) => {
@@ -103,7 +103,6 @@ const AddProductDialog = ({ portalHostName }: { portalHostName: string }) => {
               defaultValue={false}
               note="Check with your bank whether this ISA is flexible."
             />
-            <PortalHost name={portalHostName} />
           </FormUI>
         </DialogDescription>
       </DialogHeader>
