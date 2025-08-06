@@ -12,7 +12,7 @@ const CompositionCard = () => {
   const chartProducts = useMemo(() => {
     return balances.map((b) => ({
       id: b.productId,
-      value: b.percentage,
+      value: b.percentage ?? 0,
       label: getProductName({
         friendlyName: b.productFriendlyName,
         providerName: b.productProviderName,

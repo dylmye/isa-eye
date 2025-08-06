@@ -1,6 +1,8 @@
+import { router } from "expo-router";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
+
 import {
   Button,
   DialogClose,
@@ -69,6 +71,8 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
         }
       });
       rowIdsToDelete.forEach((rId) => store.delRow("annualBalances", rId));
+
+      router.dismiss();
     },
   );
 
@@ -110,6 +114,7 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
   const onSubmit = (data: EditProductData) => {
     onSubmitForm(data);
     onUpdateOpenState(false);
+    router.dismiss();
   };
 
   return (

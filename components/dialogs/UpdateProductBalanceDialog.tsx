@@ -1,6 +1,8 @@
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
+
 import {
   Button,
   DialogClose,
@@ -62,6 +64,7 @@ const UpdateProductBalanceDialog = () => {
   const onSubmit = (data: UpdateBalanceData) => {
     onSubmitForm(data);
     onUpdateOpenState(false);
+    router.dismiss();
   };
 
   const selectedProductId = watch("productId");

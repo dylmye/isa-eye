@@ -1,6 +1,7 @@
+import { router } from "expo-router";
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { Platform } from "react-native";
 import {
   Button,
   DialogClose,
@@ -41,7 +42,9 @@ const AddProductDialog = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<AddProductData>();
+  } = useForm<AddProductData>({
+    shouldUseNativeValidation: Platform.OS === "web",
+  });
 
   const onSubmitForm = hooks.useAddRowCallback(
     "products",
@@ -58,6 +61,7 @@ const AddProductDialog = () => {
   const onSubmit = (data: AddProductData) => {
     onSubmitForm(data);
     onUpdateOpenState(false);
+    router.dismiss();
   };
 
   return (
