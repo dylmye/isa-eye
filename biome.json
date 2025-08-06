@@ -11,7 +11,8 @@
 			"**",
 			"!tsconfig.json",
 			"!nativewind-env.d.ts",
-			"!package.json"
+			"!package.json",
+			"!assets/images/isa-eye.icon/icon.json"
 		]
 	},
 	"formatter": {

@@ -1,0 +1,35 @@
+name: Trigger Expo Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [android, ios]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+          packager: bun
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build app
+        run: eas build -p ${{ matrix.os }} --non-interactive --no-wait -m="GitHub Actions - Run $GITHUB_RUN_ID"

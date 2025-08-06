@@ -10,10 +10,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
           version: latest
+
       - name: Run Biome
         run: biome ci .
   doctor:
@@ -21,17 +23,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
           path: |
             ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        
       - name: Debug info
         run: bun x expo-doctor -v
+        
       - name: Call the doctor
         run: bun x expo-doctor

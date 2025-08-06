@@ -1,5 +1,4 @@
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import { PortalProvider } from "@gorhom/portal";
 import {
   DarkTheme,
   DefaultTheme,
