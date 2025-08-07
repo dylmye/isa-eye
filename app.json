@@ -17,6 +17,9 @@
 				"light": "./assets/images/app-icons/ios-light-1024.png",
 				"tinted": "./assets/images/app-icons/ios-monochrome-1024.png"
 			},
+			"infoPlist": {
+				"ITSAppUsesNonExemptEncryption": false
+			},
 			"supportsTablet": true,
 			"bundleIdentifier": "me.dylmye.isa"
 		},
@@ -83,7 +86,15 @@
 				}
 			],
 			"expo-font",
-			"expo-web-browser"
+			"expo-web-browser",
+			[
+				"expo-build-properties",
+				{
+					"android": {
+						"extraProguardRules": "-keep class com.facebook.react.bridge.queue.MessageQueueThreadImpl { *; }\n-keepclassmembers class com.facebook.react.bridge.queue.MessageQueueThreadImpl {\n    <fields>;\n}\n"
+					}
+				}
+			]
 		]
 	}
 }
