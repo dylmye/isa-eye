@@ -8,6 +8,7 @@ import { PortalHost } from "@rn-primitives/portal";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import * as TinybaseUiReact from "tinybase/ui-react/with-schemas";
@@ -16,11 +17,11 @@ import "react-native-reanimated";
 import { NAV_THEME } from "@/constants/navTheme";
 import type { Schemas } from "@/db/schema";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { usePlatformSpecificSetup } from "@/hooks/usePlatformSetup";
 import { useSetupDatabase } from "@/hooks/useSetupDatabase";
 import "@/utils/cssInterops";
 
 import "@/assets/styles/global.css";
-import { usePlatformSpecificSetup } from "@/hooks/usePlatformSetup";
 
 const LIGHT_THEME: typeof DefaultTheme = {
   ...DefaultTheme,
@@ -47,6 +48,10 @@ const RootLayout = () => {
   usePlatformSpecificSetup();
   const { isDarkColorScheme } = useColorScheme();
   const { store, queries, indexes, relationships } = useSetupDatabase();
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <TinybaseProvider
