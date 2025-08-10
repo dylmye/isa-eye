@@ -1,3 +1,4 @@
+import structuredClone from "@ungap/structured-clone";
 import { useMemo } from "react";
 
 import hooks from "@/hooks/database";
