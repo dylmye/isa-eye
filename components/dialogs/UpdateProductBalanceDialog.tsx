@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
 
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui";
 import type { AnnualBalance } from "@/db/schema";
 import hooks from "@/hooks/database";
+import { formatCurrency } from "@/utils/formatCurrency";
 import { ControlledCurrencyField } from "../fields";
 import FormUI from "../fields/FormUI";
 import ProductDropdownField from "../implementations/ProductDropdownField";
@@ -36,6 +37,7 @@ const UpdateProductBalanceDialog = () => {
   };
 
   const store = hooks.useStore();
+  const rulesetExceptions = hooks.useTable("rulesetExceptions");
   const currentRulesetId = hooks.useValue("currentTaxYear");
   const [currentProductExistingValue, setCurrentProductExistingValue] =
     useState<number | null>(null);
@@ -70,6 +72,31 @@ const UpdateProductBalanceDialog = () => {
   const selectedProductId = watch("productId");
   const selectedRulesetId = watch("rulesetId");
   const selectedProduct = hooks.useRow("products", selectedProductId);
+
+  const currentRulesetExceptionRow = useMemo(() => {
+    return Object.values(rulesetExceptions ?? {}).filter(
+      (re) =>
+        re.rulesetId === selectedRulesetId &&
+        re.productTypeId === selectedProduct?.productTypeCode,
+    )?.[0];
+  }, [selectedRulesetId, selectedProduct?.productTypeCode]);
+
+  const amountNote = useMemo(() => {
+    let note = "";
+    if (selectedProduct?.flexible) {
+      note += `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
+If you've withdrawn more than the amount you've contributed this tax year, enter £0 and don't edit previous year contributions.
+Don't include transfers and interest/gains earned.`;
+    } else {
+      note +=
+        "Enter the sum of all contributions you've made during this tax year. Don't subtract withdrawals. Don't include transfers and interest/gains earned.";
+    }
+
+    if (currentRulesetExceptionRow) {
+      note += `\nThe allowance for this type of account this year is ${formatCurrency(parseFloat(currentRulesetExceptionRow.allowancePence ?? "0") / 100)}.`;
+    }
+    return note;
+  }, [selectedProduct?.flexible, currentRulesetExceptionRow]);
 
   // this might be the worst code of 2025 and idk if it even works reliably
   // @TODO: overwrite existing value - or just set amount directly?
@@ -128,13 +155,7 @@ const UpdateProductBalanceDialog = () => {
                   name="amount"
                   label="Allowance used"
                   required
-                  note={
-                    selectedProduct?.flexible
-                      ? `Enter the sum of all contributions you've made during this tax year, subtracting any withdrawals.
-If you've withdrawn more than the amount you've contributed this tax year, enter £0 and don't edit previous year contributions.
-Don't include transfers and interest/gains earned.`
-                      : "Enter the sum of all contributions you've made during this tax year. Don't subtract withdrawals. Don't include transfers and interest/gains earned."
-                  }
+                  note={amountNote}
                 />
               </>
             ) : (

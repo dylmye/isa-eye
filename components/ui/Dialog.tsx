@@ -87,7 +87,7 @@ const DialogContent = ({
         <SafeAreaView>
           <DialogPrimitive.Content
             className={cn(
-              "isolate web:max-h-[100vh] min-w-[40vw] max-w-lg web:cursor-default gap-4 native:overflow-scroll web:overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200",
+              "isolate web:max-h-[100vh] max-w-lg web:cursor-default gap-4 native:overflow-scroll web:overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-lg web:duration-200 sm:min-w-full md:min-w-[40vw]",
               open
                 ? "web:fade-in-0 web:zoom-in-95 web:animate-in"
                 : "web:fade-out-0 web:zoom-out-95 web:animate-out",

@@ -40,14 +40,20 @@ const MobileActionsBottomSheet = forwardRef<
           <BottomSheetItem
             icon="cash-plus"
             label="Add Account"
-            onPress={() => router.push("/add/account")}
+            onPress={() => {
+              onDismiss?.();
+              router.push("/add/account");
+            }}
           />
           <Separator />
           {hasProducts && (
             <BottomSheetItem
               icon="bank-plus"
               label="Update Balance"
-              onPress={onDismiss}
+              onPress={() => {
+                onDismiss?.();
+                router.push("/update/balance");
+              }}
             />
           )}
           <Separator />

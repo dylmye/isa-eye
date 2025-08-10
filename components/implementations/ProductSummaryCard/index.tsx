@@ -1,6 +1,7 @@
 import { Image } from "expo-image";
 import { useMemo } from "react";
-import { Platform, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
+import Svg, { Defs, LinearGradient, Rect, Stop } from "react-native-svg";
 import { Text } from "@/components/ui";
 import type { AllProductsRow } from "@/db/queries/products";
 import hooks from "@/hooks/database";
@@ -41,7 +42,7 @@ const ProductSummaryCard = ({
 
   return (
     <View
-      className="flex w-full flex-row items-center justify-between rounded-lg border-2 border-border bg-card px-4 py-3 transition hover:brightness-110"
+      className="pointer-events-none flex w-full flex-row items-center justify-between overflow-hidden rounded-lg border-2 border-border bg-card px-4 native:py-5 py-3 transition hover:brightness-110 active:brightness-120"
       style={
         isWeb &&
         productColourBackgroundWeb && {
@@ -49,11 +50,12 @@ const ProductSummaryCard = ({
         }
       }
     >
-      <View className="flex flex-row gap-2">
-        <View className="h-9 w-9">
+      <View className="flex flex-row gap-2 native:gap-4">
+        <View className="h-9 w-9 overflow-hidden rounded-full border-2 border-ring">
           <Image
-            source={product.providerIconRelativeUrl}
-            className="flex-1 rounded-full border-2 border-ring"
+            source={{ uri: product.providerIconRelativeUrl }}
+            className="flex-1"
+            style={{ width: "100%", height: "100%" }}
           />
         </View>
         <Text
@@ -66,6 +68,42 @@ const ProductSummaryCard = ({
       <Text className="font-semibold text-2xl text-card-foreground">
         {formattedProductBalance}
       </Text>
+      {Platform.OS !== "web" && (
+        <View style={StyleSheet.absoluteFillObject} className="-z-10">
+          <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
+            <Defs>
+              <LinearGradient
+                id={`native-gradient-bg-${productId}`}
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <Stop
+                  offset={0}
+                  stopColor={product.providerColour}
+                  stopOpacity={0.9}
+                />
+                <Stop
+                  offset={0.25}
+                  stopColor={product.providerColour}
+                  stopOpacity={0.3}
+                />
+                <Stop
+                  offset={0.8}
+                  stopColor={product.providerColour}
+                  stopOpacity={0}
+                />
+              </LinearGradient>
+            </Defs>
+            <Rect
+              width="100%"
+              height="100%"
+              fill={`url(#native-gradient-bg-${productId})`}
+            />
+          </Svg>
+        </View>
+      )}
     </View>
   );
 };

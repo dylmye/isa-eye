@@ -32,7 +32,7 @@ const CompositionCard = () => {
         <Card.Title>Composition</Card.Title>
       </Card.Header>
       {/* fixed height is required by victory */}
-      <Card.Content className="flex h-44 flex-row gap-4">
+      <Card.Content className="flex h-44 native:h-52 flex-row gap-4">
         <View className="min-w-48 flex-1">
           <CompositionChartInner products={chartProducts} />
         </View>

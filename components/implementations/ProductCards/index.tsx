@@ -40,7 +40,11 @@ const ProductCards = () => {
   const renderCard: ListRenderItem<(typeof currentYearProducts)[0]> = ({
     item: [id, product],
   }) => (
-    <Pressable onPress={() => router.push(`/edit/account/${id}`)}>
+    <Pressable
+      onPress={() => router.push(`/edit/account/${id}`)}
+      className="flex-1"
+      hitSlop={12}
+    >
       <ProductSummaryCard product={product} productId={id} />
     </Pressable>
   );
@@ -58,8 +62,8 @@ const ProductCards = () => {
         data={data}
         renderItem={renderCard}
         contentContainerClassName={cn(
-          "mx-4 flex flex-col",
-          Platform.OS === "web" && "items-center",
+          "flex flex-col",
+          Platform.OS === "web" && "items-center mx-4",
         )}
         className="w-full"
         ItemSeparatorComponent={() => <View className="pb-2" />}
