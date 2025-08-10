@@ -67,4 +67,4 @@ jobs:
           api-key: ${{ secrets.FOSSA_API_KEY }}
           run-tests: ${{ github.event_name == 'pull_request' }}
           test-diff-revision: ${{ github.event.pull_request.base.sha }}
-          project-name: git+github.com/dylmye/isa-eye
+          project: git+github.com/dylmye/isa-eye
