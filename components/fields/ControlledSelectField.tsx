@@ -67,7 +67,7 @@ const ControlledSelectField = <
                   disabled={disabled}
                 />
               )}
-              <Select value={value} onValueChange={(o) => onChange(o?.value)}>
+              <Select value={value} onValueChange={onChange} className="py-1">
                 <SelectTrigger>
                   <SelectValue
                     className="native:text-lg text-foreground text-sm"

@@ -1,12 +1,12 @@
 import { router, Stack } from "expo-router";
 import React from "react";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 import { AddProductDialog } from "@/components/dialogs";
 import { Dialog, DialogOverlay } from "@/components/ui";
 
 const AddAccountDialog = () => {
   return (
-    <React.Fragment>
+    <SafeAreaView className="flex-1">
       <Stack.Screen options={{ presentation: "transparentModal" }} />
       <Dialog
         className="flex-1"
@@ -17,7 +17,7 @@ const AddAccountDialog = () => {
           <AddProductDialog />
         </DialogOverlay>
       </Dialog>
-    </React.Fragment>
+    </SafeAreaView>
   );
 };
 

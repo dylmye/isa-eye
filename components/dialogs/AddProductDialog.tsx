@@ -1,6 +1,7 @@
+import type { Option } from "@rn-primitives/select";
 import { router } from "expo-router";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { Platform } from "react-native";
 import {
   Button,
@@ -21,10 +22,10 @@ import ProviderDropdownField from "../implementations/ProviderDropdownField";
 import RulesetDropdownField from "../implementations/RulesetDropdownField";
 
 interface AddProductData {
-  providerId: string;
+  providerId: Option;
   productName: string;
-  openedInTaxYear: string;
-  isaTypeCode: string;
+  openedInTaxYear: Option;
+  isaTypeCode: Option;
   isFlexible: boolean;
 }
 
@@ -50,15 +51,15 @@ const AddProductDialog = () => {
     "products",
     (data: AddProductData) =>
       ({
-        startTaxYear: data.openedInTaxYear,
-        providerId: data.providerId,
+        startTaxYear: data.openedInTaxYear?.value,
+        providerId: data.providerId?.value,
         friendlyName: data.productName,
-        productTypeCode: data.isaTypeCode,
+        productTypeCode: data.isaTypeCode?.value,
         flexible: data.isFlexible,
       }) satisfies Product,
   );
 
-  const onSubmit = (data: AddProductData) => {
+  const onSubmit: SubmitHandler<AddProductData> = (data) => {
     onSubmitForm(data);
     onUpdateOpenState(false);
     router.dismiss();
@@ -87,7 +88,10 @@ const AddProductDialog = () => {
               control={control}
               errors={errors}
               name="openedInTaxYear"
-              defaultValue={currentRulesetName as string}
+              defaultValue={{
+                label: currentRulesetName,
+                value: currentRulesetName,
+              }}
               label="Year of opening"
               required
               note="The tax year runs from 6th April to 5th April of the following year, so an ISA opened on 2nd Feb 2024 would be in the 2023/2024 tax year."

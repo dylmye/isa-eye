@@ -28,7 +28,7 @@ const ProductSummaryCard = ({
   const formattedProductBalance = useMemo(() => {
     return formatCurrency(
       Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? "0") /
-        100,
+      100,
     );
   }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
@@ -42,7 +42,7 @@ const ProductSummaryCard = ({
 
   return (
     <View
-      className="pointer-events-none flex w-full flex-row items-center justify-between overflow-hidden rounded-lg border-2 border-border bg-card px-4 native:py-5 py-3 transition hover:brightness-110 active:brightness-120"
+      className="pointer-events-none flex w-full flex-row items-center justify-between gap-2 native:gap-4 overflow-hidden text-ellipsis rounded-lg border-2 border-border bg-card px-4 native:py-5 py-3 transition hover:brightness-110 active:brightness-120"
       style={
         isWeb &&
         productColourBackgroundWeb && {
@@ -50,7 +50,7 @@ const ProductSummaryCard = ({
         }
       }
     >
-      <View className="flex flex-row gap-2 native:gap-4">
+      <View className="flex native:flex-1 flex-row gap-2 native:gap-4 overflow-hidden">
         <View className="h-9 w-9 overflow-hidden rounded-full border-2 border-ring">
           <Image
             source={{ uri: product.providerIconRelativeUrl }}
@@ -59,8 +59,10 @@ const ProductSummaryCard = ({
           />
         </View>
         <Text
-          className="mr-2 overflow-ellipsis font-semibold text-2xl text-card-foreground"
+          className="mr-2 w-full text-ellipsis font-semibold text-2xl text-card-foreground"
           numberOfLines={1}
+          ellipsizeMode="middle"
+          style={{ flexShrink: 1 }}
         >
           {formattedAccountName}
         </Text>

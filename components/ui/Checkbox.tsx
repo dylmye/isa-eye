@@ -17,6 +17,7 @@ const Checkbox = ({
         props.checked && "bg-primary",
         className,
       )}
+      hitSlop={24}
       {...props}
     >
       <CheckboxPrimitive.Indicator

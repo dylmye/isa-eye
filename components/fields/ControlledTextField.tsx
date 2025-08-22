@@ -56,7 +56,7 @@ const ControlledTextField = <
                 disabled={disabled}
               />
             )}
-            <View className="flex flex-row items-center">
+            <View className="flex flex-row items-center py-1">
               {prefix && (
                 <View className="pr-2">
                   <Text className="font-semibold text-base">{prefix}</Text>

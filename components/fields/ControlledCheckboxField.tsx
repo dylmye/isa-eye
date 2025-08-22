@@ -11,7 +11,7 @@ export interface ControlledCheckboxFieldProps<
   Form extends FieldValues = {},
   // biome-ignore lint/suspicious/noExplicitAny: no possible default value
   FieldName extends Path<Form> = any,
-> extends BaseField<Form, FieldName> {}
+> extends BaseField<Form, FieldName> { }
 
 const ControlledCheckboxField = <
   // biome-ignore lint/complexity/noBannedTypes: no assumptions on field
@@ -41,7 +41,7 @@ const ControlledCheckboxField = <
                 required={required}
               />
             )}
-            <View className="flex flex-row gap-2">
+            <View className="flex flex-row gap-2 py-2">
               <Checkbox
                 checked={!!value}
                 onCheckedChange={onChange}

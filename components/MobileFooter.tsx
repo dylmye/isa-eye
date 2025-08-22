@@ -4,7 +4,7 @@ import type BottomSheet from "@gorhom/bottom-sheet";
 import { router } from "expo-router";
 import React, { useCallback, useRef } from "react";
 import { View } from "react-native";
-
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MobileActionsBottomSheet } from "./dialogs";
 import NavBackButton from "./NavBackButton";
 import NavForwardButton from "./NavForwardButton";
@@ -38,6 +38,7 @@ const MobileFooter = ({
   hasProducts,
 }: MobileFooterProps) => {
   const bottomSheetModalRef = useRef<BottomSheet>(null);
+  const { bottom: bottomInset } = useSafeAreaInsets();
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.snapToIndex(0);
@@ -48,7 +49,10 @@ const MobileFooter = ({
   }, []);
 
   return (
-    <Card className="color-foreground flex w-full flex-row items-center justify-between py-3">
+    <Card
+      className="color-foreground flex w-full flex-row items-center justify-between py-3"
+      style={{ marginBottom: bottomInset }}
+    >
       {previousRuleset ? (
         <NavBackButton
           onPress={() =>
