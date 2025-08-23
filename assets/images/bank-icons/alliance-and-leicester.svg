@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6" style="background-color:#ffffff"><use href="#B" fill="#ef8213"/><use href="#B" y="76.892" fill="#0055a0"/><g fill="#ef8213"><use href="#B" y="153.236"/><path d="M78.993 151.777h61.594v61.594H78.993z"/><use href="#B" x="77.111" y="76.892"/></g><defs ><path id="B" d="M156.103 74.885h61.594v61.594h-61.594z"/></defs></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6">
+  <rect width="373.8" height="364.6" fill="#ffffff" />
+  <use href="#B" fill="#ef8213" />
+  <use href="#B" y="76.892" fill="#0055a0" />
+  <g fill="#ef8213">
+    <use href="#B" y="153.236" />
+    <path d="M78.993 151.777h61.594v61.594H78.993z" />
+    <use href="#B" x="77.111" y="76.892" />
+  </g>
+  <defs>
+    <path id="B" d="M156.103 74.885h61.594v61.594h-61.594z" />
+  </defs>
+</svg>

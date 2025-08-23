@@ -1,1 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6" style="background-color:#ffffff"><defs><filter id="A" filterUnits="userSpaceOnUse" x="0" y="0" width="52" height="26.9"><feColorMatrix values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" color-interpolation-filters="sRGB"/></filter></defs><mask maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="26.9" id="B"><g filter="url(#A)"><linearGradient id="C" gradientUnits="userSpaceOnUse" x1="25.999" y1="26.928" x2="25.999"><stop offset="0" stop-color="#fefefe"/><stop offset=".016" stop-color="#e2e1e1"/><stop offset=".053" stop-color="#a8a7a7"/><stop offset=".088" stop-color="#797677"/><stop offset=".122" stop-color="#535051"/><stop offset=".152" stop-color="#393536"/><stop offset=".179" stop-color="#292526"/><stop offset=".2" stop-color="#231f20"/></linearGradient><path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" fill="url(#C)"/></g></mask><defs/><mask maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="26.9" id="D"><g filter="url(#A)"><linearGradient id="E" gradientUnits="userSpaceOnUse" x1="25.999" y1="22.353" x2="25.999" y2="5.839"><stop offset=".01" stop-color="#fff"/><stop offset=".057" stop-color="#f4f4f4"/><stop offset=".282" stop-color="#c4c4c5"/><stop offset=".496" stop-color="#9e9fa0"/><stop offset=".693" stop-color="#838486"/><stop offset=".867" stop-color="#737476"/><stop offset="1" stop-color="#6d6e70"/></linearGradient><path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" fill="url(#E)"/></g></mask><g transform="matrix(2.838541 0 0 2.838541 78.893505 125.1034)"><path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" mask="url(#B)" fill="#e2066f"/><path d="M0 27.4v12.9h76.1V27.4z" fill="#231f20"/><path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" mask="url(#D)" fill="#231f20"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6">
+  <rect width="373.8" height="364.6" fill="#ffffff" />
+  <defs>
+    <filter id="A" filterUnits="userSpaceOnUse" x="0" y="0" width="52" height="26.9">
+      <feColorMatrix values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" color-interpolation-filters="sRGB" />
+    </filter>
+  </defs>
+  <mask maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="26.9" id="B">
+    <g filter="url(#A)">
+      <linearGradient id="C" gradientUnits="userSpaceOnUse" x1="25.999" y1="26.928" x2="25.999">
+        <stop offset="0" stop-color="#fefefe" />
+        <stop offset=".016" stop-color="#e2e1e1" />
+        <stop offset=".053" stop-color="#a8a7a7" />
+        <stop offset=".088" stop-color="#797677" />
+        <stop offset=".122" stop-color="#535051" />
+        <stop offset=".152" stop-color="#393536" />
+        <stop offset=".179" stop-color="#292526" />
+        <stop offset=".2" stop-color="#231f20" />
+      </linearGradient>
+      <path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" fill="url(#C)" />
+    </g>
+  </mask>
+  <defs />
+  <mask maskUnits="userSpaceOnUse" x="0" y="0" width="52" height="26.9" id="D">
+    <g filter="url(#A)">
+      <linearGradient id="E" gradientUnits="userSpaceOnUse" x1="25.999" y1="22.353" x2="25.999" y2="5.839">
+        <stop offset=".01" stop-color="#fff" />
+        <stop offset=".057" stop-color="#f4f4f4" />
+        <stop offset=".282" stop-color="#c4c4c5" />
+        <stop offset=".496" stop-color="#9e9fa0" />
+        <stop offset=".693" stop-color="#838486" />
+        <stop offset=".867" stop-color="#737476" />
+        <stop offset="1" stop-color="#6d6e70" />
+      </linearGradient>
+      <path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" fill="url(#E)" />
+    </g>
+  </mask>
+  <g transform="matrix(2.838541 0 0 2.838541 78.893505 125.1034)">
+    <path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" mask="url(#B)" fill="#e2066f" />
+    <path d="M0 27.4v12.9h76.1V27.4z" fill="#231f20" />
+    <path d="M13.6 26.9V26C13.5 18.4 19 13 26 13s12.5 5.5 12.5 13.1v.9H52v-.9C52 11.1 40.5 0 26 0S0 11.1 0 26.1v.9h13.6z" mask="url(#D)" fill="#231f20" />
+  </g>
+</svg>

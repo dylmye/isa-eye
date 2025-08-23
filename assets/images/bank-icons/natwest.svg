@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6" style="background-color:#3c1053"><defs><linearGradient x1="39.877" y1="67.052" x2="51.222" y2="70.833" id="A" gradientTransform="scale(1.3162483,0.7597351)" gradientUnits="userSpaceOnUse"><stop stop-color="#c20000" stop-opacity=".1" offset="0%"/><stop stop-color="#c20000" stop-opacity=".2" offset="24%"/><stop stop-color="#c20000" stop-opacity=".44" offset="72%"/><stop stop-color="#c20000" stop-opacity=".6" offset="100%"/></linearGradient><linearGradient x1="39.009" y1="54.278" x2="31.099" y2="59.722" id="B" gradientTransform="scale(1.3158341,0.75997422)" gradientUnits="userSpaceOnUse"><stop stop-color="#c20000" stop-opacity=".1" offset="0%"/><stop stop-color="#c20000" stop-opacity=".2" offset="20%"/><stop stop-color="#c20000" stop-opacity=".44" offset="61%"/><stop stop-color="#c20000" stop-opacity=".7" offset="100%"/></linearGradient><linearGradient x1="62.931" y1="35.457" x2="67.769" y2="44.831" id="C" gradientTransform="scale(0.65810363,1.5195175)" gradientUnits="userSpaceOnUse"><stop stop-color="#c20000" stop-opacity=".1" offset="0%"/><stop stop-color="#c20000" stop-opacity=".2" offset="20%"/><stop stop-color="#c20000" stop-opacity=".44" offset="61%"/><stop stop-color="#c20000" stop-opacity=".7" offset="100%"/></linearGradient></defs><g transform="matrix(3.212432 0 0 3.212432 26.277259 27.87517)"><path fill="#e90000" d="M54.98 78.234h19.902.004l-9.95-17.242h-19.9z"/><path fill="#c20000" d="M84.83 61l-9.944 17.234-9.95-17.242 9.944-17.224z"/><path fill="#e90000" d="M40.052 17.908l-9.944 17.226h19.898L59.95 17.91l.002-.002z"/><path fill="#c20000" d="M59.956 52.372l9.944-17.23-9.95-17.234-9.944 17.226z"/><path fill="#e90000" d="M45.02 43.766h-19.9L15.176 60.99l-.006.008 19.906-.008z"/><path fill="#c20000" d="M45.018 78.234H25.12l-9.95-17.236.006-.008h19.9l9.948 17.244z"/><path fill="url(#A)" d="M64.92 43.766l-4.966 8.604h-9.95l-4.968 8.622h19.9l9.944-17.226z"/><path fill="url(#B)" d="M35.102 43.766h9.916l4.986 8.604h9.95l-9.948-17.238H30.108z"/><path fill="url(#C)" d="M49.996 69.592l-4.96-8.6 4.968-8.622-4.986-8.604-9.942 17.224 9.948 17.244z"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6">
+  <rect width="373.8" height="364.6" fill="#3c1053" />
+  <defs>
+    <linearGradient x1="39.877" y1="67.052" x2="51.222" y2="70.833" id="A" gradientTransform="scale(1.3162483,0.7597351)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c20000" stop-opacity=".1" offset="0%" />
+      <stop stop-color="#c20000" stop-opacity=".2" offset="24%" />
+      <stop stop-color="#c20000" stop-opacity=".44" offset="72%" />
+      <stop stop-color="#c20000" stop-opacity=".6" offset="100%" />
+    </linearGradient>
+    <linearGradient x1="39.009" y1="54.278" x2="31.099" y2="59.722" id="B" gradientTransform="scale(1.3158341,0.75997422)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c20000" stop-opacity=".1" offset="0%" />
+      <stop stop-color="#c20000" stop-opacity=".2" offset="20%" />
+      <stop stop-color="#c20000" stop-opacity=".44" offset="61%" />
+      <stop stop-color="#c20000" stop-opacity=".7" offset="100%" />
+    </linearGradient>
+    <linearGradient x1="62.931" y1="35.457" x2="67.769" y2="44.831" id="C" gradientTransform="scale(0.65810363,1.5195175)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c20000" stop-opacity=".1" offset="0%" />
+      <stop stop-color="#c20000" stop-opacity=".2" offset="20%" />
+      <stop stop-color="#c20000" stop-opacity=".44" offset="61%" />
+      <stop stop-color="#c20000" stop-opacity=".7" offset="100%" />
+    </linearGradient>
+  </defs>
+  <g transform="matrix(3.212432 0 0 3.212432 26.277259 27.87517)">
+    <path fill="#e90000" d="M54.98 78.234h19.902.004l-9.95-17.242h-19.9z" />
+    <path fill="#c20000" d="M84.83 61l-9.944 17.234-9.95-17.242 9.944-17.224z" />
+    <path fill="#e90000" d="M40.052 17.908l-9.944 17.226h19.898L59.95 17.91l.002-.002z" />
+    <path fill="#c20000" d="M59.956 52.372l9.944-17.23-9.95-17.234-9.944 17.226z" />
+    <path fill="#e90000" d="M45.02 43.766h-19.9L15.176 60.99l-.006.008 19.906-.008z" />
+    <path fill="#c20000" d="M45.018 78.234H25.12l-9.95-17.236.006-.008h19.9l9.948 17.244z" />
+    <path fill="url(#A)" d="M64.92 43.766l-4.966 8.604h-9.95l-4.968 8.622h19.9l9.944-17.226z" />
+    <path fill="url(#B)" d="M35.102 43.766h9.916l4.986 8.604h9.95l-9.948-17.238H30.108z" />
+    <path fill="url(#C)" d="M49.996 69.592l-4.96-8.6 4.968-8.622-4.986-8.604-9.942 17.224 9.948 17.244z" />
+  </g>
+</svg>

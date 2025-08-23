@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6" style="background-color:#ffffff"><defs><linearGradient id="A" gradientUnits="userSpaceOnUse" x1="104.442" y1="184.333" x2="278.326" y2="178.725"><stop offset="0" stop-color="#53c0b1"/><stop offset="1" stop-color="#2ab1db"/></linearGradient></defs><path d="M148.35 167.002l34.573 34.573-34.573 34.573-34.573-34.573zm-38.856-38.55l-34.267 34.573 34.573 34.573 34.573-34.573zm81.384 73.123l34.573 34.573 34.573-34.573-34.573-34.573zm-3.977-73.123l-34.573 34.573 34.573 34.573 34.573-34.573zm77.101 0l-34.573 34.573 34.573 34.573 34.573-34.573z" fill="url(#A)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="373.8" height="364.6">
+  <rect width="373.8" height="364.6" fill="#ffffff" />
+  <defs>
+    <linearGradient id="A" gradientUnits="userSpaceOnUse" x1="104.442" y1="184.333" x2="278.326" y2="178.725">
+      <stop offset="0" stop-color="#53c0b1" />
+      <stop offset="1" stop-color="#2ab1db" />
+    </linearGradient>
+  </defs>
+  <path d="M148.35 167.002l34.573 34.573-34.573 34.573-34.573-34.573zm-38.856-38.55l-34.267 34.573 34.573 34.573 34.573-34.573zm81.384 73.123l34.573 34.573 34.573-34.573-34.573-34.573zm-3.977-73.123l-34.573 34.573 34.573 34.573 34.573-34.573zm77.101 0l-34.573 34.573 34.573 34.573 34.573-34.573z" fill="url(#A)" />
+</svg>
