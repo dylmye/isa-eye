@@ -1,8 +1,8 @@
+import type { Option } from "@rn-primitives/select";
 import { router } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
-
 import {
   Button,
   DialogClose,
@@ -23,8 +23,8 @@ import RulesetDropdownField from "../implementations/RulesetDropdownField";
 
 export interface UpdateBalanceData {
   /** Product to update balance of */
-  productId: string;
-  rulesetId: string;
+  productId: Option;
+  rulesetId: Option;
   /** The new balance for the product. */
   amount?: number;
 }
@@ -53,11 +53,11 @@ const UpdateProductBalanceDialog = () => {
 
   const onSubmitForm = hooks.useSetRowCallback(
     "annualBalances",
-    (data) => `${data.productId}-${data.rulesetId}`,
+    (data) => `${data.productId?.value}-${data.rulesetId?.value}`,
     (data: UpdateBalanceData) =>
       ({
-        productId: data.productId,
-        rulesetId: data.rulesetId,
+        productId: data.productId?.value,
+        rulesetId: data.rulesetId?.value,
         lastUpdatedDateUnix: Date.now(),
         deductedFromAllowancePence: String(data.amount! * 100),
       }) satisfies AnnualBalance,
@@ -71,12 +71,15 @@ const UpdateProductBalanceDialog = () => {
 
   const selectedProductId = watch("productId");
   const selectedRulesetId = watch("rulesetId");
-  const selectedProduct = hooks.useRow("products", selectedProductId);
+  const selectedProduct = hooks.useRow(
+    "products",
+    selectedProductId?.value ?? "",
+  );
 
   const currentRulesetExceptionRow = useMemo(() => {
     return Object.values(rulesetExceptions ?? {}).filter(
       (re) =>
-        re.rulesetId === selectedRulesetId &&
+        re.rulesetId === selectedRulesetId?.value &&
         re.productTypeId === selectedProduct?.productTypeCode,
     )?.[0];
   }, [selectedRulesetId, selectedProduct?.productTypeCode]);
@@ -103,22 +106,22 @@ Don't include transfers and interest/gains earned.`;
   useEffect(() => {
     const selectedExistingBalance = store?.getRow(
       "annualBalances",
-      `${selectedProductId}-${selectedRulesetId ?? currentRulesetId}`,
+      `${selectedProductId?.value}-${selectedRulesetId?.value ?? currentRulesetId}`,
     );
     if (selectedExistingBalance?.deductedFromAllowancePence) {
       setCurrentProductExistingValue(
         Number.parseFloat(selectedExistingBalance.deductedFromAllowancePence) /
-          100,
+        100,
       );
     } else {
-      if (!selectedProductId) {
+      if (!selectedProductId?.value) {
         setCurrentProductExistingValue(null);
       } else {
         setValue("amount", 0);
         setCurrentProductExistingValue(0);
       }
     }
-  }, [selectedRulesetId, selectedProductId, currentRulesetId]);
+  }, [selectedRulesetId?.value, selectedProductId?.value, currentRulesetId]);
 
   // @TODO: add form validation for rulesetId within product open-close range
   return (
@@ -139,7 +142,7 @@ Don't include transfers and interest/gains earned.`;
                 <RulesetDropdownField<UpdateBalanceData, "rulesetId">
                   control={control}
                   errors={errors}
-                  defaultValue={currentRulesetId as string}
+                  defaultValue={{ label: currentRulesetId as string, value: currentRulesetId as string }}
                   name="rulesetId"
                   label="Tax Year"
                   filterRulesets={[

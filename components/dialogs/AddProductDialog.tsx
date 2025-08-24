@@ -66,7 +66,7 @@ const AddProductDialog = () => {
   };
 
   return (
-    <DialogContent className="sm:max-w-[425px]">
+    <DialogContent className="native:h-full sm:max-w-[425px]">
       <DialogHeader>
         <DialogTitle>Add Account</DialogTitle>
         <DialogDescription>

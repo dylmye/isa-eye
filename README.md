@@ -27,7 +27,7 @@ THe Terraform config in the `infra` folder sets up:
 This repo has the following secrets and env vars set up to make these workflows function:
 
 | Name           | Type          | Description                     |
-|----------------|:-------------:|--------------------------------:|
+|----------------|:-------------:|:-------------------------------:|
 | AWS_ACCOUNT_ID | repo variable | aws.com account ID for S3 sync  |
 | EXPO_TOKEN     | repo secret   | Expo access token (robot user)  |
 | FOSSA_API_KEY  | repo secret   | Fossa Integration API token     |

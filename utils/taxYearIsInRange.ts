@@ -7,7 +7,8 @@ export const taxYearIsInRange = (
   startRange?: string,
   endRange?: string,
 ): boolean => {
-  if (!startRange) return false;
+  // something went wrong, no filtering for you
+  if (!startRange) return true;
   const startYear: number = Number(startRange.split("/")[0]);
   const endYear: number | null = endRange
     ? Number(endRange.split("/")[0])
