@@ -9,6 +9,9 @@ concurrency:
   group: build-group
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Trigger EAS native build
