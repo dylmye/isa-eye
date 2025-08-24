@@ -7,6 +7,10 @@ on:
     paths:
     - assets/images/bank-icons/**
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   sync_bank_icons_to_s3:
     runs-on: ubuntu-latest
