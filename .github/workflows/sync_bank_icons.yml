@@ -6,6 +6,7 @@ on:
     - main
     paths:
     - assets/images/bank-icons/**
+    - .github/workflows/sync_bank_icons.yml
 
 permissions:
   id-token: write
