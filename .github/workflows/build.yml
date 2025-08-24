@@ -81,8 +81,15 @@ jobs:
       - name: Create bundle
         run: bun x expo export -p web
 
+      - name: GitHub nojekyll patch
+        run: touch dist/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
+          clean: true
+          clean-exclude: |
+            CNAME
+            .nojekyll
     
