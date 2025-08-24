@@ -26,6 +26,11 @@ provider "aws" {
   region = "us-east-1"
 }
 
+variable "aws_account_id" {
+  type        = string
+  description = "Your AWS Account ID"
+}
+
 ########
 # Bucket
 ########
@@ -88,6 +93,9 @@ resource "aws_cloudfront_distribution" "isa-eye-uploads-cloudfront-distribution"
     domain_name              = aws_s3_bucket.isa-eye-uploads-s3-bucket.bucket_regional_domain_name
     origin_id                = local.s3_origin_id
     origin_access_control_id = aws_cloudfront_origin_access_control.isa-eye-uploads-oac.id
+
+    connection_attempts = 3
+    connection_timeout  = 10
 
     s3_origin_config {
       origin_access_identity = ""
@@ -164,4 +172,75 @@ resource "aws_acm_certificate" "cloudfront-alias-cert" {
   tags = {
     Terraform = "true"
   }
+}
+
+########
+# IAM
+# for GH workflow: sync
+########
+
+data "aws_iam_policy_document" "isa-eye-github-workflow-oidc-trust" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Federated"
+      identifiers = ["arn:aws:iam::${var.aws_account_id}:oidc-provider/token.actions.githubusercontent.com"]
+    }
+
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:sub"
+      values   = ["repo:dylmye/isa-eye:ref:refs/heads/main"]
+    }
+  }
+}
+
+resource "aws_iam_role" "isa-eye-github-workflow-oidc-role" {
+  name               = "IsaEyeS3SyncRole"
+  assume_role_policy = data.aws_iam_policy_document.isa-eye-github-workflow-oidc-trust.json
+
+  tags = {
+    Terraform = "true"
+  }
+}
+
+data "aws_iam_policy_document" "isa-eye-github-workflow-oidc-rw-policy-doc" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:DeleteObject",
+      "s3:ListBucket"
+    ]
+
+    resources = [
+      "arn:aws:s3:::${aws_s3_bucket.isa-eye-uploads-s3-bucket.id}",
+      "arn:aws:s3:::${aws_s3_bucket.isa-eye-uploads-s3-bucket.id}/*"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "isa-eye-github-workflow-oidc-rw-policy" {
+  name   = "IsaEyeGitHubWorkflowUploadPolicy"
+  policy = data.aws_iam_policy_document.isa-eye-github-workflow-oidc-rw-policy-doc.json
+
+  tags = {
+    Terraform = "true"
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "isa-eye-github-workflow-oidc-policy-attach" {
+  role       = aws_iam_role.isa-eye-github-workflow-oidc-role.name
+  policy_arn = aws_iam_policy.isa-eye-github-workflow-oidc-rw-policy.arn
 }

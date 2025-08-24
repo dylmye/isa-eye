@@ -1,0 +1,26 @@
+name: Update bank icons
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - assets/images/bank-icons/**
+
+jobs:
+  sync_bank_icons_to_s3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/IsaEyeS3SyncRole
+          role-session-name: github-workflow-sync-bank-icons-run-${{ github.run_id }}
+          aws-region: eu-west-2
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync ./assets/images/bank-icons s3://isa-eye-uploads-production/default-bank-icons --delete
