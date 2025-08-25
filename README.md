@@ -10,6 +10,20 @@ Dependencies for this project are managed with [bun](https://bun.sh). Install th
 
 This project uses Expo. It is Expo Go compatible; run `bun run start` to start the bundler and follow the instructions in the terminal to continue.
 
+### Stack
+
+ISA Eye is built with [Expo](https://expo.dev/) ([React Native](https://reactnative.dev/)).
+
+The data layer is ~~hacked together with~~ powered by [TinyBase](https://tinybase.org/) and [React Hook Form](https://react-hook-form.com/).
+
+The majority of components are based on [React Native Reusables](https://reactnativereusables.com/), which in turn is based on [shadcn/ui](https://ui.shadcn.com/), [RN Primitives](https://rnprimitives.com/) and [Nativewind](https://www.nativewind.dev/) + the awesome [Class Variance Authority](https://cva.style/docs). The remaining components are built with Nativewind. The charting components were built with [Victory Native](https://nearform.com/open-source/victory-native/) by Nearform.
+
+The theme was configured with [jlndev's theme configurator](https://ui.jln.dev/).
+
+The website is hosted by [Vercel](https://vercel.com/) and the domain is provided by [Porkbun](https://porkbun.com/).
+
+Special mentions to: [Shopify FlashList](https://shopify.github.io/flash-list/) for fixing perf issues, the polyfills bridging the gap between RN and web, and Mo Gorhom's [Bottom Sheet](https://gorhom.dev/react-native-bottom-sheet/) which somehow works better with Expo than Expo's own.
+
 ## Infra
 
 THe Terraform config in the `infra` folder sets up:
