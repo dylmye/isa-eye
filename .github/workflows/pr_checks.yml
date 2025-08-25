@@ -16,6 +16,9 @@ jobs:
         with:
           version: latest
 
+      - name: Biome debug info
+        run: biome rage
+
       - name: Run Biome
         run: biome ci .
   doctor:
