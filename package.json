@@ -13,6 +13,8 @@
 		"build:android:dev": "eas build --platform android --profile development",
 		"ios": "expo run:ios",
 		"web": "expo start --web",
+		"build:web": "expo export -p web",
+		"build:web:serve": "expo serve",
 		"check": "biome check",
 		"check:fix": "biome check --write"
 	},
