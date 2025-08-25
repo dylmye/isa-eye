@@ -72,7 +72,6 @@ const ProductCards = () => {
             <ProductCardsEmpty anyExistingProducts={!!productsAnyYearCount} />
           </View>
         }
-        estimatedItemSize={64}
       />
     </View>
   );
