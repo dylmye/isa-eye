@@ -77,7 +77,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.2",
-		"@biomejs/biome": "2.1.0",
+		"@biomejs/biome": "2.2.2",
 		"@rn-primitives/types": "^1.2.0",
 		"@types/react": "~19.0.10",
 		"@types/ungap__structured-clone": "^1.2.0",
