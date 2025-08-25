@@ -70,7 +70,9 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
           rowIdsToDelete.push(rowId);
         }
       });
-      rowIdsToDelete.forEach((rId) => store.delRow("annualBalances", rId));
+      rowIdsToDelete.forEach((rId) => {
+        store.delRow("annualBalances", rId);
+      });
 
       router.dismiss();
     },
@@ -100,7 +102,9 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
           rowIdsToDelete.push(rowId);
         }
       });
-      rowIdsToDelete.forEach((rId) => store.delRow("annualBalances", rId));
+      rowIdsToDelete.forEach((rId) => {
+        store.delRow("annualBalances", rId);
+      });
     },
     [existingProductData],
   );

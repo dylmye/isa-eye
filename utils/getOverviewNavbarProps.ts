@@ -20,7 +20,7 @@ export const useGetOverviewNavbarProps = (): UseOverviewNavProps => {
     return toSorted(rulesets, sortRulesetIds);
   }, [rulesets]);
   const lastIndex = sortedRulesets.length - 1;
-  const currIndex = sortedRulesets.findIndex((r) => r === currentRulesetName);
+  const currIndex = sortedRulesets.indexOf(currentRulesetName);
 
   return useMemo(() => {
     switch (currIndex) {

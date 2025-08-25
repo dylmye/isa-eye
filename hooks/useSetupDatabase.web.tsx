@@ -58,13 +58,17 @@ export const useSetupDatabase = (): {
       },
     );
 
-    tableIndexes.forEach((i) => indexes.setIndexDefinition(i[0], i[1], i[2]));
+    tableIndexes.forEach((i) => {
+      indexes.setIndexDefinition(i[0], i[1], i[2])
+    });
 
-    tableRelationships.forEach((r) =>
-      relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3]),
-    );
+    tableRelationships.forEach((r) => {
+      relationships.setRelationshipDefinition(r[0], r[1], r[2], r[3]);
+    });
 
-    seeders.forEach((s) => s(store));
+    seeders.forEach((s) => {
+      s(store);
+    });
   } catch (e) {
     console.error(
       "Error while attempting to create database and state persister",

@@ -21,14 +21,15 @@ export const useCurrentYearBalances = () => {
     const totalsPerYear = filteredRows?.reduce(
       (acc, { rulesetId, deductedFromAllowancePence }) => {
         acc[rulesetId] =
-          (acc[rulesetId] || 0) + Number.parseInt(deductedFromAllowancePence);
+          (acc[rulesetId] || 0) +
+          Number.parseInt(deductedFromAllowancePence, 10);
         return acc;
       },
       {} as Record<string, number>,
     );
     filteredRows.forEach((row) => {
       row.percentage =
-        (Number.parseInt(row.deductedFromAllowancePence) /
+        (Number.parseInt(row.deductedFromAllowancePence, 10) /
           totalsPerYear[row.rulesetId]) *
         100;
     });
