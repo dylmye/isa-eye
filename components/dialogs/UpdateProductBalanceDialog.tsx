@@ -111,7 +111,7 @@ Don't include transfers and interest/gains earned.`;
     if (selectedExistingBalance?.deductedFromAllowancePence) {
       setCurrentProductExistingValue(
         Number.parseFloat(selectedExistingBalance.deductedFromAllowancePence) /
-        100,
+          100,
       );
     } else {
       if (!selectedProductId?.value) {
@@ -142,7 +142,10 @@ Don't include transfers and interest/gains earned.`;
                 <RulesetDropdownField<UpdateBalanceData, "rulesetId">
                   control={control}
                   errors={errors}
-                  defaultValue={{ label: currentRulesetId as string, value: currentRulesetId as string }}
+                  defaultValue={{
+                    label: currentRulesetId as string,
+                    value: currentRulesetId as string,
+                  }}
                   name="rulesetId"
                   label="Tax Year"
                   filterRulesets={[

@@ -1,13 +1,13 @@
+import { useColorScheme as useNativewindColorScheme } from "nativewind";
 import React from "react";
 import { Appearance, Platform } from "react-native";
-import { useColorScheme as useNativewindColorScheme } from "nativewind";
 
 import { setAndroidNavBar } from "@/utils/setAndroidNavBar";
 
 export const usePlatformSpecificSetup = Platform.select({
   web: useSetWebBackgroundClassName,
   android: useSetAndroidNavigationBar,
-  default: () => { },
+  default: () => {},
 });
 
 const useIsomorphicLayoutEffect =

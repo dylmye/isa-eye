@@ -28,7 +28,7 @@ const ProductSummaryCard = ({
   const formattedProductBalance = useMemo(() => {
     return formatCurrency(
       Number.parseFloat(productBalanceRow.deductedFromAllowancePence ?? "0") /
-      100,
+        100,
     );
   }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
@@ -55,7 +55,11 @@ const ProductSummaryCard = ({
           <Image
             source={{ uri: product.providerIconRelativeUrl }}
             className="flex-1"
-            style={{ width: "100%", height: "100%", backgroundColor: product.providerColour }}
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: product.providerColour,
+            }}
           />
         </View>
         <Text
