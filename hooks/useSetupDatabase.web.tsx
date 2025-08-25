@@ -59,7 +59,7 @@ export const useSetupDatabase = (): {
     );
 
     tableIndexes.forEach((i) => {
-      indexes.setIndexDefinition(i[0], i[1], i[2])
+      indexes.setIndexDefinition(i[0], i[1], i[2]);
     });
 
     tableRelationships.forEach((r) => {
