@@ -59,7 +59,7 @@
 		"nativewind": "^4.1.23",
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
-		"react-hook-form": "^7.60.0",
+		"react-hook-form": "^7.62.0",
 		"react-native": "0.79.5",
 		"react-native-autocomplete-input": "^5.5.6",
 		"react-native-gesture-handler": "~2.24.0",
@@ -72,8 +72,8 @@
 		"react-responsive": "^10.0.1",
 		"tailwind-merge": "^3.3.1",
 		"tailwindcss-animate": "^1.0.7",
-		"tinybase": "^6.3.0",
-		"victory-native": "^41.17.4"
+		"tinybase": "^6.5.2",
+		"victory-native": "^41.19.3"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.2",
