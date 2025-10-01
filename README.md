@@ -20,7 +20,7 @@ The majority of components are based on [React Native Reusables](https://reactna
 
 The theme was configured with [jlndev's theme configurator](https://ui.jln.dev/).
 
-The website is hosted by [Vercel](https://vercel.com/) and the domain is provided by [Porkbun](https://porkbun.com/).
+The website is hosted by [Cloudflare Pages](https://pages.cloudflare.com/) and the domain is provided by [Porkbun](https://porkbun.com/).
 
 Special mentions to: [Shopify FlashList](https://shopify.github.io/flash-list/) for fixing perf issues, the polyfills bridging the gap between RN and web, and Mo Gorhom's [Bottom Sheet](https://gorhom.dev/react-native-bottom-sheet/) which somehow works better with Expo than Expo's own.
 
