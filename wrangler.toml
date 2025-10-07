@@ -3,5 +3,6 @@ name = "isa-eye"
 pages_build_output_dir = "dist"
 compatibility_date = "2025-10-01"
 
-[env]
-production = { }
+[env.production.vars]
+SKIP_DEPENDENCY_INSTALL = true
+BUN_VERSION = "1.2.13"
