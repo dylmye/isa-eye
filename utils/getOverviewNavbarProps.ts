@@ -11,8 +11,9 @@ interface UseOverviewNavProps {
   nextRulesetName?: string;
 }
 
-export const useGetOverviewNavbarProps = (): UseOverviewNavProps => {
-  const currentRulesetName = hooks.useValue("currentTaxYear") as string;
+export const useGetOverviewNavbarProps = (
+  currentTaxYear: string,
+): UseOverviewNavProps => {
   const rulesets = hooks.useRowIds("rulesets") as string[];
 
   // sort rulesets by numeric value of starting year.
@@ -20,7 +21,9 @@ export const useGetOverviewNavbarProps = (): UseOverviewNavProps => {
     return toSorted(rulesets, sortRulesetIds);
   }, [rulesets]);
   const lastIndex = sortedRulesets.length - 1;
-  const currIndex = sortedRulesets.indexOf(currentRulesetName);
+  const currIndex = useMemo(() => {
+    return sortedRulesets.indexOf(currentTaxYear);
+  }, [currentTaxYear]);
 
   return useMemo(() => {
     switch (currIndex) {

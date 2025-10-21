@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import React, { useCallback, useRef } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useGetOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 import { MobileActionsBottomSheet } from "./dialogs";
 import NavBackButton from "./NavBackButton";
 import NavForwardButton from "./NavForwardButton";
@@ -24,21 +25,18 @@ const AddButton = (props: Omit<IconButtonProps<"">, "name">) => (
 );
 
 interface MobileFooterProps {
-  previousRuleset?: string;
-  nextRuleset?: string;
+  rulesetId: string;
   hasProducts?: boolean;
 }
 
 /**
  * Actions footer for small-width viewports
  */
-const MobileFooter = ({
-  previousRuleset,
-  nextRuleset,
-  hasProducts,
-}: MobileFooterProps) => {
+const MobileFooter = ({ rulesetId, hasProducts }: MobileFooterProps) => {
   const bottomSheetModalRef = useRef<BottomSheet>(null);
   const { bottom: bottomInset } = useSafeAreaInsets();
+  const { previousRulesetName, nextRulesetName } =
+    useGetOverviewNavbarProps(rulesetId);
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.snapToIndex(0);
@@ -53,19 +51,20 @@ const MobileFooter = ({
       className="color-foreground flex w-full flex-row items-center justify-between py-3"
       style={{ marginBottom: bottomInset }}
     >
-      {previousRuleset ? (
+      {previousRulesetName ? (
         <NavBackButton
           onPress={() =>
-            !!previousRuleset && router.replace(`/overview/${previousRuleset}`)
+            !!previousRulesetName &&
+            router.replace(`/overview/${previousRulesetName}`)
           }
         />
       ) : (
         <View className="w-[40]" />
       )}
       <AddButton size={32} onPress={handlePresentModalPress} />
-      {nextRuleset ? (
+      {nextRulesetName ? (
         <NavForwardButton
-          onPress={() => router.replace(`/overview/${nextRuleset}`)}
+          onPress={() => router.replace(`/overview/${nextRulesetName}`)}
         />
       ) : (
         <View className="w-[40]" />

@@ -1,5 +1,6 @@
 import { router, Stack, useLocalSearchParams } from "expo-router";
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { EditProductDialog } from "@/components/dialogs";
 import { Dialog, DialogOverlay } from "@/components/ui";
@@ -7,7 +8,7 @@ import { Dialog, DialogOverlay } from "@/components/ui";
 const EditAccountDialog = () => {
   const searchParams = useLocalSearchParams<{ accountId?: string }>();
   return (
-    <React.Fragment>
+    <SafeAreaView className="flex-1">
       <Stack.Screen options={{ presentation: "transparentModal" }} />
       <Dialog
         className="flex-1"
@@ -18,7 +19,7 @@ const EditAccountDialog = () => {
           <EditProductDialog existingId={searchParams?.accountId as string} />
         </DialogOverlay>
       </Dialog>
-    </React.Fragment>
+    </SafeAreaView>
   );
 };
 

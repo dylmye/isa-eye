@@ -40,10 +40,6 @@ const { Provider: TinybaseProvider } =
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export const unstable_settings = {
-  initialRouteName: "index",
-};
-
 const RootLayout = () => {
   usePlatformSpecificSetup();
   const { isDarkColorScheme } = useColorScheme();

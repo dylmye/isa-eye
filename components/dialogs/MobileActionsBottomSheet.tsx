@@ -42,7 +42,7 @@ const MobileActionsBottomSheet = forwardRef<
             label="Add Account"
             onPress={() => {
               onDismiss?.();
-              router.push("/add/account");
+              router.navigate("/add/account");
             }}
           />
           <Separator />
@@ -52,7 +52,7 @@ const MobileActionsBottomSheet = forwardRef<
               label="Update Balance"
               onPress={() => {
                 onDismiss?.();
-                router.push("/update/balance");
+                router.navigate("/update/balance");
               }}
             />
           )}

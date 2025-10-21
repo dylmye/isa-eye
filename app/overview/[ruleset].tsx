@@ -1,5 +1,5 @@
-import { router, useLocalSearchParams } from "expo-router";
-import { useEffect, useMemo, useState } from "react";
+import { Redirect, useLocalSearchParams } from "expo-router";
+import { useEffect, useMemo } from "react";
 import { ScrollView, View } from "react-native";
 
 import DesktopActionTiles from "@/components/DesktopActionTiles";
@@ -11,8 +11,6 @@ import PageColumn from "@/components/PageColumn";
 import { useCurrentYearProducts } from "@/db/hooks";
 import hooks from "@/hooks/database";
 import { useIsMediumScreen } from "@/hooks/responsiveQueries";
-import type ModalVisibilityState from "@/types/modalVisibilityState";
-import { useGetOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 
 const DEFAULT_RULESET_ID = "2024/2025";
 
@@ -20,15 +18,7 @@ const OverviewForRuleset = () => {
   const isMediumScreen = useIsMediumScreen();
   const currentYearProducts = useCurrentYearProducts();
   const searchParams = useLocalSearchParams<{ ruleset?: string }>();
-  const [modalVisiblity, updateModalVisibility] =
-    useState<ModalVisibilityState>({
-      addProduct: false,
-      updateBalance: false,
-      bulkUpload: false,
-    });
   const hasProducts = !!currentYearProducts.length;
-
-  const navbarProps = useGetOverviewNavbarProps();
 
   /**
    *
@@ -48,29 +38,24 @@ const OverviewForRuleset = () => {
   useEffect(() => {
     if (existingRulesets.includes(currentRulesetFormattedName)) {
       updateCurrentRulesetForStore(currentRulesetFormattedName);
-    } else {
-      router.replace("/+not-found");
     }
-  }, [currentRulesetFormattedName]);
+  }, [existingRulesets, currentRulesetFormattedName]);
+
+  if (!existingRulesets.includes(currentRulesetFormattedName)) {
+    return <Redirect href="/+not-found" />
+  }
 
   return (
     <View className="flex-1">
       <OverviewBar
         rulesetId={currentRulesetFormattedName}
         showNavButtons={!isMediumScreen}
-        previousRuleset={navbarProps?.previousRulesetName}
-        nextRuleset={navbarProps?.nextRulesetName}
       />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <PageColumn>
           <View className="flex flex-col items-center gap-4">
             {!isMediumScreen && (
-              <DesktopActionTiles
-                onPress={(key) =>
-                  updateModalVisibility({ ...modalVisiblity, [key]: true })
-                }
-                hasProducts={!!hasProducts}
-              />
+              <DesktopActionTiles hasProducts={!!hasProducts} />
             )}
             {!!hasProducts && <CompositionCard />}
           </View>
@@ -79,8 +64,7 @@ const OverviewForRuleset = () => {
       </ScrollView>
       {isMediumScreen && (
         <MobileFooter
-          previousRuleset={navbarProps?.previousRulesetName}
-          nextRuleset={navbarProps?.nextRulesetName}
+          rulesetId={currentRulesetFormattedName}
           hasProducts={hasProducts}
         />
       )}

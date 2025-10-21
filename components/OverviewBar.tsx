@@ -7,6 +7,7 @@ import { Card, Text } from "@/components/ui";
 import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
 import hooks from "@/hooks/database";
 import { formatCurrency } from "@/utils/formatCurrency";
+import { useGetOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 import { cn } from "@/utils/styles";
 import { IntroDialog, RulesetDescriptionDialog } from "./dialogs";
 import Logo from "./Logo";
@@ -16,20 +17,15 @@ import NavForwardButton from "./NavForwardButton";
 interface OverviewBarProps {
   rulesetId: string;
   showNavButtons: boolean;
-  previousRuleset?: string;
-  nextRuleset?: string;
 }
 
 /**
  * Feature card for viewing current ruleset and associated information, desktop navigation
  */
-const OverviewBar = ({
-  rulesetId,
-  showNavButtons,
-  previousRuleset,
-  nextRuleset,
-}: OverviewBarProps) => {
+const OverviewBar = ({ rulesetId, showNavButtons }: OverviewBarProps) => {
   const { top: topInset } = useSafeAreaInsets();
+  const { previousRulesetName, nextRulesetName } =
+    useGetOverviewNavbarProps(rulesetId);
 
   const currentRuleset = hooks.useRow("rulesets", rulesetId);
   const remainingBalanceRow = hooks.useResultTable(
@@ -101,11 +97,11 @@ const OverviewBar = ({
           </View>
         </View>
         <View className="flex flex-row items-center justify-center">
-          {showNavButtons && previousRuleset ? (
+          {showNavButtons && previousRulesetName ? (
             <NavBackButton
               onPress={() =>
-                !!previousRuleset &&
-                router.replace(`/overview/${previousRuleset}`)
+                !!previousRulesetName &&
+                router.replace(`/overview/${previousRulesetName}`)
               }
             />
           ) : (
@@ -124,10 +120,11 @@ const OverviewBar = ({
               remaining
             </Text>
           </View>
-          {showNavButtons && nextRuleset ? (
+          {showNavButtons && nextRulesetName ? (
             <NavForwardButton
               onPress={() =>
-                nextRuleset && router.replace(`/overview/${nextRuleset}`)
+                !!nextRulesetName &&
+                router.replace(`/overview/${nextRulesetName}`)
               }
             />
           ) : (

@@ -1,6 +1,6 @@
 import { FlashList, type ListRenderItem } from "@shopify/flash-list";
 import toSorted from "array.prototype.tosorted";
-import { router } from "expo-router";
+import { Link } from "expo-router";
 import React, { useMemo } from "react";
 import { Platform, Pressable, View } from "react-native";
 
@@ -40,13 +40,14 @@ const ProductCards = () => {
   const renderCard: ListRenderItem<(typeof currentYearProducts)[0]> = ({
     item: [id, product],
   }) => (
-    <Pressable
-      onPress={() => router.push(`/edit/account/${id}`)}
-      className="flex-1"
-      hitSlop={12}
-    >
-      <ProductSummaryCard product={product} productId={id} />
-    </Pressable>
+    <Link href={`/edit/account/${id}`} className="flex-1" asChild>
+      <Pressable
+        className="flex-1"
+        hitSlop={12}
+      >
+        <ProductSummaryCard product={product} productId={id} />
+      </Pressable>
+    </Link>
   );
 
   return (
