@@ -5,6 +5,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { PortalHost } from "@rn-primitives/portal";
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
@@ -44,10 +45,15 @@ const RootLayout = () => {
   usePlatformSpecificSetup();
   const { isDarkColorScheme } = useColorScheme();
   const { store, queries, indexes, relationships } = useSetupDatabase();
+  const [iconFontLoaded] = useFonts({
+    'material-community': require("@/assets/fonts/MaterialCommunityIcons.ttf"),
+  });
 
   useEffect(() => {
-    SplashScreen.hide();
-  }, []);
+    if (iconFontLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [iconFontLoaded]);
 
   return (
     <TinybaseProvider

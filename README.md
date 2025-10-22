@@ -6,7 +6,7 @@ Keep an eye on Indiviual Saving Account balances across your bank accounts, inve
 
 ## Development
 
-Dependencies for this project are managed with [bun](https://bun.sh). Install the dependencies with `bun install`.
+Dependencies for this project are managed with [bun](https://bun.sh). Install the dependencies with `bun install`. Ensure you also properly copy the icon font by running `bun run prebuild:include-icon-font`.
 
 This project uses Expo. It is Expo Go compatible; run `bun run start` to start the bundler and follow the instructions in the terminal to continue.
 
