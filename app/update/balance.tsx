@@ -7,9 +7,7 @@ import { Dialog, DialogOverlay } from "@/components/ui";
 const UpdateBalanceDialog = () => {
   return (
     <SafeAreaView className="flex-1">
-      <Stack.Screen
-        options={{ presentation: "transparentModal" }}
-      />
+      <Stack.Screen options={{ presentation: "transparentModal" }} />
       <Dialog
         className="flex-1"
         defaultOpen

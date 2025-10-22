@@ -46,7 +46,7 @@ const RootLayout = () => {
   const { isDarkColorScheme } = useColorScheme();
   const { store, queries, indexes, relationships } = useSetupDatabase();
   const [iconFontLoaded] = useFonts({
-    'material-community': require("@/assets/fonts/MaterialCommunityIcons.ttf"),
+    "material-community": require("@/assets/fonts/MaterialCommunityIcons.ttf"),
   });
 
   useEffect(() => {

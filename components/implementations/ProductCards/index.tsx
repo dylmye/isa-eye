@@ -41,10 +41,7 @@ const ProductCards = () => {
     item: [id, product],
   }) => (
     <Link href={`/edit/account/${id}`} className="flex-1" asChild>
-      <Pressable
-        className="flex-1"
-        hitSlop={12}
-      >
+      <Pressable className="flex-1" hitSlop={12}>
         <ProductSummaryCard product={product} productId={id} />
       </Pressable>
     </Link>

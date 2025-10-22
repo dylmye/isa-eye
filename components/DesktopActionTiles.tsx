@@ -9,9 +9,7 @@ interface DesktopActionTilesProps {
 /**
  * Set of `ActionTile`s for primary actions.
  */
-const DesktopActionTiles = ({
-  hasProducts,
-}: DesktopActionTilesProps) => {
+const DesktopActionTiles = ({ hasProducts }: DesktopActionTilesProps) => {
   const iconSize = 52;
 
   return (

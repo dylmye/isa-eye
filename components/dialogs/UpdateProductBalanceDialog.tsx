@@ -111,7 +111,7 @@ Don't include transfers and interest/gains earned.`;
     if (selectedExistingBalance?.deductedFromAllowancePence) {
       setCurrentProductExistingValue(
         Number.parseFloat(selectedExistingBalance.deductedFromAllowancePence) /
-        100,
+          100,
       );
     } else {
       if (!selectedProductId?.value) {

@@ -42,7 +42,7 @@ const OverviewForRuleset = () => {
   }, [existingRulesets, currentRulesetFormattedName]);
 
   if (!existingRulesets.includes(currentRulesetFormattedName)) {
-    return <Redirect href="/+not-found" />
+    return <Redirect href="/+not-found" />;
   }
 
   return (

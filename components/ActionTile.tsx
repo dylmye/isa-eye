@@ -30,7 +30,7 @@ const ActionTile = ({ title, icon, path, disabled }: ActionTileProps) => {
         </Card.Content>
       </Card>
     </Pressable>
-  )
+  );
 
   if (!path) return child;
 
