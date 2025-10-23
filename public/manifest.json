@@ -4,6 +4,7 @@
 	"categories": ["finance", "utilities"],
 	"description": "ISA Eye helps you keep an eye on Indiviual Saving Account balances across your bank accounts, investment managers and more. It's easy to make sure you don't go over your allowances - just add your accounts and keep your contributions up to date.",
 	"display": "standalone",
+	"iarc_rating_id": "e37d0e03-a31d-4e92-8089-5391ff99b827",
 	"icons": [
 		{
 			"src": "favicon.ico",
@@ -22,6 +23,10 @@
 		}
 	],
 	"id": "https://isaeye.uk",
+	"lang": "en",
+	"launch_handler": {
+		"client_mode": "focus-existing"
+	},
 	"name": "ISA Eye",
 	"orientation": "portrait",
 	"screenshots": [
@@ -31,8 +36,16 @@
 			"type": "image/png",
 			"form_factor": "narrow",
 			"label": "The ISA Eye homepage gives you a quick overview for the current year's ISA contributions."
+		},
+		{
+			"src": "pwa-screenshot-laptop.png",
+			"sizes": "1920x1080",
+			"type": "image/png",
+			"form_factor": "wide",
+			"label": "The ISA Eye homepage gives you a quick overview for the current year's ISA contributions."
 		}
 	],
+	"short_name": "ISA Eye",
 	"start_url": ".",
 	"theme_color": "#edf7f4"
 }
