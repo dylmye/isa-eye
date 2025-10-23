@@ -23,6 +23,20 @@
         flex: 1;
       }
     </style>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then(registration => {
+              console.log('[sw] registered with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('[sw] registration failed:', error);
+            });
+        });
+      }
+    </script>
   </head>
 
   <body>
