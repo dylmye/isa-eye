@@ -1,0 +1,4 @@
+/overview/* / 200
+/update/* / 200
+/add/* / 200
+/assets/node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/MaterialCommunityIcons.*.ttf /assets/assets/fonts/MaterialCommunityIcons.*.ttf
