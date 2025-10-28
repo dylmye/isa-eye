@@ -1,8 +1,9 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import * as CheckboxPrimitive from "@rn-primitives/checkbox";
 import React, { type RefObject } from "react";
 import { Platform } from "react-native";
+
 import { cn } from "@/utils/styles";
+import MaterialCommunityIcons from "../MaterialCommunityIconsFix";
 
 const Checkbox = ({
   className,

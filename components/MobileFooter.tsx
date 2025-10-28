@@ -1,5 +1,4 @@
 import type { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import type BottomSheet from "@gorhom/bottom-sheet";
 import { router } from "expo-router";
 import React, { useCallback, useRef } from "react";
@@ -7,6 +6,7 @@ import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useGetOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 import { MobileActionsBottomSheet } from "./dialogs";
+import MaterialCommunityIcons from "./MaterialCommunityIconsFix";
 import NavBackButton from "./NavBackButton";
 import NavForwardButton from "./NavForwardButton";
 import { Card } from "./ui";

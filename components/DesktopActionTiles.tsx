@@ -1,6 +1,8 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { View } from "react-native";
+
 import ActionTile from "@/components/ActionTile";
+
+import MaterialCommunityIcons from "./MaterialCommunityIconsFix";
 
 interface DesktopActionTilesProps {
   hasProducts: boolean;

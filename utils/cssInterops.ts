@@ -1,7 +1,8 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { cssInterop } from "nativewind";
+
 import Logo from "@/components/Logo";
+import MaterialCommunityIcons from "@/components/MaterialCommunityIconsFix";
 
 cssInterop(MaterialCommunityIcons, {
   className: {

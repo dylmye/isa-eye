@@ -45,15 +45,18 @@ const RootLayout = () => {
   usePlatformSpecificSetup();
   const { isDarkColorScheme } = useColorScheme();
   const { store, queries, indexes, relationships } = useSetupDatabase();
-  const [iconFontLoaded] = useFonts({
-    "material-community": require("@/assets/fonts/MaterialCommunityIcons.ttf"),
+  const [iconFontLoaded, iconFontError] = useFonts({
+    "material-community-fix": require("@/assets/fonts/MaterialCommunityIcons.ttf"),
   });
 
   useEffect(() => {
     if (iconFontLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [iconFontLoaded]);
+    if (iconFontError) {
+      console.error(iconFontError)
+    }
+  }, [iconFontLoaded, iconFontError]);
 
   return (
     <TinybaseProvider

@@ -1,4 +1,3 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import * as DialogPrimitive from "@rn-primitives/dialog";
 import React from "react";
 import { Platform, StyleSheet, View, type ViewProps } from "react-native";
@@ -6,6 +5,7 @@ import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { cn } from "@/utils/styles";
+import MaterialCommunityIcons from "../MaterialCommunityIconsFix";
 
 const Dialog = DialogPrimitive.Root;
 

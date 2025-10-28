@@ -1,8 +1,9 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { cva, type VariantProps } from "class-variance-authority";
 import React, { type ComponentProps, type RefObject } from "react";
 import { View, type ViewProps } from "react-native";
+
 import { cn } from "@/utils/styles";
+import MaterialCommunityIcons from "../MaterialCommunityIconsFix";
 import { Text } from "./Text";
 
 const alertVariants = cva(

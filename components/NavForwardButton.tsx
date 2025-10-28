@@ -1,7 +1,8 @@
 import type { IconButtonProps } from "@expo/vector-icons/build/createIconSet";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Platform } from "react-native";
+
+import MaterialCommunityIcons from "./MaterialCommunityIconsFix";
 
 const commonIconProps: Omit<IconButtonProps<"">, "name"> = {
   iconStyle: {

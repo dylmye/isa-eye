@@ -1,16 +1,18 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
 import { useMemo } from "react";
 import { Platform, Pressable, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 import { Card, Text } from "@/components/ui";
 import type { RemainingBalanceByYearRow } from "@/db/queries/annualBalances";
 import hooks from "@/hooks/database";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { useGetOverviewNavbarProps } from "@/utils/getOverviewNavbarProps";
 import { cn } from "@/utils/styles";
+
 import { IntroDialog, RulesetDescriptionDialog } from "./dialogs";
 import Logo from "./Logo";
+import MaterialCommunityIcons from "./MaterialCommunityIconsFix";
 import NavBackButton from "./NavBackButton";
 import NavForwardButton from "./NavForwardButton";
 
