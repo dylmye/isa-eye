@@ -54,7 +54,7 @@ const RootLayout = () => {
       SplashScreen.hideAsync();
     }
     if (iconFontError) {
-      console.error(iconFontError)
+      console.error(iconFontError);
     }
   }, [iconFontLoaded, iconFontError]);
 
