@@ -10,7 +10,7 @@ module.exports = {
       handler: "StaleWhileRevalidate",
       urlPattern: ({ request }) =>
         request.url.startsWith(
-          "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/",
+          "https://static-assets.isaeye.uk/default-bank-icons/",
         ),
     },
   ],

@@ -21,6 +21,16 @@ const seedProviders = (store: Store<Schemas>) => {
           providerId: currentSeedData.id,
         });
       }
+    } else {
+      // 20251126 - handle new CDN
+      if (
+        existingProviders[currentSeedData.id].iconRelativeUrl !==
+        currentSeedData.iconRelativeUrl
+      ) {
+        store.setPartialRow("providers", currentSeedData.id, {
+          iconRelativeUrl: currentSeedData.iconRelativeUrl,
+        });
+      }
     }
   }
 };

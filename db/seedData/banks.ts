@@ -19,7 +19,7 @@ const banks: readonly BankSeedData[] = [
     id: "PLACEHOLDER",
     name: "Other",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/placeholder.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/placeholder.svg",
     aliases: ["building society", "credit union", "bs", "misc"],
     colour: "#333333",
   },
@@ -27,7 +27,7 @@ const banks: readonly BankSeedData[] = [
     id: "abbey",
     name: "Abbey National",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/abbey.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/abbey.svg",
     aliases: ["abbey", "santander", "abbey road"],
     colour: "#cc2229",
   },
@@ -35,7 +35,7 @@ const banks: readonly BankSeedData[] = [
     id: "aegon",
     name: "Aegon",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/aegon.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/aegon.svg",
     aliases: [],
     colour: "#0168b2",
   },
@@ -43,7 +43,7 @@ const banks: readonly BankSeedData[] = [
     id: "al-rayan",
     name: "Al Rayan Bank",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/al-rayan.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/al-rayan.svg",
     aliases: ["al rayan"],
     colour: "#bd955a",
   },
@@ -51,7 +51,7 @@ const banks: readonly BankSeedData[] = [
     id: "aldermore",
     name: "Aldermore",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/aldermore.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/aldermore.svg",
     aliases: ["ruffler"],
     colour: "#ffda00",
   },
@@ -59,7 +59,7 @@ const banks: readonly BankSeedData[] = [
     id: "alliance-and-leicester",
     name: "Alliance & Leicester",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/alliance-and-leicester.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/alliance-and-leicester.svg",
     aliases: [
       "a&l",
       "alliance + leicester",
@@ -75,7 +75,7 @@ const banks: readonly BankSeedData[] = [
     id: "allica",
     name: "Allica",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/allica.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/allica.svg",
     aliases: ["allica", "allied irish"],
     colour: "#001c33",
   },
@@ -83,7 +83,7 @@ const banks: readonly BankSeedData[] = [
     id: "allied-irish",
     name: "Allied Irish Bank",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/allied-irish.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/allied-irish.svg",
     aliases: [
       "aib",
       "irish bank",
@@ -101,7 +101,7 @@ const banks: readonly BankSeedData[] = [
     id: "anglo-irish",
     name: "Anglo Irish",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/anglo-irish.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/anglo-irish.svg",
     aliases: [
       "ibrc",
       "anglo",
@@ -115,7 +115,7 @@ const banks: readonly BankSeedData[] = [
     id: "arbuthnot-latham",
     name: "Arbuthnot Latham",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/arbuthnot-latham.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/arbuthnot-latham.svg",
     aliases: ["arbuthnot", "aitken hume", "hume"],
     colour: "#002d59",
   },
@@ -123,7 +123,7 @@ const banks: readonly BankSeedData[] = [
     id: "atom",
     name: "Atom",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/atom.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/atom.svg",
     aliases: [],
     colour: "#3c1053",
   },
@@ -131,7 +131,7 @@ const banks: readonly BankSeedData[] = [
     id: "aviva",
     name: "Aviva",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/aviva.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/aviva.svg",
     aliases: ["norwich union", "direct line", "aig"],
     colour: "#fcca12",
   },
@@ -139,7 +139,7 @@ const banks: readonly BankSeedData[] = [
     id: "axa",
     name: "AXA",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/axa.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/axa.svg",
     aliases: ["acksa", "a x a"],
     colour: "#00008f",
   },
@@ -147,7 +147,7 @@ const banks: readonly BankSeedData[] = [
     id: "bank-of-ireland-uk",
     name: "Bank of Ireland",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/bank-of-ireland-uk.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/bank-of-ireland-uk.svg",
     aliases: [
       "boi",
       "banc na héireann",
@@ -162,7 +162,7 @@ const banks: readonly BankSeedData[] = [
     id: "bank-of-scotland",
     name: "Bank of Scotland",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/bank-of-scotland.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/bank-of-scotland.svg",
     aliases: ["bos", "banca na h-alba", "alba", "lloyds", "hbos"],
     colour: "#05286a",
   },
@@ -170,7 +170,7 @@ const banks: readonly BankSeedData[] = [
     id: "barclays",
     name: "Barclays",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/barclays.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/barclays.svg",
     aliases: [
       "barclay",
       "barklays",
@@ -185,7 +185,7 @@ const banks: readonly BankSeedData[] = [
     id: "birmingham-midshires",
     name: "Birmingham Midshires",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/birmingham-midshires.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/birmingham-midshires.svg",
     aliases: ["bm", "brum", "b mid"],
     colour: "#ee213b",
   },
@@ -193,7 +193,7 @@ const banks: readonly BankSeedData[] = [
     id: "birmingham",
     name: "Birmingham",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/birmingham.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/birmingham.svg",
     aliases: ["brum"],
     colour: "#2c4ef7",
   },
@@ -201,7 +201,7 @@ const banks: readonly BankSeedData[] = [
     id: "blme",
     name: "BLME",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/blme.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/blme.svg",
     aliases: ["bank of london & the middle east", "boubyan", "nomo"],
     colour: "#003f5f",
   },
@@ -209,7 +209,7 @@ const banks: readonly BankSeedData[] = [
     id: "bny-mellon",
     name: "BNY Mellon",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/bny-mellon.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/bny-mellon.svg",
     aliases: ["bny", "bnym"],
     colour: "#a49668",
   },
@@ -217,7 +217,7 @@ const banks: readonly BankSeedData[] = [
     id: "bradford-and-bingley",
     name: "Bradford & Bingley",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/bradford-and-bingley.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/bradford-and-bingley.svg",
     aliases: ["b&m", "bnm"],
     colour: "#2d3192",
   },
@@ -225,7 +225,7 @@ const banks: readonly BankSeedData[] = [
     id: "brewin-dolphin",
     name: "Brewin Dolphin",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/brewin-dolphin.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/brewin-dolphin.svg",
     aliases: ["rbc", "bd"],
     colour: "#d3d3d3",
   },
@@ -233,7 +233,7 @@ const banks: readonly BankSeedData[] = [
     id: "brown-shipley",
     name: "Brown Shipley",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/brown-shipley.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/brown-shipley.svg",
     aliases: ["bs"],
     colour: "#00686b",
   },
@@ -241,7 +241,7 @@ const banks: readonly BankSeedData[] = [
     id: "cahoot",
     name: "Cahoot",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/cahoot.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/cahoot.svg",
     aliases: ["santander"],
     colour: "#6c207e",
   },
@@ -249,7 +249,7 @@ const banks: readonly BankSeedData[] = [
     id: "castle-trust",
     name: "Castle Trust",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/castle-trust.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/castle-trust.svg",
     aliases: ["ct"],
     colour: "#152c49",
   },
@@ -257,7 +257,7 @@ const banks: readonly BankSeedData[] = [
     id: "cater-allen",
     name: "Cater Allen",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/cater-allen.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/cater-allen.svg",
     aliases: ["ca", "santander"],
     colour: "#022151",
   },
@@ -265,7 +265,7 @@ const banks: readonly BankSeedData[] = [
     id: "charity",
     name: "Charity",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/charity.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/charity.svg",
     aliases: ["tcb"],
     colour: "#000000",
   },
@@ -273,7 +273,7 @@ const banks: readonly BankSeedData[] = [
     id: "charter-savings",
     name: "Charter Savings",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/charter-savings.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/charter-savings.svg",
     aliases: ["cs"],
     colour: "#0093d6",
   },
@@ -281,7 +281,7 @@ const banks: readonly BankSeedData[] = [
     id: "chase",
     name: "Chase",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/chase.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/chase.svg",
     aliases: ["jpmorgan", "jp morgan", "jpm"],
     colour: "#126bc5",
   },
@@ -289,7 +289,7 @@ const banks: readonly BankSeedData[] = [
     id: "cheltenham-and-gloucester",
     name: "Cheltenham & Gloucester",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/cheltenham-and-gloucester.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/cheltenham-and-gloucester.svg",
     aliases: ["c&g", "c+g", "lloyds"],
     colour: "#2b74b8",
   },
@@ -297,7 +297,7 @@ const banks: readonly BankSeedData[] = [
     id: "chip",
     name: "Chip",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/chip.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/chip.svg",
     aliases: [],
     colour: "#000000",
   },
@@ -305,7 +305,7 @@ const banks: readonly BankSeedData[] = [
     id: "circa5000",
     name: "Cira5000",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/circa5000.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/circa5000.svg",
     aliases: [],
     colour: "#89f4ec",
   },
@@ -313,7 +313,7 @@ const banks: readonly BankSeedData[] = [
     id: "close-brothers",
     name: "Close Brothers",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/close-brothers.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/close-brothers.svg",
     aliases: ["cb", "close bros"],
     colour: "#000a8b",
   },
@@ -321,7 +321,7 @@ const banks: readonly BankSeedData[] = [
     id: "cmc",
     name: "CMC",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/cmc.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/cmc.svg",
     aliases: ["deal4free"],
     colour: "#03bbe1",
   },
@@ -329,7 +329,7 @@ const banks: readonly BankSeedData[] = [
     id: "coop-bank",
     name: "The cooperative",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/coop-bank.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/coop-bank.svg",
     aliases: ["coop", "tcb"],
     colour: "#23254f",
   },
@@ -337,7 +337,7 @@ const banks: readonly BankSeedData[] = [
     id: "coop-insurance-society",
     name: "Co-operative Insurance Society",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/coop-insurance-society.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/coop-insurance-society.svg",
     aliases: ["coop", "cis"],
     colour: "#003f4e",
   },
@@ -345,7 +345,7 @@ const banks: readonly BankSeedData[] = [
     id: "coutts",
     name: "Coutts",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/coutts.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/coutts.svg",
     aliases: [],
     colour: "#9e8d60",
   },
@@ -353,7 +353,7 @@ const banks: readonly BankSeedData[] = [
     id: "credit-suisse",
     name: "Credit Suisse",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/credit-suisse.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/credit-suisse.svg",
     aliases: ["cs"],
     colour: "#003662",
   },
@@ -361,7 +361,7 @@ const banks: readonly BankSeedData[] = [
     id: "cynergy",
     name: "Cynergy",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/cynergy.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/cynergy.svg",
     aliases: ["bank of cyprus", "boc"],
     colour: "#53c4a7",
   },
@@ -369,7 +369,7 @@ const banks: readonly BankSeedData[] = [
     id: "danske",
     name: "Danske",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/danske.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/danske.svg",
     aliases: ["national irish", "ni"],
     colour: "#003f63",
   },
@@ -377,7 +377,7 @@ const banks: readonly BankSeedData[] = [
     id: "egg",
     name: "Egg",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/egg.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/egg.svg",
     aliases: ["yorkshire", "ybs", "prudential", "citi", "barclays"],
     colour: "#70b323",
   },
@@ -385,7 +385,7 @@ const banks: readonly BankSeedData[] = [
     id: "first-direct",
     name: "First Direct",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/first-direct.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/first-direct.svg",
     aliases: [],
     colour: "#000000",
   },
@@ -393,7 +393,7 @@ const banks: readonly BankSeedData[] = [
     id: "ford",
     name: "Ford Money",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/ford.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/ford.svg",
     aliases: ["fm"],
     colour: "#00095b",
   },
@@ -401,7 +401,7 @@ const banks: readonly BankSeedData[] = [
     id: "foresters-friendly",
     name: "Foresters Friendly",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/foresters-friendly.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/foresters-friendly.svg",
     aliases: [],
     colour: "#00635f",
   },
@@ -409,7 +409,7 @@ const banks: readonly BankSeedData[] = [
     id: "freetrade",
     name: "Freetrade",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/freetrade.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/freetrade.svg",
     aliases: ["ft"],
     colour: "#f7618b",
   },
@@ -417,7 +417,7 @@ const banks: readonly BankSeedData[] = [
     id: "habib-zurich",
     name: "Habib Zurich",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/habib-zurich.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/habib-zurich.svg",
     aliases: ["hbzuk", "hb", "zurich"],
     colour: "#00664a",
   },
@@ -425,7 +425,7 @@ const banks: readonly BankSeedData[] = [
     id: "halifax",
     name: "Halifax",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/halifax.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/halifax.svg",
     aliases: [],
     colour: "#005eb8",
   },
@@ -433,7 +433,7 @@ const banks: readonly BankSeedData[] = [
     id: "hampshire-trust",
     name: "Hampshire Trust",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/hampshire-trust.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/hampshire-trust.svg",
     aliases: ["ht"],
     colour: "#cd7537",
   },
@@ -441,7 +441,7 @@ const banks: readonly BankSeedData[] = [
     id: "handelsbanken",
     name: "Handelsbanken",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/handelsbanken.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/handelsbanken.svg",
     aliases: [],
     colour: "#005fa5",
   },
@@ -449,7 +449,7 @@ const banks: readonly BankSeedData[] = [
     id: "hargreaves-lansdown",
     name: "Hargreaves Lansdown",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/hargreaves-lansdown.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/hargreaves-lansdown.svg",
     aliases: ["hl"],
     colour: "#071d49",
   },
@@ -457,7 +457,7 @@ const banks: readonly BankSeedData[] = [
     id: "healthy-investment",
     name: "Healthy Investment",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/healthy-investment.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/healthy-investment.svg",
     aliases: ["hi"],
     colour: "#57559c",
   },
@@ -465,7 +465,7 @@ const banks: readonly BankSeedData[] = [
     id: "hodge",
     name: "Hodge",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/hodge.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/hodge.svg",
     aliases: [],
     colour: "#f4b700",
   },
@@ -473,7 +473,7 @@ const banks: readonly BankSeedData[] = [
     id: "hoist",
     name: "Hoist",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/hoist.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/hoist.svg",
     aliases: [],
     colour: "#b3267c",
   },
@@ -481,7 +481,7 @@ const banks: readonly BankSeedData[] = [
     id: "hsbc",
     name: "HSBC",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/hsbc.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/hsbc.svg",
     aliases: ["滙豐", "hong kong", "shanghai"],
     colour: "#db0011",
   },
@@ -489,7 +489,7 @@ const banks: readonly BankSeedData[] = [
     id: "icesave",
     name: "Icesave",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/icesave.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/icesave.svg",
     aliases: ["landsbanki"],
     colour: "#57b9e9",
   },
@@ -497,7 +497,7 @@ const banks: readonly BankSeedData[] = [
     id: "ing-direct",
     name: "ING Direct",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/ing-direct.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/ing-direct.svg",
     aliases: [],
     colour: "#ff6600",
   },
@@ -505,7 +505,7 @@ const banks: readonly BankSeedData[] = [
     id: "intelligent-finance",
     name: "Intelligent Finance",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/intelligent-finance.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/intelligent-finance.svg",
     aliases: ["if"],
     colour: "#662374",
   },
@@ -513,7 +513,7 @@ const banks: readonly BankSeedData[] = [
     id: "investec",
     name: "Investec",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/investec.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/investec.svg",
     aliases: [],
     colour: "#0b1742",
   },
@@ -521,7 +521,7 @@ const banks: readonly BankSeedData[] = [
     id: "investengine",
     name: "InvestEngine",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/investengine.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/investengine.svg",
     aliases: ["ie"],
     colour: "#3b3bf5",
   },
@@ -529,7 +529,7 @@ const banks: readonly BankSeedData[] = [
     id: "jamaica-national",
     name: "Jamaica National",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/jamaica-national.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/jamaica-national.svg",
     aliases: ["jnb", "jn"],
     colour: "#0053a0",
   },
@@ -537,7 +537,7 @@ const banks: readonly BankSeedData[] = [
     id: "kent-reliance",
     name: "Kent Reliance",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/kent-reliance.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/kent-reliance.svg",
     aliases: ["kr"],
     colour: "#50213f",
   },
@@ -545,7 +545,7 @@ const banks: readonly BankSeedData[] = [
     id: "kroo",
     name: "Kroo",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/kroo.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/kroo.svg",
     aliases: [],
     colour: "#e3176f",
   },
@@ -553,7 +553,7 @@ const banks: readonly BankSeedData[] = [
     id: "lhv",
     name: "LHV",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/lhv.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/lhv.svg",
     aliases: ["lõhmus haavel viisemann"],
     colour: "#202020",
   },
@@ -561,7 +561,7 @@ const banks: readonly BankSeedData[] = [
     id: "lic-india",
     name: "Life Insurance Corporation of India",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/life-insurance-corp-india.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/life-insurance-corp-india.svg",
     aliases: ["lic", "lici"],
     colour: "#f8c301",
   },
@@ -569,7 +569,7 @@ const banks: readonly BankSeedData[] = [
     id: "lightyear",
     name: "Lightyear",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/lightyear.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/lightyear.svg",
     aliases: [],
     colour: "#4e6abf",
   },
@@ -577,7 +577,7 @@ const banks: readonly BankSeedData[] = [
     id: "lloyds-tsb",
     name: "Lloyds TSB",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/lloyds-tsb.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/lloyds-tsb.svg",
     aliases: ["ltsb"],
     colour: "#2a74ba",
   },
@@ -585,7 +585,7 @@ const banks: readonly BankSeedData[] = [
     id: "lloyds",
     name: "Lloyds",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/lloyds.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/lloyds.svg",
     aliases: ["tsb", "loyds", "loids"],
     colour: "#11b67a",
   },
@@ -593,7 +593,7 @@ const banks: readonly BankSeedData[] = [
     id: "london-victoria",
     name: "LV",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/london-victoria.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/london-victoria.svg",
     aliases: ["london victoria"],
     colour: "#b6cc00",
   },
@@ -601,7 +601,7 @@ const banks: readonly BankSeedData[] = [
     id: "marcus",
     name: "Marcus",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/marcus.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/marcus.svg",
     aliases: ["goldman sachs", "gs"],
     colour: "#22263f",
   },
@@ -609,7 +609,7 @@ const banks: readonly BankSeedData[] = [
     id: "marks-and-spencers",
     name: "M&S",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/marks-and-spencers.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/marks-and-spencers.svg",
     aliases: ["m-s", "marks", "spencer", "ms"],
     colour: "#000000",
   },
@@ -617,7 +617,7 @@ const banks: readonly BankSeedData[] = [
     id: "mbna",
     name: "MBNA",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/mbna.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/mbna.svg",
     aliases: ["maryland", "lloyds"],
     colour: "#107987",
   },
@@ -625,7 +625,7 @@ const banks: readonly BankSeedData[] = [
     id: "metlife",
     name: "Metlife",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/metlife.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/metlife.svg",
     aliases: [],
     colour: "#afcb3a",
   },
@@ -633,7 +633,7 @@ const banks: readonly BankSeedData[] = [
     id: "metro",
     name: "Metro",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/metro.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/metro.svg",
     aliases: [],
     colour: "#2548af",
   },
@@ -641,7 +641,7 @@ const banks: readonly BankSeedData[] = [
     id: "moneybox",
     name: "Moneybox",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/moneybox.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/moneybox.svg",
     aliases: [],
     colour: "#58c4c6",
   },
@@ -649,7 +649,7 @@ const banks: readonly BankSeedData[] = [
     id: "moneyfarm",
     name: "Moneyfarm",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/moneyfarm.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/moneyfarm.svg",
     aliases: [],
     colour: "#320327",
   },
@@ -657,7 +657,7 @@ const banks: readonly BankSeedData[] = [
     id: "monument",
     name: "Monument",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/monument.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/monument.svg",
     aliases: [],
     colour: "#004048",
   },
@@ -665,7 +665,7 @@ const banks: readonly BankSeedData[] = [
     id: "monzo",
     name: "Monzo",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/monzo.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/monzo.svg",
     aliases: [],
     colour: "#112231",
   },
@@ -673,7 +673,7 @@ const banks: readonly BankSeedData[] = [
     id: "national-savings-and-investments",
     name: "NS&I",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/national-savings-and-investments.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/national-savings-and-investments.svg",
     aliases: ["ns-i", "nsi"],
     colour: "#00585c",
   },
@@ -681,7 +681,7 @@ const banks: readonly BankSeedData[] = [
     id: "nationwide",
     name: "Nationwide",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/nationwide.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/nationwide.svg",
     aliases: [],
     colour: "#011546",
   },
@@ -689,7 +689,7 @@ const banks: readonly BankSeedData[] = [
     id: "natwest",
     name: "NatWest",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/natwest.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/natwest.svg",
     aliases: ["national westminster"],
     colour: "#3c1053",
   },
@@ -697,7 +697,7 @@ const banks: readonly BankSeedData[] = [
     id: "nfu-mutual",
     name: "NFU Mutual",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/nfu-mutual.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/nfu-mutual.svg",
     aliases: ["nfum", "national farmers union"],
     colour: "#f7ca32",
   },
@@ -705,7 +705,7 @@ const banks: readonly BankSeedData[] = [
     id: "northern-rock",
     name: "Northern Rock",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/northern-rock.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/northern-rock.svg",
     aliases: ["nr"],
     colour: "#eb008c",
   },
@@ -713,7 +713,7 @@ const banks: readonly BankSeedData[] = [
     id: "northern",
     name: "Northern",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/northern.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/northern.svg",
     aliases: [],
     colour: "#0d2a9e",
   },
@@ -721,7 +721,7 @@ const banks: readonly BankSeedData[] = [
     id: "nutmeg",
     name: "Nutmeg",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/nutmeg.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/nutmeg.svg",
     aliases: ["jpm", "jp morgan"],
     colour: "#2fb053",
   },
@@ -729,7 +729,7 @@ const banks: readonly BankSeedData[] = [
     id: "oak-north",
     name: "Oak North",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/oak-north.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/oak-north.svg",
     aliases: ["on", "oaknorth"],
     colour: "#2adaa5",
   },
@@ -737,7 +737,7 @@ const banks: readonly BankSeedData[] = [
     id: "octopus-investments",
     name: "Octopus Investments",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/octopus-investments.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/octopus-investments.svg",
     aliases: ["oi", "octo"],
     colour: "#100030",
   },
@@ -745,7 +745,7 @@ const banks: readonly BankSeedData[] = [
     id: "one-family",
     name: "One Family",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/onefamily.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/onefamily.svg",
     aliases: ["of"],
     colour: "#1e193e",
   },
@@ -753,7 +753,7 @@ const banks: readonly BankSeedData[] = [
     id: "oxbury",
     name: "Oxbury",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/oxbury.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/oxbury.svg",
     aliases: [],
     colour: "#0ea149",
   },
@@ -761,7 +761,7 @@ const banks: readonly BankSeedData[] = [
     id: "paragon",
     name: "Paragon",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/paragon.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/paragon.svg",
     aliases: ["paragon bank"],
     colour: "#75c92b",
   },
@@ -769,7 +769,7 @@ const banks: readonly BankSeedData[] = [
     id: "phoenix-life",
     name: "Phoenix Life",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/phoenix-life.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/phoenix-life.svg",
     aliases: ["pl"],
     colour: "#e2066f",
   },
@@ -777,7 +777,7 @@ const banks: readonly BankSeedData[] = [
     id: "plum",
     name: "Plum",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/plum.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/plum.svg",
     aliases: [],
     colour: "#1a0a2b",
   },
@@ -785,7 +785,7 @@ const banks: readonly BankSeedData[] = [
     id: "post-office",
     name: "Post Office",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/post-office.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/post-office.svg",
     aliases: ["post office money"],
     colour: "#d71440",
   },
@@ -793,7 +793,7 @@ const banks: readonly BankSeedData[] = [
     id: "prosper",
     name: "Prosper",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/prosper.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/prosper.svg",
     aliases: [],
     colour: "#000000",
   },
@@ -801,7 +801,7 @@ const banks: readonly BankSeedData[] = [
     id: "punjab-national",
     name: "Punjab National",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/punjab-national.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/punjab-national.svg",
     aliases: ["pn"],
     colour: "#9f1a45",
   },
@@ -809,7 +809,7 @@ const banks: readonly BankSeedData[] = [
     id: "qib",
     name: "QIB",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/qib.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/qib.svg",
     aliases: ["qatar islamic"],
     colour: "#0075b0",
   },
@@ -817,7 +817,7 @@ const banks: readonly BankSeedData[] = [
     id: "quilter",
     name: "Quilter",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/quilter.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/quilter.svg",
     aliases: [],
     colour: "#0f7b3f",
   },
@@ -825,7 +825,7 @@ const banks: readonly BankSeedData[] = [
     id: "raisin",
     name: "Raisin",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/raisin.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/raisin.svg",
     aliases: [],
     colour: "#156cc4",
   },
@@ -833,7 +833,7 @@ const banks: readonly BankSeedData[] = [
     id: "rbc-brewin-dolphin",
     name: "RBC Brewin Dolphin",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/rbc-brewin-dolphin.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/rbc-brewin-dolphin.svg",
     aliases: ["rbc", "bd", "brewin"],
     colour: "#0059b3",
   },
@@ -841,7 +841,7 @@ const banks: readonly BankSeedData[] = [
     id: "rbs",
     name: "RBS",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/rbs-ulster.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/rbs-ulster.svg",
     aliases: ["royal bank of scotland"],
     colour: "#3c1053",
   },
@@ -849,7 +849,7 @@ const banks: readonly BankSeedData[] = [
     id: "rci",
     name: "RCI",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/rci.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/rci.svg",
     aliases: ["renault", "mobilize", "nissan", "dacia"],
     colour: "#41d7eb",
   },
@@ -857,7 +857,7 @@ const banks: readonly BankSeedData[] = [
     id: "royal-london",
     name: "Royal London",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/royal-london.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/royal-london.svg",
     aliases: ["rl", "cis", "coop", "abbey", "santander"],
     colour: "#470054",
   },
@@ -865,7 +865,7 @@ const banks: readonly BankSeedData[] = [
     id: "saga",
     name: "Saga",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/saga.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/saga.svg",
     aliases: [],
     colour: "#1e3282",
   },
@@ -873,7 +873,7 @@ const banks: readonly BankSeedData[] = [
     id: "sainsburys",
     name: "Sainsbury's",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/sainsburys.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/sainsburys.svg",
     aliases: ["sainsburys"],
     colour: "#f06c00",
   },
@@ -881,7 +881,7 @@ const banks: readonly BankSeedData[] = [
     id: "santander",
     name: "Santander",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/santander.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/santander.svg",
     aliases: ["abbey national", "satander"],
     colour: "#ec0000",
   },
@@ -889,7 +889,7 @@ const banks: readonly BankSeedData[] = [
     id: "schroders",
     name: "Schroders",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/schroders.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/schroders.svg",
     aliases: [],
     colour: "#001e41",
   },
@@ -897,7 +897,7 @@ const banks: readonly BankSeedData[] = [
     id: "scottish-friendly",
     name: "Scottish Friendly",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/scottish-friendly.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/scottish-friendly.svg",
     aliases: ["sf"],
     colour: "#472f92",
   },
@@ -905,7 +905,7 @@ const banks: readonly BankSeedData[] = [
     id: "secure-trust",
     name: "Secure Trust",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/secure-trust.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/secure-trust.svg",
     aliases: ["st"],
     colour: "#003a67",
   },
@@ -913,7 +913,7 @@ const banks: readonly BankSeedData[] = [
     id: "shawbrook",
     name: "Shawbrook",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/shawbrook.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/shawbrook.svg",
     aliases: ["sb"],
     colour: "#e10a93",
   },
@@ -921,7 +921,7 @@ const banks: readonly BankSeedData[] = [
     id: "shepherds-friendly",
     name: "Shepherds Friendly",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/shepherds-friendly.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/shepherds-friendly.svg",
     aliases: ["sf"],
     colour: "#f7a900",
   },
@@ -929,7 +929,7 @@ const banks: readonly BankSeedData[] = [
     id: "skandia",
     name: "Skandia",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/skandia.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/skandia.svg",
     aliases: [],
     colour: "#005da8",
   },
@@ -937,7 +937,7 @@ const banks: readonly BankSeedData[] = [
     id: "societe-generale",
     name: "Société Générale",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/societe-generale.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/societe-generale.svg",
     aliases: ["sg", "societe generale"],
     colour: "#e90031",
   },
@@ -945,7 +945,7 @@ const banks: readonly BankSeedData[] = [
     id: "standard-life",
     name: "Standard Life",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/standard-life.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/standard-life.svg",
     aliases: ["sl"],
     colour: "#0a2f73",
   },
@@ -953,7 +953,7 @@ const banks: readonly BankSeedData[] = [
     id: "starling",
     name: "Starling",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/starling.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/starling.svg",
     aliases: [],
     colour: "#6935d3",
   },
@@ -961,7 +961,7 @@ const banks: readonly BankSeedData[] = [
     id: "state-bank-of-india",
     name: "SBI",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/state-bank-of-india.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/state-bank-of-india.svg",
     aliases: ["state bank of india"],
     colour: "#2cb9f1",
   },
@@ -969,7 +969,7 @@ const banks: readonly BankSeedData[] = [
     id: "stratiphy",
     name: "Stratiphy",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/stratiphy.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/stratiphy.svg",
     aliases: [],
     colour: "#6640ff",
   },
@@ -977,7 +977,7 @@ const banks: readonly BankSeedData[] = [
     id: "strowz",
     name: "Strowz",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/strowz.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/strowz.svg",
     aliases: [],
     colour: "#140323",
   },
@@ -985,7 +985,7 @@ const banks: readonly BankSeedData[] = [
     id: "tesco",
     name: "Tesco",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/tesco.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/tesco.svg",
     aliases: [],
     colour: "#0053a1",
   },
@@ -993,7 +993,7 @@ const banks: readonly BankSeedData[] = [
     id: "trading-212",
     name: "Trading 212",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/trading-212.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/trading-212.svg",
     aliases: ["t212"],
     colour: "#00a7e1",
   },
@@ -1001,7 +1001,7 @@ const banks: readonly BankSeedData[] = [
     id: "transport-friendly",
     name: "Transport Friendly",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/transport-friendly.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/transport-friendly.svg",
     aliases: ["tf"],
     colour: "#214393",
   },
@@ -1009,7 +1009,7 @@ const banks: readonly BankSeedData[] = [
     id: "triodos",
     name: "Triodos",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/triodos.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/triodos.svg",
     aliases: [],
     colour: "#00937b",
   },
@@ -1017,7 +1017,7 @@ const banks: readonly BankSeedData[] = [
     id: "tsb",
     name: "TSB",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/tsb.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/tsb.svg",
     aliases: ["trustee savings bank"],
     colour: "#00a8e1",
   },
@@ -1025,7 +1025,7 @@ const banks: readonly BankSeedData[] = [
     id: "united-national",
     name: "United National",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/united-national.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/united-national.svg",
     aliases: ["un", "ubl"],
     colour: "#0083ca",
   },
@@ -1033,7 +1033,7 @@ const banks: readonly BankSeedData[] = [
     id: "united-trust",
     name: "United Trust",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/united-trust.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/united-trust.svg",
     aliases: ["ut"],
     colour: "#ffcf00",
   },
@@ -1041,7 +1041,7 @@ const banks: readonly BankSeedData[] = [
     id: "ulster",
     name: "Ulster",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/rbs-ulster.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/rbs-ulster.svg",
     aliases: [],
     colour: "#3c1053",
   },
@@ -1049,7 +1049,7 @@ const banks: readonly BankSeedData[] = [
     id: "vanguard",
     name: "Vanguard",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/vanguard.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/vanguard.svg",
     aliases: ["vg"],
     colour: "#96151d",
   },
@@ -1057,7 +1057,7 @@ const banks: readonly BankSeedData[] = [
     id: "vanquis",
     name: "Vanquis",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/vanquis.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/vanquis.svg",
     aliases: ["vq"],
     colour: "#006edc",
   },
@@ -1065,7 +1065,7 @@ const banks: readonly BankSeedData[] = [
     id: "vida",
     name: "Vida",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/vida.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/vida.svg",
     aliases: [],
     colour: "#00003b",
   },
@@ -1073,7 +1073,7 @@ const banks: readonly BankSeedData[] = [
     id: "virgin",
     name: "Virgin",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/virgin.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/virgin.svg",
     aliases: ["vm"],
     colour: "#e10a0a",
   },
@@ -1081,7 +1081,7 @@ const banks: readonly BankSeedData[] = [
     id: "wealthify",
     name: "Wealthify",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/wealthify.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/wealthify.svg",
     aliases: [],
     colour: "#53c0b1",
   },
@@ -1089,7 +1089,7 @@ const banks: readonly BankSeedData[] = [
     id: "wealthtime",
     name: "Wealthtime",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/wealthtime.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/wealthtime.svg",
     aliases: [],
     colour: "#1dd698",
   },
@@ -1097,7 +1097,7 @@ const banks: readonly BankSeedData[] = [
     id: "xtb",
     name: "XTB",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/xtb.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/xtb.svg",
     aliases: ["x trade brokers", "x-trade"],
     colour: "#fe0103",
   },
@@ -1105,7 +1105,7 @@ const banks: readonly BankSeedData[] = [
     id: "zenith",
     name: "Zenith",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/zenith.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/zenith.svg",
     aliases: [],
     colour: "#ed1c24",
   },
@@ -1113,7 +1113,7 @@ const banks: readonly BankSeedData[] = [
     id: "zopa",
     name: "Zopa",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/zopa.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/zopa.svg",
     aliases: [],
     colour: "#72e7c1",
   },
@@ -1121,7 +1121,7 @@ const banks: readonly BankSeedData[] = [
     id: "habib",
     name: "Habib",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/habib.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/habib.svg",
     aliases: ["hbp", "hbl"],
     colour: "#008269",
   },
@@ -1129,7 +1129,7 @@ const banks: readonly BankSeedData[] = [
     id: "bpi",
     name: "Bank of the Philippine Islands",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/bpi.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/bpi.svg",
     aliases: ["bpi"],
     colour: "#008269",
   },
@@ -1137,7 +1137,7 @@ const banks: readonly BankSeedData[] = [
     id: "nb-egypt",
     name: "National Bank of Egypt",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/nb-egypt.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/nb-egypt.svg",
     aliases: ["nbe"],
     colour: "#fc8508",
   },
@@ -1145,7 +1145,7 @@ const banks: readonly BankSeedData[] = [
     id: "ziraat",
     name: "Ziraat",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/ziraat.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/ziraat.svg",
     aliases: ["bankası", "tcb"],
     colour: "#cc2229",
   },
@@ -1153,7 +1153,7 @@ const banks: readonly BankSeedData[] = [
     id: "skipton",
     name: "Skipton",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/skipton.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/skipton.svg",
     aliases: [],
     colour: "#0072c5",
   },
@@ -1161,7 +1161,7 @@ const banks: readonly BankSeedData[] = [
     id: "isbank",
     name: "İşbank",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/isbank.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/isbank.svg",
     aliases: ["Türkiye İş Bankası", "tib", "Business Bank of Turkey", "bbt"],
     colour: "#00428a",
   },
@@ -1169,7 +1169,7 @@ const banks: readonly BankSeedData[] = [
     id: "bank-of-ceylon",
     name: "Bank of Ceylon",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/bank-of-ceylon.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/bank-of-ceylon.svg",
     aliases: ["boc", "sri lanka"],
     colour: "#ffc805",
   },
@@ -1177,7 +1177,7 @@ const banks: readonly BankSeedData[] = [
     id: "british-arab-commercial",
     name: "BACB",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/british-arab-commercial.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/british-arab-commercial.svg",
     aliases: ["ubaf"],
     colour: "#00a7cf",
   },
@@ -1185,7 +1185,7 @@ const banks: readonly BankSeedData[] = [
     id: "first-city-monument",
     name: "First City Monument",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/first-city-monument.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/first-city-monument.svg",
     aliases: ["fcmb"],
     colour: "#6f3f96",
   },
@@ -1193,7 +1193,7 @@ const banks: readonly BankSeedData[] = [
     id: "st-james-place",
     name: "St James's Place",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/st-james-place.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/st-james-place.svg",
     aliases: ["sjp", "st james' place", "st james place"],
     colour: "#0a1428",
   },
@@ -1201,7 +1201,7 @@ const banks: readonly BankSeedData[] = [
     id: "m-and-g",
     name: "M&G",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/m-and-g.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/m-and-g.svg",
     aliases: ["m and g", "m & g", "monument & general"],
     colour: "#2f6167",
   },
@@ -1209,7 +1209,7 @@ const banks: readonly BankSeedData[] = [
     id: "interactive-investor",
     name: "Interactive Investor",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/interactive-investor.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/interactive-investor.svg",
     aliases: ["ii", "ample", "aberdeen"],
     colour: "#0023e6",
   },
@@ -1217,7 +1217,7 @@ const banks: readonly BankSeedData[] = [
     id: "gatehouse",
     name: "Gatehouse",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/gatehouse.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/gatehouse.svg",
     aliases: ["gh"],
     colour: "#a6c236",
   },
@@ -1225,7 +1225,7 @@ const banks: readonly BankSeedData[] = [
     id: "smile",
     name: "smile",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/smile.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/smile.svg",
     aliases: ["coop", "the co-operative"],
     colour: "#ff3399",
   },
@@ -1233,7 +1233,7 @@ const banks: readonly BankSeedData[] = [
     id: "charles-stanley",
     name: "Charles Stanley",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/charles-stanley.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/charles-stanley.svg",
     aliases: ["cs", "raymond james"],
     colour: "#000b49",
   },
@@ -1241,7 +1241,7 @@ const banks: readonly BankSeedData[] = [
     id: "streambank",
     name: "StreamBank",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/streambank.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/streambank.svg",
     aliases: ["sb"],
     colour: "#0e786e",
   },
@@ -1249,7 +1249,7 @@ const banks: readonly BankSeedData[] = [
     id: "castle-community",
     name: "Castle Community",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/castle-community.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/castle-community.svg",
     aliases: ["ccb"],
     colour: "#ef1c2f",
   },
@@ -1257,7 +1257,7 @@ const banks: readonly BankSeedData[] = [
     id: "prudential",
     name: "Prudential",
     iconRelativeUrl:
-      "https://isa-eye-uploads-prod.dylmye.me/default-bank-icons/prudential.svg",
+      "https://static-assets.isaeye.uk/default-bank-icons/prudential.svg",
     aliases: [],
     colour: "#e72139",
   },
