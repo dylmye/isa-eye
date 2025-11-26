@@ -1,5 +1,7 @@
 # ISA Eye - Budget Your ISA
 
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B3650%2Fisa-eye.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B3650%2Fisa-eye?ref=badge_shield&issueType=license)
+
 A privacy-first app for keeping track of your ISA allowance.
 
 Keep an eye on Indiviual Saving Account balances across your bank accounts, investment managers and more. It's easy to make sure you don't go over your allowances - just add your accounts and keep your contributions up to date.
