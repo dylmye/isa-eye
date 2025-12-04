@@ -8,9 +8,9 @@ Keep an eye on Indiviual Saving Account balances across your bank accounts, inve
 
 ## Development
 
-Dependencies for this project are managed with [bun](https://bun.sh). Install the dependencies with `bun install`. Ensure you also properly copy the icon font by running `bun run prebuild:include-icon-font`.
+Dependencies for this project are managed with [pnpm](https://pnpm.io). Install the dependencies with `pnpm install`. Ensure you also properly copy the icon font by running `pnpm run prebuild:include-icon-font`.
 
-This project uses Expo. It is Expo Go compatible; run `bun run start` to start the bundler and follow the instructions in the terminal to continue.
+This project uses Expo. It is Expo Go compatible; run `pnpm run start` to start the bundler and follow the instructions in the terminal to continue.
 
 ### Stack
 
@@ -22,7 +22,7 @@ The majority of components are based on [React Native Reusables](https://reactna
 
 The theme was configured with [jlndev's theme configurator](https://ui.jln.dev/).
 
-The website is hosted by [Cloudflare Pages](https://pages.cloudflare.com/) and the domain is provided by [Porkbun](https://porkbun.com/).
+The website is proudly hosted in Europe by [statichost](https://statichost.eu/) and the domain is provided by [Porkbun](https://porkbun.com/).
 
 Special mentions to: [Shopify FlashList](https://shopify.github.io/flash-list/) for fixing perf issues, the polyfills bridging the gap between RN and web, and Mo Gorhom's [Bottom Sheet](https://gorhom.dev/react-native-bottom-sheet/) which somehow works better with Expo than Expo's own.
 

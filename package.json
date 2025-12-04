@@ -14,7 +14,7 @@
 		"build:android:dev": "eas build --platform android --profile development",
 		"ios": "expo run:ios",
 		"web": "expo start --web",
-		"build:web": "expo export -p web && bunx workbox-cli generateSW workbox-config.js",
+		"build:web": "expo export -p web && pnpm dlx workbox-cli generateSW workbox-config.js",
 		"build:web:serve": "expo serve",
 		"check": "biome check",
 		"check:fix": "biome check --write"
@@ -89,5 +89,6 @@
 	},
 	"patchedDependencies": {
 		"victory-native@41.17.4": "patches/victory-native@41.17.4.patch"
-	}
+	},
+	"packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
 }

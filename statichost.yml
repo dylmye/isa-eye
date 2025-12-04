@@ -1,3 +1,3 @@
-image: oven/bun:1.2
-command: bun install && bun run prebuild:include-icon-font && bun run build:web
+image: node:24
+command: corepack enable && pnpm install && pnpm run prebuild:include-icon-font && pnpm run build:web
 public: dist

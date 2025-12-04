@@ -1,0 +1,2 @@
+nodeLinker: hoisted # react-native doesn't work well with isolated
+enablePrePostScripts: true # required for nativewind (react-native-css-interop)
