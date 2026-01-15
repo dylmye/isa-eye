@@ -22,3 +22,9 @@ variable "scw_secret_key" {
   description = "Scaleway Secret Key"
   sensitive   = true
 }
+
+variable "gcr_secret_key" {
+  type        = string
+  description = "Gcore permanent API token"
+  sensitive   = true
+}

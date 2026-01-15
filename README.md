@@ -30,9 +30,9 @@ Special mentions to: [Shopify FlashList](https://shopify.github.io/flash-list/) 
 
 THe Terraform config in the `infra` folder sets up:
 
-* A S3 bucket for bank icons (and potentially future UGC)
-* A Cloudfront distribution set up with a custom subdomain + TLS cert
-* IAM setup for the sync_bank_icons workflow (see below)
+* A Scaleway object storage bucket for bank icons (and potentially future UGC)
+* A Gcore CDN set up with a custom subdomain + TLS cert
+* IAM setup for the CDN and sync_bank_icons workflow (see below)
 
 ## GH Workflows
 
