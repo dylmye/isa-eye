@@ -9,23 +9,21 @@ on:
     - .github/workflows/sync_bank_icons.yml
 
 permissions:
-  id-token: write
   contents: read
 
 jobs:
-  sync_bank_icons_to_s3:
+  sync_bank_icons_to_scaleway:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/IsaEyeS3SyncRole
-          role-session-name: github-workflow-sync-bank-icons-run-${{ github.run_id }}
-          aws-region: eu-west-2
+        uses: actions/checkout@v6
 
-      - name: Sync to S3
+      - name: Set up AWS CLI with Scaleway credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          aws-access-key-id: ${{ secrets.scaleway_access_key }}
+          aws-secret-access-key: ${{ secrets.scaleway_secret_key }}
+      
+      - name: Sync to Scaleway
         run: |
-          aws s3 sync ./assets/images/bank-icons s3://isa-eye-uploads-production/default-bank-icons --delete
+          aws s3 sync ./assets/images/bank-icons s3://isa-eye-assets/default-bank-icons --delete --dryrun --endpoint-url https://s3.nl-ams.scw.cloud
