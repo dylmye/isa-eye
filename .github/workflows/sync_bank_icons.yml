@@ -20,7 +20,7 @@ jobs:
       
       - name: Sync to Scaleway
         run: |
-          aws s3 sync ./assets/images/bank-icons s3://isa-eye-assets/default-bank-icons --delete --dryrun --endpoint-url https://s3.fr-par.scw.cloud
+          aws s3 sync ./assets/images/bank-icons s3://isa-eye-assets/default-bank-icons --delete --endpoint-url https://s3.fr-par.scw.cloud
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.SCALEWAY_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SCALEWAY_SECRET_KEY }}
