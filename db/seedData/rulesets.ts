@@ -259,6 +259,33 @@ export const rulesets: readonly RulesetSeedData[] = [
     notes:
       "Long-Term Asset Funds were added to the eligible investments within Innovative Fund ISAs. A National Insurance number is now required to be provided to open an ISA, unless ineligible. There were no changes to allowances.",
   },
+  {
+    name: "2026/2027",
+    sharedAllowancePence: 2000000,
+    startDate: "2026-04-06",
+    endDate: "2027-04-05",
+    productSpecificRulesets: [
+      {
+        code: "HELP_TO_BUY",
+        allowancePence: 240000,
+        includedInOverall: true,
+        notes:
+          "Contribute up to £200 a month, and up to £1,200 in the first month.",
+      },
+      {
+        code: "LIFETIME",
+        allowancePence: 400000,
+        includedInOverall: true,
+      },
+      {
+        code: "JUNIOR",
+        allowancePence: 900000,
+        includedInOverall: false,
+      },
+    ],
+    notes:
+      "Long-Term Asset Funds (LTAFs) must now be held in Stocks & Shares ISAs only, not Innovative Finance ISAs. Existing LTAFs held in IF ISAs are unaffected. Crypto Exchange Traded Notes (c-ETNs) must be held in Innovative Finance ISAs only, not Stocks & Shares ISAs. Existing c-ETNs held in S&S ISAs are unaffected. There were no changes to allowances.",
+  },
 ];
 
 export default rulesets;
