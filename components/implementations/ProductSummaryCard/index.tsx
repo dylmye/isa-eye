@@ -66,7 +66,7 @@ const ProductSummaryCard = ({
           className="mr-2 w-full text-ellipsis font-semibold text-2xl text-card-foreground"
           numberOfLines={1}
           ellipsizeMode="middle"
-          style={{ flexShrink: 1, display: 'flex', alignItems: 'flex-end' }}
+          style={{ flexShrink: 1, display: "flex", alignItems: "flex-end" }}
         >
           {formattedAccountName}
         </Text>
