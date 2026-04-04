@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   sync_bank_icons_to_scaleway:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v6
