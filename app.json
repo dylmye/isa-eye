@@ -1,100 +1,104 @@
 {
-	"expo": {
-		"name": "ISA Eye",
-		"description": "Keep track of your ISA allowance across accounts and years.",
-		"githubUrl": "https://github.com/dylmye/isa-eye",
-		"slug": "isa-eye",
-		"owner": "dylmye",
-		"scheme": "isaeye",
-		"version": "1.0.1",
-		"orientation": "portrait",
-		"userInterfaceStyle": "automatic",
-		"newArchEnabled": true,
-		"platforms": ["android", "ios", "web"],
-		"ios": {
-			"icon": {
-				"dark": "./assets/images/app-icons/ios-dark-1024.png",
-				"light": "./assets/images/app-icons/ios-light-1024.png",
-				"tinted": "./assets/images/app-icons/ios-monochrome-1024.png"
-			},
-			"infoPlist": {
-				"ITSAppUsesNonExemptEncryption": false
-			},
-			"supportsTablet": true,
-			"bundleIdentifier": "me.dylmye.isa"
-		},
-		"android": {
-			"icon": "./assets/images/app-icons/android-legacy-xxxhdpi.png",
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/images/app-icons/android-foreground-xxxhdpi.png",
-				"monochromeImage": "./assets/images/app-icons/android-monochrome-xxxhdpi.png",
-				"backgroundColor": "#0f1f19"
-			},
-			"package": "me.dylmye.isa"
-		},
-		"web": {
-			"bundler": "metro",
-			"output": "single",
-			"favicon": "./assets/images/app-icons/web-favicon-192.png",
-			"lang": "en-GB",
-			"display": "minimal-ui",
-			"orientation": "portrait",
-			"preferRelatedApplications": true,
-			"themeColor": "#0f1f19",
-			"backgroundColor": "#050a08",
-			"description": "Keep track of your ISA allowance across accounts and years.",
-			"dir": "ltr",
-			"splash": {
-				"backgroundColor": "#0f1f19",
-				"resizeMode": "contain",
-				"image": "./assets/images/app-icons/splash-dark-512.png"
-			}
-		},
-		"experiments": {
-			"typedRoutes": true
-		},
-		"updates": {
-			"enabled": false
-		},
-		"extra": {
-			"router": {
-				"origin": false
-			},
-			"eas": {
-				"projectId": "4fe52bdb-5d55-4d18-aeae-9faaa517ec69"
-			}
-		},
-		"plugins": [
-			"expo-router",
-			[
-				"expo-splash-screen",
-				{
-					"image": "./assets/images/app-icons/splash-light-512.png",
-					"imageWidth": 200,
-					"resizeMode": "contain",
-					"backgroundColor": "#01c181",
-					"dark": {
-						"image": "./assets/images/app-icons/splash-dark-512.png",
-						"backgroundColor": "#0f1f19"
-					}
-				}
-			],
-			[
-				"expo-sqlite",
-				{
-					"useSQLCipher": true
-				}
-			],
-			"expo-font",
-			"expo-web-browser",
-			[
-				"expo-build-properties",
-				{
-					"android": {
-						"extraProguardRules": "-keep class com.facebook.react.bridge.queue.MessageQueueThreadImpl { *; }\n-keepclassmembers class com.facebook.react.bridge.queue.MessageQueueThreadImpl {\n    <fields>;\n}\n"
-					}
-				}
-			]
-		]
-	}
+  "expo": {
+    "name": "ISA Eye",
+    "description": "Keep track of your ISA allowance across accounts and years.",
+    "githubUrl": "https://github.com/dylmye/isa-eye",
+    "slug": "isa-eye",
+    "owner": "dylmye",
+    "scheme": "isaeye",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "ios": {
+      "icon": {
+        "dark": "./assets/images/app-icons/ios-dark-1024.png",
+        "light": "./assets/images/app-icons/ios-light-1024.png",
+        "tinted": "./assets/images/app-icons/ios-monochrome-1024.png"
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "supportsTablet": true,
+      "bundleIdentifier": "me.dylmye.isa"
+    },
+    "android": {
+      "icon": "./assets/images/app-icons/android-legacy-xxxhdpi.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/app-icons/android-foreground-xxxhdpi.png",
+        "monochromeImage": "./assets/images/app-icons/android-monochrome-xxxhdpi.png",
+        "backgroundColor": "#0f1f19"
+      },
+      "package": "me.dylmye.isa"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/app-icons/web-favicon-192.png",
+      "lang": "en-GB",
+      "display": "minimal-ui",
+      "orientation": "portrait",
+      "preferRelatedApplications": true,
+      "themeColor": "#0f1f19",
+      "backgroundColor": "#050a08",
+      "description": "Keep track of your ISA allowance across accounts and years.",
+      "dir": "ltr",
+      "splash": {
+        "backgroundColor": "#0f1f19",
+        "resizeMode": "contain",
+        "image": "./assets/images/app-icons/splash-dark-512.png"
+      }
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "updates": {
+      "enabled": false
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4fe52bdb-5d55-4d18-aeae-9faaa517ec69"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/app-icons/splash-light-512.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#01c181",
+          "dark": {
+            "image": "./assets/images/app-icons/splash-dark-512.png",
+            "backgroundColor": "#0f1f19"
+          }
+        }
+      ],
+      [
+        "expo-sqlite",
+        {
+          "useSQLCipher": true
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "-keep class com.facebook.react.bridge.queue.MessageQueueThreadImpl { *; }\n-keepclassmembers class com.facebook.react.bridge.queue.MessageQueueThreadImpl {\n    <fields>;\n}\n"
+          }
+        }
+      ],
+      "expo-image"
+    ]
+  }
 }
