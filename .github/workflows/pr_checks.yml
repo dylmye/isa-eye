@@ -1,12 +1,11 @@
 name: Check PRs
 
 on:
-  push:
   pull_request:
 
 jobs:
   biome:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,7 +21,7 @@ jobs:
       - name: Run Biome
         run: biome ci .
   doctor:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,7 +45,7 @@ jobs:
       - name: Call the doctor
         run: bun x expo-doctor
   fossa:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v4

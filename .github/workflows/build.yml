@@ -15,7 +15,7 @@ permissions:
 jobs:
   build:
     name: Trigger EAS native build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     strategy:
       matrix:
         os: [android, ios]

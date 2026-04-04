@@ -10,7 +10,7 @@ const getProductName = ({
   providerName,
   productTypeName,
 }: GetProductNameProps): string => {
-  return friendlyName ?? `${providerName} ${productTypeName}`;
+  return friendlyName || `${providerName} ${productTypeName}`;
 };
 
 export default getProductName;
