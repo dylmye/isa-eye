@@ -146,7 +146,8 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
               rules={{
                 pattern: {
                   value: /^#[A-Fa-f0-9]{6}$/,
-                  message: "Not a valid colour (hex code) value. It should look like #3D3D3D."
+                  message:
+                    "Not a valid colour (hex code) value. It should look like #3D3D3D.",
                 },
               }}
             />

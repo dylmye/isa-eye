@@ -33,7 +33,8 @@ const ProductSummaryCard = ({
   }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
   const formattedAccountName = getProductName(product);
-  const productColor = product.colourHexOverride || product.providerColour || "#FFFFFF";
+  const productColor =
+    product.colourHexOverride || product.providerColour || "#FFFFFF";
 
   const productColourBackgroundWeb = useMemo(
     () =>
@@ -86,21 +87,13 @@ const ProductSummaryCard = ({
                 x2="100%"
                 y2="0%"
               >
-                <Stop
-                  offset={0}
-                  stopColor={productColor}
-                  stopOpacity={0.9}
-                />
+                <Stop offset={0} stopColor={productColor} stopOpacity={0.9} />
                 <Stop
                   offset={0.25}
                   stopColor={productColor}
                   stopOpacity={0.3}
                 />
-                <Stop
-                  offset={0.8}
-                  stopColor={productColor}
-                  stopOpacity={0}
-                />
+                <Stop offset={0.8} stopColor={productColor} stopOpacity={0} />
               </LinearGradient>
             </Defs>
             <Rect

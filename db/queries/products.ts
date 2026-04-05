@@ -27,7 +27,14 @@ export const allProducts = (queries: Queries<Schemas>) =>
 export interface AllProductsRow
   extends ResultRow,
     Required<
-      Pick<Product, "friendlyName" | "startTaxYear" | "endTaxYear" | "flexible" | "colourHexOverride">
+      Pick<
+        Product,
+        | "friendlyName"
+        | "startTaxYear"
+        | "endTaxYear"
+        | "flexible"
+        | "colourHexOverride"
+      >
     > {
   providerName: string;
   providerIconRelativeUrl: string;
