@@ -534,6 +534,14 @@ const banks: readonly BankSeedData[] = [
     colour: "#0053a0",
   },
   {
+    id: "jpmorgan-pi",
+    name: "J.P. Morgan Personal Investing",
+    iconRelativeUrl:
+      "https://static-assets.isaeye.uk/default-bank-icons/jpmorgan-pi.svg",
+    aliases: ["jp morgan", "jpm", "nutmeg"],
+    colour: "#f9f9f1",
+  },
+  {
     id: "kent-reliance",
     name: "Kent Reliance",
     iconRelativeUrl:
