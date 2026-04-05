@@ -12,6 +12,7 @@ export const allContributions = (queries: Queries<Schemas>) =>
 
       join("products", "productId");
       select("products", "friendlyName").as("productFriendlyName");
+      select("products", "colourHexOverride").as("productColourHexOverride");
       select("products", "startTaxYear").as("productStartTaxYear");
 
       join("providers", "products", "providerId");
@@ -32,6 +33,7 @@ export interface AllContributionsRow
       >
     > {
   productFriendlyName: string;
+  productColourHexOverride: string;
   productStartTaxYear: string;
   productInitialBalancePence: string;
   productProviderColour: string;

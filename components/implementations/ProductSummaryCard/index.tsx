@@ -33,11 +33,12 @@ const ProductSummaryCard = ({
   }, [productBalanceRow.deductedFromAllowancePence, currentRuleset]);
 
   const formattedAccountName = getProductName(product);
+  const productColor = product.colourHexOverride || product.providerColour || "#FFFFFF";
 
   const productColourBackgroundWeb = useMemo(
     () =>
-      `radial-gradient(circle at left bottom, ${product.providerColour}E6 0%, ${product.providerColour}80 25%, rgba(0, 0, 0, 0) 80%)`,
-    [product.providerColour],
+      `radial-gradient(circle at left bottom, ${productColor}E6 0%, ${productColor}80 25%, rgba(0, 0, 0, 0) 80%)`,
+    [productColor],
   );
 
   return (
@@ -58,7 +59,7 @@ const ProductSummaryCard = ({
             style={{
               width: "100%",
               height: "100%",
-              backgroundColor: product.providerColour,
+              backgroundColor: productColor,
             }}
           />
         </View>
@@ -87,17 +88,17 @@ const ProductSummaryCard = ({
               >
                 <Stop
                   offset={0}
-                  stopColor={product.providerColour}
+                  stopColor={productColor}
                   stopOpacity={0.9}
                 />
                 <Stop
                   offset={0.25}
-                  stopColor={product.providerColour}
+                  stopColor={productColor}
                   stopOpacity={0.3}
                 />
                 <Stop
                   offset={0.8}
-                  stopColor={product.providerColour}
+                  stopColor={productColor}
                   stopOpacity={0}
                 />
               </LinearGradient>

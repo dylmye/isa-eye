@@ -13,6 +13,7 @@ const productsTable = {
   endTaxYear: { type: "string" },
   providerId: { type: "string" },
   friendlyName: { type: "string" },
+  colourHexOverride: { type: "string" },
   productTypeCode: { type: "string" },
   flexible: { type: "boolean" },
 } satisfies Record<string, CellSchema>;

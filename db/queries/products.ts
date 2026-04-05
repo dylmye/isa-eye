@@ -10,6 +10,7 @@ export const allProducts = (queries: Queries<Schemas>) =>
     select("startTaxYear");
     select("endTaxYear");
     select("flexible");
+    select("colourHexOverride");
 
     select("providerId");
     select("providers", "name").as("providerName");
@@ -26,7 +27,7 @@ export const allProducts = (queries: Queries<Schemas>) =>
 export interface AllProductsRow
   extends ResultRow,
     Required<
-      Pick<Product, "friendlyName" | "startTaxYear" | "endTaxYear" | "flexible">
+      Pick<Product, "friendlyName" | "startTaxYear" | "endTaxYear" | "flexible" | "colourHexOverride">
     > {
   providerName: string;
   providerIconRelativeUrl: string;
