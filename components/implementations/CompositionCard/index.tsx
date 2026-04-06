@@ -18,7 +18,7 @@ const CompositionCard = () => {
         providerName: b.productProviderName,
         productTypeName: b.productProductTypeName,
       }),
-      colour: b.productProviderColour ?? "white",
+      colour: b.productColourHexOverride || b.productProviderColour || "white",
     }));
   }, [balances]);
 

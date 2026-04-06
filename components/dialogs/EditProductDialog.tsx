@@ -21,6 +21,7 @@ import FormUI from "../fields/FormUI";
 
 interface EditProductData {
   productName: string;
+  colourHexOverride?: string;
   isFlexible: boolean;
   startTaxYear: string;
 }
@@ -55,6 +56,7 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
     (data: EditProductData) =>
       ({
         friendlyName: data.productName,
+        colourHexOverride: data.colourHexOverride,
         flexible: data.isFlexible,
       }) satisfies Product,
   );
@@ -133,6 +135,21 @@ const EditProductDialog = ({ existingId }: EditProductDialogProps) => {
               defaultValue={existingProductData.friendlyName}
               name="productName"
               label="Nickname"
+            />
+            <ControlledTextField<EditProductData, "colourHexOverride">
+              control={control}
+              errors={errors}
+              defaultValue={existingProductData.colourHexOverride}
+              name="colourHexOverride"
+              label="Custom colour"
+              note="Useful for differentiating between multiple accounts from the same bank."
+              rules={{
+                pattern: {
+                  value: /^#[A-Fa-f0-9]{6}$/,
+                  message:
+                    "Not a valid colour (hex code) value. It should look like #3D3D3D.",
+                },
+              }}
             />
             <ControlledCheckboxField<EditProductData, "isFlexible">
               control={control}
